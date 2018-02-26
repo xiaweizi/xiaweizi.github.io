@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="下位子" />
+
+
+
+<meta name="description" content="我的博客地址 之前一直想实现聊天的功能，但是感觉有点困难，今天看了环信的API，就利用下午的时间动手试了试，然后做了一个小Demo。因为没有刻意去做聊天软件，花的时间也不多，然后界面就很简单，都是一些基本知识，如果觉得功能简单，可以自行添加，我这就不多介绍了。">
+<meta name="keywords" content="第三方库,项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于环信的仿QQ即时通讯的简单实现">
+<meta property="og:url" content="http://xiaweizi.cn/2017/01/21/基于环信的仿QQ即时通讯的简单实现/index.html">
+<meta property="og:site_name" content="xiaweizi&#39;blog">
+<meta property="og:description" content="我的博客地址 之前一直想实现聊天的功能，但是感觉有点困难，今天看了环信的API，就利用下午的时间动手试了试，然后做了一个小Demo。因为没有刻意去做聊天软件，花的时间也不多，然后界面就很简单，都是一些基本知识，如果觉得功能简单，可以自行添加，我这就不多介绍了。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-d16a88926805236a.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-76ea5370b4d09d89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-e4dd45e05060467f.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-02-26T09:18:54.680Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于环信的仿QQ即时通讯的简单实现">
+<meta name="twitter:description" content="我的博客地址 之前一直想实现聊天的功能，但是感觉有点困难，今天看了环信的API，就利用下午的时间动手试了试，然后做了一个小Demo。因为没有刻意去做聊天软件，花的时间也不多，然后界面就很简单，都是一些基本知识，如果觉得功能简单，可以自行添加，我这就不多介绍了。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4043475-d16a88926805236a.gif?imageMogr2/auto-orient/strip">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="xiaweizi&#39;blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>基于环信的仿QQ即时通讯的简单实现 | xiaweizi&#39;blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?d8f1e419497cfa5779f9e99baab1e7af";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">下位子</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                            <li><a href="/photos/">相册</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1012126908@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/6444811129/profile?topnav=1&wvr=6" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/xiaweizi" title="GitHub"></a>
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/d36586119d8c" title="简书"></a>
+                            
+                                <a class="fa CSDN" href="http://blog.csdn.net/qq_22656383" title="CSDN"></a>
+                            
+                                <a class="fa 网易云音乐" href="https://music.163.com/#/my/m/music/playlist?id=541404936" title="网易云音乐"></a>
+                            
+                                <a class="fa Google" href="https://plus.google.com/103042428376296293680?hl=zh-CN" title="Google"></a>
+                            
+                                <a class="fa QQ" href="http://wpa.qq.com/msgrd?v=3&uin=1012126908&site=qq&menu=yes" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataBinding/">DataBinding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-官方/">Google 官方</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/">Kotlin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVVM/">MVVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Material-Design/">Material Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片缓存/">图片缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工作积累/">工作积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能优化/">性能优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/第三方库/">第三方库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自定义-View/">自定义 View</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自定义-view/">自定义 view</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/造轮子/">造轮子</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目/">项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目重构/">项目重构</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/G-Joker/WeaponApp">WeaponApp</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://weaponzhi.online">WeaponZhi</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://www.wanandroid.com/">wanandroid</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">胖子都是潜力股！</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">下位子</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">下位子</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                    <li><a href="/photos/">相册</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1012126908@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/6444811129/profile?topnav=1&wvr=6" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/xiaweizi" title="GitHub"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/d36586119d8c" title="简书"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.net/qq_22656383" title="CSDN"></a>
+                            
+                                <a class="fa 网易云音乐" target="_blank" href="https://music.163.com/#/my/m/music/playlist?id=541404936" title="网易云音乐"></a>
+                            
+                                <a class="fa Google" target="_blank" href="https://plus.google.com/103042428376296293680?hl=zh-CN" title="Google"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1012126908&site=qq&menu=yes" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-基于环信的仿QQ即时通讯的简单实现" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/01/21/基于环信的仿QQ即时通讯的简单实现/" class="article-date">
+      <time datetime="2017-01-21T12:46:25.000Z" itemprop="datePublished">2017-01-21</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      基于环信的仿QQ即时通讯的简单实现
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/第三方库/">第三方库</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目/">项目</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><em><a href="http://xiaweizi.cn/">我的博客地址</a></em></p>
+<h4 id="之前一直想实现聊天的功能，但是感觉有点困难，今天看了环信的API，就利用下午的时间动手试了试，然后做了一个小Demo。"><a href="#之前一直想实现聊天的功能，但是感觉有点困难，今天看了环信的API，就利用下午的时间动手试了试，然后做了一个小Demo。" class="headerlink" title="之前一直想实现聊天的功能，但是感觉有点困难，今天看了环信的API，就利用下午的时间动手试了试，然后做了一个小Demo。"></a>之前一直想实现聊天的功能，但是感觉有点困难，今天看了环信的API，就利用下午的时间动手试了试，然后做了一个小Demo。</h4><h4 id="因为没有刻意去做聊天软件，花的时间也不多，然后界面就很简单，都是一些基本知识，如果觉得功能简单，可以自行添加，我这就不多介绍了。"><a href="#因为没有刻意去做聊天软件，花的时间也不多，然后界面就很简单，都是一些基本知识，如果觉得功能简单，可以自行添加，我这就不多介绍了。" class="headerlink" title="因为没有刻意去做聊天软件，花的时间也不多，然后界面就很简单，都是一些基本知识，如果觉得功能简单，可以自行添加，我这就不多介绍了。"></a>因为没有刻意去做聊天软件，花的时间也不多，然后界面就很简单，都是一些基本知识，如果觉得功能简单，可以自行添加，我这就不多介绍了。</h4><a id="more"></a>
+<p>照例先来一波动态演示：<br><img src="http://upload-images.jianshu.io/upload_images/4043475-d16a88926805236a.gif?imageMogr2/auto-orient/strip" alt="环信及时聊天.gif"></p>
+<blockquote>
+<p>功能很简单，注册用户 –&gt; 用户登录 –&gt; 选择聊天对象 –&gt; 开始聊天</p>
+</blockquote>
+<blockquote>
+<p>使用到的知识点：</p>
+</blockquote>
+<ol>
+<li><code>RecyclerView</code></li>
+<li><code>CardView</code></li>
+<li>环信的API的简单使用</li>
+</ol>
+<blockquote>
+<p>依赖的库</p>
+<pre><code>compile &apos;com.android.support:appcompat-v7:24.2.1&apos;
+compile &apos;com.android.support:cardview-v7:24.1.1&apos;
+compile &apos;com.android.support:recyclerview-v7:24.0.0&apos;    
+</code></pre></blockquote>
+<h2 id="1、聊天页面"><a href="#1、聊天页面" class="headerlink" title="1、聊天页面"></a>1、聊天页面</h2><p><em>首先是看了郭神的《第二行代码》做了聊天界面，用的是RecyclerView</em></p>
+<h4 id="a-消息类的封装"><a href="#a-消息类的封装" class="headerlink" title="a.  消息类的封装"></a>a.  消息类的封装</h4><hr>
+<pre><code>public class MSG {
+    public static final int TYPE_RECEIVED = 0;//消息的类型:接收
+    public static final int TYPE_SEND = 1;    //消息的类型:发送
+
+    private String content;//消息的内容
+    private int type;       //消息的类型
+
+    public MSG(String content, int type) {
+        this.content = content;
+        this.type = type;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public int getType() {
+        return type;
+    }
+}
+</code></pre><h4 id="b-RecyclerView子项的布局"><a href="#b-RecyclerView子项的布局" class="headerlink" title="b.    RecyclerView子项的布局"></a>b.    RecyclerView子项的布局</h4><hr>
+<pre><code>&lt;LinearLayout
+    android:id=&quot;@+id/ll_msg_left&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    &lt;!-- 设置点击效果为水波纹(5.0以上) --&gt;
+    android:background=&quot;?android:attr/selectableItemBackground&quot;
+    android:clickable=&quot;true&quot;
+    android:focusable=&quot;true&quot;
+    android:orientation=&quot;horizontal&quot;
+    android:padding=&quot;2dp&quot;&gt;
+
+    &lt;android.support.v7.widget.CardView
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        app:cardCornerRadius=&quot;20dp&quot;
+        app:cardPreventCornerOverlap=&quot;false&quot;
+        app:cardUseCompatPadding=&quot;true&quot;&gt;
+
+        &lt;ImageView
+            android:layout_width=&quot;50dp&quot;
+            android:layout_height=&quot;50dp&quot;
+            android:scaleType=&quot;centerCrop&quot;
+            android:src=&quot;@mipmap/man&quot; /&gt;
+    &lt;/android.support.v7.widget.CardView&gt;
+
+    &lt;LinearLayout
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:background=&quot;@drawable/message_left&quot;
+        android:orientation=&quot;horizontal&quot;&gt;
+
+        &lt;TextView
+            android:id=&quot;@+id/tv_msg_left&quot;
+            android:layout_width=&quot;wrap_content&quot;
+            android:layout_height=&quot;wrap_content&quot;
+            android:layout_gravity=&quot;center&quot;
+            android:layout_margin=&quot;10dp&quot;
+            android:textColor=&quot;#fff&quot; /&gt;
+    &lt;/LinearLayout&gt;
+
+&lt;/LinearLayout&gt;
+</code></pre><blockquote>
+<p>这是左边的部分，至于右边应该也就简单了。我用CardView把ImageView包裹起来，这样比较好看。效果如下：</p>
+</blockquote>
+<p><img src="http://upload-images.jianshu.io/upload_images/4043475-76ea5370b4d09d89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="item布局.png"></p>
+<h4 id="c-RecyclerView适配器"><a href="#c-RecyclerView适配器" class="headerlink" title="c.    RecyclerView适配器"></a>c.    RecyclerView适配器</h4><hr>
+<pre><code>    public class MsgAdapter extends RecyclerView.Adapter&lt;MsgAdapter.MyViewHolder&gt; {
+
+    private List&lt;MSG&gt; mMsgList;
+
+    public MsgAdapter(List&lt;MSG&gt; mMsgList) {
+        this.mMsgList = mMsgList;
+    }
+
+    @Override
+    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = View.inflate(parent.getContext(), R.layout.item_msg, null);
+        MyViewHolder holder = new MyViewHolder(view);
+        return holder;
+    }
+
+    @Override
+    public void onBindViewHolder(MyViewHolder holder, int position) {
+        MSG msg = mMsgList.get(position);
+        if (msg.getType() == MSG.TYPE_RECEIVED){
+            //如果是收到的消息，显示左边布局，隐藏右边布局
+            holder.llLeft.setVisibility(View.VISIBLE);
+            holder.llRight.setVisibility(View.GONE);
+            holder.tv_Left.setText(msg.getContent());
+        } else if (msg.getType() == MSG.TYPE_SEND){
+            //如果是发送的消息，显示右边布局，隐藏左边布局
+            holder.llLeft.setVisibility(View.GONE);
+            holder.llRight.setVisibility(View.VISIBLE);
+            holder.tv_Right.setText(msg.getContent());
+        }
+    }
+
+    @Override
+    public int getItemCount() {
+        return mMsgList.size();
+    }
+
+    static class MyViewHolder extends RecyclerView.ViewHolder{
+
+        LinearLayout llLeft;
+        LinearLayout llRight;
+
+        TextView tv_Left;
+        TextView tv_Right;
+
+        public MyViewHolder(View itemView) {
+            super(itemView);
+
+            llLeft = (LinearLayout) itemView.findViewById(R.id.ll_msg_left);
+            llRight = (LinearLayout) itemView.findViewById(R.id.ll_msg_right);
+
+            tv_Left = (TextView) itemView.findViewById(R.id.tv_msg_left);
+            tv_Right = (TextView) itemView.findViewById(R.id.tv_msg_right);
+
+        }
+    }
+}
+</code></pre><blockquote>
+<p>这部分应该也没什么问题，就是适配器的创建，我之前的文章也讲过 传送门：<a href="http://www.jianshu.com/p/60819de9eb42" target="_blank" rel="noopener">简单粗暴—-RecyclerView</a></p>
+</blockquote>
+<h4 id="d-RecyclerView初始化"><a href="#d-RecyclerView初始化" class="headerlink" title="d.    RecyclerView初始化"></a>d.    RecyclerView初始化</h4><hr>
+<p>就是一些基本的初始化，我就不赘述了，讲一下添加数据的细节处理</p>
+<pre><code>btSend.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        String content = etInput.getText().toString().trim();
+        if (!TextUtils.isEmpty(content)){
+
+            ...//环信部分的发送消息
+
+            MSG msg = new MSG(content, MSG.TYPE_SEND);
+            mList.add(msg);
+            //当有新消息时，刷新RecyclerView中的显示
+            mAdapter.notifyItemInserted(mList.size() - 1);
+            //将RecyclerView定位到最后一行
+            mRecyclerView.scrollToPosition(mList.size() - 1);
+            etInput.setText(&quot;&quot;);
+        }
+    }
+});
+</code></pre><blockquote>
+<p>至此界面已经结束了，接下来就是数据的读取</p>
+</blockquote>
+<h2 id="2-环信API的简单应用"><a href="#2-环信API的简单应用" class="headerlink" title="2. 环信API的简单应用"></a>2. 环信API的简单应用</h2><p><em>官网有详细的API介绍 <a href="http://docs.easemob.com/im/start" title="集成" target="_blank" rel="noopener">环信及时通讯V3.0</a>，我这里就简单介绍如何简单集成</em></p>
+<h4 id="a-环信开发账号的注册"><a href="#a-环信开发账号的注册" class="headerlink" title="a.    环信开发账号的注册"></a>a.    环信开发账号的注册</h4><hr>
+<p><a href="http://www.easemob.com/" target="_blank" rel="noopener">环信官网</a></p>
+<blockquote>
+<p>创建应用得到Appkey后面要用<br><img src="http://upload-images.jianshu.io/upload_images/4043475-e4dd45e05060467f.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="环信注册.PNG"></p>
+</blockquote>
+<h4 id="b-SDK导入"><a href="#b-SDK导入" class="headerlink" title="b.    SDK导入"></a>b.    SDK导入</h4><hr>
+<p>你可以直接下载然后拷贝工程的libs目录下</p>
+<p>Android Studio可以直接添加依赖</p>
+<blockquote>
+<p>将以下代码放到项目根目录的build.gradle文件里</p>
+</blockquote>
+<pre><code>repositories {
+        maven { url &quot;https://raw.githubusercontent.com/HyphenateInc/Hyphenate-SDK-Android/master/repository&quot; }
+}
+</code></pre><blockquote>
+<p>在你的module的build.gradle里加入以下代码</p>
+</blockquote>
+<pre><code>android {
+    //use legacy for android 6.0
+    useLibrary &apos;org.apache.http.legacy&apos;
+}
+dependencies {
+    compile &apos;com.android.support:appcompat-v7:23.4.0&apos;
+    //Optional compile for GCM (Google Cloud Messaging).
+    compile &apos;com.google.android.gms:play-services-gcm:9.4.0&apos;
+    compile &apos;com.hyphenate:hyphenate-sdk:3.2.3&apos;
+}
+</code></pre><blockquote>
+<p>如果想使用不包含音视频通话的sdk，用<code>compile &#39;com.hyphenate:hyphenate-sdk-lite:3.2.3&#39;</code></p>
+</blockquote>
+<h4 id="c-清单文件配置"><a href="#c-清单文件配置" class="headerlink" title="c.    清单文件配置"></a>c.    清单文件配置</h4><hr>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    package=&quot;Your Package&quot;
+    android:versionCode=&quot;100&quot;
+    android:versionName=&quot;1.0.0&quot;&gt;
+
+    &lt;!-- Required --&gt;
+    &lt;uses-permission android:name=&quot;android.permission.VIBRATE&quot; /&gt;
+    &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
+    &lt;uses-permission android:name=&quot;android.permission.RECORD_AUDIO&quot; /&gt;
+    &lt;uses-permission android:name=&quot;android.permission.CAMERA&quot; /&gt;
+    &lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;
+    &lt;uses-permission android:name=&quot;android.permission.ACCESS_MOCK_LOCATION&quot; /&gt;
+    &lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;
+    &lt;uses-permission android:name=&quot;android.permission.MOUNT_UNMOUNT_FILESYSTEMS&quot;/&gt;  
+    &lt;uses-permission android:name=&quot;android.permission.ACCESS_FINE_LOCATION&quot; /&gt;
+    &lt;uses-permission android:name=&quot;android.permission.GET_TASKS&quot; /&gt;
+    &lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot; /&gt;
+    &lt;uses-permission android:name=&quot;android.permission.CHANGE_WIFI_STATE&quot; /&gt;
+    &lt;uses-permission android:name=&quot;android.permission.WAKE_LOCK&quot; /&gt;
+    &lt;uses-permission android:name=&quot;android.permission.MODIFY_AUDIO_SETTINGS&quot; /&gt;
+    &lt;uses-permission android:name=&quot;android.permission.READ_PHONE_STATE&quot; /&gt;
+    &lt;uses-permission android:name=&quot;android.permission.RECEIVE_BOOT_COMPLETED&quot; /&gt;
+
+    &lt;application
+        android:icon=&quot;@drawable/ic_launcher&quot;
+        android:label=&quot;@string/app_name&quot;
+        android:name=&quot;Your Application&quot;&gt;
+
+    &lt;!-- 设置环信应用的AppKey --&gt;
+        &lt;meta-data android:name=&quot;EASEMOB_APPKEY&quot;  android:value=&quot;Your AppKey&quot; /&gt;
+        &lt;!-- 声明SDK所需的service SDK核心功能--&gt;
+        &lt;service android:name=&quot;com.hyphenate.chat.EMChatService&quot; android:exported=&quot;true&quot;/&gt;
+        &lt;service android:name=&quot;com.hyphenate.chat.EMJobService&quot;
+            android:permission=&quot;android.permission.BIND_JOB_SERVICE&quot;
+            android:exported=&quot;true&quot;
+            /&gt;
+        &lt;!-- 声明SDK所需的receiver --&gt;
+        &lt;receiver android:name=&quot;com.hyphenate.chat.EMMonitorReceiver&quot;&gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name=&quot;android.intent.action.PACKAGE_REMOVED&quot;/&gt;
+                &lt;data android:scheme=&quot;package&quot;/&gt;
+            &lt;/intent-filter&gt;
+            &lt;!-- 可选filter --&gt;
+            &lt;intent-filter&gt;
+                &lt;action android:name=&quot;android.intent.action.BOOT_COMPLETED&quot;/&gt;
+                &lt;action android:name=&quot;android.intent.action.USER_PRESENT&quot; /&gt;
+            &lt;/intent-filter&gt;
+        &lt;/receiver&gt;
+    &lt;/application&gt;
+&lt;/manifest&gt;
+</code></pre><p>APP打包混淆</p>
+<pre><code>-keep class com.hyphenate.** {*;}
+-dontwarn  com.hyphenate.**
+</code></pre><h4 id="d-初始化SDK"><a href="#d-初始化SDK" class="headerlink" title="d.    初始化SDK"></a>d.    初始化SDK</h4><hr>
+<p><em>在自定义Application的onCreate中初始化</em></p>
+<pre><code>public class MyApplication extends Application {
+
+    private Context appContext;
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        EMOptions options = new EMOptions();
+        options.setAcceptInvitationAlways(false);
+
+        appContext = this;
+        int pid = android.os.Process.myPid();
+        String processAppName = getAppName(pid);
+        // 如果APP启用了远程的service，此application:onCreate会被调用2次
+        // 为了防止环信SDK被初始化2次，加此判断会保证SDK被初始化1次
+        // 默认的APP会在以包名为默认的process name下运行，如果查到的process name不是APP的process name就立即返回
+
+        if (processAppName == null || !processAppName.equalsIgnoreCase(appContext.getPackageName())) {
+            Log.e(&quot;---&gt;&quot;, &quot;enter the service process!&quot;);
+
+            // 则此application::onCreate 是被service 调用的，直接返回
+            return;
+        }
+
+        //初始化
+        EMClient.getInstance().init(getApplicationContext(), options);
+        //在做打包混淆时，关闭debug模式，避免消耗不必要的资源
+        EMClient.getInstance().setDebugMode(true);
+    }
+
+    private String getAppName(int pID) {
+        String processName = null;
+        ActivityManager am = (ActivityManager) this.getSystemService(ACTIVITY_SERVICE);
+        List l = am.getRunningAppProcesses();
+        Iterator i = l.iterator();
+        PackageManager pm = this.getPackageManager();
+        while (i.hasNext()) {
+            ActivityManager.RunningAppProcessInfo info = (ActivityManager.RunningAppProcessInfo) (i.next());
+            try {
+                if (info.pid == pID) {
+                    processName = info.processName;
+                    return processName;
+                }
+            } catch (Exception e) {
+                // Log.d(&quot;Process&quot;, &quot;Error&gt;&gt; :&quot;+ e.toString());
+            }
+        }
+        return processName;
+    }
+}
+</code></pre><h4 id="e-注册和登陆"><a href="#e-注册和登陆" class="headerlink" title="e.    注册和登陆"></a>e.    注册和登陆</h4><hr>
+<p><em>注册要在子线程中执行</em></p>
+<pre><code>//注册失败会抛出HyphenateException
+EMClient.getInstance().createAccount(username, pwd);//同步方法
+
+EMClient.getInstance().login(userName,password,new EMCallBack() {//回调
+    @Override
+    public void onSuccess() {
+        EMClient.getInstance().groupManager().loadAllGroups();
+        EMClient.getInstance().chatManager().loadAllConversations();
+            Log.d(&quot;main&quot;, &quot;登录聊天服务器成功！&quot;);        
+    }
+
+    @Override
+    public void onProgress(int progress, String status) {
+
+    }
+
+    @Override
+    public void onError(int code, String message) {
+        Log.d(&quot;main&quot;, &quot;登录聊天服务器失败！&quot;);
+    }
+});
+</code></pre><h4 id="f-发送消息"><a href="#f-发送消息" class="headerlink" title="f.    发送消息"></a>f.    发送消息</h4><hr>
+<pre><code>//创建一条文本消息，content为消息文字内容，toChatUsername为对方用户或者群聊的id，后文皆是如此
+EMMessage message = EMMessage.createTxtSendMessage(content, toChatUsername);
+//发送消息
+EMClient.getInstance().chatManager().sendMessage(message);
+</code></pre><h4 id="g-接收消息"><a href="#g-接收消息" class="headerlink" title="g.    接收消息"></a>g.    接收消息</h4><hr>
+<pre><code>msgListener = new EMMessageListener() {
+
+        @Override
+        public void onMessageReceived(List&lt;EMMessage&gt; messages) {
+            //收到消息
+            String result = messages.get(0).getBody().toString();
+            String msgReceived = result.substring(5, result.length() - 1);
+
+            Log.i(TAG, &quot;onMessageReceived: &quot; + msgReceived);
+            final MSG msg = new MSG(msgReceived, MSG.TYPE_RECEIVED);
+            runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    mList.add(msg);
+                    mAdapter.notifyDataSetChanged();
+                    mRecyclerView.scrollToPosition(mList.size() - 1);
+                }
+            });
+        }
+
+        @Override
+        public void onCmdMessageReceived(List&lt;EMMessage&gt; messages) {
+            //收到透传消息
+        }
+
+        @Override
+        public void onMessageRead(List&lt;EMMessage&gt; list) {
+
+        }
+
+        @Override
+        public void onMessageDelivered(List&lt;EMMessage&gt; list) {
+
+        }
+
+        @Override
+        public void onMessageChanged(EMMessage message, Object change) {
+            //消息状态变动
+        }
+    };
+</code></pre><blockquote>
+<p>接收消息的监听器分别需要在OnResume()和OnDestory()方法中注册和取消注册</p>
+</blockquote>
+<pre><code>EMClient.getInstance().chatManager().addMessageListener(msgListener);//注册
+
+EMClient.getInstance().chatManager().removeMessageListener(msgListener);//取消注册
+</code></pre><blockquote>
+<p>需要注意的是，当接收到消息，需要在<strong>主线程</strong>中更新适配器，否则会不能及时刷新出来</p>
+</blockquote>
+<p>到此，一个简单的及时聊天Demo已经完成，功能很简单，如果需要添加额外功能的话，可以自行参考官网，官网给出的教程还是很不错的！</p>
+<p>最后希望大家能多多支持我，需要你们的支持喜欢！！</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/01/21/基于环信的仿QQ即时通讯的简单实现/">基于环信的仿QQ即时通讯的简单实现</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">下位子</a></p>
+        <p><span>发布时间:</span>2017-01-21, 20:46:25</p>
+        <p><span>最后更新:</span>2018-02-26, 17:18:54</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/01/21/基于环信的仿QQ即时通讯的简单实现/" title="基于环信的仿QQ即时通讯的简单实现">http://xiaweizi.cn/2017/01/21/基于环信的仿QQ即时通讯的简单实现/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/2017/01/21/基于环信的仿QQ即时通讯的简单实现/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/01/22/基于LitePal操作数据库的学生管理系统的简单实现/">
+                    基于LitePal操作数据库的学生管理系统的简单实现
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/01/07/高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题/">
+                    高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#之前一直想实现聊天的功能，但是感觉有点困难，今天看了环信的API，就利用下午的时间动手试了试，然后做了一个小Demo。"><span class="toc-number">1.</span> <span class="toc-text">之前一直想实现聊天的功能，但是感觉有点困难，今天看了环信的API，就利用下午的时间动手试了试，然后做了一个小Demo。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#因为没有刻意去做聊天软件，花的时间也不多，然后界面就很简单，都是一些基本知识，如果觉得功能简单，可以自行添加，我这就不多介绍了。"><span class="toc-number">2.</span> <span class="toc-text">因为没有刻意去做聊天软件，花的时间也不多，然后界面就很简单，都是一些基本知识，如果觉得功能简单，可以自行添加，我这就不多介绍了。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、聊天页面"><span class="toc-number"></span> <span class="toc-text">1、聊天页面</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#a-消息类的封装"><span class="toc-number">1.</span> <span class="toc-text">a.  消息类的封装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#b-RecyclerView子项的布局"><span class="toc-number">2.</span> <span class="toc-text">b.    RecyclerView子项的布局</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#c-RecyclerView适配器"><span class="toc-number">3.</span> <span class="toc-text">c.    RecyclerView适配器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#d-RecyclerView初始化"><span class="toc-number">4.</span> <span class="toc-text">d.    RecyclerView初始化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-环信API的简单应用"><span class="toc-number"></span> <span class="toc-text">2. 环信API的简单应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#a-环信开发账号的注册"><span class="toc-number">1.</span> <span class="toc-text">a.    环信开发账号的注册</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#b-SDK导入"><span class="toc-number">2.</span> <span class="toc-text">b.    SDK导入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#c-清单文件配置"><span class="toc-number">3.</span> <span class="toc-text">c.    清单文件配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#d-初始化SDK"><span class="toc-number">4.</span> <span class="toc-text">d.    初始化SDK</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#e-注册和登陆"><span class="toc-number">5.</span> <span class="toc-text">e.    注册和登陆</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#f-发送消息"><span class="toc-number">6.</span> <span class="toc-text">f.    发送消息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#g-接收消息"><span class="toc-number">7.</span> <span class="toc-text">g.    接收消息</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"基于环信的仿QQ即时通讯的简单实现　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <section id="comments">
+    <style> aside.comment-bar { margin: auto 30px; }</style>
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function(){
+            this.page.url = 'http://xiaweizi.cn/2017/01/21/基于环信的仿QQ即时通讯的简单实现/';
+            this.page.identifier = '2017/01/21/基于环信的仿QQ即时通讯的简单实现/';
+        };
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = '//xiaweizi.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+</section>
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/01/22/基于LitePal操作数据库的学生管理系统的简单实现/" title="上一篇: 基于LitePal操作数据库的学生管理系统的简单实现">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/01/07/高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题/" title="下一篇: 高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2018/02/24/Thinking-in-Java-读书笔记-3-操作符/">Thinking-in-Java-读书笔记-3-操作符</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/24/Thinking-in-Java-读书笔记-1-对象导论/">Thinking-in-Java-读书笔记-1-对象导论</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/24/Thinking-in-Java-读书笔记-2-一切都是对象/">Thinking-in-Java-读书笔记-2-一切都是对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/14/个人博客全新上线(阿里域名+GitPages+hexo+Yelee)/">个人博客全新上线(阿里域名+GitPages+hexo+Yelee)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/05/Android-冷兵器-之-tools/">Android 冷兵器 之 tools</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/19/自定义银行种类选择器/">自定义银行种类选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/05/我和极光的那些事---我和-Android-推送的时间简史/">我和极光的那些事---我和-Android-推送的时间简史</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/04/Python-自学笔记/">Python-自学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/27/Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！/">Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/26/Android-自定义跑马灯/">Android-自定义跑马灯</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/18/Android-分享会：Material-Design-在-Android-中的应用/">Android-分享会：Material-Design-在-Android-中的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/10/Git-命令小结/">Git-命令小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/09/使用Kotlin重构项目/">使用Kotlin重构项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/04/Kotlin学习笔记/">Kotlin学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/30/MVVM之DataBinding入门/">MVVM之DataBinding入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/22/使用-Glide-实现圆角效果/">使用-Glide-实现圆角效果</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/08/Android-性能优化小结/">Android-性能优化小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/如何做个依赖库让别人依赖使用/">如何做个依赖库让别人依赖使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/jsoup爬虫简书首页数据做个小Demo/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/25/让我的项目也使用RxJava+OkHttp+Retrofit/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/17/快毕业了，撸一个小项目(新闻段子客户端)/">快毕业了，撸一个小项目(新闻段子客户端)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/17/基于MaterialDesign设计风格的妹纸app的简单实现/">基于MaterialDesign设计风格的妹纸app的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/基于LitePal操作数据库的学生管理系统的简单实现/">基于LitePal操作数据库的学生管理系统的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/21/基于环信的仿QQ即时通讯的简单实现/">基于环信的仿QQ即时通讯的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/07/高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题/">高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/简单粗暴----RecyclerView/">简单粗暴----RecyclerView</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/04/设计模式之建造者模式学习笔记/">设计模式之建造者模式学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/29/一个菜鸟的图片三级缓存笔记/">一个菜鸟的图片三级缓存笔记</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2017-2018 下位子
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+    <script src="/js/GithubRepoWidget.js"></script>
+
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 5;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-113850534-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+             github: ".github-widget a", 
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "插播广告中... " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "广告结束，精彩继续！" + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>
