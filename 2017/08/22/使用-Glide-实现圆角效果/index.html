@@ -16,7 +16,7 @@
 
 
 <meta name="description" content="上周接到个小需求，就是让一张图片的右下角为圆角，然后百度了一下，发现 Glide 直接支持对图片进行操作，只要继承 BitmapTransformation,或者实现 Transformation的接口，就可以获得原图的 Bitmap对象，通过 Canvas对图片重新绘制，最后 Glide.with(this).load(R.drawable.test).asBitmap().transform(">
-<meta name="keywords" content="工作积累,自定义 View,第三方库">
+<meta name="keywords" content="自定义 View,工作积累,第三方库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用-Glide-实现圆角效果">
 <meta property="og:url" content="http://xiaweizi.cn/2017/08/22/使用-Glide-实现圆角效果/index.html">
@@ -326,9 +326,11 @@
     </h1>
   
 
+        
       </header>
       
       <div class="article-info article-info-post">
+        
         
     <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
@@ -461,6 +463,36 @@ Glide.with(MainActivity.this)
     </nav>
 
   
+  
+    
+    <div style="padding: 0; margin: 20px auto; width: 90%; text-align: center;">
+      <br>
+      <div>哎呦，不行了，要睡觉了，赏我 e(=2.72) 元咖啡钱吧，您的支持将鼓励我继续创作！</div>
+      <br>
+      <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+        <div class="btn btn-pay">打赏支持</div>
+      </button>
+      <br>
+      <br>
+      <div id="QR" style="display: none;">
+        
+          <div id="wechat" style="display: inline-block;">
+            <img id="wechat_qr" src="/img/wechat-reward-qr.png" alt="下位子 WeChat Pay"/>
+            <p>微信打赏</p>
+          </div>
+        
+        
+          <div id="alipay" style="display: inline-block">
+            <img id="alipay_qr" src="/img/alipay-reward-qr.png" alt="下位子 Alipay"/>
+            <p>支付宝打赏</p>
+          </div>
+        
+        <br>
+        <br>
+      </div>
+    </div>
+
+  
 </article>
 
     <div id="toc" class="toc-article">
@@ -591,6 +623,8 @@ Glide.with(MainActivity.this)
                         </span>
                     </span>
                 
+                <span>| </span>
+                <span class="post-count">博客全站共45.4k字</span>
             </div>
         
     </div>

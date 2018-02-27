@@ -16,7 +16,7 @@
 
 
 <meta name="description" content="前言最近公司接到小需求–「可以滚动的提示」，其实就是跑马灯。这让我想到了大学时专业物联网，当时学的单片机入门教程就是跑马灯，很是亲切。其实就是灯(或文字)按照某个方向循环滚动。">
-<meta name="keywords" content="工作积累,自定义 View">
+<meta name="keywords" content="自定义 View,工作积累">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Android-自定义跑马灯">
 <meta property="og:url" content="http://xiaweizi.cn/2017/12/26/Android-自定义跑马灯/index.html">
@@ -322,9 +322,11 @@
     </h1>
   
 
+        
       </header>
       
       <div class="article-info article-info-post">
+        
         
     <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
@@ -500,6 +502,36 @@ private int calculateScrollingLen() {
     </nav>
 
   
+  
+    
+    <div style="padding: 0; margin: 20px auto; width: 90%; text-align: center;">
+      <br>
+      <div>哎呦，不行了，要睡觉了，赏我 e(=2.72) 元咖啡钱吧，您的支持将鼓励我继续创作！</div>
+      <br>
+      <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+        <div class="btn btn-pay">打赏支持</div>
+      </button>
+      <br>
+      <br>
+      <div id="QR" style="display: none;">
+        
+          <div id="wechat" style="display: inline-block;">
+            <img id="wechat_qr" src="/img/wechat-reward-qr.png" alt="下位子 WeChat Pay"/>
+            <p>微信打赏</p>
+          </div>
+        
+        
+          <div id="alipay" style="display: inline-block">
+            <img id="alipay_qr" src="/img/alipay-reward-qr.png" alt="下位子 Alipay"/>
+            <p>支付宝打赏</p>
+          </div>
+        
+        <br>
+        <br>
+      </div>
+    </div>
+
+  
 </article>
 
     <div id="toc" class="toc-article">
@@ -630,6 +662,8 @@ private int calculateScrollingLen() {
                         </span>
                     </span>
                 
+                <span>| </span>
+                <span class="post-count">博客全站共45.4k字</span>
             </div>
         
     </div>
