@@ -302,8 +302,8 @@
     <article id="post-hexo_add_other_functions" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/02/27/hexo_add_other_functions/" class="article-date">
-      <time datetime="2018-02-27T12:41:25.000Z" itemprop="datePublished">2018-02-27</time>
+      <a href="/2028/02/27/hexo_add_other_functions/" class="article-date">
+      <time datetime="2028-02-27T12:41:25.000Z" itemprop="datePublished">2028-02-27</time>
 </a>
 
 
@@ -318,7 +318,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/02/27/hexo_add_other_functions/">hexo 博客小功能添加-评论、相册、字数统计...</a>
+      <a class="article-title" href="/2028/02/27/hexo_add_other_functions/">hexo 博客小功能添加-评论、相册、字数统计...</a>
     </h1>
   
 
@@ -358,6 +358,10 @@
     
     <div class="article-info article-info-index">
       
+        <div class="article-pop-out tagcloud">
+          <a class="">置顶</a>
+        </div>
+      
       
     <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
@@ -371,8 +375,97 @@
 
       
         <p class="article-more-link">
-          <a href="/2018/02/27/hexo_add_other_functions/#more">阅读全文 >></a>
+          <a href="/2028/02/27/hexo_add_other_functions/#more">阅读全文 >></a>
         </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
+    <article id="post-Thinking-in-Java-读书笔记-4-控制执行流程" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/02/28/Thinking-in-Java-读书笔记-4-控制执行流程/" class="article-date">
+      <time datetime="2018-02-28T10:27:25.000Z" itemprop="datePublished">2018-02-28</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/02/28/Thinking-in-Java-读书笔记-4-控制执行流程/">Thinking-in-Java-读书笔记-4-控制执行流程</a>
+    </h1>
+  
+
+        
+           <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">306字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">2分</span>
+      </span>
+    </span>
+</div>
+        
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><strong>就像有知觉的生物一样，程序必须在执行过程中控制它的世界，并做出选择。在 Java 中，你要使用执行控制语句来做出选择。</strong></p>
+<p>作为一名程序员，尤其经常接触业务需求的开发人员，那流程的接触是必不可少的，基本的用法也是很熟练，所以在这就不介绍流程的基础知识了，直接看代码。</p>
+<h2 id="if-else"><a href="#if-else" class="headerlink" title="if else"></a>if else</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">private static void checkGrade(int grade) &#123;</span><br><span class="line">        if (grade &gt;= 90) &#123;</span><br><span class="line">            System.out.println(&quot;优秀&quot;);</span><br><span class="line">        &#125; else if (grade &gt;= 80) &#123;</span><br><span class="line">            System.out.println(&quot;良好&quot;);</span><br><span class="line">        &#125; else if (grade &gt;= 70) &#123;</span><br><span class="line">            System.out.println(&quot;中等&quot;);</span><br><span class="line">        &#125; else if (grade &gt;= 60) &#123;</span><br><span class="line">            System.out.println(&quot;及格&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            System.out.println(&quot;不及格&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="while"><a href="#while" class="headerlink" title="while"></a>while</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">private static void testWhile() &#123;</span><br><span class="line">    int i = 1;</span><br><span class="line">    int sum = 0;</span><br><span class="line">    while (i &lt;= 10) &#123;</span><br><span class="line">        sum += i;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    do &#123;</span><br><span class="line">        sum += i;</span><br><span class="line">        i++;</span><br><span class="line">    &#125; while (i &lt;= 10);</span><br><span class="line">    System.out.println(&quot;sum:&quot; + sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">private static void testFor() &#123;</span><br><span class="line">    for (int i = 1; i &lt; 20; i++) &#123;</span><br><span class="line">        if (i % 2 == 0) &#123;</span><br><span class="line">            System.out.println(i + &quot;是偶数&quot;);</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(i + &quot;是奇数&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">private static void testSwitch() &#123;</span><br><span class="line">    int sex = 0;</span><br><span class="line">    switch (sex) &#123;</span><br><span class="line">        case 0:</span><br><span class="line">            System.out.println(&quot;男性&quot;);</span><br><span class="line">            break;</span><br><span class="line">        case 1:</span><br><span class="line">            System.out.println(&quot;男性&quot;);</span><br><span class="line">            break;</span><br><span class="line">        default:</span><br><span class="line">            System.out.println(&quot;未知&quot;);</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Thinking-In-Java-读书笔记/">Thinking In Java 读书笔记</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+    </div>
+
       
       <div class="clearfix"></div>
     </div>
@@ -1110,95 +1203,6 @@
 
 
   
-    <article id="post-Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/12/27/Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！/" class="article-date">
-      <time datetime="2017-12-27T12:46:25.000Z" itemprop="datePublished">2017-12-27</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/12/27/Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！/">Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！</a>
-    </h1>
-  
-
-        
-           <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1,456字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5分</span>
-      </span>
-    </span>
-</div>
-        
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>12月18日，Google 官方<a href="https://android-developers.googleblog.com/2017/12/quick-boot-top-features-in-android.html" target="_blank" rel="noopener">Quick Boot</a>博客的发布，给我们带来了最新的<code>Android</code>模拟器，其中最突出的特点技术 <strong>快速启动</strong>。声称可以在 <strong>6</strong> 秒之内便可启动模拟器，在此之下，模拟器通过保存关闭之前的快照，实现数秒内便可恢复到之前的工作状态。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Google-官方/">Google 官方</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/12/27/Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1231,7 +1235,7 @@
                     </span>
                 
                 <span>| </span>
-                <span class="post-count">  已经写了 47.2k 字啦</span>
+                <span class="post-count">  已经写了 47.5k 字啦</span>
             </div>
         
     </div>
