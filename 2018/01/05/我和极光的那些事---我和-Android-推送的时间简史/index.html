@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="下位子" />
+
+
+
+<meta name="description" content="2017 年 3 月 3 日「极光」跟我的渊源真的是极深的，说到极光，不得不追溯到 2017 年 3 月 3 日，当时正做毕设项目趣闻。基本的预期功能已经实现了，开始考虑集成推送功能，鉴于水平和时间的约束，决定还是集成第三方推送最为保险。">
+<meta name="keywords" content="第三方库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我和极光的那些事---我和-Android-推送的时间简史">
+<meta property="og:url" content="http://xiaweizi.cn/2018/01/05/我和极光的那些事---我和-Android-推送的时间简史/index.html">
+<meta property="og:site_name" content="xiaweizi&#39;blog">
+<meta property="og:description" content="2017 年 3 月 3 日「极光」跟我的渊源真的是极深的，说到极光，不得不追溯到 2017 年 3 月 3 日，当时正做毕设项目趣闻。基本的预期功能已经实现了，开始考虑集成推送功能，鉴于水平和时间的约束，决定还是集成第三方推送最为保险。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-200649713cb1ebc8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-7dcc5c02c4e8e1a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-862cf02edd55d700.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-b22ecfadcf437d68.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-946b179a5d307cdf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-10028d961ff14c9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-02-26T09:02:42.018Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="我和极光的那些事---我和-Android-推送的时间简史">
+<meta name="twitter:description" content="2017 年 3 月 3 日「极光」跟我的渊源真的是极深的，说到极光，不得不追溯到 2017 年 3 月 3 日，当时正做毕设项目趣闻。基本的预期功能已经实现了，开始考虑集成推送功能，鉴于水平和时间的约束，决定还是集成第三方推送最为保险。">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4043475-200649713cb1ebc8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="xiaweizi&#39;blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>我和极光的那些事---我和-Android-推送的时间简史 | xiaweizi&#39;blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?d8f1e419497cfa5779f9e99baab1e7af";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">下位子</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/pdf/">书籍</a></li>
+                        
+                            <li><a href="/photos/">相册</a></li>
+                        
+                            <li><a href="/message/">留言板</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1012126908@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/6444811129/profile?topnav=1&wvr=6" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/xiaweizi" title="GitHub"></a>
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/d36586119d8c" title="简书"></a>
+                            
+                                <a class="fa CSDN" href="http://blog.csdn.net/qq_22656383" title="CSDN"></a>
+                            
+                                <a class="fa Google" href="https://plus.google.com/103042428376296293680?hl=zh-CN" title="Google"></a>
+                            
+                                <a class="fa QQ" href="http://wpa.qq.com/msgrd?v=3&uin=1012126908&site=qq&menu=yes" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataBinding/">DataBinding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-官方/">Google 官方</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/">Kotlin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVVM/">MVVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Material-Design/">Material Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片缓存/">图片缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工作积累/">工作积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能优化/">性能优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/第三方库/">第三方库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自定义-View/">自定义 View</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自定义-view/">自定义 view</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/造轮子/">造轮子</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目/">项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目重构/">项目重构</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/G-Joker/WeaponApp">WeaponApp</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://weaponzhi.online">WeaponZhi</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://www.wanandroid.com/">wanandroid</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">胖子都是潜力股！</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">下位子</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">下位子</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/pdf/">书籍</a></li>
+                
+                    <li><a href="/photos/">相册</a></li>
+                
+                    <li><a href="/message/">留言板</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1012126908@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/6444811129/profile?topnav=1&wvr=6" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/xiaweizi" title="GitHub"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/d36586119d8c" title="简书"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.net/qq_22656383" title="CSDN"></a>
+                            
+                                <a class="fa Google" target="_blank" href="https://plus.google.com/103042428376296293680?hl=zh-CN" title="Google"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1012126908&site=qq&menu=yes" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-我和极光的那些事---我和-Android-推送的时间简史" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2018/01/05/我和极光的那些事---我和-Android-推送的时间简史/" class="article-date">
+      <time datetime="2018-01-05T12:46:25.000Z" itemprop="datePublished">2018-01-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      我和极光的那些事---我和-Android-推送的时间简史
+    </h1>
+  
+
+        
+           <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1,728字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">6分</span>
+      </span>
+    </span>
+</div>
+        
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+          <br>
+          <br>
+        
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/第三方库/">第三方库</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="2017-年-3-月-3-日"><a href="#2017-年-3-月-3-日" class="headerlink" title="2017 年 3 月 3 日"></a>2017 年 3 月 3 日</h2><p>「极光」跟我的渊源真的是极深的，说到极光，不得不追溯到 <strong>2017 年 3 月 3 日</strong>，当时正做毕设项目<a href="https://github.com/xiaweizi/QNews" target="_blank" rel="noopener">趣闻</a>。基本的预期功能已经实现了，开始考虑集成推送功能，鉴于水平和时间的约束，决定还是集成第三方推送最为保险。</p>
+<a id="more"></a>
+<p>然后百度了一下「第三方推送」，映入眼帘的便是「极光推送」，毫不犹豫的选择了它。在集成过程中也是比较顺利，在收到第一条推送后，喜悦的心情无以言表，不得不说大平台就是强。</p>
+<h2 id="2017-年-3-月-7-日"><a href="#2017-年-3-月-7-日" class="headerlink" title="2017 年 3 月 7 日"></a>2017 年 3 月 7 日</h2><p><strong>3 月 7 日</strong>，找到了第一份实习工作(毕业后也在这里转了正)，坐标「南京」。入职不久，老大开始让我接手公司项目中的推送模块。然后我把公司推送的逻辑大致看了一下，无论是设置 <code>tag</code>、或者是处理通知栏点击事件处理、还是自定义消息推送，对于刚入职的我是相当的复杂。毕竟在之前集成的毕设项目中，逻辑处理很少，只是简单的收到通知、点击并打开应用…</p>
+<p>逻辑整理的差不多，开始了主要的任务–<strong>升级到新版的极光推送</strong>。</p>
+<p>当我看到项目极光当前的版本，硬是被吓一跳。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4043475-200649713cb1ebc8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="当前版本"></p>
+<p>我记得当时极光已经到 <code>3.0.0+</code> 的版本了，看来升级果断是有必要的！还有一点，我们公司是「极光」的 <strong>VIP</strong>,在原来推送的基础上，多了一项非常强大的功能！<strong>集成产商的推送</strong>(小米、华为和魅族)。</p>
+<p>这意味着，如果在「小米、华为和魅族」的大部分的设备上，推送不再走极光的通道，而是走设备的产商通道。</p>
+<p>什么意思呢？就拿公司老版本的项目来说，不仅集成了极光推送还集成了小米推送，不仅服务端需要推送两份推送，就连客户端自己都要对设备的类型进行判断，如果是「小米」设备就调用「小米」的接口。那如果集成了<strong>产商</strong>推送，就不需要此操作，你只需提供应用的 <code>APPID</code> 等其他配置信息即可，华为和魅族同样！</p>
+<p>那么走产商通道又意味着什么呢？有集成过推送的小伙伴应该知道，推送能准确到达在于一个长连接，假如应用的进程被杀死，推送也便收不到。假如集成了产商的推送，即便进程被杀死，推送还是可以正常收到的，不过仅限于基本的推送，不包括自定义推送。</p>
+<p>这个升级的过程也是相当的坎坷，我记得这部分的功能也是「极光」的测试功能，正好我们集成过来一并测试…不过还有有一位热心的小姐姐，习惯称之为「大侠」！这个称号是当时她的昵称，一直都这么叫过来的。每次遇到问题都能不厌其烦的为我解惑。</p>
+<p>其中让我印象最为深刻的，是那天公司项目已经到了发版周期的最后两天，在华为的设备上推送没有收到。这可把我急的，第一时间就是找「大侠」帮忙，可能因为我在 QQ 上表达的不是很清楚，小姐姐看起来比我 还着急，直接让我跟她通电话讨论一下具体的原因，这让我意想不到。还好最后是解决了问题，在此说声 <strong>谢谢</strong>。</p>
+<h2 id="2017年-9月19日"><a href="#2017年-9月19日" class="headerlink" title="2017年 9月19日"></a>2017年 9月19日</h2><p><strong>9月 19 日</strong>，工作半年了，打算和大神同事一起维护一个开源项目，于是就有了 <a href="https://github.com/G-Joker/WeaponApp" target="_blank" rel="noopener">WeaponApp</a> 的诞生，目前也快到 600 的赞了。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4043475-7dcc5c02c4e8e1a3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="WeaponApp"></p>
+<p>当然，推送的功能也是少不了的，由于有了前面的经验，集成起来也是相当顺手，不过因为是个人项目就没有考虑，后来同事自学了服务端，顺便也把服务端的极光推送集成了，感兴趣的话可以把项目 <code>clone</code> 下来。</p>
+<p>在这个项目中初次尝试了集成「极光IM」，官方的接口也是很详细，并且还有自己的用户系统，登录和注册不需要自己实现了，不过目前的用户还是很少…</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4043475-862cf02edd55d700.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="所有用户"></p>
+<h2 id="2017年-10-月-26-日"><a href="#2017年-10-月-26-日" class="headerlink" title="2017年 10 月 26 日"></a>2017年 10 月 26 日</h2><p><strong>10 月 26 日</strong>，咱们公司另一交易项目「原油」开始进行大版本的升级，基本上属于重头做起。不用多说，推送的部分还是由我负责，鉴于又是「极光」的 <strong>VIP</strong>，直接将「贵金属」项目的推送部分挪过来，去除不需要的部分，修改一些基础的配置，最后也是顺利的完成了。</p>
+<p>不知不觉中，推送功能已经在 4 个项目中集成了：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4043475-b22ecfadcf437d68.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="个人项目"></p>
+<p>公司的就不方便列出来了，加在一块也有数十万的用户了(绝大部分是公司)…整体的过程还是很顺利的，无论是集成的步骤，还是后续的服务都很完美，这可能就是「极光」做的那么大的原因吧。</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4043475-946b179a5d307cdf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="推送一览"></p>
+<h2 id="赘述"><a href="#赘述" class="headerlink" title="赘述"></a>赘述</h2><p>说完「极光」与我的渊源，接下来就大概说一下集成的过程。</p>
+<p>官网已经有详细的集成介绍，我就不赘述了。<a href="https://docs.jiguang.cn/jpush/client/Android/android_guide/" target="_blank" rel="noopener">官网集成</a>，只是总结一下集成的步骤，一共三步：</p>
+<ol>
+<li>添加依赖<br>  <strong>手动集成</strong>，需要拷贝相应的 <code>so</code> 文件到制定的目录<br>  <strong>自动导入</strong>，<code>Android Studio</code> 直接添加依赖</li>
+<li>添加配置文件<br>   拷贝<a href="https://docs.jiguang.cn/jpush/client/Android/android_guide/" target="_blank" rel="noopener">官网</a>的 <code>AndroidManifest</code> 数据到项目 <code>app module</code> 下的  <code>AndroidManifest</code> 中，并更换对应的包名和 <code>APPID</code>。<br>   调用「极光」接口进行初始化</li>
+<li>添加接收器<pre><code>创建自定义 `Receiver` 用于处理推送的消息。
+</code></pre></li>
+</ol>
+<p>一般这样集成就可以正常收到推送了。如果遇到问题也别慌，冷静下来。从我的经验来看，最好在每个关键的地方打上日志，方便运行时候查看和后面遇到问题方便定位。还有就是日志的 <code>TAG</code>，最好和极光的日志过滤规则保持一致，比如 <code>JPush</code>。</p>
+<p>当你有下面的日志输出，就证明已经集成成功了！</p>
+<pre><code>[JPushInterface] action:init
+.......
+[PushService] Login succeed!
+</code></pre><p>成功的日志只有这一个，错误的情况就各种各样了，可以对照之前的日志进行分析，比如：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4043475-10028d961ff14c9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="初始化失败"></p>
+<p>很有可能是因为 so 文件加载失败…</p>
+<p>还有好多东西，我后续在添加吧，感兴趣的小伙伴可以很我交流交流，希望能帮到你！</p>
+<p>「本文系<a href="https://www.jianshu.com/p/c1953d7fccaf" target="_blank" rel="noopener">极光征文 | 写写文章就能赢 Filco，岂不美滋滋</a>的参赛文章」</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/01/05/我和极光的那些事---我和-Android-推送的时间简史/">我和极光的那些事---我和-Android-推送的时间简史</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">下位子</a></p>
+        <p><span>发布时间:</span>2018-01-05, 20:46:25</p>
+        <p><span>最后更新:</span>2018-02-26, 17:02:42</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/01/05/我和极光的那些事---我和-Android-推送的时间简史/" title="我和极光的那些事---我和-Android-推送的时间简史">http://xiaweizi.cn/2018/01/05/我和极光的那些事---我和-Android-推送的时间简史/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/2018/01/05/我和极光的那些事---我和-Android-推送的时间简史/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2018/01/19/自定义银行种类选择器/">
+                    自定义银行种类选择器
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/01/04/Python-自学笔记/">
+                    Python-自学笔记
+                </a>
+            </div>
+        
+    </nav>
+
+  
+  
+    
+    <div style="padding: 0; margin: 20px auto; width: 90%; text-align: center;">
+      <br>
+      <div>赏我 e(=2.72) 元咖啡钱吧，您的支持将鼓励我继续创作！</div>
+      <br>
+      <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+        <div class="btn btn-pay">打赏支持</div>
+      </button>
+      <br>
+      <br>
+      <div id="QR" style="display: none;">
+        
+          <div id="wechat" style="display: inline-block;">
+            <img id="wechat_qr" src="/img/wechat-reward-qr.png" alt="下位子 WeChat Pay"/>
+            <p>微信打赏</p>
+          </div>
+        
+        
+          <div id="alipay" style="display: inline-block">
+            <img id="alipay_qr" src="/img/alipay-reward-qr.png" alt="下位子 Alipay"/>
+            <p>支付宝打赏</p>
+          </div>
+        
+        <br>
+        <br>
+      </div>
+    </div>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#2017-年-3-月-3-日"><span class="toc-number">1.</span> <span class="toc-text">2017 年 3 月 3 日</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2017-年-3-月-7-日"><span class="toc-number">2.</span> <span class="toc-text">2017 年 3 月 7 日</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2017年-9月19日"><span class="toc-number">3.</span> <span class="toc-text">2017年 9月19日</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2017年-10-月-26-日"><span class="toc-number">4.</span> <span class="toc-text">2017年 10 月 26 日</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#赘述"><span class="toc-number">5.</span> <span class="toc-text">赘述</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"我和极光的那些事---我和-Android-推送的时间简史　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+        
+      <section class="livere" id="comments">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zNDM3Ny8xMDkxNA==">
+    <script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+    </script>
+    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2018/01/19/自定义银行种类选择器/" title="上一篇: 自定义银行种类选择器">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/01/04/Python-自学笔记/" title="下一篇: Python-自学笔记">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2028/02/27/hexo_add_other_functions/">hexo 博客小功能添加-评论、相册、字数统计...</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/28/Thinking-in-Java-读书笔记-4-控制执行流程/">Thinking-in-Java-读书笔记-4-控制执行流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/26/Thinking-in-Java-读书笔记-3-操作符/">Thinking-in-Java-读书笔记-3-操作符</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/25/Thinking-in-Java-读书笔记-2-一切都是对象/">Thinking-in-Java-读书笔记-2-一切都是对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/24/Thinking-in-Java-读书笔记-1-对象导论/">Thinking-in-Java-读书笔记-1-对象导论</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/14/个人博客全新上线(阿里域名+GitPages+hexo+Yelee)/">个人博客全新上线(阿里域名+GitPages+hexo+Yelee)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/05/Android-冷兵器-之-tools/">Android 冷兵器 之 tools</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/19/自定义银行种类选择器/">自定义银行种类选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/05/我和极光的那些事---我和-Android-推送的时间简史/">我和极光的那些事---我和-Android-推送的时间简史</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/04/Python-自学笔记/">Python-自学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/27/Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！/">Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/26/Android-自定义跑马灯/">Android-自定义跑马灯</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/18/Android-分享会：Material-Design-在-Android-中的应用/">Android-分享会：Material-Design-在-Android-中的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/10/Git-命令小结/">Git-命令小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/09/使用Kotlin重构项目/">使用Kotlin重构项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/04/Kotlin学习笔记/">Kotlin学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/30/MVVM之DataBinding入门/">MVVM之DataBinding入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/22/使用-Glide-实现圆角效果/">使用-Glide-实现圆角效果</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/08/Android-性能优化小结/">Android-性能优化小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/如何做个依赖库让别人依赖使用/">如何做个依赖库让别人依赖使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/jsoup爬虫简书首页数据做个小Demo/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/25/让我的项目也使用RxJava+OkHttp+Retrofit/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/17/快毕业了，撸一个小项目(新闻段子客户端)/">快毕业了，撸一个小项目(新闻段子客户端)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/17/基于MaterialDesign设计风格的妹纸app的简单实现/">基于MaterialDesign设计风格的妹纸app的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/基于LitePal操作数据库的学生管理系统的简单实现/">基于LitePal操作数据库的学生管理系统的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/21/基于环信的仿QQ即时通讯的简单实现/">基于环信的仿QQ即时通讯的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/07/高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题/">高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/简单粗暴----RecyclerView/">简单粗暴----RecyclerView</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/04/设计模式之建造者模式学习笔记/">设计模式之建造者模式学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/29/一个菜鸟的图片三级缓存笔记/">一个菜鸟的图片三级缓存笔记</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2017-2018 下位子
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+                <span>| </span>
+                <span class="post-count">  已经写了 47.5k 字啦</span>
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+    <script src="/js/GithubRepoWidget.js"></script>
+
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#e040fb", "#7c4dff", "#3d5afe", "#0288d1", "#0091ea", "#00e5ff", "#1de9b6", "#14e715", "#14e715", "#76ff03", "#ffea00", "#ff3d00", "#ff2d6f"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 6;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-113850534-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+             github: ".github-widget a", 
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "插播广告中... " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "广告结束，精彩继续！" + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+	<script type="text/javascript" src="/resources/love.js"></script>
+	<script type="text/javascript" src="/resources/float.js"></script>
+	<script type="text/javascript" src="/resources/typewriter.js"></script>
+	<script type="text/javascript" color=0,104,183 opacity=1 zindex=-1 count=50 src="/resources/particle.js"></script>
+
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false},"react":{"opacityDefault":0.5,"opacityOnHover":0.2}});</script></body>
+</html>
