@@ -15,29 +15,20 @@
 
 
 
-<meta name="description" content="我的博客地址 #前言在我们的项目开发中经常会使用别人的第三方依赖库，在之前的 Eclipse 的时代，是通过拷贝 jar 包，引入到工程中去使用，比较麻烦。现如今，大部分 Android 开发者，都开始使用 AndroidStudio 工具进行开发，只需要在 module 下的 build.gradle 文件添加依赖，就可以完成第三方依赖库的引用。">
-<meta name="keywords" content="造轮子">
+<meta name="description" content="先附上我的源码Github地址https://github.com/xiaweizi/ImageCache.git 我的博客地址">
+<meta name="keywords" content="图片缓存">
 <meta property="og:type" content="article">
-<meta property="og:title" content="如何做个依赖库让别人依赖使用">
-<meta property="og:url" content="http://xiaweizi.cn/2017/03/15/如何做个依赖库让别人依赖使用/index.html">
+<meta property="og:title" content="一个菜鸟的图片三级缓存笔记">
+<meta property="og:url" content="http://xiaweizi.cn/posts/undefined/index.html">
 <meta property="og:site_name" content="xiaweizi&#39;blog">
-<meta property="og:description" content="我的博客地址 #前言在我们的项目开发中经常会使用别人的第三方依赖库，在之前的 Eclipse 的时代，是通过拷贝 jar 包，引入到工程中去使用，比较麻烦。现如今，大部分 Android 开发者，都开始使用 AndroidStudio 工具进行开发，只需要在 module 下的 build.gradle 文件添加依赖，就可以完成第三方依赖库的引用。">
+<meta property="og:description" content="先附上我的源码Github地址https://github.com/xiaweizi/ImageCache.git 我的博客地址">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-3e6e823547b6c003.gif?imageMogr2/auto-orient/strip">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-509aef87157dcfec.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-7b7b3a272655cc16.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-d928d213a087b854.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-7a043efea84dab1c.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-259ad05e72d63e0d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-d32770e1bed96c7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-120b1d529d2c2454.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-f69b5acfb6c66fea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-54bda69964cca485.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-02-26T09:13:30.914Z">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-2af93392e70190ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-02-26T09:22:48.126Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="如何做个依赖库让别人依赖使用">
-<meta name="twitter:description" content="我的博客地址 #前言在我们的项目开发中经常会使用别人的第三方依赖库，在之前的 Eclipse 的时代，是通过拷贝 jar 包，引入到工程中去使用，比较麻烦。现如今，大部分 Android 开发者，都开始使用 AndroidStudio 工具进行开发，只需要在 module 下的 build.gradle 文件添加依赖，就可以完成第三方依赖库的引用。">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4043475-3e6e823547b6c003.gif?imageMogr2/auto-orient/strip">
+<meta name="twitter:title" content="一个菜鸟的图片三级缓存笔记">
+<meta name="twitter:description" content="先附上我的源码Github地址https://github.com/xiaweizi/ImageCache.git 我的博客地址">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4043475-2af93392e70190ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -69,7 +60,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>如何做个依赖库让别人依赖使用 | xiaweizi&#39;blog</title>
+<title>一个菜鸟的图片三级缓存笔记 | xiaweizi&#39;blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -316,11 +307,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-如何做个依赖库让别人依赖使用" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-一个菜鸟的图片三级缓存笔记" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/03/15/如何做个依赖库让别人依赖使用/" class="article-date">
-      <time datetime="2017-03-15T12:46:25.000Z" itemprop="datePublished">2017-03-15</time>
+      <a href="/posts/undefined/" class="article-date">
+      <time datetime="2016-12-29T12:46:25.000Z" itemprop="datePublished">2016-12-29</time>
 </a>
 
 
@@ -335,7 +326,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      如何做个依赖库让别人依赖使用
+      一个菜鸟的图片三级缓存笔记
     </h1>
   
 
@@ -345,7 +336,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">697字</span>
+        <span class="post-count">772字</span>
       </span>
     </span>
 
@@ -354,7 +345,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">3分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
 </div>
@@ -368,13 +359,13 @@
         
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
+    <a class="article-category-link" href="/categories/Android-自学笔记/">Android 自学笔记</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/造轮子/">造轮子</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图片缓存/">图片缓存</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -384,77 +375,163 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><em><a href="http://xiaweizi.cn">我的博客地址</a></em></p>
-<p>#前言<br>在我们的项目开发中经常会使用别人的第三方依赖库，在之前的 <code>Eclipse</code> 的时代，是通过拷贝 <code>jar</code> 包，引入到工程中去使用，比较麻烦。现如今，大部分 <code>Android</code> 开发者，都开始使用 <code>AndroidStudio</code> 工具进行开发，只需要在 module 下的 <code>build.gradle</code> 文件添加依赖，就可以完成第三方依赖库的引用。</p>
+        <p><em>先附上我的源码Github地址<br><a href="https://github.com/xiaweizi/ImageCache.git" target="_blank" rel="noopener">https://github.com/xiaweizi/ImageCache.git</a></em></p>
+<p><em><a href="http://xiaweizi.cn/">我的博客地址</a></em></p>
 <a id="more"></a>
-<p>别人的库用多了，就考虑是否自己也可以写个依赖库，让别人使用呢。在此前，我们就要知道如何才能将自己的库上传给别人使用。这里我就介绍一种上传到 <code>JitPack</code> 让别人使用的方式。</p>
-<p>先预览一下运行结果：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4043475-3e6e823547b6c003.gif?imageMogr2/auto-orient/strip" alt="webView整体预览.gif"></p>
-<blockquote>
-<p>这里说明一下，我这个库，很简单，就是一个封装好的 <code>WebViewActivity</code>，当你需要打开一个外部 URL 链接，但是又不想使用系统自带的浏览器，只想在软件内部完成跳转的需求，那么您就可以使用我的这个依赖库了。</p>
-</blockquote>
-<h1 id="1-XWZWebView库-介绍"><a href="#1-XWZWebView库-介绍" class="headerlink" title="1. XWZWebView库 介绍"></a>1. <a href="https://github.com/xiaweizi/XWZWebView" target="_blank" rel="noopener">XWZWebView库</a> 介绍</h1><p>这个我就是参考一篇大神的文章  <a href="http://blog.csdn.net/qq_24530405/article/details/52067474" target="_blank" rel="noopener">WebView详解与简单实现Android与H5互调</a> 里的内容，并添加一点小功能，毕竟这不是本片文章的重点。</p>
-<p>##1. 使用步骤：</p>
-<p>####1. 在项目的 build.gradle 文件中添加</p>
-<pre><code>allprojects {
-    repositories {
-        ...
-        maven { url &apos;https://jitpack.io&apos; }
+<h5 id="图片的缓存虽然现在已经有不少的框架，但是我还是想自己学习一下图片的缓存机制。图片缓存的大概逻辑就是：当需要获取图片的时候，首先判断内存是否有，有—加载，无—从本地中获取图片，有–加载，无–从网络中下载，然后缓存到内存和本地中。大概流程图如下："><a href="#图片的缓存虽然现在已经有不少的框架，但是我还是想自己学习一下图片的缓存机制。图片缓存的大概逻辑就是：当需要获取图片的时候，首先判断内存是否有，有—加载，无—从本地中获取图片，有–加载，无–从网络中下载，然后缓存到内存和本地中。大概流程图如下：" class="headerlink" title="图片的缓存虽然现在已经有不少的框架，但是我还是想自己学习一下图片的缓存机制。图片缓存的大概逻辑就是：当需要获取图片的时候，首先判断内存是否有，有—加载，无—从本地中获取图片，有–加载，无–从网络中下载，然后缓存到内存和本地中。大概流程图如下："></a>图片的缓存虽然现在已经有不少的框架，但是我还是想自己学习一下图片的缓存机制。图片缓存的大概逻辑就是：当需要获取图片的时候，首先判断<strong>内存</strong>是否有，有—加载，无—从<strong>本地</strong>中获取图片，有–加载，无–从网络中下载，然后缓存到内存和本地中。大概流程图如下：</h5><p><img src="http://upload-images.jianshu.io/upload_images/4043475-2af93392e70190ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图片的三级缓存.png"></p>
+<p>##首先从易到难</p>
+<p>####1. 内存缓存<br>    １. 新建LruCache对象<br>    private LruCache&lt;String, Bitmap&gt; mMemoryCache;</p>
+<pre><code>2. 在构造函数中初始化LruCache
+        final long maxMemory = Runtime.getRuntime().maxMemory() / 8;
+        mMemoryCache = new LruCache&lt;String, Bitmap&gt;((int) maxMemory){
+            @Override
+            protected int sizeOf (String key, Bitmap value) {
+                int byteCount = value.getByteCount();
+                Log.i(TAG, &quot;每个Bitmap大小：&quot; + byteCount + &quot;每个程序最大内存&quot; + maxMemory);
+                return byteCount;
+            }
+        };
+3. 利用键值对的方式存到内存中
+    public void setBitmapToMemory(Bitmap bitmap, String url){
+        Log.i(TAG, &quot;图片已经保存到内存中: &quot;);
+        mMemoryCache.put(url, bitmap);
     }
+4. 从内存中取出图片
+    public Bitmap getBitmapFromMemory(String url){
+        return mMemoryCache.get(url);
+    }
+</code></pre><p>#####2.本地缓存</p>
+<pre><code>1. 创建要缓存的路径
+private static final String CACHE_PATH = Environment.getExternalStorageDirectory().getAbsolutePath();
+2. 利用输入流进行文件的本地存储，其中对文件名进行了MD5加密
+    try {
+        Log.i(TAG, &quot;cachePath: &quot; + CACHE_PATH);
+        String filename = MD5Encoder.encode(url);
+        File file = new File(CACHE_PATH, filename);
+
+        File parentFile = file.getParentFile();
+        if (!parentFile.exists()){
+            parentFile.mkdirs();
+        }
+        Log.i(TAG, &quot;图片存到本地中: &quot;);
+        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, new FileOutputStream(file));
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+        Log.i(TAG, &quot;setBitmapToLocal: &quot; + e);
+    }
+3. 利用输出流进行文件的读取
+    try {
+        String fileName = MD5Encoder.encode(url);
+        File file = new File(CACHE_PATH, fileName);
+
+        Bitmap bitmap = BitmapFactory.decodeStream(new FileInputStream(file));
+        Log.i(TAG, &quot;从本地获取图片: &quot;);
+        return bitmap;
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+    }
+    return null;
+</code></pre><p>#####3.从网络中获取图片</p>
+<pre><code>1. 利用构造函数获取LocalCacheUtil和MemoryCacheUtil对象
+public NetCache (LocalCache mLocache, MemoryCache mMemoryCache) {
+    this.mLocache = mLocache;
+    this.mMemoryCache = mMemoryCache;
 }
-</code></pre><p>####2. 在 module 的 build.gradle 文件中添加依赖</p>
-<pre><code>dependencies {
-        compile &apos;com.github.xiaweizi:XWZWebView:1.1.0&apos;
+2. 新建私有类，从url中获取图片
+        HttpURLConnection conn = null;
+        try {
+            conn = (HttpURLConnection) new URL(url).openConnection();
+            conn.setConnectTimeout(4000);
+            conn.setReadTimeout(4000);
+            conn.setRequestMethod(&quot;GET&quot;);
+            int responseCode = conn.getResponseCode();
+            if (responseCode == 200){
+                //图片压缩
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inSampleSize = 2;//宽高压缩为原来的1/2
+                options.inPreferredConfig = Bitmap.Config.ARGB_4444;
+                Bitmap bitmap = BitmapFactory.decodeStream(conn.getInputStream(), null, options);
+                return bitmap;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            Log.i(TAG, &quot;downLoadBitmap: &quot; + e);
+        }finally {
+            conn.disconnect();
+        }
+    return null;
+    }
+3. 利用AsyncTask的方式异步加载数据
+class BitmapTask extends AsyncTask&lt;Object, Integer, Bitmap&gt;{
+
+    @Override
+    protected void onPreExecute () {
+        Log.i(TAG, &quot;onPreExecute: &quot;);
+        super.onPreExecute();
+    }
+
+    @Override
+    protected void onProgressUpdate (Integer... values) {
+        Log.i(TAG, &quot;onProgressUpdate: &quot;);
+        super.onProgressUpdate(values);
+    }
+
+    @Override
+    protected Bitmap doInBackground (Object... params) {
+        Log.i(TAG, &quot;doInBackground: &quot;);
+        iv = (ImageView) params[0];
+        url = (String) params[1];
+        Bitmap bitmap = downLoadBitmap(url);
+        return bitmap;
+    }
+
+    @Override
+    protected void onPostExecute (Bitmap bitmap) {
+        Log.i(TAG, &quot;onPostExecute: &quot;);
+        if (bitmap != null){
+            Log.i(TAG, &quot;已经从网络中获取到图片: &quot;);
+            iv.setImageBitmap(bitmap);
+
+            Log.i(TAG, &quot;url: &quot; + url + &quot;Bitmap&quot; + bitmap.getByteCount());
+            mMemoryCache.setBitmapToMemory(bitmap, url);
+            mLocache.setBitmapToLocal(bitmap, url);
+
+        }
+    }
+</code></pre><p>#####4.最后创建一个util进行逻辑的封装，即一开始的流程图<br>    public class MyBitmapUtil {</p>
+<pre><code>private static final String TAG = &quot;MyBitmapUtil-----&gt;&quot;;
+private LocalCache mLocal;
+private MemoryCache mMemory;
+private NetCache mNet;
+
+public MyBitmapUtil () {
+    mLocal = new LocalCache();
+    mMemory = new MemoryCache();
+    mNet = new NetCache(mLocal, mMemory);
 }
-</code></pre><p>####3. 一步调用</p>
-<pre><code>WebViewActivity.startUrl(context, url);
-</code></pre><blockquote>
-<p>第一个参数就是上下文，第二个参数就是跳转的链接 <code>URL</code></p>
-</blockquote>
-<hr>
-<p>##2. 依赖库特点：</p>
-<blockquote>
-<ol>
-<li>支持侧滑结束 WebViewActivity</li>
-<li>支持缩放</li>
-<li>设置缓存</li>
-<li>进度显示</li>
-<li>点击返回键回退到上个浏览记录</li>
-</ol>
-<p>等等…</p>
-</blockquote>
-<p>就一个类，<a href="https://github.com/xiaweizi/XWZWebView/blob/master/webviewlib/src/main/java/com/xiawei/webviewlib/WebViewActivity.java" target="_blank" rel="noopener">点击查看</a></p>
-<p>#2. 上传库，让别人添加依赖使用<br><em>接下里到了重点部分，就是如何上传到 JitPack 上，然后添加依赖使用。</em></p>
-<p>##1. 在 Android studio上创建库</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4043475-509aef87157dcfec.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建lib.PNG"><br><img src="http://upload-images.jianshu.io/upload_images/4043475-7b7b3a272655cc16.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="新建Library.PNG"></p>
-<blockquote>
-<p>创建 Android Library</p>
-</blockquote>
-<p>##2. 添加代码<br>就像平常那样在里面添加代码，我这里就是一个 <a href="https://github.com/xiaweizi/XWZWebView/blob/master/webviewlib/src/main/java/com/xiawei/webviewlib/WebViewActivity.java" target="_blank" rel="noopener">Activity</a>，还有就是在 这个库的清单文件中添加了获取网络的权限。</p>
-<p>##3. 上传到GitHub</p>
-<blockquote>
-<p>我是先在 <code>GitHub</code> 上创建仓库，然后通过 <code>git</code> 命令将本地仓库和远程仓库进行连接，最后 <code>push</code> 一下</p>
-</blockquote>
-<p>其实有个非常简单迅速的方法：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4043475-d928d213a087b854.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="上传到GitHub.PNG"></p>
-<blockquote>
-<p>VCS –&gt; Import into Version Control –&gt; Share Project on GitHub</p>
-</blockquote>
-<p>在这之前要确认 在你的 <code>AndroidStudio</code> 中是否配置过 <code>GitHub</code></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4043475-7a043efea84dab1c.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="配置GitHub.PNG"></p>
-<blockquote>
-<p>并通过测试</p>
-</blockquote>
-<p>##4. 在 GitHub 上创建 release</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4043475-259ad05e72d63e0d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="创建 release"></p>
-<p>第一次创建 release：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4043475-d32770e1bed96c7c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5M~B}NU0"></p>
-<p>添加新的 release：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4043475-120b1d529d2c2454.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="添加新的 release"></p>
-<p>填写版本等信息</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4043475-f69b5acfb6c66fea.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="填写版本等信息"></p>
-<p>##5. 上传到 <a href="https://jitpack.io/" target="_blank" rel="noopener">JitPack</a> 上</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4043475-54bda69964cca485.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="上传到 JitPack 上"><br>按照上面步骤就可以完成啦！向着大牛又进了一步。</p>
+
+public void disPlay(ImageView iv, String url){
+    iv.setImageResource(R.mipmap.ic_launcher);
+    Bitmap bitmap = null;
+
+    bitmap = mMemory.getBitmapFromMemory(url);
+    if (bitmap != null){
+        iv.setImageBitmap(bitmap);
+        return;
+    }
+    bitmap = mLocal.getBitmapFromLocal(url);
+    if (bitmap != null){
+        iv.setImageBitmap(bitmap);
+        mMemory.setBitmapToMemory(bitmap, url);
+        return;
+    }
+
+    mNet.getBitmapFromNet(iv, url);
+}
+
+
+}
+</code></pre><p><em>最后附上我的源码Github地址<br><a href="https://github.com/xiaweizi/ImageCache.git" target="_blank" rel="noopener">https://github.com/xiaweizi/ImageCache.git</a></em></p>
 
       
     </div>
@@ -463,13 +540,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/03/15/如何做个依赖库让别人依赖使用/">如何做个依赖库让别人依赖使用</a></p>
+        <p><span>本文标题:</span><a href="/posts/undefined/">一个菜鸟的图片三级缓存笔记</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">下位子</a></p>
-        <p><span>发布时间:</span>2017-03-15, 20:46:25</p>
-        <p><span>最后更新:</span>2018-02-26, 17:13:30</p>
+        <p><span>发布时间:</span>2016-12-29, 20:46:25</p>
+        <p><span>最后更新:</span>2018-02-26, 17:22:48</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/03/15/如何做个依赖库让别人依赖使用/" title="如何做个依赖库让别人依赖使用">http://xiaweizi.cn/2017/03/15/如何做个依赖库让别人依赖使用/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/2017/03/15/如何做个依赖库让别人依赖使用/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/posts/undefined/" title="一个菜鸟的图片三级缓存笔记">http://xiaweizi.cn/posts/undefined/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/posts/undefined/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -482,17 +559,11 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/08/08/Android-性能优化小结/">
-                    Android-性能优化小结
+                <a href="/posts/undefined/">
+                    设计模式之建造者模式学习笔记
                 </a>
             </div>
         
-        
-            <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/02/28/jsoup爬虫简书首页数据做个小Demo/">
-                    jsoup爬虫简书首页数据做个小Demo
-                </a>
-            </div>
         
     </nav>
 
@@ -532,7 +603,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-XWZWebView库-介绍"><span class="toc-number">1.</span> <span class="toc-text">1. XWZWebView库 介绍</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-5"><a class="toc-link" href="#图片的缓存虽然现在已经有不少的框架，但是我还是想自己学习一下图片的缓存机制。图片缓存的大概逻辑就是：当需要获取图片的时候，首先判断内存是否有，有—加载，无—从本地中获取图片，有–加载，无–从网络中下载，然后缓存到内存和本地中。大概流程图如下："><span class="toc-number">1.</span> <span class="toc-text">图片的缓存虽然现在已经有不少的框架，但是我还是想自己学习一下图片的缓存机制。图片缓存的大概逻辑就是：当需要获取图片的时候，首先判断内存是否有，有—加载，无—从本地中获取图片，有–加载，无–从网络中下载，然后缓存到内存和本地中。大概流程图如下：</span></a></li></ol>
         
     </div>
     <style>
@@ -568,7 +639,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"如何做个依赖库让别人依赖使用　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"一个菜鸟的图片三级缓存笔记　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -609,7 +680,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/08/08/Android-性能优化小结/" title="上一篇: Android-性能优化小结">
+            <a href="/posts/undefined/" title="上一篇: 设计模式之建造者模式学习笔记">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -617,13 +688,11 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/02/28/jsoup爬虫简书首页数据做个小Demo/" title="下一篇: jsoup爬虫简书首页数据做个小Demo">
-                <i class="fa fa-angle-right"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2028/02/27/hexo_add_other_functions/">hexo 博客小功能添加-评论、相册、字数统计...</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/28/Thinking-in-Java-读书笔记-4-控制执行流程/">Thinking-in-Java-读书笔记-4-控制执行流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/26/Thinking-in-Java-读书笔记-3-操作符/">Thinking-in-Java-读书笔记-3-操作符</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/25/Thinking-in-Java-读书笔记-2-一切都是对象/">Thinking-in-Java-读书笔记-2-一切都是对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/24/Thinking-in-Java-读书笔记-1-对象导论/">Thinking-in-Java-读书笔记-1-对象导论</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/14/个人博客全新上线(阿里域名+GitPages+hexo+Yelee)/">个人博客全新上线(阿里域名+GitPages+hexo+Yelee)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/05/Android-冷兵器-之-tools/">Android 冷兵器 之 tools</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/19/自定义银行种类选择器/">自定义银行种类选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/05/我和极光的那些事---我和-Android-推送的时间简史/">我和极光的那些事---我和-Android-推送的时间简史</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/04/Python-自学笔记/">Python-自学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/27/Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！/">Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/26/Android-自定义跑马灯/">Android-自定义跑马灯</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/18/Android-分享会：Material-Design-在-Android-中的应用/">Android-分享会：Material-Design-在-Android-中的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/10/Git-命令小结/">Git-命令小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/09/使用Kotlin重构项目/">使用Kotlin重构项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/04/Kotlin学习笔记/">Kotlin学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/30/MVVM之DataBinding入门/">MVVM之DataBinding入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/22/使用-Glide-实现圆角效果/">使用-Glide-实现圆角效果</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/08/Android-性能优化小结/">Android-性能优化小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/如何做个依赖库让别人依赖使用/">如何做个依赖库让别人依赖使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/jsoup爬虫简书首页数据做个小Demo/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/25/让我的项目也使用RxJava+OkHttp+Retrofit/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/17/快毕业了，撸一个小项目(新闻段子客户端)/">快毕业了，撸一个小项目(新闻段子客户端)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/17/基于MaterialDesign设计风格的妹纸app的简单实现/">基于MaterialDesign设计风格的妹纸app的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/基于LitePal操作数据库的学生管理系统的简单实现/">基于LitePal操作数据库的学生管理系统的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/21/基于环信的仿QQ即时通讯的简单实现/">基于环信的仿QQ即时通讯的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/07/高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题/">高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/简单粗暴----RecyclerView/">简单粗暴----RecyclerView</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/04/设计模式之建造者模式学习笔记/">设计模式之建造者模式学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/29/一个菜鸟的图片三级缓存笔记/">一个菜鸟的图片三级缓存笔记</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">hexo 博客小功能添加-评论、相册、字数统计...</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">Thinking-in-Java-读书笔记-4-控制执行流程</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">Thinking-in-Java-读书笔记-3-操作符</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">Thinking-in-Java-读书笔记-2-一切都是对象</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">Thinking-in-Java-读书笔记-1-对象导论</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">个人博客全新上线(阿里域名+GitPages+hexo+Yelee)</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">Android 冷兵器 之 tools</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">自定义银行种类选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">我和极光的那些事---我和-Android-推送的时间简史</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">Python-自学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">Android-自定义跑马灯</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">Android-分享会：Material-Design-在-Android-中的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">Git-命令小结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">使用Kotlin重构项目</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">Kotlin学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">MVVM之DataBinding入门</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">使用-Glide-实现圆角效果</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">Android-性能优化小结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">如何做个依赖库让别人依赖使用</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">基于MaterialDesign设计风格的妹纸app的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">快毕业了，撸一个小项目(新闻段子客户端)</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">基于LitePal操作数据库的学生管理系统的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">基于环信的仿QQ即时通讯的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">简单粗暴----RecyclerView</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">设计模式之建造者模式学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/undefined/">一个菜鸟的图片三级缓存笔记</a></li></ul>
 
 
 
@@ -756,5 +825,5 @@ ga('send', 'pageview');
 
 
   </div>
-<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":true,"scale":0.2},"react":{"opacityDefault":0.5,"opacityOnHover":0.2}});</script></body>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false},"react":{"opacityDefault":0.5,"opacityOnHover":0.2}});</script></body>
 </html>
