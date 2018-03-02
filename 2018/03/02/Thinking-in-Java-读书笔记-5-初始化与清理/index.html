@@ -15,13 +15,15 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="xiaweizi&#39;blog">
-<meta property="og:url" content="http://xiaweizi.cn/archives/index.html">
+<meta name="keywords" content="Thinking In Java,读书笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Thinking-in-Java-读书笔记-5-初始化与清理">
+<meta property="og:url" content="http://xiaweizi.cn/2018/03/02/Thinking-in-Java-读书笔记-5-初始化与清理/index.html">
 <meta property="og:site_name" content="xiaweizi&#39;blog">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-02T08:33:15.999Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xiaweizi&#39;blog">
+<meta name="twitter:title" content="Thinking-in-Java-读书笔记-5-初始化与清理">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -53,7 +55,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Archives | xiaweizi&#39;blog</title>
+<title>Thinking-in-Java-读书笔记-5-初始化与清理 | xiaweizi&#39;blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -63,8 +65,8 @@
         fancybox: true,
         animate: true,
         isHome: false,
-        isPost: false,
-        isArchive: true,
+        isPost: true,
+        isArchive: false,
         isTag: false,
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
@@ -287,407 +289,250 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-Thinking-in-Java-读书笔记-5-初始化与清理" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2028" class="archive-year">2028</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2028/02/27/hexo_add_other_functions/" class="archive-article-date">
-      <time datetime="2028-02-27T12:41:25.000Z" itemprop="datePublished">02-27</time>
+    <div class="article-meta">
+      <a href="/2018/03/02/Thinking-in-Java-读书笔记-5-初始化与清理/" class="article-date">
+      <time datetime="2018-03-02T08:25:25.000Z" itemprop="datePublished">2018-03-02</time>
 </a>
 
 
-        </div>
-         
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2028/02/27/hexo_add_other_functions/">hexo 博客小功能添加-评论、相册、字数统计...</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Thinking-in-Java-读书笔记-5-初始化与清理
     </h1>
   
 
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
-    </div>
+        
+           <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">0字</span>
+      </span>
+    </span>
 
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">1分</span>
+      </span>
+    </span>
+</div>
+        
+      </header>
       
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/03/02/Thinking-in-Java-读书笔记-5-初始化与清理/" class="archive-article-date">
-      <time datetime="2018-03-02T08:25:25.000Z" itemprop="datePublished">03-02</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/03/02/Thinking-in-Java-读书笔记-5-初始化与清理/">Thinking-in-Java-读书笔记-5-初始化与清理</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
+      <div class="article-info article-info-post">
+        
+          <br>
+          <br>
+        
+        
     <div class="article-category tagcloud">
     <a class="article-category-link" href="/categories/Thinking-In-Java-读书笔记/">Thinking In Java 读书笔记</a>
     </div>
 
 
-          
+        
     <div class="article-tag tagcloud">
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
     </div>
 
-        </div>
         <div class="clearfix"></div>
-    </header>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        
+      
+    </div>
+    
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/02/28/Thinking-in-Java-读书笔记-4-控制执行流程/" class="archive-article-date">
-      <time datetime="2018-02-28T10:27:25.000Z" itemprop="datePublished">02-28</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/28/Thinking-in-Java-读书笔记-4-控制执行流程/">Thinking-in-Java-读书笔记-4-控制执行流程</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Thinking-In-Java-读书笔记/">Thinking In Java 读书笔记</a>
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2018/03/02/Thinking-in-Java-读书笔记-5-初始化与清理/">Thinking-in-Java-读书笔记-5-初始化与清理</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">下位子</a></p>
+        <p><span>发布时间:</span>2018-03-02, 16:25:25</p>
+        <p><span>最后更新:</span>2018-03-02, 16:33:15</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2018/03/02/Thinking-in-Java-读书笔记-5-初始化与清理/" title="Thinking-in-Java-读书笔记-5-初始化与清理">http://xiaweizi.cn/2018/03/02/Thinking-in-Java-读书笔记-5-初始化与清理/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/2018/03/02/Thinking-in-Java-读书笔记-5-初始化与清理/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
     </div>
 
 
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-    </div>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/02/26/Thinking-in-Java-读书笔记-3-操作符/" class="archive-article-date">
-      <time datetime="2018-02-26T12:46:25.000Z" itemprop="datePublished">02-26</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/26/Thinking-in-Java-读书笔记-3-操作符/">Thinking-in-Java-读书笔记-3-操作符</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Thinking-In-Java-读书笔记/">Thinking In Java 读书笔记</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/02/25/Thinking-in-Java-读书笔记-2-一切都是对象/" class="archive-article-date">
-      <time datetime="2018-02-25T12:46:25.000Z" itemprop="datePublished">02-25</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/25/Thinking-in-Java-读书笔记-2-一切都是对象/">Thinking-in-Java-读书笔记-2-一切都是对象</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Thinking-In-Java-读书笔记/">Thinking In Java 读书笔记</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/02/24/Thinking-in-Java-读书笔记-1-对象导论/" class="archive-article-date">
-      <time datetime="2018-02-24T12:46:25.000Z" itemprop="datePublished">02-24</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/24/Thinking-in-Java-读书笔记-1-对象导论/">Thinking-in-Java-读书笔记-1-对象导论</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Thinking-In-Java-读书笔记/">Thinking In Java 读书笔记</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/02/14/个人博客全新上线(阿里域名+GitPages+hexo+Yelee)/" class="archive-article-date">
-      <time datetime="2018-02-14T12:46:25.000Z" itemprop="datePublished">02-14</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/14/个人博客全新上线(阿里域名+GitPages+hexo+Yelee)/">个人博客全新上线(阿里域名+GitPages+hexo+Yelee)</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博客/">博客</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/02/05/Android-冷兵器-之-tools/" class="archive-article-date">
-      <time datetime="2018-02-05T12:46:25.000Z" itemprop="datePublished">02-05</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/02/05/Android-冷兵器-之-tools/">Android 冷兵器 之 tools</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工具/">工具</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/开发效率/">开发效率</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/01/19/自定义银行种类选择器/" class="archive-article-date">
-      <time datetime="2018-01-19T12:46:25.000Z" itemprop="datePublished">01-19</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/19/自定义银行种类选择器/">自定义银行种类选择器</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工作积累/">工作积累</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自定义-view/">自定义 view</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-          <div class="article-meta">
-              <a href="/2018/01/05/我和极光的那些事---我和-Android-推送的时间简史/" class="archive-article-date">
-      <time datetime="2018-01-05T12:46:25.000Z" itemprop="datePublished">01-05</time>
-</a>
-
-
-        </div>
-         
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/01/05/我和极光的那些事---我和-Android-推送的时间简史/">我和极光的那些事---我和-Android-推送的时间简史</a>
-    </h1>
-  
-
-        <div class="article-info info-on-archive">
-          
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
-    </div>
-
-
-          
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/第三方库/">第三方库</a></li></ul>
-    </div>
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/page/2/">2</a><a class="page-number" href="/archives/page/3/">3</a><a class="page-number" href="/archives/page/4/">4</a><a class="extend next" rel="next" href="/archives/page/2/">Next &raquo;</a>
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2028/02/27/hexo_add_other_functions/">
+                    hexo 博客小功能添加-评论、相册、字数统计...
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2018/02/28/Thinking-in-Java-读书笔记-4-控制执行流程/">
+                    Thinking-in-Java-读书笔记-4-控制执行流程
+                </a>
+            </div>
+        
     </nav>
-  
 
+  
+  
+    
+    <div style="padding: 0; margin: 20px auto; width: 90%; text-align: center;">
+      <br>
+      <div>赏我 e(=2.72) 元咖啡钱吧，您的支持将鼓励我继续创作！</div>
+      <br>
+      <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+        <div class="btn btn-pay">打赏支持</div>
+      </button>
+      <br>
+      <br>
+      <div id="QR" style="display: none;">
+        
+          <div id="wechat" style="display: inline-block;">
+            <img id="wechat_qr" src="/img/wechat-reward-qr.png" alt="下位子 WeChat Pay"/>
+            <p>微信打赏</p>
+          </div>
+        
+        
+          <div id="alipay" style="display: inline-block">
+            <img id="alipay_qr" src="/img/alipay-reward-qr.png" alt="下位子 Alipay"/>
+            <p>支付宝打赏</p>
+          </div>
+        
+        <br>
+        <br>
+      </div>
+    </div>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"Thinking-in-Java-读书笔记-5-初始化与清理　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+        
+      <section class="livere" id="comments">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zNDM3Ny8xMDkxNA==">
+    <script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+    </script>
+    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2028/02/27/hexo_add_other_functions/" title="上一篇: hexo 博客小功能添加-评论、相册、字数统计...">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2018/02/28/Thinking-in-Java-读书笔记-4-控制执行流程/" title="下一篇: Thinking-in-Java-读书笔记-4-控制执行流程">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2028/02/27/hexo_add_other_functions/">hexo 博客小功能添加-评论、相册、字数统计...</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/02/Thinking-in-Java-读书笔记-5-初始化与清理/">Thinking-in-Java-读书笔记-5-初始化与清理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/28/Thinking-in-Java-读书笔记-4-控制执行流程/">Thinking-in-Java-读书笔记-4-控制执行流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/26/Thinking-in-Java-读书笔记-3-操作符/">Thinking-in-Java-读书笔记-3-操作符</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/25/Thinking-in-Java-读书笔记-2-一切都是对象/">Thinking-in-Java-读书笔记-2-一切都是对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/24/Thinking-in-Java-读书笔记-1-对象导论/">Thinking-in-Java-读书笔记-1-对象导论</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/14/个人博客全新上线(阿里域名+GitPages+hexo+Yelee)/">个人博客全新上线(阿里域名+GitPages+hexo+Yelee)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/05/Android-冷兵器-之-tools/">Android 冷兵器 之 tools</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/19/自定义银行种类选择器/">自定义银行种类选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/05/我和极光的那些事---我和-Android-推送的时间简史/">我和极光的那些事---我和-Android-推送的时间简史</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/04/Python-自学笔记/">Python-自学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/27/Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！/">Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/26/Android-自定义跑马灯/">Android-自定义跑马灯</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/18/Android-分享会：Material-Design-在-Android-中的应用/">Android-分享会：Material-Design-在-Android-中的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/10/Git-命令小结/">Git-命令小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/09/使用Kotlin重构项目/">使用Kotlin重构项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/04/Kotlin学习笔记/">Kotlin学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/30/MVVM之DataBinding入门/">MVVM之DataBinding入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/22/使用-Glide-实现圆角效果/">使用-Glide-实现圆角效果</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/08/Android-性能优化小结/">Android-性能优化小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/如何做个依赖库让别人依赖使用/">如何做个依赖库让别人依赖使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/jsoup爬虫简书首页数据做个小Demo/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/25/让我的项目也使用RxJava+OkHttp+Retrofit/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/17/基于MaterialDesign设计风格的妹纸app的简单实现/">基于MaterialDesign设计风格的妹纸app的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/17/快毕业了，撸一个小项目(新闻段子客户端)/">快毕业了，撸一个小项目(新闻段子客户端)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/基于LitePal操作数据库的学生管理系统的简单实现/">基于LitePal操作数据库的学生管理系统的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/21/基于环信的仿QQ即时通讯的简单实现/">基于环信的仿QQ即时通讯的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/07/高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题/">高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/简单粗暴----RecyclerView/">简单粗暴----RecyclerView</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/04/设计模式之建造者模式学习笔记/">设计模式之建造者模式学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/29/一个菜鸟的图片三级缓存笔记/">一个菜鸟的图片三级缓存笔记</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
