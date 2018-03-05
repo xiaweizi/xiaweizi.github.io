@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="如果我们说另一种不同的语言，那么我们就会觉得一个有些不同的世界。 —Luduing Wittgerstein(1889-1951)  1. 用引用操作对象尽管一切都是对象，但是操纵的标识符实际上是对象的一个「引用」，可以看做成日常生活中电视机和遥控器的关系。只要拥有遥控器，就能保持着与电视机的连接，对电视声音和节目的调整，实际上都是对遥控器(引用)的操作。">
+<meta name="description" content="前言我还记得第一次面试的时候，就是问 public、protected和private的区别，当时技术很渣，虽然知道是什么意思，但是表述的不是那么清楚，当时搞得自己很紧张，后面的问题也没有回答的很好。。。  访问控制（或隐藏具体实现）与“最初的实现并不恰当”有关  Java 访问权限修饰词public 使用关键字public关键字，就意味着public之后紧跟着的成员声明自己对每个人都是可用的，尤">
 <meta name="keywords" content="Thinking In Java,读书笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Thinking-in-Java-读书笔记-2-一切都是对象">
-<meta property="og:url" content="http://xiaweizi.cn/2018/02/25/Thinking-in-Java-读书笔记-2-一切都是对象/index.html">
+<meta property="og:title" content="Thinking-in-Java 读书笔记-6-访问权限控制">
+<meta property="og:url" content="http://xiaweizi.cn/1994/03/05/Thinking-in-Java-读书笔记-6-访问权限控制/index.html">
 <meta property="og:site_name" content="xiaweizi&#39;blog">
-<meta property="og:description" content="如果我们说另一种不同的语言，那么我们就会觉得一个有些不同的世界。 —Luduing Wittgerstein(1889-1951)  1. 用引用操作对象尽管一切都是对象，但是操纵的标识符实际上是对象的一个「引用」，可以看做成日常生活中电视机和遥控器的关系。只要拥有遥控器，就能保持着与电视机的连接，对电视声音和节目的调整，实际上都是对遥控器(引用)的操作。">
+<meta property="og:description" content="前言我还记得第一次面试的时候，就是问 public、protected和private的区别，当时技术很渣，虽然知道是什么意思，但是表述的不是那么清楚，当时搞得自己很紧张，后面的问题也没有回答的很好。。。  访问控制（或隐藏具体实现）与“最初的实现并不恰当”有关  Java 访问权限修饰词public 使用关键字public关键字，就意味着public之后紧跟着的成员声明自己对每个人都是可用的，尤">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-27T10:52:47.130Z">
+<meta property="og:updated_time" content="2018-03-05T11:06:50.462Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Thinking-in-Java-读书笔记-2-一切都是对象">
-<meta name="twitter:description" content="如果我们说另一种不同的语言，那么我们就会觉得一个有些不同的世界。 —Luduing Wittgerstein(1889-1951)  1. 用引用操作对象尽管一切都是对象，但是操纵的标识符实际上是对象的一个「引用」，可以看做成日常生活中电视机和遥控器的关系。只要拥有遥控器，就能保持着与电视机的连接，对电视声音和节目的调整，实际上都是对遥控器(引用)的操作。">
+<meta name="twitter:title" content="Thinking-in-Java 读书笔记-6-访问权限控制">
+<meta name="twitter:description" content="前言我还记得第一次面试的时候，就是问 public、protected和private的区别，当时技术很渣，虽然知道是什么意思，但是表述的不是那么清楚，当时搞得自己很紧张，后面的问题也没有回答的很好。。。  访问控制（或隐藏具体实现）与“最初的实现并不恰当”有关  Java 访问权限修饰词public 使用关键字public关键字，就意味着public之后紧跟着的成员声明自己对每个人都是可用的，尤">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Thinking-in-Java-读书笔记-2-一切都是对象 | xiaweizi&#39;blog</title>
+<title>Thinking-in-Java 读书笔记-6-访问权限控制 | xiaweizi&#39;blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -288,11 +288,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-Thinking-in-Java-读书笔记-2-一切都是对象" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Thinking-in-Java-读书笔记-6-访问权限控制" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/02/25/Thinking-in-Java-读书笔记-2-一切都是对象/" class="article-date">
-      <time datetime="2018-02-25T12:46:25.000Z" itemprop="datePublished">2018-02-25</time>
+      <a href="/1994/03/05/Thinking-in-Java-读书笔记-6-访问权限控制/" class="article-date">
+      <time datetime="1994-03-05T02:12:00.000Z" itemprop="datePublished">1994-03-05</time>
 </a>
 
 
@@ -307,7 +307,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Thinking-in-Java-读书笔记-2-一切都是对象
+      Thinking-in-Java 读书笔记-6-访问权限控制
     </h1>
   
 
@@ -317,7 +317,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1,239字</span>
+        <span class="post-count">609字</span>
       </span>
     </span>
 
@@ -326,7 +326,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">4分</span>
+        <span class="post-count">2分</span>
       </span>
     </span>
 </div>
@@ -356,150 +356,19 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <blockquote>
-<p>如果我们说另一种不同的语言，那么我们就会觉得一个有些不同的世界。<br> —Luduing Wittgerstein(1889-1951)</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我还记得第一次面试的时候，就是问 <code>public</code>、<code>protected</code>和<code>private</code>的区别，当时技术很渣，虽然知道是什么意思，但是表述的不是那么清楚，当时搞得自己很紧张，后面的问题也没有回答的很好。。。</p>
+<blockquote>
+<p>访问控制（或隐藏具体实现）与“最初的实现并不恰当”有关</p>
 </blockquote>
-<h2 id="1-用引用操作对象"><a href="#1-用引用操作对象" class="headerlink" title="1. 用引用操作对象"></a>1. 用引用操作对象</h2><p>尽管一切都是对象，但是操纵的标识符实际上是对象的一个「引用」，可以看做成日常生活中电视机和遥控器的关系。只要拥有遥控器，就能保持着与电视机的连接，对电视声音和节目的调整，实际上都是对遥控器(引用)的操作。</p>
+<h2 id="Java-访问权限修饰词"><a href="#Java-访问权限修饰词" class="headerlink" title="Java 访问权限修饰词"></a>Java 访问权限修饰词</h2><p><strong>public</strong></p>
+<p>使用关键字<code>public</code>关键字，就意味着<code>public</code>之后紧跟着的成员声明自己对每个人都是可用的，尤其是使用类库的客户程序员更是如此。</p>
+<p><strong>protected</strong></p>
+<p>继承访问权限，通过继承可以利用一个现有类~我们将其称为基类，基类的创建者会希望有某个特定成员，把它的访问权限赋予派生类而不是所有类。<code>protected</code>也提供包访问权限，也就是说，相同包内的其他类也可以访问<code>protected</code>元素。</p>
+<p><strong>private</strong></p>
+<p>除了包含该成员的类之外，其他任何类都无法访问这个成员，等于说是隔离了自己。</p>
 <a id="more"></a>
-<pre><code>String s;
-</code></pre><p>这里只是创建了引用，并不是对象，如果此时想 s 发送一个消息，就会返回一个运行时错误，这是因为此时 s 实际上并没有与任何对象有联系，因此一个安全的做饭就是，创建一个引用的同时，要对其进行初始化。</p>
-<pre><code>String s = &quot;Hello wolrd
-</code></pre><p>但这里用到 Java 语言一个特性：字符串可以用带引号的文本初始化，通常，必须对对象采用一种更通用的初始化方法。</p>
-<h2 id="2-必须由你创建所有对象"><a href="#2-必须由你创建所有对象" class="headerlink" title="2. 必须由你创建所有对象"></a>2. 必须由你创建所有对象</h2><p><strong>存储的位置</strong></p>
-<p>程序运行时，对象是怎么进行防治安排的呢？有五个不同的地方可以存储数据：</p>
-<ol>
-<li><p><strong>寄存器。</strong> 这是最快的存储区，因为它位于不同于替他存储区的地方–处理器内部。但是寄存器的存储数量极其有限，所以寄存器的存储根据需求进行分配，你不能直接控制，也不能在程序中感觉到寄存器存在的任何迹象。</p>
-</li>
-<li><p><strong>堆栈。</strong> 位于通用 RAM(随机访问存储器),但通过堆栈指针可以从处理器那里获得直接支持。堆栈指针如果向下移动，则分配新的内存，如果向上移动，则释放那些内存。这是一种快速有效的分配存储方法，仅次于寄存器。创建程序时，Java 系统必须知道存储在堆栈内所有的确切的生命周期，以便上下移动堆栈指针，这也约束了程序的灵活性。</p>
-</li>
-<li><p><strong>堆。</strong>一种通用的内存池(也位于 RAM)，用于存储所有的 Java 对象，堆位于不同于堆栈的好处是：编译器不需要知道存储的数据在堆里存活多长时间。因此，在堆里分配存储有很大的灵活性，当需要一个对象时，只需要 new 写一行简单的代码，当执行这行代码时，会自动在堆里进行存储分配，当然，为这种灵活性必须付出相应的代价：用堆进行存储分配和清理可能比堆栈进行存储分配 需要更多的时间。</p>
-</li>
-<li><p><strong>常量存储。</strong> 常量通常直接存放在程序代码内部，这样做是安全的，因为它们永远不会被改变。</p>
-</li>
-<li><p><strong>非 RAM 存储。</strong> 如果数据完全存活于程序之外，那么它可以不受程序的任何控制，在程序没有运行时也可以存在。其中两个基本的例子是流对象和持久化对象。</p>
-</li>
-</ol>
-<p><strong>基本类型</strong></p>
-<p>不同于其他的 Java 对象，创建出来的时候存储在堆中，基本类型创建并非是应用的自动变量，这个变量直接存储值，并置于堆栈中，因此更加的高效。</p>
-<p>Java 中确定每种基本类型所占空间的大小，它们的大小并不像其他大多数语言那样所机器硬件架构的变化而变化。</p>
-<table>
-<thead>
-<tr>
-<th>基本类型</th>
-<th style="text-align:center">大小</th>
-<th style="text-align:center">最大值</th>
-<th style="text-align:center">最小值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>boolen</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">-</td>
-</tr>
-<tr>
-<td>char</td>
-<td style="text-align:center">16-bit</td>
-<td style="text-align:center">Unicode 0</td>
-<td style="text-align:center">Unicode 2^16-1</td>
-</tr>
-<tr>
-<td>byte</td>
-<td style="text-align:center">8-bit</td>
-<td style="text-align:center">-128</td>
-<td style="text-align:center">127</td>
-</tr>
-<tr>
-<td>short</td>
-<td style="text-align:center">16-bit</td>
-<td style="text-align:center">-2^15</td>
-<td style="text-align:center">2^15-1</td>
-</tr>
-<tr>
-<td>int</td>
-<td style="text-align:center">32-bit</td>
-<td style="text-align:center">-2^31</td>
-<td style="text-align:center">2^31-1</td>
-</tr>
-<tr>
-<td>long</td>
-<td style="text-align:center">64-bit</td>
-<td style="text-align:center">-2^63</td>
-<td style="text-align:center">2^63-1</td>
-</tr>
-<tr>
-<td>float</td>
-<td style="text-align:center">32-bit</td>
-<td style="text-align:center">IEEE754</td>
-<td style="text-align:center">IEEE754</td>
-</tr>
-<tr>
-<td>double</td>
-<td style="text-align:center">64-bit</td>
-<td style="text-align:center">IEEE754</td>
-<td style="text-align:center">IEEE754</td>
-</tr>
-<tr>
-<td>void</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">-</td>
-</tr>
-</tbody>
-</table>
-<h2 id="3-创建新的数据类型：类"><a href="#3-创建新的数据类型：类" class="headerlink" title="3. 创建新的数据类型：类"></a>3. 创建新的数据类型：类</h2><p>如果一切都是对象，那么是什么决定了某一类对象的外观与行为呢？通过关键字 class 创建类。</p>
-<p><strong>基本成员默认值</strong></p>
-<table>
-<thead>
-<tr>
-<th>基本类型</th>
-<th style="text-align:center">默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>boolen</td>
-<td style="text-align:center">false</td>
-</tr>
-<tr>
-<td>char</td>
-<td style="text-align:center">‘\u0000’(null)</td>
-</tr>
-<tr>
-<td>byte</td>
-<td style="text-align:center">(byte)0</td>
-</tr>
-<tr>
-<td>short</td>
-<td style="text-align:center">(short)0</td>
-</tr>
-<tr>
-<td>int</td>
-<td style="text-align:center">0</td>
-</tr>
-<tr>
-<td>long</td>
-<td style="text-align:center">0L</td>
-</tr>
-<tr>
-<td>float</td>
-<td style="text-align:center">0.0f</td>
-</tr>
-<tr>
-<td>double</td>
-<td style="text-align:center">0.0d</td>
-</tr>
-</tbody>
-</table>
-<h2 id="4-static-关键字"><a href="#4-static-关键字" class="headerlink" title="4. static 关键字"></a>4. static 关键字</h2><p>通过 static 关键字可以满足两方面的需求：第一种，只想为特定域分哦诶单一存储空间，而不去考虑究竟要创建多少对象，甚至根本就不用创建对象。第二种，希望某个方法不与包含它的类的任何对象关联在一起，也就是说没有创建对象，也能够调用这个方法。及类数据和类方法两个概念。</p>
-<h2 id="5-注释相关"><a href="#5-注释相关" class="headerlink" title="5. 注释相关"></a>5. 注释相关</h2><p>基础的就不介绍了，介绍一些标签示例：</p>
-<p><strong>@see</strong></p>
-<pre><code>@see className
-@see fully-qualified-className&amp;methodName
-</code></pre><p><strong>@link</strong></p>
-<pre><code>{@link package.class#member label}
-</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过本章的学习，接触相当多的关于如何编写一个简单程序的 Java 编程知识，此外对 Java 语言及它的一些基本思想也有了一个总体认识。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>控制对成员的访问权限与两个方面。第一是为了使用户不要碰触哪些他们不该碰触的地方，这些部分对于类内部的操作是必要的。但是它并不属于客户端程序员所需接口的一部分。因此将方法和域指定成<code>private</code>对客户端程序而言是一种保护服务。因为这样他们可以很清楚地看到什么对他们重要，什么他们是可以忽略的。这样简化了他们对类的理解。</p>
+<p>第二个原因，也是最重要的原因，是为了让类库设计者可以更改类的内部工作方式，而不必担心这样会对客户端程序产生重大的影响。例如，最初可能会以某一种方式创建一个类，然后发现如果更改程序的内部程序结构，可以大大提高运行速度，如果接口和实现可以明确隔离和加以保护，那么就可以实现这一目的，而不必强制客户端程序员重现编写代码。访问权限控制可以确保不会有任何客户端程序员依赖某个类的底层实现的任何部分。</p>
 
       
     </div>
@@ -508,13 +377,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/02/25/Thinking-in-Java-读书笔记-2-一切都是对象/">Thinking-in-Java-读书笔记-2-一切都是对象</a></p>
+        <p><span>本文标题:</span><a href="/1994/03/05/Thinking-in-Java-读书笔记-6-访问权限控制/">Thinking-in-Java 读书笔记-6-访问权限控制</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">下位子</a></p>
-        <p><span>发布时间:</span>2018-02-25, 20:46:25</p>
-        <p><span>最后更新:</span>2018-02-27, 18:52:47</p>
+        <p><span>发布时间:</span>1994-03-05, 10:12:00</p>
+        <p><span>最后更新:</span>2018-03-05, 19:06:50</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/02/25/Thinking-in-Java-读书笔记-2-一切都是对象/" title="Thinking-in-Java-读书笔记-2-一切都是对象">http://xiaweizi.cn/2018/02/25/Thinking-in-Java-读书笔记-2-一切都是对象/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/2018/02/25/Thinking-in-Java-读书笔记-2-一切都是对象/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/1994/03/05/Thinking-in-Java-读书笔记-6-访问权限控制/" title="Thinking-in-Java 读书笔记-6-访问权限控制">http://xiaweizi.cn/1994/03/05/Thinking-in-Java-读书笔记-6-访问权限控制/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/1994/03/05/Thinking-in-Java-读书笔记-6-访问权限控制/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -527,15 +396,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/02/26/Thinking-in-Java-读书笔记-3-操作符/">
-                    Thinking-in-Java-读书笔记-3-操作符
+                <a href="/1994/03/05/Thinking-in-Java-读书笔记-7-复用类/">
+                    Thinking-in-Java 读书笔记-7-复用类
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/02/24/Thinking-in-Java-读书笔记-1-对象导论/">
-                    Thinking-in-Java-读书笔记-1-对象导论
+                <a href="/1994/03/02/Thinking-in-Java-读书笔记-5-初始化与清理/">
+                    Thinking-in-Java-读书笔记-5-初始化与清理
                 </a>
             </div>
         
@@ -577,7 +446,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-用引用操作对象"><span class="toc-number">1.</span> <span class="toc-text">1. 用引用操作对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-必须由你创建所有对象"><span class="toc-number">2.</span> <span class="toc-text">2. 必须由你创建所有对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-创建新的数据类型：类"><span class="toc-number">3.</span> <span class="toc-text">3. 创建新的数据类型：类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-static-关键字"><span class="toc-number">4.</span> <span class="toc-text">4. static 关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-注释相关"><span class="toc-number">5.</span> <span class="toc-text">5. 注释相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Java-访问权限修饰词"><span class="toc-number">2.</span> <span class="toc-text">Java 访问权限修饰词</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
         
     </div>
     <style>
@@ -613,7 +482,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Thinking-in-Java-读书笔记-2-一切都是对象　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Thinking-in-Java 读书笔记-6-访问权限控制　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -654,7 +523,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/02/26/Thinking-in-Java-读书笔记-3-操作符/" title="上一篇: Thinking-in-Java-读书笔记-3-操作符">
+            <a href="/1994/03/05/Thinking-in-Java-读书笔记-7-复用类/" title="上一篇: Thinking-in-Java 读书笔记-7-复用类">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -662,13 +531,13 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/02/24/Thinking-in-Java-读书笔记-1-对象导论/" title="下一篇: Thinking-in-Java-读书笔记-1-对象导论">
+            <a href="/1994/03/02/Thinking-in-Java-读书笔记-5-初始化与清理/" title="下一篇: Thinking-in-Java-读书笔记-5-初始化与清理">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2028/02/27/hexo_add_other_functions/">hexo 博客小功能添加-评论、相册、字数统计...</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/05/Thinking-in-Java-读书笔记-6-访问权限控制/">Thinking-in-Java 读书笔记-6-访问权限控制</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/02/Thinking-in-Java-读书笔记-5-初始化与清理/">Thinking-in-Java-读书笔记-5-初始化与清理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/28/Thinking-in-Java-读书笔记-4-控制执行流程/">Thinking-in-Java-读书笔记-4-控制执行流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/26/Thinking-in-Java-读书笔记-3-操作符/">Thinking-in-Java-读书笔记-3-操作符</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/25/Thinking-in-Java-读书笔记-2-一切都是对象/">Thinking-in-Java-读书笔记-2-一切都是对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/24/Thinking-in-Java-读书笔记-1-对象导论/">Thinking-in-Java-读书笔记-1-对象导论</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/14/个人博客全新上线(阿里域名+GitPages+hexo+Yelee)/">个人博客全新上线(阿里域名+GitPages+hexo+Yelee)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/05/Android-冷兵器-之-tools/">Android 冷兵器 之 tools</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/19/自定义银行种类选择器/">自定义银行种类选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/05/我和极光的那些事---我和-Android-推送的时间简史/">我和极光的那些事---我和-Android-推送的时间简史</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/04/Python-自学笔记/">Python-自学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/27/Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！/">Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/26/Android-自定义跑马灯/">Android-自定义跑马灯</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/18/Android-分享会：Material-Design-在-Android-中的应用/">Android-分享会：Material-Design-在-Android-中的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/10/Git-命令小结/">Git-命令小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/09/使用Kotlin重构项目/">使用Kotlin重构项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/04/Kotlin学习笔记/">Kotlin学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/30/MVVM之DataBinding入门/">MVVM之DataBinding入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/22/使用-Glide-实现圆角效果/">使用-Glide-实现圆角效果</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/08/Android-性能优化小结/">Android-性能优化小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/如何做个依赖库让别人依赖使用/">如何做个依赖库让别人依赖使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/jsoup爬虫简书首页数据做个小Demo/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/25/让我的项目也使用RxJava+OkHttp+Retrofit/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/17/基于MaterialDesign设计风格的妹纸app的简单实现/">基于MaterialDesign设计风格的妹纸app的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/17/快毕业了，撸一个小项目(新闻段子客户端)/">快毕业了，撸一个小项目(新闻段子客户端)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/基于LitePal操作数据库的学生管理系统的简单实现/">基于LitePal操作数据库的学生管理系统的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/21/基于环信的仿QQ即时通讯的简单实现/">基于环信的仿QQ即时通讯的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/07/高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题/">高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/简单粗暴----RecyclerView/">简单粗暴----RecyclerView</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/04/设计模式之建造者模式学习笔记/">设计模式之建造者模式学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/29/一个菜鸟的图片三级缓存笔记/">一个菜鸟的图片三级缓存笔记</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2028/02/27/hexo_add_other_functions/">hexo 博客小功能添加-评论、相册、字数统计...</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/14/个人博客全新上线(阿里域名+GitPages+hexo+Yelee)/">个人博客全新上线(阿里域名+GitPages+hexo+Yelee)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/05/Android-冷兵器-之-tools/">Android 冷兵器 之 tools</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/19/自定义银行种类选择器/">自定义银行种类选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/05/我和极光的那些事---我和-Android-推送的时间简史/">我和极光的那些事---我和-Android-推送的时间简史</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/04/Python-自学笔记/">Python-自学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/27/Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！/">Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/26/Android-自定义跑马灯/">Android-自定义跑马灯</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/18/Android-分享会：Material-Design-在-Android-中的应用/">Android-分享会：Material-Design-在-Android-中的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/10/Git-命令小结/">Git-命令小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/09/使用Kotlin重构项目/">使用Kotlin重构项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/04/Kotlin学习笔记/">Kotlin学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/30/MVVM之DataBinding入门/">MVVM之DataBinding入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/22/使用-Glide-实现圆角效果/">使用-Glide-实现圆角效果</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/08/Android-性能优化小结/">Android-性能优化小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/如何做个依赖库让别人依赖使用/">如何做个依赖库让别人依赖使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/jsoup爬虫简书首页数据做个小Demo/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/25/让我的项目也使用RxJava+OkHttp+Retrofit/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/17/快毕业了，撸一个小项目(新闻段子客户端)/">快毕业了，撸一个小项目(新闻段子客户端)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/17/基于MaterialDesign设计风格的妹纸app的简单实现/">基于MaterialDesign设计风格的妹纸app的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/基于LitePal操作数据库的学生管理系统的简单实现/">基于LitePal操作数据库的学生管理系统的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/21/基于环信的仿QQ即时通讯的简单实现/">基于环信的仿QQ即时通讯的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/07/高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题/">高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/简单粗暴----RecyclerView/">简单粗暴----RecyclerView</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/04/设计模式之建造者模式学习笔记/">设计模式之建造者模式学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/29/一个菜鸟的图片三级缓存笔记/">一个菜鸟的图片三级缓存笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/1994/03/05/Thinking-in-Java-读书笔记-7-复用类/">Thinking-in-Java 读书笔记-7-复用类</a></li><li class="post-list-item"><a class="post-list-link" href="/1994/03/05/Thinking-in-Java-读书笔记-6-访问权限控制/">Thinking-in-Java 读书笔记-6-访问权限控制</a></li><li class="post-list-item"><a class="post-list-link" href="/1994/03/02/Thinking-in-Java-读书笔记-5-初始化与清理/">Thinking-in-Java-读书笔记-5-初始化与清理</a></li><li class="post-list-item"><a class="post-list-link" href="/1994/02/28/Thinking-in-Java-读书笔记-4-控制执行流程/">Thinking-in-Java-读书笔记-4-控制执行流程</a></li><li class="post-list-item"><a class="post-list-link" href="/1994/02/26/Thinking-in-Java-读书笔记-3-操作符/">Thinking-in-Java-读书笔记-3-操作符</a></li><li class="post-list-item"><a class="post-list-link" href="/1994/02/25/Thinking-in-Java-读书笔记-2-一切都是对象/">Thinking-in-Java-读书笔记-2-一切都是对象</a></li><li class="post-list-item"><a class="post-list-link" href="/1994/02/24/Thinking-in-Java-读书笔记-1-对象导论/">Thinking-in-Java-读书笔记-1-对象导论</a></li><li class="post-list-item"><a class="post-list-link" href="/1994/02/24/Thinking-in-Java-读书笔记/">Thinking-in-Java-读书笔记-1-对象导论</a></li></ul>
 
 
 

@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="在最底层，Java 中的数据是通过使用操作符来操作的。  作为一个开发将近一年的程序员，对这些基本的操作符的掌握还是算熟练的，因此就不过多介绍了，毕竟大家基本上都知道，但是还是把内容过了一遍，笔记就不赘述了。一切的理论都不如实践来的实际，遇到模棱两可的，不如直接通过程序跑一下进行验证。">
+<meta name="description" content="随着计算机革命的发展，不安全的编码方式逐渐成为编程代价高昂的主因之一。  前言初始化和清理是涉及程序安全的了两个问题，如果处理不好的话，很容易在运行的时候出现奔溃，造成很不好的用户体验。首先初始化，在开发的过程中，每当创建基本类型或者是其他对象，都会下意识的初始化，虽然全局变量会默认有个初始值，局部变量编译时期就会报错，但是我们还是要养成创建同时初始化的好习惯。至于清理，不像 C/C++内存需要">
 <meta name="keywords" content="Thinking In Java,读书笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Thinking-in-Java-读书笔记-3-操作符">
-<meta property="og:url" content="http://xiaweizi.cn/2018/02/26/Thinking-in-Java-读书笔记-3-操作符/index.html">
+<meta property="og:title" content="Thinking-in-Java-读书笔记-5-初始化与清理">
+<meta property="og:url" content="http://xiaweizi.cn/1994/03/02/Thinking-in-Java-读书笔记-5-初始化与清理/index.html">
 <meta property="og:site_name" content="xiaweizi&#39;blog">
-<meta property="og:description" content="在最底层，Java 中的数据是通过使用操作符来操作的。  作为一个开发将近一年的程序员，对这些基本的操作符的掌握还是算熟练的，因此就不过多介绍了，毕竟大家基本上都知道，但是还是把内容过了一遍，笔记就不赘述了。一切的理论都不如实践来的实际，遇到模棱两可的，不如直接通过程序跑一下进行验证。">
+<meta property="og:description" content="随着计算机革命的发展，不安全的编码方式逐渐成为编程代价高昂的主因之一。  前言初始化和清理是涉及程序安全的了两个问题，如果处理不好的话，很容易在运行的时候出现奔溃，造成很不好的用户体验。首先初始化，在开发的过程中，每当创建基本类型或者是其他对象，都会下意识的初始化，虽然全局变量会默认有个初始值，局部变量编译时期就会报错，但是我们还是要养成创建同时初始化的好习惯。至于清理，不像 C/C++内存需要">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-27T10:52:53.698Z">
+<meta property="og:updated_time" content="2018-03-05T11:06:40.149Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Thinking-in-Java-读书笔记-3-操作符">
-<meta name="twitter:description" content="在最底层，Java 中的数据是通过使用操作符来操作的。  作为一个开发将近一年的程序员，对这些基本的操作符的掌握还是算熟练的，因此就不过多介绍了，毕竟大家基本上都知道，但是还是把内容过了一遍，笔记就不赘述了。一切的理论都不如实践来的实际，遇到模棱两可的，不如直接通过程序跑一下进行验证。">
+<meta name="twitter:title" content="Thinking-in-Java-读书笔记-5-初始化与清理">
+<meta name="twitter:description" content="随着计算机革命的发展，不安全的编码方式逐渐成为编程代价高昂的主因之一。  前言初始化和清理是涉及程序安全的了两个问题，如果处理不好的话，很容易在运行的时候出现奔溃，造成很不好的用户体验。首先初始化，在开发的过程中，每当创建基本类型或者是其他对象，都会下意识的初始化，虽然全局变量会默认有个初始值，局部变量编译时期就会报错，但是我们还是要养成创建同时初始化的好习惯。至于清理，不像 C/C++内存需要">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Thinking-in-Java-读书笔记-3-操作符 | xiaweizi&#39;blog</title>
+<title>Thinking-in-Java-读书笔记-5-初始化与清理 | xiaweizi&#39;blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -288,11 +288,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-Thinking-in-Java-读书笔记-3-操作符" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Thinking-in-Java-读书笔记-5-初始化与清理" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2018/02/26/Thinking-in-Java-读书笔记-3-操作符/" class="article-date">
-      <time datetime="2018-02-26T12:46:25.000Z" itemprop="datePublished">2018-02-26</time>
+      <a href="/1994/03/02/Thinking-in-Java-读书笔记-5-初始化与清理/" class="article-date">
+      <time datetime="1994-03-02T08:25:00.000Z" itemprop="datePublished">1994-03-02</time>
 </a>
 
 
@@ -307,7 +307,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Thinking-in-Java-读书笔记-3-操作符
+      Thinking-in-Java-读书笔记-5-初始化与清理
     </h1>
   
 
@@ -317,7 +317,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">477字</span>
+        <span class="post-count">2,187字</span>
       </span>
     </span>
 
@@ -326,7 +326,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2分</span>
+        <span class="post-count">8分</span>
       </span>
     </span>
 </div>
@@ -356,42 +356,87 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><strong>在最底层，Java 中的数据是通过使用操作符来操作的。</strong></p>
-<p> 作为一个开发将近一年的程序员，对这些基本的操作符的掌握还是算熟练的，因此就不过多介绍了，毕竟大家基本上都知道，但是还是把内容过了一遍，笔记就不赘述了。一切的理论都不如实践来的实际，遇到模棱两可的，不如直接通过程序跑一下进行验证。</p>
+        <blockquote>
+<p>随着计算机革命的发展，不安全的编码方式逐渐成为编程代价高昂的主因之一。</p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>初始化和清理是涉及程序安全的了两个问题，如果处理不好的话，很容易在运行的时候出现奔溃，造成很不好的用户体验。首先初始化，在开发的过程中，每当创建基本类型或者是其他对象，都会下意识的初始化，虽然全局变量会默认有个初始值，局部变量编译时期就会报错，但是我们还是要养成创建同时初始化的好习惯。至于清理，不像 <code>C/C++</code>内存需要自己分配和释放，<code>Java</code>内置的虚拟机，已经帮助我们完成这件事情了，但是在开发的过程中，还是要注意一些资源的释放，免得造成内存泄漏等异常。</p>
 <a id="more"></a>
-<h2 id="1-赋值"><a href="#1-赋值" class="headerlink" title="1. 赋值"></a>1. 赋值</h2><p>使用「=」，意思是 <strong>取右边的值，把它复制给左边，右值可以是任何数、变量或者是表达式，但左值必须是一个明确的已命名的变量。</strong></p>
-<pre><code>Student a = new Student();
-Student b = new Student();
-a.name = &quot;a&quot;;
-b.name = &quot;b&quot;;
-a = b;
-System.out.println(&quot;a-&gt;&quot; + a + &quot;\tb-&gt;&quot; + b);
-b.name = &quot;c&quot;;
-System.out.println(&quot;a-&gt;&quot; + a + &quot;\tb-&gt;&quot; + b);
-System.out.println(&quot;---------------&quot;);
-</code></pre><p>输出：</p>
-<pre><code>a-&gt;b    b-&gt;b
-a-&gt;c    b-&gt;c
-</code></pre><p>对象的赋值一般是值引用的传递。</p>
-<h2 id="2-使用操作符时常犯的错"><a href="#2-使用操作符时常犯的错" class="headerlink" title="2. 使用操作符时常犯的错"></a>2. 使用操作符时常犯的错</h2><p>使用操作符时一个常犯的错就是，即使对表达式如何计算有点不确定，也不愿意使用括号。</p>
-<pre><code>while (x = y) {
-    // ...
+<h2 id="用构造器确保初始化"><a href="#用构造器确保初始化" class="headerlink" title="用构造器确保初始化"></a>用构造器确保初始化</h2><p>如果每个对象都要构造一个<code>Initialize()</code>的方法，显然是不实际的，总不能让每次创建对象的时候都去调用这个方法吧。因此<code>Java</code>引入了构造函数这个概念。</p>
+<pre><code>Student(int age) {
+    System.out.println(&quot;student init age:&quot; + age);
 }
-</code></pre><p><strong>x = y</strong> 属于合法表达式，但是结果是 int 类型的值，二 while 括号需要的是 boolean 值，因此在编译期即会报错。</p>
-<h2 id="3-截尾和舍入"><a href="#3-截尾和舍入" class="headerlink" title="3. 截尾和舍入"></a>3. 截尾和舍入</h2><pre><code>int a = 0.6;
-int b = 0.4;
-int c = -0.6;
-int d = -0.4;
-</code></pre><p>最后的结果都是 0；</p>
-<h2 id="4-运算溢出"><a href="#4-运算溢出" class="headerlink" title="4. 运算溢出"></a>4. 运算溢出</h2><pre><code>int big = Integer.MAX_VALUE;
-System.out.println(&quot;big = &quot; + big);
-int bigger = big * 2;
-System.out.println(&quot;bigger = &quot; + bigger);
-</code></pre><p>输出结果</p>
-<pre><code>big = 2147483647
-bigger = -2
-</code></pre><p>虽然溢出了，但是并没有报错，运行时也不会出现异常。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>对基本运算符的掌握是程序必备的技能，无论哪门语言基本上相通的，越基础的东西，越是需要搞透彻，在开发的过程中，可不能因为这么基础的东西犯错！</p>
+</code></pre><p>有点类似方法的形式，名称和类名保持一致，首字母大写，可选择携带参数，无返回值。</p>
+<pre><code>new Student(12);
+</code></pre><p>这个时候将会分配存储空间，并调用相应的构造器，这就确保了在你能操作对象之前，它已经被恰当的初始化了。</p>
+<h2 id="方法重载"><a href="#方法重载" class="headerlink" title="方法重载"></a>方法重载</h2><p>拥有名称重复的方法，但是参数的个数或者类型要不一致，构造函数亦然。那<code>Java</code>如何知道是哪一个方法呢？其实规则很简单：每个重载方法都必须有一个独一无二的参数类型列表。</p>
+<p>甚至参数顺序的不同也足以区分两个方法，不过一般情况下别这么做，因为会使代码难以维护。</p>
+<p>那为什么不以返回值区分重载方法呢？</p>
+<pre><code>void f();
+int f();
+</code></pre><p><code>int a = f()</code>这种确实可以区分，但是<code>f()</code>这种方式编译器就不知道你需要调用的是哪个方法了。</p>
+<h2 id="this-关键字"><a href="#this-关键字" class="headerlink" title="this 关键字"></a>this 关键字</h2><p><code>this</code>关键字只能在方法中使用，表示对调用方法的那个对象的引用。<code>this</code>的用法和其他对象引用并无不同，但要注意的是，如果在方法内部调用同一个类和同一个方法，就不必使用<code>this</code>，直接调用即可。</p>
+<p>构造函数中是可以调用自身的构造器的，常见的就是创建一个自定义<code>view</code>,这个时候默认创建 4 个构造函数，最终都是调用最长的那个构造函数。</p>
+<pre><code>class People {
+    People(){
+        this(12, &quot;default&quot;);
+    }
+    People(int age){
+        this(age, &quot;default&quot;);
+    }
+    People(int age, String name){
+        //....
+    }
+}
+</code></pre><p><code>static</code>就更好理解了，<code>static</code>方法就是没有<code>this</code>的方法，在<code>static</code>方法的内部不能调用非静态方法，反过来是可以的。</p>
+<h2 id="清理：终结处理和垃圾回收"><a href="#清理：终结处理和垃圾回收" class="headerlink" title="清理：终结处理和垃圾回收"></a>清理：终结处理和垃圾回收</h2><p><code>Java</code>里的对象并非总是被垃圾回收，主要有三个特点：</p>
+<ol>
+<li>对象可能不被垃圾回收。</li>
+<li>垃圾回收并不等于析构。</li>
+<li>垃圾回收只与内存有关。</li>
+</ol>
+<p><strong>finalize</strong></p>
+<p><code>Java</code>允许在类中定义一个名为<code>finalize</code>的方法，它的工作原理假定是这样的：一旦下一次垃圾回收器准备好释放对象占用的内存空间，将首先调用一个名为<code>finalize</code>的方法，并且在下一次垃圾回收动作发生时，才会真正回收对象占用的内存，所以要是你打算用<code>finalize()</code>，就能在垃圾回收时刻做一些重要的清理工作。但是它是无法预料，常常是危险的，总之是多余的。</p>
+<p><strong>垃圾回收器如何工作</strong></p>
+<p>在以前，在堆上分配对象的代价十分昂贵，然而垃圾回收期对于提高对象的创建速度，却有明显的效果，这意味着<code>Java</code>从堆分配空间的速度，可以和其他语言从堆栈中分配空间的速度相媲美。</p>
+<p>「引用计数」是一种简单但是速度很慢的垃圾回收技术。每个对象都要有一个引用计数器。当有引用连接至对象时，引用计数就加1，当引用离开对象或被置为<code>null</code>。虽然管理引用计数的开销不大，但这项开销在整个程序生命周期中将持续发生，垃圾回收期会在含有全部对象的列表上遍历，当发现对象的引用计数为 0 时，就释放器占用的控件，这种方法有个缺陷，当对象之间存在循环引用，虽然引用计数不为零，但是其实这个对象应当被回收，因此引用计数似乎未被应用于任何一种<code>Java</code>虚拟机实现中。</p>
+<p>现在有一种区别于引用计数技术，它们依据的思想是：对任何“活”的对象，一定能最终追溯其存活在堆栈或静态存储区中的引用。这就解决了交互自引用的对象组的问题。</p>
+<p>在这种技术下，<code>Java</code>虚拟机将采用一种「自适应」的垃圾回收技术。至于如何处理找到存活的对象，取决于不同的<code>Java</code>虚拟机实现。</p>
+<p>「停止-复制」，需要暂停程序的运行，然后将所有存活的对象从当前堆复制到另一个堆，没有被复制的全部都是垃圾。当对象被复制到新的堆中时，它们是一个挨着一个，所以新堆保持紧凑排列，然后可以分配新空间了。对于这种方式，效率会降低，这有两个原因。首先两个堆，然后得在这两个分离的堆之间来回倒腾，从而维护比实际需要多一倍的空间。某些<code>Java</code>虚拟机对此问题的处理方式是：按需从堆中分配几块较大的内存，复制动作发生在这些大块内存之间。第二个问题在于复制，程序进入稳定状态之后，可能会产生少量垃圾，甚至没有垃圾，尽管如此，复制式回收器会将所有内存自一处复制到另一处，这很浪费。</p>
+<p>为了避免这种浪费，一些<code>Java</code>虚拟机会进行检查，要是没有新垃圾产生，就会转换到另一种工作模式。</p>
+<p>「标记-清扫」，对一般用途而言，速度相当慢，但是当你知道只会产生少量垃圾甚至不会产生垃圾时，它的速度就会非常快。它所依据的思路同样是从堆栈和静态存储区出发，便利所有的引用，进而找出所有存活的对象。每当找到一个存活对象，就会给对象设一个标记，这个过程中不会回收任何对象。只有全部标记工作完成的时候，清理动作才开始。不会发生复制动作，所以剩下的对空间是不连续的，垃圾回收器要是希望得到连续的空间的话，就得重新整理剩下的对象。</p>
+<p><code>Java</code>虚拟机会进行监视，如果所有对象都很稳定，垃圾回收器效率降低的话，就切换到「标记-清扫」方式，同样，<code>Java</code>虚拟机会跟踪效果，要是堆空间出现很对碎片，就会切换回到「停止-复制」的方式，这就是「自适应」技术。</p>
+<h2 id="数组的初始化"><a href="#数组的初始化" class="headerlink" title="数组的初始化"></a>数组的初始化</h2><p>数组是相同类型的、同一个标识符名称被封装到一个对象序列活基本类型数据序列。</p>
+<p><strong>可变参数</strong></p>
+<pre><code>public void f(Object... args) {
+    for (Object arg : args) {
+        System.out.println(arg);
+    }
+}
+
+Student student = new Student(2);
+student.f(&quot;x&quot;,2, &quot;dfa&quot;, 0.2f);
+
+// output
+x
+2
+dfa
+0.2
+</code></pre><h2 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h2><pre><code>enum Color {
+    RED, BLUE, BLACK
+}
+
+Color red = Color.RED;
+switch (red) {
+    case RED:
+        System.out.println(&quot;red&quot;);
+        break;
+    case BLUE:
+        System.out.println(&quot;blue&quot;);
+        break;
+    default:
+        break;
+}
+</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>在<code>Java</code>中，垃圾回收器会自动为对象释放内存，所以在很多场合下，类似的清理方法在<code>Java</code>中就不太需要了(不过当要用的时候，你就只能自己动手了)。在不需要类似析构函数的行为的时候，<code>Java</code>的垃圾回收器可以极大地简化编程工作，而且在处理内存的时候也更安全，有些垃圾回收器甚至能清理其他资源，比如图形和文件句柄。</p>
 
       
     </div>
@@ -400,13 +445,13 @@ bigger = -2
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2018/02/26/Thinking-in-Java-读书笔记-3-操作符/">Thinking-in-Java-读书笔记-3-操作符</a></p>
+        <p><span>本文标题:</span><a href="/1994/03/02/Thinking-in-Java-读书笔记-5-初始化与清理/">Thinking-in-Java-读书笔记-5-初始化与清理</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">下位子</a></p>
-        <p><span>发布时间:</span>2018-02-26, 20:46:25</p>
-        <p><span>最后更新:</span>2018-02-27, 18:52:53</p>
+        <p><span>发布时间:</span>1994-03-02, 16:25:00</p>
+        <p><span>最后更新:</span>2018-03-05, 19:06:40</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2018/02/26/Thinking-in-Java-读书笔记-3-操作符/" title="Thinking-in-Java-读书笔记-3-操作符">http://xiaweizi.cn/2018/02/26/Thinking-in-Java-读书笔记-3-操作符/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/2018/02/26/Thinking-in-Java-读书笔记-3-操作符/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/1994/03/02/Thinking-in-Java-读书笔记-5-初始化与清理/" title="Thinking-in-Java-读书笔记-5-初始化与清理">http://xiaweizi.cn/1994/03/02/Thinking-in-Java-读书笔记-5-初始化与清理/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/1994/03/02/Thinking-in-Java-读书笔记-5-初始化与清理/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -419,15 +464,15 @@ bigger = -2
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/02/28/Thinking-in-Java-读书笔记-4-控制执行流程/">
-                    Thinking-in-Java-读书笔记-4-控制执行流程
+                <a href="/1994/03/05/Thinking-in-Java-读书笔记-6-访问权限控制/">
+                    Thinking-in-Java 读书笔记-6-访问权限控制
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2018/02/25/Thinking-in-Java-读书笔记-2-一切都是对象/">
-                    Thinking-in-Java-读书笔记-2-一切都是对象
+                <a href="/1994/02/28/Thinking-in-Java-读书笔记-4-控制执行流程/">
+                    Thinking-in-Java-读书笔记-4-控制执行流程
                 </a>
             </div>
         
@@ -469,7 +514,7 @@ bigger = -2
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-赋值"><span class="toc-number">1.</span> <span class="toc-text">1. 赋值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-使用操作符时常犯的错"><span class="toc-number">2.</span> <span class="toc-text">2. 使用操作符时常犯的错</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-截尾和舍入"><span class="toc-number">3.</span> <span class="toc-text">3. 截尾和舍入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-运算溢出"><span class="toc-number">4.</span> <span class="toc-text">4. 运算溢出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#用构造器确保初始化"><span class="toc-number">2.</span> <span class="toc-text">用构造器确保初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法重载"><span class="toc-number">3.</span> <span class="toc-text">方法重载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#this-关键字"><span class="toc-number">4.</span> <span class="toc-text">this 关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#清理：终结处理和垃圾回收"><span class="toc-number">5.</span> <span class="toc-text">清理：终结处理和垃圾回收</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数组的初始化"><span class="toc-number">6.</span> <span class="toc-text">数组的初始化</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#枚举"><span class="toc-number">7.</span> <span class="toc-text">枚举</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">8.</span> <span class="toc-text">总结</span></a></li></ol>
         
     </div>
     <style>
@@ -505,7 +550,7 @@ bigger = -2
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Thinking-in-Java-读书笔记-3-操作符　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Thinking-in-Java-读书笔记-5-初始化与清理　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -546,7 +591,7 @@ bigger = -2
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/02/28/Thinking-in-Java-读书笔记-4-控制执行流程/" title="上一篇: Thinking-in-Java-读书笔记-4-控制执行流程">
+            <a href="/1994/03/05/Thinking-in-Java-读书笔记-6-访问权限控制/" title="上一篇: Thinking-in-Java 读书笔记-6-访问权限控制">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -554,13 +599,13 @@ bigger = -2
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2018/02/25/Thinking-in-Java-读书笔记-2-一切都是对象/" title="下一篇: Thinking-in-Java-读书笔记-2-一切都是对象">
+            <a href="/1994/02/28/Thinking-in-Java-读书笔记-4-控制执行流程/" title="下一篇: Thinking-in-Java-读书笔记-4-控制执行流程">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2028/02/27/hexo_add_other_functions/">hexo 博客小功能添加-评论、相册、字数统计...</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/05/Thinking-in-Java-读书笔记-6-访问权限控制/">Thinking-in-Java 读书笔记-6-访问权限控制</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/03/02/Thinking-in-Java-读书笔记-5-初始化与清理/">Thinking-in-Java-读书笔记-5-初始化与清理</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/28/Thinking-in-Java-读书笔记-4-控制执行流程/">Thinking-in-Java-读书笔记-4-控制执行流程</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/26/Thinking-in-Java-读书笔记-3-操作符/">Thinking-in-Java-读书笔记-3-操作符</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/25/Thinking-in-Java-读书笔记-2-一切都是对象/">Thinking-in-Java-读书笔记-2-一切都是对象</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/24/Thinking-in-Java-读书笔记-1-对象导论/">Thinking-in-Java-读书笔记-1-对象导论</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/14/个人博客全新上线(阿里域名+GitPages+hexo+Yelee)/">个人博客全新上线(阿里域名+GitPages+hexo+Yelee)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/05/Android-冷兵器-之-tools/">Android 冷兵器 之 tools</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/19/自定义银行种类选择器/">自定义银行种类选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/05/我和极光的那些事---我和-Android-推送的时间简史/">我和极光的那些事---我和-Android-推送的时间简史</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/04/Python-自学笔记/">Python-自学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/27/Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！/">Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/26/Android-自定义跑马灯/">Android-自定义跑马灯</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/18/Android-分享会：Material-Design-在-Android-中的应用/">Android-分享会：Material-Design-在-Android-中的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/10/Git-命令小结/">Git-命令小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/09/使用Kotlin重构项目/">使用Kotlin重构项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/04/Kotlin学习笔记/">Kotlin学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/30/MVVM之DataBinding入门/">MVVM之DataBinding入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/22/使用-Glide-实现圆角效果/">使用-Glide-实现圆角效果</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/08/Android-性能优化小结/">Android-性能优化小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/如何做个依赖库让别人依赖使用/">如何做个依赖库让别人依赖使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/jsoup爬虫简书首页数据做个小Demo/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/25/让我的项目也使用RxJava+OkHttp+Retrofit/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/17/基于MaterialDesign设计风格的妹纸app的简单实现/">基于MaterialDesign设计风格的妹纸app的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/17/快毕业了，撸一个小项目(新闻段子客户端)/">快毕业了，撸一个小项目(新闻段子客户端)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/基于LitePal操作数据库的学生管理系统的简单实现/">基于LitePal操作数据库的学生管理系统的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/21/基于环信的仿QQ即时通讯的简单实现/">基于环信的仿QQ即时通讯的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/07/高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题/">高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/简单粗暴----RecyclerView/">简单粗暴----RecyclerView</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/04/设计模式之建造者模式学习笔记/">设计模式之建造者模式学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/29/一个菜鸟的图片三级缓存笔记/">一个菜鸟的图片三级缓存笔记</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2028/02/27/hexo_add_other_functions/">hexo 博客小功能添加-评论、相册、字数统计...</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/14/个人博客全新上线(阿里域名+GitPages+hexo+Yelee)/">个人博客全新上线(阿里域名+GitPages+hexo+Yelee)</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/02/05/Android-冷兵器-之-tools/">Android 冷兵器 之 tools</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/19/自定义银行种类选择器/">自定义银行种类选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/05/我和极光的那些事---我和-Android-推送的时间简史/">我和极光的那些事---我和-Android-推送的时间简史</a></li><li class="post-list-item"><a class="post-list-link" href="/2018/01/04/Python-自学笔记/">Python-自学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/27/Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！/">Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/26/Android-自定义跑马灯/">Android-自定义跑马灯</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/12/18/Android-分享会：Material-Design-在-Android-中的应用/">Android-分享会：Material-Design-在-Android-中的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/10/10/Git-命令小结/">Git-命令小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/09/使用Kotlin重构项目/">使用Kotlin重构项目</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/09/04/Kotlin学习笔记/">Kotlin学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/30/MVVM之DataBinding入门/">MVVM之DataBinding入门</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/22/使用-Glide-实现圆角效果/">使用-Glide-实现圆角效果</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/08/08/Android-性能优化小结/">Android-性能优化小结</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/03/15/如何做个依赖库让别人依赖使用/">如何做个依赖库让别人依赖使用</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/28/jsoup爬虫简书首页数据做个小Demo/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/25/让我的项目也使用RxJava+OkHttp+Retrofit/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/17/快毕业了，撸一个小项目(新闻段子客户端)/">快毕业了，撸一个小项目(新闻段子客户端)</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/02/17/基于MaterialDesign设计风格的妹纸app的简单实现/">基于MaterialDesign设计风格的妹纸app的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/22/基于LitePal操作数据库的学生管理系统的简单实现/">基于LitePal操作数据库的学生管理系统的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/21/基于环信的仿QQ即时通讯的简单实现/">基于环信的仿QQ即时通讯的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/07/高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题/">高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/06/简单粗暴----RecyclerView/">简单粗暴----RecyclerView</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/01/04/设计模式之建造者模式学习笔记/">设计模式之建造者模式学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/12/29/一个菜鸟的图片三级缓存笔记/">一个菜鸟的图片三级缓存笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/1994/03/05/Thinking-in-Java-读书笔记-7-复用类/">Thinking-in-Java 读书笔记-7-复用类</a></li><li class="post-list-item"><a class="post-list-link" href="/1994/03/05/Thinking-in-Java-读书笔记-6-访问权限控制/">Thinking-in-Java 读书笔记-6-访问权限控制</a></li><li class="post-list-item"><a class="post-list-link" href="/1994/03/02/Thinking-in-Java-读书笔记-5-初始化与清理/">Thinking-in-Java-读书笔记-5-初始化与清理</a></li><li class="post-list-item"><a class="post-list-link" href="/1994/02/28/Thinking-in-Java-读书笔记-4-控制执行流程/">Thinking-in-Java-读书笔记-4-控制执行流程</a></li><li class="post-list-item"><a class="post-list-link" href="/1994/02/26/Thinking-in-Java-读书笔记-3-操作符/">Thinking-in-Java-读书笔记-3-操作符</a></li><li class="post-list-item"><a class="post-list-link" href="/1994/02/25/Thinking-in-Java-读书笔记-2-一切都是对象/">Thinking-in-Java-读书笔记-2-一切都是对象</a></li><li class="post-list-item"><a class="post-list-link" href="/1994/02/24/Thinking-in-Java-读书笔记-1-对象导论/">Thinking-in-Java-读书笔记-1-对象导论</a></li><li class="post-list-item"><a class="post-list-link" href="/1994/02/24/Thinking-in-Java-读书笔记/">Thinking-in-Java-读书笔记-1-对象导论</a></li></ul>
 
 
 
