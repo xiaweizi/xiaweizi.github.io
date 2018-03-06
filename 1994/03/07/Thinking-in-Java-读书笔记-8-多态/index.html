@@ -15,24 +15,18 @@
 
 
 
-<meta name="description" content="今天看了郭神的《第二行代码》的第六章，才发现LitePal用起来是多么方便简介，就花了下午的时间做了一个小Demo，界面功能都简单，请见谅 本文只是LitePal的简单应用，目的是快速入门LitePal。界面和功能都简单，若不满，请自行添加。">
-<meta name="keywords" content="第三方库,项目">
+<meta name="description" content="前言记得刚接触Java的时候，整天被老师灌输的就是「封装」、「继承」、「抽象」和「多态」，因为这是面向对象语言基本的特征。尴尬的是，直到大学毕业了也没有彻底搞懂… 多态通过分离「做什么」和「怎么做」，从另一个角度将接口和实现分离开来。多态不但能够改善代码的组织结构和可读性，还能创建可扩展的程序–即无论在项目最初创建时还是需要添加新功能都可以生长的程序。 「封装」通过合并特征和行为来创建新的数据类型">
+<meta name="keywords" content="Thinking In Java,读书笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="基于LitePal操作数据库的学生管理系统的简单实现">
-<meta property="og:url" content="http://xiaweizi.cn/2017/01/22/基于LitePal操作数据库的学生管理系统的简单实现/index.html">
+<meta property="og:title" content="Thinking-in-Java 读书笔记-8-多态">
+<meta property="og:url" content="http://xiaweizi.cn/1994/03/07/Thinking-in-Java-读书笔记-8-多态/index.html">
 <meta property="og:site_name" content="xiaweizi&#39;blog">
-<meta property="og:description" content="今天看了郭神的《第二行代码》的第六章，才发现LitePal用起来是多么方便简介，就花了下午的时间做了一个小Demo，界面功能都简单，请见谅 本文只是LitePal的简单应用，目的是快速入门LitePal。界面和功能都简单，若不满，请自行添加。">
+<meta property="og:description" content="前言记得刚接触Java的时候，整天被老师灌输的就是「封装」、「继承」、「抽象」和「多态」，因为这是面向对象语言基本的特征。尴尬的是，直到大学毕业了也没有彻底搞懂… 多态通过分离「做什么」和「怎么做」，从另一个角度将接口和实现分离开来。多态不但能够改善代码的组织结构和可读性，还能创建可扩展的程序–即无论在项目最初创建时还是需要添加新功能都可以生长的程序。 「封装」通过合并特征和行为来创建新的数据类型">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-0fff41c510bbc5c6.gif?imageMogr2/auto-orient/strip">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-7d01854c495230ad.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-3e4c37de6dcd5cdb.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-bf48d4c2d74d168e.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-436d22171cb8b0d0.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-02-26T09:19:09.745Z">
+<meta property="og:updated_time" content="2018-03-06T11:10:28.872Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="基于LitePal操作数据库的学生管理系统的简单实现">
-<meta name="twitter:description" content="今天看了郭神的《第二行代码》的第六章，才发现LitePal用起来是多么方便简介，就花了下午的时间做了一个小Demo，界面功能都简单，请见谅 本文只是LitePal的简单应用，目的是快速入门LitePal。界面和功能都简单，若不满，请自行添加。">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4043475-0fff41c510bbc5c6.gif?imageMogr2/auto-orient/strip">
+<meta name="twitter:title" content="Thinking-in-Java 读书笔记-8-多态">
+<meta name="twitter:description" content="前言记得刚接触Java的时候，整天被老师灌输的就是「封装」、「继承」、「抽象」和「多态」，因为这是面向对象语言基本的特征。尴尬的是，直到大学毕业了也没有彻底搞懂… 多态通过分离「做什么」和「怎么做」，从另一个角度将接口和实现分离开来。多态不但能够改善代码的组织结构和可读性，还能创建可扩展的程序–即无论在项目最初创建时还是需要添加新功能都可以生长的程序。 「封装」通过合并特征和行为来创建新的数据类型">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -64,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>基于LitePal操作数据库的学生管理系统的简单实现 | xiaweizi&#39;blog</title>
+<title>Thinking-in-Java 读书笔记-8-多态 | xiaweizi&#39;blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -294,11 +288,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-基于LitePal操作数据库的学生管理系统的简单实现" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Thinking-in-Java-读书笔记-8-多态" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/01/22/基于LitePal操作数据库的学生管理系统的简单实现/" class="article-date">
-      <time datetime="2017-01-22T12:46:25.000Z" itemprop="datePublished">2017-01-22</time>
+      <a href="/1994/03/07/Thinking-in-Java-读书笔记-8-多态/" class="article-date">
+      <time datetime="1994-03-07T07:13:33.000Z" itemprop="datePublished">1994-03-07</time>
 </a>
 
 
@@ -313,7 +307,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      基于LitePal操作数据库的学生管理系统的简单实现
+      Thinking-in-Java 读书笔记-8-多态
     </h1>
   
 
@@ -323,7 +317,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">856字</span>
+        <span class="post-count">1,456字</span>
       </span>
     </span>
 
@@ -332,7 +326,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">4分</span>
+        <span class="post-count">6分</span>
       </span>
     </span>
 </div>
@@ -346,13 +340,13 @@
         
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
+    <a class="article-category-link" href="/categories/Thinking-In-Java-读书笔记/">Thinking In Java 读书笔记</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/第三方库/">第三方库</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目/">项目</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -362,120 +356,40 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h4 id="今天看了郭神的《第二行代码》的第六章，才发现LitePal用起来是多么方便简介，就花了下午的时间做了一个小Demo，界面功能都简单，请见谅"><a href="#今天看了郭神的《第二行代码》的第六章，才发现LitePal用起来是多么方便简介，就花了下午的时间做了一个小Demo，界面功能都简单，请见谅" class="headerlink" title="今天看了郭神的《第二行代码》的第六章，才发现LitePal用起来是多么方便简介，就花了下午的时间做了一个小Demo，界面功能都简单，请见谅"></a>今天看了郭神的《第二行代码》的第六章，才发现LitePal用起来是多么方便简介，就花了下午的时间做了一个小Demo，界面功能都简单，请见谅</h4><hr>
-<p><em>本文只是LitePal的简单应用，目的是快速入门LitePal。界面和功能都简单，若不满，请自行添加。</em></p>
-<a id="more"></a>
-<p>照例来波动态图<br><img src="http://upload-images.jianshu.io/upload_images/4043475-0fff41c510bbc5c6.gif?imageMogr2/auto-orient/strip" alt="学生管理应用.gif"></p>
-<blockquote>
-<p>主要功能就是: 数据的 <strong>增、删、改、查</strong>。</p>
-<p>主要知识点: <strong>LitePal的配置和使用</strong></p>
-<p>界面我就不介绍了，用的是RecyclerView之前也讲过 <a href="http://www.jianshu.com/p/60819de9eb42" target="_blank" rel="noopener">简单粗暴—-RecyclerView</a></p>
-<p>首先添加依赖 </p>
-</blockquote>
-<pre><code>compile&apos;com.android.support:recyclerview-v7:24.0.0&apos;
-compile &apos;org.litepal.android:core:1.4.1&apos;
-</code></pre><h1 id="1-LitePal简介"><a href="#1-LitePal简介" class="headerlink" title="1. LitePal简介"></a>1. LitePal简介</h1><p>LitePal是一款开源的Android数据库框架，它采用了对象关系映射（ORM）的模式，并将我们平时开发最常用的一些数据库功能进行了封装，是的不用编写一行SQL语句就可以完成各种建表和增删改查的操作。</p>
-<h1 id="2-LitePal的配置"><a href="#2-LitePal的配置" class="headerlink" title="2. LitePal的配置"></a>2. LitePal的配置</h1><p>创建一个 <code>assets</code> 目录，在 <code>assets</code> 目录下新建一个 <code>litepal.xml</code> 文件，接着编写文件内容，如下：</p>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
-&lt;litepal&gt;
-    &lt;!-- 数据库名 --&gt;
-    &lt;dbname value=&quot;Student&quot;&gt;&lt;/dbname&gt;
-    &lt;!-- 版本号 --&gt;
-    &lt;version value=&quot;1&quot;&gt;&lt;/version&gt;
-    &lt;!-- 创建表 --&gt;
-    &lt;list&gt;
-        &lt;mapping class=&quot;映射的javaBean的完整类名&quot;&gt;&lt;/mapping&gt;
-    &lt;/list&gt;
-&lt;/litepal&gt;
-</code></pre><p>接下来修改清单文件代码，配置Application</p>
-<pre><code>&lt;application
-    android:name=&quot;org.litepal.LitePalApplication&quot;
-    ...
-&lt;/application&gt;
-</code></pre><p>最后代码中创建数据库</p>
-<pre><code>LitePal.getDatabase();
-</code></pre><h1 id="3-创建表"><a href="#3-创建表" class="headerlink" title="3. 创建表"></a>3. 创建表</h1><h4 id="a-需要一个JavaBean对象，也就是数据库的表"><a href="#a-需要一个JavaBean对象，也就是数据库的表" class="headerlink" title="a. 需要一个JavaBean对象，也就是数据库的表"></a>a. 需要一个JavaBean对象，也就是数据库的表</h4><hr>
-<pre><code>public class Student extends DataSupport{
-
-    private int id;
-    private String name;//姓名
-    private int studentId;//学号
-    private String sex;//性别
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public int getStudentId() {
-        return studentId;
-    }
-
-    public void setStudentId(int studentId) {
-        this.studentId = studentId;
-    }
-
-    public String getSex() {
-        return sex;
-    }
-
-    public void setSex(String sex) {
-        this.sex = sex;
-    }
-}
-</code></pre><h4 id="b-修改litepal-xml中的代码"><a href="#b-修改litepal-xml中的代码" class="headerlink" title="b. 修改litepal.xml中的代码"></a>b. 修改litepal.xml中的代码</h4><hr>
-<pre><code>&lt;list&gt;
-    &lt;mapping class=&quot;com.xiaweizi.studentsystem.Student&quot;&gt;&lt;/mapping&gt;
-&lt;/list&gt;
-</code></pre><blockquote>
-<p>运行一下程序，然后你就可以在data/data/包名的文件下看到数据库已经创建了：</p>
-</blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/4043475-7d01854c495230ad.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="数据库.PNG"></p>
-<blockquote>
-<p>然后把他导出来，借用工具打开，然后就是下面界面</p>
-</blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/4043475-3e4c37de6dcd5cdb.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="表的创建.PNG"></p>
-<h1 id="4-增、删、改、查"><a href="#4-增、删、改、查" class="headerlink" title="4. 增、删、改、查"></a>4. 增、删、改、查</h1><h3 id="1-添加数据"><a href="#1-添加数据" class="headerlink" title="1. 添加数据"></a>1. 添加数据</h3><pre><code>Student student = new Student();
-student.setName(name);
-student.setSex(sex);
-student.setStudentId(Integer.parseInt(studentId));
-student.save();
-</code></pre><p>效果如下：<br><img src="http://upload-images.jianshu.io/upload_images/4043475-bf48d4c2d74d168e.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="添加数据.PNG"></p>
-<h3 id="2-删除数据"><a href="#2-删除数据" class="headerlink" title="2. 删除数据"></a>2. 删除数据</h3><pre><code>DataSupport.deleteAll(Student.class, &quot;id = ?&quot;, id +&quot;&quot;);
-</code></pre><blockquote>
-<p>一行代码搞定，只要调用<code>DataSupport.deleteAll()</code>即可，第一参数，是要删除哪张表的数据，后面则为约束条件，不难看懂。</p>
-</blockquote>
-<h3 id="3-修改数据"><a href="#3-修改数据" class="headerlink" title="3. 修改数据"></a>3. 修改数据</h3><pre><code>Student student = new Student();
-student.setName(name);
-student.setSex(sex);
-student.setStudentId(Integer.parseInt(studentId));
-student.updateAll(&quot;id = ?&quot;, id+&quot;&quot;);
-</code></pre><blockquote>
-<p>还是要new一个实例，然后要设置更新的数据，最后调用<code>updateAll()</code>方法执行更新操作。参数跟删除数据很像，也是约束条件，如果不传参数，则修改所有的数据。</p>
-</blockquote>
-<blockquote>
-<p>这里需要注意一点，如果想让数据恢复成默认值，<strong>是不能直接设置默认值的。</strong></p>
-<p>比如，如果让学号为0，是不能 <code>student.setStudentId(0);</code> 这是错误的！！！那么如果想恢复成默认值该怎么办呢，LitePal提供了<code>setToDefault()</code> 方法。</p>
-</blockquote>
-<pre><code>  Student student = new Student();
-student.setToDefault(&quot;studentId&quot;);
-student.updateAll();
-</code></pre><h3 id="4-查询数据"><a href="#4-查询数据" class="headerlink" title="4. 查询数据"></a>4. 查询数据</h3><pre><code>mList = DataSupport.findAll(Student.class);
-</code></pre><blockquote>
-<p>一行代码搞定，直接就可以查询数据库中Student表的所有数据，返回这个对象的集合。<br>借用工具可以查看我们的所有数据：<br><img src="http://upload-images.jianshu.io/upload_images/4043475-436d22171cb8b0d0.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="所有数据.PNG"></p>
-</blockquote>
-<p>到此一个简单的学生管理系统已经结束了，主要目的就是快速入门LitePal！</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>记得刚接触<code>Java</code>的时候，整天被老师灌输的就是「封装」、「继承」、「抽象」和「多态」，因为这是面向对象语言基本的特征。尴尬的是，直到大学毕业了也没有彻底搞懂…</p>
+<p>多态通过分离「做什么」和「怎么做」，从另一个角度将接口和实现分离开来。多态不但能够改善代码的组织结构和可读性，还能创建可扩展的程序–即无论在项目最初创建时还是需要添加新功能都可以生长的程序。</p>
+<p>「封装」通过合并特征和行为来创建新的数据类型，实现隐藏则通过将细节私有化把接口和实现分离开来，这种类型的组织机制对那些拥有过程化程序设计背景的人来说，更容易理解。而「多态」的作用则是消除类型之间的耦合关系。</p>
+<p>继承允许将对象视为它自己本身的类型或其他类型来加以处理。这种能力即为重要，因为它允许将多种类型(从同一基类导出的)视为同一类型处理。多态方法调用允许一种类型表现出与其他相似类型之间的区别，只要它们都是从同一基类导出而来的。</p>
+<h2 id="定位具体子类"><a href="#定位具体子类" class="headerlink" title="定位具体子类"></a>定位具体子类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">class Machine &#123;</span><br><span class="line">    void work() &#123;</span><br><span class="line">        System.out.println(&quot;Machine work!&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Computer extends Machine &#123;</span><br><span class="line">    @Override</span><br><span class="line">    void work() &#123;</span><br><span class="line">        System.out.println(&quot;Computer work&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Light extends Machine &#123;</span><br><span class="line">    @Override</span><br><span class="line">    void work() &#123;</span><br><span class="line">        System.out.println(&quot;Light work&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        run(new Computer());</span><br><span class="line">        run(new Light());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static void run(Machine machine) &#123;</span><br><span class="line">        machine.work();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>run</code>方法传入的是基类类型的<code>Machine</code>，这样就不需要创建适配各种类型的<code>run</code>方法，加强了可维护性和代码健壮性。利用了「向上转型」这一特性，不用在乎具体的实现，只需要传入接口即可。</p>
+<p><code>machine.work();</code>如编译器是怎么知道这个<code>machine</code>的引用是指向具体的实现的呢？「后期绑定」，它的含义就是运行时根据对象的类型进行绑定，后期绑定也叫做动态绑定或运行时绑定。编译器一直不知道对象的类型，但是方法调用机制能找到正确的方法体，并加以调用。</p>
+<p>Java 中除了<code>static</code>和<code>final</code>方法之外，其他所有的方法都是后期绑定，这意味着通常情况下，我们不必判定是否应该进行后期绑定。</p>
+<h2 id="缺陷"><a href="#缺陷" class="headerlink" title="缺陷"></a>缺陷</h2><p><strong>不能覆盖私有方法</strong></p>
+<p><strong>域与静态方法</strong></p>
+<h2 id="构造器的调用顺序"><a href="#构造器的调用顺序" class="headerlink" title="构造器的调用顺序"></a>构造器的调用顺序</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">class Animal &#123;</span><br><span class="line">    Animal() &#123;</span><br><span class="line">        System.out.println(&quot;Animal&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Car &#123;</span><br><span class="line">    Car() &#123;</span><br><span class="line">        System.out.println(&quot;Car&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Water &#123;</span><br><span class="line">    Water() &#123;</span><br><span class="line">        System.out.println(&quot;Water&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class People extends Animal&#123;</span><br><span class="line">    People() &#123;</span><br><span class="line">        System.out.println(&quot;People&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Student extends People &#123;</span><br><span class="line">    Student() &#123;</span><br><span class="line">        System.out.println(&quot;Student&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    private Car car = new Car();</span><br><span class="line">    private Water water = new Water();</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        People student = new Student();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Animal</span><br><span class="line">People</span><br><span class="line">Car</span><br><span class="line">Water</span><br><span class="line">Student</span><br></pre></td></tr></table></figure>
+<p>顺序：</p>
+<ol>
+<li>调用基类的构造器</li>
+<li>按声明顺序调用成员的初始化方法</li>
+<li>调用导出类构造器的主体</li>
+</ol>
+<h2 id="构造器内部的多态方法的行为"><a href="#构造器内部的多态方法的行为" class="headerlink" title="构造器内部的多态方法的行为"></a>构造器内部的多态方法的行为</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">class Phone &#123;</span><br><span class="line"></span><br><span class="line">    Phone() &#123;</span><br><span class="line">        System.out.println(&quot;before call&quot;);</span><br><span class="line">        call();</span><br><span class="line">        System.out.println(&quot;after call&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void call() &#123;</span><br><span class="line">        System.out.println(&quot;Phone Call&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class IPhone extends Phone &#123;</span><br><span class="line">    private String num = &quot;110&quot;;</span><br><span class="line">    IPhone(String num) &#123;</span><br><span class="line">        this.num = num;</span><br><span class="line">        System.out.println(&quot;number: &quot; + this.num);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    void call() &#123;</span><br><span class="line">        System.out.println(&quot;call number: &quot; + num);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        IPhone iPhone = new IPhone(&quot;119&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">before call</span><br><span class="line">call number: null</span><br><span class="line">after call</span><br><span class="line">number: 119</span><br></pre></td></tr></table></figure>
+<p>从结果可以看出，在执行基类的构造函数调用到多态方法时，会调用被覆盖的具体方法，但这个时候子类并没有完成初始化，导致获取到子类的成员是<code>null</code>。</p>
+<p>初始化的实际过程：</p>
+<ol>
+<li>在其他任何事物发生之前，将分配个对象的存储空间初始化成二进制的零。</li>
+<li>如前所述那样调用基类构造器</li>
+<li>按照声明的顺序调用成员的初始化方法</li>
+<li>调用导出类的构造器主体</li>
+</ol>
+<h2 id="向下转型"><a href="#向下转型" class="headerlink" title="向下转型"></a>向下转型</h2><p>由于向上转型会丢失具体的类型信息，所以我们就像，通过向下转型应该能获取到类型数据。然而，我们知道向上转型是安全的，因为基类不会具有大余导出类的接口。因此，我们通过基类接口发送的消息保证都可以接受。但是对于向下转型，就无法知道是哪个具体的对象了。</p>
+<p>因此需要进行强制转换，但是如果强转失败会抛出<code>ClassCaseException</code>的异常，因此在使用向下转型的时候需要进行类别的判断，进行容错处理。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>多态意味着不同的形式。我们持有从基类继承而来的相同接口，以及使用该接口的不同形式：不同版本的动态绑定方法。</p>
+<p>为了在自己的程序中有效地运用多态乃至面向对象的技术，必须扩展自己的编程视野，使其不仅包括个别类的成员和消息，而且要包括类与类之间的共同特性以及它们之间的关系。尽管这需要极大的努力，但是这样做是非创值得的，因为它可以带来很多成效：更快的程序开发过程、更好的代码组织、更好的扩展的程序以及更容易的代码维护等。</p>
 
       
     </div>
@@ -484,13 +398,13 @@ student.updateAll();
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/01/22/基于LitePal操作数据库的学生管理系统的简单实现/">基于LitePal操作数据库的学生管理系统的简单实现</a></p>
+        <p><span>本文标题:</span><a href="/1994/03/07/Thinking-in-Java-读书笔记-8-多态/">Thinking-in-Java 读书笔记-8-多态</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">下位子</a></p>
-        <p><span>发布时间:</span>2017-01-22, 20:46:25</p>
-        <p><span>最后更新:</span>2018-02-26, 17:19:09</p>
+        <p><span>发布时间:</span>1994-03-07, 15:13:33</p>
+        <p><span>最后更新:</span>2018-03-06, 19:10:28</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/01/22/基于LitePal操作数据库的学生管理系统的简单实现/" title="基于LitePal操作数据库的学生管理系统的简单实现">http://xiaweizi.cn/2017/01/22/基于LitePal操作数据库的学生管理系统的简单实现/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/2017/01/22/基于LitePal操作数据库的学生管理系统的简单实现/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/1994/03/07/Thinking-in-Java-读书笔记-8-多态/" title="Thinking-in-Java 读书笔记-8-多态">http://xiaweizi.cn/1994/03/07/Thinking-in-Java-读书笔记-8-多态/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/1994/03/07/Thinking-in-Java-读书笔记-8-多态/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -503,15 +417,15 @@ student.updateAll();
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/02/17/基于MaterialDesign设计风格的妹纸app的简单实现/">
-                    基于MaterialDesign设计风格的妹纸app的简单实现
+                <a href="/2016/12/29/一个菜鸟的图片三级缓存笔记/">
+                    一个菜鸟的图片三级缓存笔记
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/01/21/基于环信的仿QQ即时通讯的简单实现/">
-                    基于环信的仿QQ即时通讯的简单实现
+                <a href="/1994/03/06/Thinking-in-Java-读书笔记-7-复用类/">
+                    Thinking-in-Java 读书笔记-7-复用类
                 </a>
             </div>
         
@@ -553,7 +467,7 @@ student.updateAll();
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#今天看了郭神的《第二行代码》的第六章，才发现LitePal用起来是多么方便简介，就花了下午的时间做了一个小Demo，界面功能都简单，请见谅"><span class="toc-number">1.</span> <span class="toc-text">今天看了郭神的《第二行代码》的第六章，才发现LitePal用起来是多么方便简介，就花了下午的时间做了一个小Demo，界面功能都简单，请见谅</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#1-LitePal简介"><span class="toc-number"></span> <span class="toc-text">1. LitePal简介</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-LitePal的配置"><span class="toc-number"></span> <span class="toc-text">2. LitePal的配置</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-创建表"><span class="toc-number"></span> <span class="toc-text">3. 创建表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#a-需要一个JavaBean对象，也就是数据库的表"><span class="toc-number">1.</span> <span class="toc-text">a. 需要一个JavaBean对象，也就是数据库的表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#b-修改litepal-xml中的代码"><span class="toc-number">2.</span> <span class="toc-text">b. 修改litepal.xml中的代码</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-增、删、改、查"><span class="toc-number"></span> <span class="toc-text">4. 增、删、改、查</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-添加数据"><span class="toc-number"></span> <span class="toc-text">1. 添加数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-删除数据"><span class="toc-number"></span> <span class="toc-text">2. 删除数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-修改数据"><span class="toc-number"></span> <span class="toc-text">3. 修改数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-查询数据"><span class="toc-number"></span> <span class="toc-text">4. 查询数据</span></a>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#定位具体子类"><span class="toc-number">2.</span> <span class="toc-text">定位具体子类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#缺陷"><span class="toc-number">3.</span> <span class="toc-text">缺陷</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构造器的调用顺序"><span class="toc-number">4.</span> <span class="toc-text">构造器的调用顺序</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#构造器内部的多态方法的行为"><span class="toc-number">5.</span> <span class="toc-text">构造器内部的多态方法的行为</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#向下转型"><span class="toc-number">6.</span> <span class="toc-text">向下转型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">7.</span> <span class="toc-text">总结</span></a></li></ol>
         
     </div>
     <style>
@@ -589,7 +503,7 @@ student.updateAll();
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"基于LitePal操作数据库的学生管理系统的简单实现　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Thinking-in-Java 读书笔记-8-多态　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -630,7 +544,7 @@ student.updateAll();
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/02/17/基于MaterialDesign设计风格的妹纸app的简单实现/" title="上一篇: 基于MaterialDesign设计风格的妹纸app的简单实现">
+            <a href="/2016/12/29/一个菜鸟的图片三级缓存笔记/" title="上一篇: 一个菜鸟的图片三级缓存笔记">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -638,7 +552,7 @@ student.updateAll();
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/01/21/基于环信的仿QQ即时通讯的简单实现/" title="下一篇: 基于环信的仿QQ即时通讯的简单实现">
+            <a href="/1994/03/06/Thinking-in-Java-读书笔记-7-复用类/" title="下一篇: Thinking-in-Java 读书笔记-7-复用类">
                 <i class="fa fa-angle-right"></i>
             </a>
         
