@@ -326,9 +326,10 @@
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
         <span class="post-count">1分</span>
-        本文总阅读量<span id="busuanzi_value_page_pv"></span>次
       </span>
     </span>
+
+    <span id="busuanzi_value_page_pv"></span> Hits
 </div>
         
       </header>
@@ -378,34 +379,44 @@
 
   
   
-    
-    <div style="padding: 0; margin: 20px auto; width: 90%; text-align: center;">
-      <br>
-      <div>赏我 e(=2.72) 元咖啡钱吧，您的支持将鼓励我继续创作！</div>
-      <br>
-      <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-        <div class="btn btn-pay">打赏支持</div>
-      </button>
-      <br>
-      <br>
-      <div id="QR" style="display: none;">
-        
-          <div id="wechat" style="display: inline-block;">
-            <img id="wechat_qr" src="/img/wechat-reward-qr.png" alt="下位子 WeChat Pay"/>
-            <p>微信打赏</p>
-          </div>
-        
-        
-          <div id="alipay" style="display: inline-block">
-            <img id="alipay_qr" src="/img/alipay-reward-qr.png" alt="下位子 Alipay"/>
-            <p>支付宝打赏</p>
-          </div>
-        
-        <br>
-        <br>
-      </div>
-    </div>
+    #rewardButton {
+    background-color: #ea6f5a;
+}
 
+.btn-pay {
+    margin-bottom: 20px;
+    padding: 8px 25px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #ea6f5a;
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#QR img{
+    height: 200px;
+    height: 200px;
+    margin: 20px;
+}
   
 </article>
 
@@ -480,19 +491,13 @@
         
             <div class="visit">
                 
-                    <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
-                        </span>
-                    </span>
+                    Total <span id="busuanzi_value_site_pv"></span> views
                 
                 
                     <span>| </span>
                 
                 
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    </span>
+                    您是xxx的第<span id="busuanzi_value_site_uv"></span>个小伙伴
                 
                 <span>| </span>
                 <span class="post-count">  已经写了 53.3k 字啦</span>
