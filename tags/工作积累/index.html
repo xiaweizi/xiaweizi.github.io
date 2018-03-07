@@ -313,13 +313,6 @@
     </h1>
   
 
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2018/01/19/自定义银行种类选择器/" class="pageViews">0</span>次
-  </a>
-
         <div class="article-info info-on-archive">
           
     <div class="article-category tagcloud">
@@ -367,13 +360,6 @@
     </h1>
   
 
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2017/12/26/Android-自定义跑马灯/" class="pageViews">0</span>次
-  </a>
-
         <div class="article-info info-on-archive">
           
     <div class="article-category tagcloud">
@@ -410,13 +396,6 @@
       <a class="archive-article-title" href="/2017/12/18/Android-分享会：Material-Design-在-Android-中的应用/">Android-分享会：Material-Design-在-Android-中的应用</a>
     </h1>
   
-
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2017/12/18/Android-分享会：Material-Design-在-Android-中的应用/" class="pageViews">0</span>次
-  </a>
 
         <div class="article-info info-on-archive">
           
@@ -455,13 +434,6 @@
     </h1>
   
 
-
-
-
-  <a href="javascript:;" class="archive-article-date">
-      <i class="icon-smile icon"></i> 阅读数:<span id="/2017/08/22/使用-Glide-实现圆角效果/" class="pageViews">0</span>次
-  </a>
-
         <div class="article-info info-on-archive">
           
     <div class="article-category tagcloud">
@@ -499,7 +471,7 @@
             <div class="visit">
                 
                     <span id="busuanzi_container_site_uv">
-                      您是第<span id="busuanzi_value_site_uv"></span>位小伙伴
+                      您是第 <span id="busuanzi_value_site_uv"></span> 位小伙伴
                     </span>
                 
                 
@@ -507,7 +479,7 @@
                 
                 
                     <span id="busuanzi_container_site_pv">
-                        本站总访问量<span id="busuanzi_value_site_pv"></span>次
+                        本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
                     </span>
                 
                 <span>| </span>
@@ -601,67 +573,6 @@ ga('send', 'pageview');
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
-
-
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-
-	<script src="//cdn1.lncld.net/static/js/2.5.0/av-min.js"></script>
-<script type="text/javascript"> 
-if(true){
-    var leancloud_app_id  = 'OFbaAtzd5eqn3cQCRzo2ftkH-gzGzoHsz';
-    var leancloud_app_key = 'n07QDkrVraKch2msUk78InB1';
-
-    AV.init({
-        appId: leancloud_app_id,
-        appKey: leancloud_app_key
-    });
-
-    var pageViewsLength = $(".pageViews").length;
-
-    var isIndex = $(".pageViews").length > 1 ?true:false;
-
-    function showTime() {
-        var Counter = AV.Object.extend("Counter");
-        if(isIndex){
-            $(".pageViews").each(function(){
-                showPageViewsNum($(this),Counter);
-                addPageViewsNum($(this));
-            });
-        }else{
-            showPageViewsNum($(".pageViews"),Counter);
-            addPageViewsNum($(".pageViews"));
-        }
-    }
-
-    //显示阅读量
-    function showPageViewsNum(ele,Counter){
-        var query = new AV.Query("Counter");
-        var url = ele.attr('id').trim();
-            query.equalTo("words", url);
-            query.count().then(function (number) {
-                $(document.getElementById(url)).text(number?  number : '0');
-            }, function (error) {
-                 $(document.getElementById(url)).text('0');
-            });
-    }
-
-    //追加阅读量
-    function addPageViewsNum(ele){
-        var url = ele.attr('id').trim();
-        var Counter = AV.Object.extend("Counter");
-        var query = new Counter;
-        query.save({
-            words: url
-        }).then(function (object) {});
-    }
-
-    if(pageViewsLength){ //此处判断等于 1 在执行 可去除循环
-        showTime();
-    }
-}
-</script> 
-
-
 
 	<script type="text/javascript" src="/resources/love.js"></script>
 	<script type="text/javascript" src="/resources/float.js"></script>
