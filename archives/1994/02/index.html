@@ -314,8 +314,7 @@
   
 
 
-#上面是 yilia 主题的标题 下面是我自己添加的阅读量 html 代码
-# span 给的 id 是文章的 url 作为唯一的 key 值
+
 
   <a href="javascript:;" class="archive-article-date">
       <i class="icon-smile icon"></i> 阅读数:<span id="/1994/02/28/Thinking-in-Java-读书笔记-4-控制执行流程/" class="pageViews">0</span>次
@@ -359,8 +358,7 @@
   
 
 
-#上面是 yilia 主题的标题 下面是我自己添加的阅读量 html 代码
-# span 给的 id 是文章的 url 作为唯一的 key 值
+
 
   <a href="javascript:;" class="archive-article-date">
       <i class="icon-smile icon"></i> 阅读数:<span id="/1994/02/26/Thinking-in-Java-读书笔记-3-操作符/" class="pageViews">0</span>次
@@ -404,8 +402,7 @@
   
 
 
-#上面是 yilia 主题的标题 下面是我自己添加的阅读量 html 代码
-# span 给的 id 是文章的 url 作为唯一的 key 值
+
 
   <a href="javascript:;" class="archive-article-date">
       <i class="icon-smile icon"></i> 阅读数:<span id="/1994/02/25/Thinking-in-Java-读书笔记-2-一切都是对象/" class="pageViews">0</span>次
@@ -449,8 +446,7 @@
   
 
 
-#上面是 yilia 主题的标题 下面是我自己添加的阅读量 html 代码
-# span 给的 id 是文章的 url 作为唯一的 key 值
+
 
   <a href="javascript:;" class="archive-article-date">
       <i class="icon-smile icon"></i> 阅读数:<span id="/1994/02/24/Thinking-in-Java-读书笔记-1-对象导论/" class="pageViews">0</span>次
@@ -515,71 +511,6 @@
     <script src="/js/GithubRepoWidget.js"></script>
 
 <script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
-
-#上面是 yilia 主题配置自带 下面是我自己添加的js代码
-<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-
-
-//这是自定一个js文件,放在 layout\_parial\post 目录 leancloud.ejs中
-<script src="//cdn1.lncld.net/static/js/2.5.0/av-min.js"></script>
-<script type="text/javascript"> 
-if(true){
-    var leancloud_app_id  = 'OFbaAtzd5eqn3cQCRzo2ftkH-gzGzoHsz';
-    var leancloud_app_key = 'n07QDkrVraKch2msUk78InB1';
-
-    AV.init({
-        appId: leancloud_app_id,
-        appKey: leancloud_app_key
-    });
-
-    var pageViewsLength = $(".pageViews").length;
-
-    var isIndex = $(".pageViews").length > 1 ?true:false;
-
-    function showTime() {
-        var Counter = AV.Object.extend("Counter");
-        if(isIndex){
-            $(".pageViews").each(function(){
-                showPageViewsNum($(this),Counter);
-                addPageViewsNum($(this));
-            });
-        }else{
-            showPageViewsNum($(".pageViews"),Counter);
-            addPageViewsNum($(".pageViews"));
-        }
-    }
-
-    //显示阅读量
-    function showPageViewsNum(ele,Counter){
-        var query = new AV.Query("Counter");
-        var url = ele.attr('id').trim();
-            query.equalTo("words", url);
-            query.count().then(function (number) {
-                $(document.getElementById(url)).text(number?  number : '0');
-            }, function (error) {
-                 $(document.getElementById(url)).text('0');
-            });
-    }
-
-    //追加阅读量
-    function addPageViewsNum(ele){
-        var url = ele.attr('id').trim();
-        var Counter = AV.Object.extend("Counter");
-        var query = new Counter;
-        query.save({
-            words: url
-        }).then(function (object) {});
-    }
-
-    if(pageViewsLength){ //此处判断等于 1 在执行 可去除循环
-        showTime();
-    }
-}
-</script> 
-
-
-#下面是 yilia 主题配置自带
-
 
     <script>
         $(document).ready(function() {
@@ -660,6 +591,67 @@ ga('send', 'pageview');
 
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
 </script>
+
+
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+	<script src="//cdn1.lncld.net/static/js/2.5.0/av-min.js"></script>
+<script type="text/javascript"> 
+if(true){
+    var leancloud_app_id  = 'OFbaAtzd5eqn3cQCRzo2ftkH-gzGzoHsz';
+    var leancloud_app_key = 'n07QDkrVraKch2msUk78InB1';
+
+    AV.init({
+        appId: leancloud_app_id,
+        appKey: leancloud_app_key
+    });
+
+    var pageViewsLength = $(".pageViews").length;
+
+    var isIndex = $(".pageViews").length > 1 ?true:false;
+
+    function showTime() {
+        var Counter = AV.Object.extend("Counter");
+        if(isIndex){
+            $(".pageViews").each(function(){
+                showPageViewsNum($(this),Counter);
+                addPageViewsNum($(this));
+            });
+        }else{
+            showPageViewsNum($(".pageViews"),Counter);
+            addPageViewsNum($(".pageViews"));
+        }
+    }
+
+    //显示阅读量
+    function showPageViewsNum(ele,Counter){
+        var query = new AV.Query("Counter");
+        var url = ele.attr('id').trim();
+            query.equalTo("words", url);
+            query.count().then(function (number) {
+                $(document.getElementById(url)).text(number?  number : '0');
+            }, function (error) {
+                 $(document.getElementById(url)).text('0');
+            });
+    }
+
+    //追加阅读量
+    function addPageViewsNum(ele){
+        var url = ele.attr('id').trim();
+        var Counter = AV.Object.extend("Counter");
+        var query = new Counter;
+        query.save({
+            words: url
+        }).then(function (object) {});
+    }
+
+    if(pageViewsLength){ //此处判断等于 1 在执行 可去除循环
+        showTime();
+    }
+}
+</script> 
+
+
 
 	<script type="text/javascript" src="/resources/love.js"></script>
 	<script type="text/javascript" src="/resources/float.js"></script>
