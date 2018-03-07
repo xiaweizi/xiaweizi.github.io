@@ -375,6 +375,14 @@
     </h1>
   
 
+
+#上面是 yilia 主题的标题 下面是我自己添加的阅读量 html 代码
+# span 给的 id 是文章的 url 作为唯一的 key 值
+
+  <a href="javascript:;" class="archive-article-date">
+      <i class="icon-smile icon"></i> 阅读数:<span id="/photos/index.html" class="pageViews">0</span>次
+  </a>
+
         
       </header>
       
@@ -443,44 +451,34 @@
 
   
   
-    #rewardButton {
-    background-color: #ea6f5a;
-}
+    
+    <div style="padding: 0; margin: 20px auto; width: 90%; text-align: center;">
+      <br>
+      <div>赏我 e(=2.72) 元咖啡钱吧，您的支持将鼓励我继续创作！</div>
+      <br>
+      <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+        <div class="btn btn-pay">打赏支持</div>
+      </button>
+      <br>
+      <br>
+      <div id="QR" style="display: none;">
+        
+          <div id="wechat" style="display: inline-block;">
+            <img id="wechat_qr" src="/img/wechat-reward-qr.png" alt="下位子 WeChat Pay"/>
+            <p>微信打赏</p>
+          </div>
+        
+        
+          <div id="alipay" style="display: inline-block">
+            <img id="alipay_qr" src="/img/alipay-reward-qr.png" alt="下位子 Alipay"/>
+            <p>支付宝打赏</p>
+          </div>
+        
+        <br>
+        <br>
+      </div>
+    </div>
 
-.btn-pay {
-    margin-bottom: 20px;
-    padding: 8px 25px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #ea6f5a;
-}
-
-.btn {
-    display: inline-block;
-    margin-bottom: 0;
-    font-weight: 400;
-    text-align: center;
-    vertical-align: middle;
-    touch-action: manipulation;
-    cursor: pointer;
-    background-image: none;
-    border: 1px solid transparent;
-    white-space: nowrap;
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857;
-    border-radius: 4px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-#QR img{
-    height: 200px;
-    height: 200px;
-    margin: 20px;
-}
   
 </article>
 
@@ -578,6 +576,71 @@
     <script src="/js/GithubRepoWidget.js"></script>
 
 <script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+#上面是 yilia 主题配置自带 下面是我自己添加的js代码
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+
+
+//这是自定一个js文件,放在 layout\_parial\post 目录 leancloud.ejs中
+<script src="//cdn1.lncld.net/static/js/2.5.0/av-min.js"></script>
+<script type="text/javascript"> 
+if(true){
+    var leancloud_app_id  = 'OFbaAtzd5eqn3cQCRzo2ftkH-gzGzoHsz';
+    var leancloud_app_key = 'n07QDkrVraKch2msUk78InB1';
+
+    AV.init({
+        appId: leancloud_app_id,
+        appKey: leancloud_app_key
+    });
+
+    var pageViewsLength = $(".pageViews").length;
+
+    var isIndex = $(".pageViews").length > 1 ?true:false;
+
+    function showTime() {
+        var Counter = AV.Object.extend("Counter");
+        if(isIndex){
+            $(".pageViews").each(function(){
+                showPageViewsNum($(this),Counter);
+                addPageViewsNum($(this));
+            });
+        }else{
+            showPageViewsNum($(".pageViews"),Counter);
+            addPageViewsNum($(".pageViews"));
+        }
+    }
+
+    //显示阅读量
+    function showPageViewsNum(ele,Counter){
+        var query = new AV.Query("Counter");
+        var url = ele.attr('id').trim();
+            query.equalTo("words", url);
+            query.count().then(function (number) {
+                $(document.getElementById(url)).text(number?  number : '0');
+            }, function (error) {
+                 $(document.getElementById(url)).text('0');
+            });
+    }
+
+    //追加阅读量
+    function addPageViewsNum(ele){
+        var url = ele.attr('id').trim();
+        var Counter = AV.Object.extend("Counter");
+        var query = new Counter;
+        query.save({
+            words: url
+        }).then(function (object) {});
+    }
+
+    if(pageViewsLength){ //此处判断等于 1 在执行 可去除循环
+        showTime();
+    }
+}
+</script> 
+
+
+#下面是 yilia 主题配置自带
+
 
     <script>
         $(document).ready(function() {
