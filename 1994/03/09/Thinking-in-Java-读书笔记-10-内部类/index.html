@@ -15,26 +15,18 @@
 
 
 
-<meta name="description" content="前言12月18日，Google 官方Quick Boot博客的发布，给我们带来了最新的Android模拟器，其中最突出的特点技术 快速启动。声称可以在 6 秒之内便可启动模拟器，在此之下，模拟器通过保存关闭之前的快照，实现数秒内便可恢复到之前的工作状态。">
-<meta name="keywords" content="Google 官方">
+<meta name="description" content="可以将一个类的定义放在另一个类的定义内部，这就是内部类。  前言内部类非常的有用，因为它允许你把一些逻辑相关的类组织在一块，并控制位于内部的类的可视性，内部类和组合是完全不同的概念，这点很重要。 123456789101112131415161718192021222324class Outer &amp;#123;    int a =2;    int f () &amp;#123;        Syst">
+<meta name="keywords" content="Thinking In Java,读书笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！">
-<meta property="og:url" content="http://xiaweizi.cn/2017/12/27/Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！/index.html">
+<meta property="og:title" content="Thinking-in-Java 读书笔记-10-内部类">
+<meta property="og:url" content="http://xiaweizi.cn/1994/03/09/Thinking-in-Java-读书笔记-10-内部类/index.html">
 <meta property="og:site_name" content="xiaweizi&#39;blog">
-<meta property="og:description" content="前言12月18日，Google 官方Quick Boot博客的发布，给我们带来了最新的Android模拟器，其中最突出的特点技术 快速启动。声称可以在 6 秒之内便可启动模拟器，在此之下，模拟器通过保存关闭之前的快照，实现数秒内便可恢复到之前的工作状态。">
+<meta property="og:description" content="可以将一个类的定义放在另一个类的定义内部，这就是内部类。  前言内部类非常的有用，因为它允许你把一些逻辑相关的类组织在一块，并控制位于内部的类的可视性，内部类和组合是完全不同的概念，这点很重要。 123456789101112131415161718192021222324class Outer &amp;#123;    int a =2;    int f () &amp;#123;        Syst">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-e0b50be455409f79.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-ceba0742ebe1f24d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-a9dcb3f9f903702f.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-3ea1a759f4da9615.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-8be5e21e8528ac6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-7e52c52cfbdf736e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-390f451c2275ec5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-02-26T09:04:30.886Z">
+<meta property="og:updated_time" content="2018-03-08T11:46:34.109Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！">
-<meta name="twitter:description" content="前言12月18日，Google 官方Quick Boot博客的发布，给我们带来了最新的Android模拟器，其中最突出的特点技术 快速启动。声称可以在 6 秒之内便可启动模拟器，在此之下，模拟器通过保存关闭之前的快照，实现数秒内便可恢复到之前的工作状态。">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4043475-e0b50be455409f79.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="Thinking-in-Java 读书笔记-10-内部类">
+<meta name="twitter:description" content="可以将一个类的定义放在另一个类的定义内部，这就是内部类。  前言内部类非常的有用，因为它允许你把一些逻辑相关的类组织在一块，并控制位于内部的类的可视性，内部类和组合是完全不同的概念，这点很重要。 123456789101112131415161718192021222324class Outer &amp;#123;    int a =2;    int f () &amp;#123;        Syst">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -66,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！ | xiaweizi&#39;blog</title>
+<title>Thinking-in-Java 读书笔记-10-内部类 | xiaweizi&#39;blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -298,11 +290,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Thinking-in-Java-读书笔记-10-内部类" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/12/27/Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！/" class="article-date">
-      <time datetime="2017-12-27T12:46:25.000Z" itemprop="datePublished">2017-12-27</time>
+      <a href="/1994/03/09/Thinking-in-Java-读书笔记-10-内部类/" class="article-date">
+      <time datetime="1994-03-09T07:13:33.000Z" itemprop="datePublished">1994-03-09</time>
 </a>
 
 
@@ -317,7 +309,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！
+      Thinking-in-Java 读书笔记-10-内部类
     </h1>
   
 
@@ -327,7 +319,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1,456 字</span>
+        <span class="post-count">1,460 字</span>
       </span>
     </span>
 
@@ -336,7 +328,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5 分</span>
+        <span class="post-count">6 分</span>
       </span>
     </span>
 
@@ -356,13 +348,13 @@
         
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
+    <a class="article-category-link" href="/categories/Thinking-In-Java-读书笔记/">Thinking In Java 读书笔记</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Google-官方/">Google 官方</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -372,50 +364,32 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>12月18日，Google 官方<a href="https://android-developers.googleblog.com/2017/12/quick-boot-top-features-in-android.html" target="_blank" rel="noopener">Quick Boot</a>博客的发布，给我们带来了最新的<code>Android</code>模拟器，其中最突出的特点技术 <strong>快速启动</strong>。声称可以在 <strong>6</strong> 秒之内便可启动模拟器，在此之下，模拟器通过保存关闭之前的快照，实现数秒内便可恢复到之前的工作状态。</p>
-<a id="more"></a>
-<p>废话不多说，来看一下效果：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4043475-e0b50be455409f79.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Quick Boot.gif"></p>
-<p>正好之前写了个小需求 <a href="https://www.jianshu.com/p/fdf460359857" target="_blank" rel="noopener">自定义跑马灯</a>，效果就很明显。</p>
-<p>在关闭模拟器时，绿色的跑马灯停止在「跑」字位置，经过短暂的保存状态过程，再次启动模拟器，你会发现不到 <strong>1s</strong> 中模拟器变运行起来，并且跑马灯接着「跑」字继续滚动。</p>
-<h2 id="主要特点"><a href="#主要特点" class="headerlink" title="主要特点"></a>主要特点</h2><p>除了 <strong>Quick Boot</strong> 强大的功能之外，<a href="https://android-developers.googleblog.com/2017/12/quick-boot-top-features-in-android.html" target="_blank" rel="noopener">Quick Boot</a> 这篇博客还强调一些最近发布的功能。其实 <code>Google</code> 从两年前 <a href="https://android-developers.googleblog.com/2015/12/android-studio-20-preview-android.html" target="_blank" rel="noopener">Android Studio 2.0 Preview: Android Emulator</a> 模拟器发布以来，都一直致力于提过速度和稳定性，并增加一系列丰富的功能用来加速开发者的应用开发和测试。跟随者此次的更新，绝对值得将 <code>Android</code> 模拟器升级到最新的版本！</p>
-<h3 id="快速启动"><a href="#快速启动" class="headerlink" title="快速启动"></a>快速启动</h3><p>此次，作为一项稳定版本的发布，<strong>快速启动</strong> 是你的模拟器在 <strong>6s</strong> 之内便可恢复之前的状态。首次启动 <code>Android</code> 模拟器时，还是得必须像之前启动设备那样的冷启动，但是后续的速度便会加快，系统会恢复到关闭之前的状态，类似于唤醒设备。<code>Google</code> 通过彻底对模拟器系统的重构完成此次功能，并处理了虚拟传感器和 <code>GPU</code> 加速。从 <code>Android</code> 模拟器 <code>v 27.0.2</code> 开始，默认情况下启用 <strong>Quick Boot</strong>，因此是不需要额外的配置的。</p>
-<h3 id="兼容性"><a href="#兼容性" class="headerlink" title="兼容性"></a>兼容性</h3><p>从 <code>v4.4</code> 到最新的每个 <code>SDK</code> 版本，<code>Google</code> 都会确保模拟器能够满足开发人员的日常需求。不过为了提高模拟器系统镜像的品种和稳定性，现针对 <code>Android Nougat</code> (API24) 及其以上做了限制要求。</p>
-<h3 id="Google-Play-支持"><a href="#Google-Play-支持" class="headerlink" title="Google Play 支持"></a>Google Play 支持</h3><p>在国内对 <code>Google Play</code> 的需求不是很多，但是在国外，很多开发者还是会用到 <code>Google Play</code> 服务，在之前的模拟器中，要想保持最新的服务还是很困难的。为了解决这个问题，从 <code>API24</code> 开始，<code>Google</code> 提过了包含其服务的系统镜像版本，可以正常的使用<code>Google</code> 服务，就像是在真机上一样。</p>
-<h3 id="性能改进"><a href="#性能改进" class="headerlink" title="性能改进"></a>性能改进</h3><p>使用模拟器 <strong>快速、高效</strong> 的开发一直是<code>Google</code>团队持续目标，在过去的时间里，不断研究模拟器开发的性能影响，特别是内存使用情况。使用最新版本的 <code>Android</code> 模拟器，可以根据需要分配内存，而不是根据在<code>AVD</code>中设置的固定值来分配。</p>
-<p>此外，在过去的几个版本中，还改进了<code>CPU</code>和<code>I/O</code>的性能，增强了<code>GPU</code>的性能，包括<code>OpenGL ES 3.0</code> 的支持。从一种图片可以看出改进的效果：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4043475-ceba0742ebe1f24d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="adb Push 比较.png"></p>
-<p>对于<code>GPU</code>性能方面，<code>Google</code>创建了<a href="https://github.com/google/gpu-emulation-stress-test" target="_blank" rel="noopener">GPU仿真模拟压力测试</a>程序来根据时间进行衡量。我们发现最新的模拟器相比较之前提高了不少的帧率，同时它也是模拟器中极少部分能根据<code>Android</code>规范准确的呈现<code>OpenGL ES 3.0</code>.</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4043475-a9dcb3f9f903702f.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="GPU.gif"></p>
-<p><strong>GPU 仿真压力测试：</strong></p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4043475-3ea1a759f4da9615.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="stressTest.png"></p>
-<h2 id="更多功能"><a href="#更多功能" class="headerlink" title="更多功能"></a>更多功能</h2><p>还有一些去年添加的功能，防止不知道先列出来：</p>
-<ul>
-<li><strong>WI-FI 支持</strong>  从 <code>API24</code>开始，可以创建虚拟的蜂窝网络或者是<code>WI-FI</code>。</li>
-<li><strong>Google Cast 支持</strong>  当你使用<code>Google Play</code>系统镜像时，在同一个<code>WI-FI</code>下可以将屏幕投射到<code>Chromcast</code> 设备上。</li>
-<li><strong>拖拽 APK和文件</strong>  通过拖动<code>APK</code>文件到模拟器上，便可实现快速安装；也可以直接拖拽文件到模拟器上，并在模拟器的<code>DownLoad</code> 文件夹中找到它。</li>
-<li><strong>本地复制和粘贴</strong>  可以在本地和模拟器直接复制粘贴文本</li>
-<li><strong>两个手指的动作</strong>  在使用谷歌地图时，按住<code>ctrl</code>(Windows、Linux)或者<code>⌘</code>(Mac)，并用鼠标即可实现缩放或放大效果。</li>
-<li><strong>模拟GPS位置</strong></li>
-<li><strong>虚拟传感器</strong> 在扩展控制面板中有一个专门的界面，支持<code>Android</code>模拟器中的传感器，包括加速，旋转等</li>
-<li><strong>WebCam 的支持</strong> 可以使用网络摄像头或者笔记本电脑内置摄像头作为<code>AVD</code>中的虚拟相机，在管理器的 <strong>高级设置</strong> 页面中确认相机设置。</li>
-<li><strong>本地键盘</strong> 可以使用本地外设键盘进行内容输入</li>
-<li><strong>虚拟短信和电话呼叫</strong></li>
-<li><strong>屏幕缩放</strong></li>
-<li><strong>窗口大小缩放</strong></li>
-<li><strong>网络代理支持</strong>  到 <em>代理</em> 选项下的设置界面，为模拟器添加自定义<code>HTTP</code>代理。</li>
-<li><strong>错误报告</strong>  可以使用扩展面板中的错误报告快速生成应用程序的错误报告，和团队分享或者向<code>Google</code>反馈。</li>
-</ul>
-<p><img src="http://upload-images.jianshu.io/upload_images/4043475-8be5e21e8528ac6a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="setting.png"></p>
-<h2 id="获取"><a href="#获取" class="headerlink" title="获取"></a>获取</h2><p><img src="http://upload-images.jianshu.io/upload_images/4043475-7e52c52cfbdf736e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="EmulatorGet.png"></p>
-<p>所有的功能和改进都可以通过将图中<code>Android Emulator</code>更新到 v27.0.2+ 获取。 </p>
-<h2 id="小bug"><a href="#小bug" class="headerlink" title="小bug"></a>小bug</h2><p>不知道你们有没有遇到，我在使用的过程中，模拟器黑屏的时候，会出现怎么都打不开的现象，无论重启还是按模拟器的电源键都没有效果。然后按照网上的方法，尝试着改了一下<code>RAM</code>，任意改成与之前不同的值就可以了。应该是因为修改了系统属性导致重新加载才能恢复正常吧。</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4043475-390f451c2275ec5b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="peizhi.png"></p>
-<hr>
-<blockquote>
-<p>以上所有的内容和部分图片全部来自官方博客：<a href="https://android-developers.googleblog.com/2017/12/quick-boot-top-features-in-android.html" target="_blank" rel="noopener">Quick Boot</a></p>
+        <blockquote>
+<p>可以将一个类的定义放在另一个类的定义内部，这就是内部类。</p>
 </blockquote>
-<p><strong>感谢！！</strong></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>内部类非常的有用，因为它允许你把一些逻辑相关的类组织在一块，并控制位于内部的类的可视性，内部类和组合是完全不同的概念，这点很重要。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">class Outer &#123;</span><br><span class="line">    int a =2;</span><br><span class="line"></span><br><span class="line">    int f () &#123;</span><br><span class="line">        System.out.println(&quot;Outer.f&quot;);</span><br><span class="line">        return a;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">     class Inner &#123;</span><br><span class="line">        Outer outer() &#123;</span><br><span class="line">            System.out.println(&quot;outer a = &quot; + a);</span><br><span class="line">            return Outer.this;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">     private Inner inner() &#123;</span><br><span class="line">        return new Inner();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Outer outer = new Outer();</span><br><span class="line">        outer.inner().outer().f();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>创建起来也是很方便，非<code>static</code>内部类是可以持有外部类的引用，也就是使用外部类的成员变量和成员方法。</p>
+<p>可以使用<code>Outer.this</code>拿到外部类的对象</p>
+<h2 id="方法内部嵌套内部类"><a href="#方法内部嵌套内部类" class="headerlink" title="方法内部嵌套内部类"></a>方法内部嵌套内部类</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">class People &#123;</span><br><span class="line"></span><br><span class="line">    interface IWork &#123;</span><br><span class="line">        void work();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    IWork teach(final String content) &#123;</span><br><span class="line"></span><br><span class="line">        class Student implements IWork&#123;</span><br><span class="line"></span><br><span class="line">            @Override</span><br><span class="line">            public void work() &#123;</span><br><span class="line">                System.out.println(&quot;content:&quot; + content);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return new Student();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        People people = new People();</span><br><span class="line">        people.teach(&quot;English&quot;).work();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>方法 内部也是可以嵌套内部类的，还可以使用方法的参数，不过参数要加上<code>final</code>修饰，表示不可更改对象值。</p>
+<h2 id="匿名内部类"><a href="#匿名内部类" class="headerlink" title="匿名内部类"></a>匿名内部类</h2><p>顾名思义，就是没有名字的内部类，这种类型的内部类主要应用在不需要创建具体的实现类来实现接口，直接通过<code>new</code>的方式，在内部类实现。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">abstract class Base &#123;</span><br><span class="line">    Base(int i) &#123;</span><br><span class="line">        System.out.println(&quot;construct: &quot; + i);</span><br><span class="line">    &#125;</span><br><span class="line">    abstract void f();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class AnonyConstruct &#123;</span><br><span class="line">    public static Base getBase() &#123;</span><br><span class="line">        return new Base(2) &#123;</span><br><span class="line">            &#123;</span><br><span class="line">                System.out.println(&quot;dddd&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">            @Override</span><br><span class="line">            void f() &#123;</span><br><span class="line">                System.out.println(&quot;Anony f&quot;);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        Base base = getBase();</span><br><span class="line">        base.f();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>Base</code>作为借口没有具体的实现内容，但是可以通过匿名内部类的方式实现具体的接口，又利用向上转型这一特性完成对接口的引用。这种匿名内部类可以有构造函数的，不过只能是这种无参的构造函数，</p>
+<h2 id="在看工厂模式"><a href="#在看工厂模式" class="headerlink" title="在看工厂模式"></a>在看工厂模式</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">interface IService &#123;</span><br><span class="line">    void method1();</span><br><span class="line">    void method2();</span><br><span class="line">&#125;</span><br><span class="line">interface IFactory &#123;</span><br><span class="line">    IService getService();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Service1 implements IService &#123;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void method1() &#123;</span><br><span class="line">        System.out.println(&quot;Service1 method 1&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void method2() &#123;</span><br><span class="line">        System.out.println(&quot;Service1 method 2&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static IFactory factory = new IFactory() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public IService getService() &#123;</span><br><span class="line">            return new Service1();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Service2 implements IService &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void method1() &#123;</span><br><span class="line">        System.out.println(&quot;Service2 method 1&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void method2() &#123;</span><br><span class="line">        System.out.println(&quot;Service2 method 2&quot;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static IFactory factory = new IFactory() &#123;</span><br><span class="line">        @Override</span><br><span class="line">        public IService getService() &#123;</span><br><span class="line">            return new Service2();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">class Main &#123;</span><br><span class="line"></span><br><span class="line">    static void factoryConsumer(IFactory factory) &#123;</span><br><span class="line">        IService service = factory.getService();</span><br><span class="line">        service.method1();</span><br><span class="line">        service.method2();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        factoryConsumer(Service1.factory);</span><br><span class="line">        factoryConsumer(Service2.factory);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>直接上代码，第一步创建产品和工厂的实现接口，这步是不变的，变化的是产品的具体实现中，构造了匿名内部类完成工厂具体的实现。通过这种方式也可以完成工厂模式。</p>
+<h2 id="嵌套类"><a href="#嵌套类" class="headerlink" title="嵌套类"></a>嵌套类</h2><p>如果不需要内部类对象与其外围类对象之间有关系，那么可以将内部了声明成<code>static</code>，这中通常被称为「嵌套类」，想要理解<code>static</code>应用内部类的含义，就必须记住，普通的内部类对象隐士的保存了一个引用，指向创建它的外围类对象，然而，当内部类是<code>static</code>时，就不是这样的了，嵌套类意味着：</p>
+<ol>
+<li>要创建嵌套类的对象，并不需要其外围类的对象</li>
+<li>不要从嵌套类的对象中访问非静态的外围类对象</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">class StaticOuter &#123;</span><br><span class="line">    int a = 1;</span><br><span class="line"></span><br><span class="line">    StaticInner getInner() &#123;</span><br><span class="line">        return new StaticInner();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    static class StaticInner &#123;</span><br><span class="line">        int b = 12;</span><br><span class="line">        void f() &#123;</span><br><span class="line">            System.out.println(&quot;static inner f&quot;);</span><br><span class="line">            System.out.println(&quot;b &quot; + b);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        new StaticOuter().getInner().f();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在<code>Android</code>中的应用就是使用<code>Handler</code>的时候，如果直接<code>new Handler</code>的方式创建<code>handler</code>，是很容易造成空指针异常，那这个时候就需要创建内部类，但是又容易造成内存泄漏，因此就采用<code>static</code>的方式，这样没有拿到外部类的引用，就避免了内存泄漏的发生。</p>
+<h2 id="为什么需要内部类"><a href="#为什么需要内部类" class="headerlink" title="为什么需要内部类"></a>为什么需要内部类</h2><p>致辞，我们已经看到许多描述内部类的语法和语义，但是这并不能回答 为什么需要内部类。</p>
+<p>一般来说，内部类继承自某个类和实现某个接口，内部类的代码操作创建它的外围类的对象，所以可以认为内部类提供了某种进入其外围类的窗口。</p>
+<p><strong>每个内部类都能独立地继承自一个实现，所以无论外围类是否已经继承了某个实现，对于内部类都没有影响。</strong></p>
+<p>如果没有内部类的提供，可以继承多个具体的抽象能力，一些设计与编程问题就很难解决。从这个角度，内部类使得多重继承的解决方案变得完整。接口解决了部分问题，而内部类有效的实现了多重继承。也就是说，内部类允许继承多个非接口类型。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>为什么我们仍然使用局部内部类而不是匿名内部类，唯一的理由就是，我们需要一个已命名的构造器，或者需要重载构造器，而匿名内部类只能用于实例化。，所以使用局部内部类而不是用匿名内部类的另一个理由就是，需要不止一个该内部类的对象。</p>
 
       
     </div>
@@ -424,13 +398,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/12/27/Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！/">Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！</a></p>
+        <p><span>本文标题:</span><a href="/1994/03/09/Thinking-in-Java-读书笔记-10-内部类/">Thinking-in-Java 读书笔记-10-内部类</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">下位子</a></p>
-        <p><span>发布时间:</span>2017-12-27, 20:46:25</p>
-        <p><span>最后更新:</span>2018-02-26, 17:04:30</p>
+        <p><span>发布时间:</span>1994-03-09, 15:13:33</p>
+        <p><span>最后更新:</span>2018-03-08, 19:46:34</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/12/27/Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！/" title="Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！">http://xiaweizi.cn/2017/12/27/Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/2017/12/27/Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/1994/03/09/Thinking-in-Java-读书笔记-10-内部类/" title="Thinking-in-Java 读书笔记-10-内部类">http://xiaweizi.cn/1994/03/09/Thinking-in-Java-读书笔记-10-内部类/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/1994/03/09/Thinking-in-Java-读书笔记-10-内部类/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -443,15 +417,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2018/01/04/Python-自学笔记/">
-                    Python-自学笔记
+                <a href="/2016/12/29/一个菜鸟的图片三级缓存笔记/">
+                    一个菜鸟的图片三级缓存笔记
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/12/26/Android-自定义跑马灯/">
-                    Android-自定义跑马灯
+                <a href="/1994/03/08/Thinking-in-Java-读书笔记-9-接口/">
+                    Thinking-in-Java 读书笔记-9-接口
                 </a>
             </div>
         
@@ -493,7 +467,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#主要特点"><span class="toc-number">2.</span> <span class="toc-text">主要特点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#快速启动"><span class="toc-number">2.1.</span> <span class="toc-text">快速启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#兼容性"><span class="toc-number">2.2.</span> <span class="toc-text">兼容性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Google-Play-支持"><span class="toc-number">2.3.</span> <span class="toc-text">Google Play 支持</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#性能改进"><span class="toc-number">2.4.</span> <span class="toc-text">性能改进</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#更多功能"><span class="toc-number">3.</span> <span class="toc-text">更多功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取"><span class="toc-number">4.</span> <span class="toc-text">获取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#小bug"><span class="toc-number">5.</span> <span class="toc-text">小bug</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#方法内部嵌套内部类"><span class="toc-number">2.</span> <span class="toc-text">方法内部嵌套内部类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#匿名内部类"><span class="toc-number">3.</span> <span class="toc-text">匿名内部类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在看工厂模式"><span class="toc-number">4.</span> <span class="toc-text">在看工厂模式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#嵌套类"><span class="toc-number">5.</span> <span class="toc-text">嵌套类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为什么需要内部类"><span class="toc-number">6.</span> <span class="toc-text">为什么需要内部类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">7.</span> <span class="toc-text">总结</span></a></li></ol>
         
     </div>
     <style>
@@ -529,7 +503,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Thinking-in-Java 读书笔记-10-内部类　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -570,7 +544,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2018/01/04/Python-自学笔记/" title="上一篇: Python-自学笔记">
+            <a href="/2016/12/29/一个菜鸟的图片三级缓存笔记/" title="上一篇: 一个菜鸟的图片三级缓存笔记">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -578,7 +552,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/12/26/Android-自定义跑马灯/" title="下一篇: Android-自定义跑马灯">
+            <a href="/1994/03/08/Thinking-in-Java-读书笔记-9-接口/" title="下一篇: Thinking-in-Java 读书笔记-9-接口">
                 <i class="fa fa-angle-right"></i>
             </a>
         
