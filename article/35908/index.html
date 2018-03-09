@@ -16,7 +16,7 @@
 
 
 <meta name="description" content="上周接到个小需求，就是让一张图片的右下角为圆角，然后百度了一下，发现 Glide 直接支持对图片进行操作，只要继承 BitmapTransformation,或者实现 Transformation的接口，就可以获得原图的 Bitmap对象，通过 Canvas对图片重新绘制，最后 Glide.with(this).load(R.drawable.test).asBitmap().transform(">
-<meta name="keywords" content="工作积累,自定义 View,第三方库">
+<meta name="keywords" content="自定义 View,工作积累,第三方库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用-Glide-实现圆角效果">
 <meta property="og:url" content="http://xiaweizi.cn/article/35908/index.html">
@@ -485,44 +485,34 @@ Glide.with(MainActivity.this)
 
   
   
-    #rewardButton {
-    background-color: #ea6f5a;
-}
+    
+    <div style="padding: 0; margin: 20px auto; width: 90%; text-align: center;">
+      <br>
+      <div>赏我 e(=2.72) 元咖啡钱吧，您的支持将鼓励我继续创作！</div>
+      <br>
+      <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+        <div class="btn btn-pay">打赏支持</div>
+      </button>
+      <br>
+      <br>
+      <div id="QR" style="display: none;">
+        
+          <div id="wechat" style="display: inline-block;">
+            <img id="wechat_qr" src="/img/wechat-reward-qr.png" alt="下位子 WeChat Pay"/>
+            <p>微信打赏</p>
+          </div>
+        
+        
+          <div id="alipay" style="display: inline-block">
+            <img id="alipay_qr" src="/img/alipay-reward-qr.png" alt="下位子 Alipay"/>
+            <p>支付宝打赏</p>
+          </div>
+        
+        <br>
+        <br>
+      </div>
+    </div>
 
-.btn-pay {
-    margin-bottom: 20px;
-    padding: 8px 25px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #ea6f5a;
-}
-
-.btn {
-    display: inline-block;
-    margin-bottom: 0;
-    font-weight: 400;
-    text-align: center;
-    vertical-align: middle;
-    touch-action: manipulation;
-    cursor: pointer;
-    background-image: none;
-    border: 1px solid transparent;
-    white-space: nowrap;
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857;
-    border-radius: 4px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-#QR img{
-    height: 200px;
-    height: 200px;
-    margin: 20px;
-}
   
 </article>
 
