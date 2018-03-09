@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="下位子" />
+
+
+
+<meta name="description" content="上周接到个小需求，就是让一张图片的右下角为圆角，然后百度了一下，发现 Glide 直接支持对图片进行操作，只要继承 BitmapTransformation,或者实现 Transformation的接口，就可以获得原图的 Bitmap对象，通过 Canvas对图片重新绘制，最后 Glide.with(this).load(R.drawable.test).asBitmap().transform(">
+<meta name="keywords" content="工作积累,自定义 View,第三方库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用-Glide-实现圆角效果">
+<meta property="og:url" content="http://xiaweizi.cn/posts/35908/index.html">
+<meta property="og:site_name" content="xiaweizi&#39;blog">
+<meta property="og:description" content="上周接到个小需求，就是让一张图片的右下角为圆角，然后百度了一下，发现 Glide 直接支持对图片进行操作，只要继承 BitmapTransformation,或者实现 Transformation的接口，就可以获得原图的 Bitmap对象，通过 Canvas对图片重新绘制，最后 Glide.with(this).load(R.drawable.test).asBitmap().transform(">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-36eb01d918e79ca6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-0335ab7c9965900c.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-7baad3b9b576f3e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-9422183b9fae1da5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-8c2be5bd03d7a674.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-03-09T02:14:16.509Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="使用-Glide-实现圆角效果">
+<meta name="twitter:description" content="上周接到个小需求，就是让一张图片的右下角为圆角，然后百度了一下，发现 Glide 直接支持对图片进行操作，只要继承 BitmapTransformation,或者实现 Transformation的接口，就可以获得原图的 Bitmap对象，通过 Canvas对图片重新绘制，最后 Glide.with(this).load(R.drawable.test).asBitmap().transform(">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4043475-36eb01d918e79ca6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="xiaweizi&#39;blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>使用-Glide-实现圆角效果 | xiaweizi&#39;blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?d8f1e419497cfa5779f9e99baab1e7af";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">下位子</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/pdf/">书籍</a></li>
+                        
+                            <li><a href="/photos/">相册</a></li>
+                        
+                            <li><a href="/message/">留言板</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1012126908@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/6444811129/profile?topnav=1&wvr=6" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/xiaweizi" title="GitHub"></a>
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/d36586119d8c" title="简书"></a>
+                            
+                                <a class="fa CSDN" href="http://blog.csdn.net/qq_22656383" title="CSDN"></a>
+                            
+                                <a class="fa QQ" href="http://wpa.qq.com/msgrd?v=3&uin=1012126908&site=qq&menu=yes" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataBinding/">DataBinding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-官方/">Google 官方</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/">Kotlin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVVM/">MVVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Material-Design/">Material Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片缓存/">图片缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工作积累/">工作积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能优化/">性能优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/第三方库/">第三方库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自定义-View/">自定义 View</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自定义-view/">自定义 view</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/造轮子/">造轮子</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目/">项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目重构/">项目重构</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://www.wanandroid.com/">玩Android</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/G-Joker/WeaponApp">WeaponApp</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://weaponzhi.online">WeaponZhi</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://coding-dream.github.io">编程之乐</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">下位子</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">下位子</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/pdf/">书籍</a></li>
+                
+                    <li><a href="/photos/">相册</a></li>
+                
+                    <li><a href="/message/">留言板</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1012126908@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/6444811129/profile?topnav=1&wvr=6" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/xiaweizi" title="GitHub"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/d36586119d8c" title="简书"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.net/qq_22656383" title="CSDN"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1012126908&site=qq&menu=yes" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-使用-Glide-实现圆角效果" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/posts/35908/" class="article-date">
+      <time datetime="2017-08-22T12:46:25.000Z" itemprop="datePublished">2017-08-22</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使用-Glide-实现圆角效果
+    </h1>
+  
+
+        
+           <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">686 字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">3 分</span>
+      </span>
+    </span>
+
+    
+        <span id="busuanzi_container_page_pv">
+          &nbsp; | &nbsp;  本文总阅读量: <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+    
+</div>
+        
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+          <br>
+          <br>
+        
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工作积累/">工作积累</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/第三方库/">第三方库</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/自定义-View/">自定义 View</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p>上周接到个小需求，就是让一张图片的右下角为圆角，然后百度了一下，发现 <code>Glide</code> 直接支持对图片进行操作，只要继承 <code>BitmapTransformation</code>,或者实现 <code>Transformation</code>的接口，就可以获得原图的 <code>Bitmap</code>对象，通过 <code>Canvas</code>对图片重新绘制，最后 <code>Glide.with(this).load(R.drawable.test).asBitmap().transform(transformation).into(mImageView);</code>传入新建的<code>transformation</code>对象即可。</p>
+<a id="more"></a>
+<p>这里推荐<code>GitHub</code>上的一个开源库，完全满足日常需求:<a href="https://github.com/wasabeef/glide-transformations" target="_blank" rel="noopener">glide-transformations</a>,里面有各种各样的对图片的处理，很是强大。</p>
+<p>不过实际使用的过程中，我倒是发现一个小问题…假如只有右下角是圆角的情况下，当服务器返回的是一张半透明的图片时，结果就成了这样:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4043475-36eb01d918e79ca6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="最终结果"></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4043475-0335ab7c9965900c.gif?imageMogr2/auto-orient/strip" alt=""></p>
+<p>原图其实是一张半透明矩形图，这就很尴尬，其实从图中不难发现作者的绘制思路，首先看一下作者的源码部分：</p>
+<pre><code>canvas.drawRoundRect(new RectF(right - mDiameter, bottom - mDiameter, right, bottom), mRadius,mRadius, paint);
+canvas.drawRect(new RectF(mMargin, mMargin, right - mRadius, bottom), paint);
+canvas.drawRect(new RectF(right - mRadius, mMargin, right, bottom - mRadius), paint);
+</code></pre><p>并附上本人的草图：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4043475-7baad3b9b576f3e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="作者的.png"></p>
+<ul>
+<li>第一步，绘制一个圆1</li>
+<li>第二步绘制剩下的两个矩形2和3.</li>
+</ul>
+<p>这样给人的感觉，右下角就有了圆角效果，举一反三，其他的四个角也是这样绘制。不过这样有个缺点，作者这样虽然可以实现，但是会有重叠的部分，假如跟我一样是半透明的图片，那么出来的效果就很差强人意。</p>
+<p>于是，我换个方法，有点大同小异，只是稍微做了点优化，如下图:</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4043475-9422183b9fae1da5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="本人的.png"></p>
+<p>一目了然，其实我就是将作者的圆换成了弧，这样，半透明的图片就可以完美的拥有了圆角。既然这样，那么就重新写一个实现圆角的lib吧，其实很简单，这是运行过后的效果：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4043475-8c2be5bd03d7a674.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="result.png"></p>
+<p>很可爱吧！</p>
+<p>附上 <code>GitHub</code>的项目地址：</p>
+<div class="github-widget" data-repo="xiaweizi/RoundCornersView"></div>
+
+<h4 id="使用起来就很简单了："><a href="#使用起来就很简单了：" class="headerlink" title="使用起来就很简单了："></a>使用起来就很简单了：</h4><ol>
+<li><p>在你的项目根 <code>build.gradle</code> 文件下添加 <code>maven</code>地址</p>
+<pre><code> allprojects {
+  repositories {
+    ...
+    maven { url &apos;https://jitpack.io&apos; }
+  }
+}
+</code></pre></li>
+<li><p>在<code>module</code>对应的<code>build.gradle</code>下添加依赖</p>
+<pre><code>dependencies {
+    compile &apos;com.github.xiaweizi:RoundCornersView:v1.0&apos;
+}
+</code></pre></li>
+<li><p>在代码中使用(需要结合<code>Glide</code>搭配使用)</p>
+<pre><code>RoundCornersTransformation transformation =
+        new RoundCornersTransformation(MainActivity.this,
+                                       dip2px(25),
+                                       mList.get(position).type);
+Glide.with(MainActivity.this)
+     .load(mList.get(position).resId)
+     .bitmapTransform(transformation)
+     .into(holder.mImageView);
+</code></pre></li>
+</ol>
+<p>创建<code>transformation</code>对象需传入圆角半径和指定圆角的位置,有以下几种可供选择，当然如果你有别的需要，相信您同样可以举一反三实现的。</p>
+<pre><code>public enum CornerType {
+    /** 所有角 */
+    ALL,
+    /** 左上 */
+    LEFT_TOP,
+    /** 左下 */
+    LEFT_BOTTOM,
+    /** 右上 */
+    RIGHT_TOP,
+    /** 右下 */
+    RIGHT_BOTTOM,
+    /** 左侧 */
+    LEFT,
+    /** 右侧 */
+    RIGHT,
+    /** 下侧 */
+    BOTTOM,
+    /** 上侧 */
+    TOP,
+}
+</code></pre><p><a href="http://xiaweizi.cn">我的博客</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/posts/35908/">使用-Glide-实现圆角效果</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">下位子</a></p>
+        <p><span>发布时间:</span>2017-08-22, 20:46:25</p>
+        <p><span>最后更新:</span>2018-03-09, 10:14:16</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/posts/35908/" title="使用-Glide-实现圆角效果">http://xiaweizi.cn/posts/35908/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/posts/35908/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/posts/41851/">
+                    MVVM之DataBinding入门
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/posts/9202/">
+                    Android-性能优化小结
+                </a>
+            </div>
+        
+    </nav>
+
+  
+  
+    
+    <div style="padding: 0; margin: 20px auto; width: 90%; text-align: center;">
+      <br>
+      <div>赏我 e(=2.72) 元咖啡钱吧，您的支持将鼓励我继续创作！</div>
+      <br>
+      <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+        <div class="btn btn-pay">打赏支持</div>
+      </button>
+      <br>
+      <br>
+      <div id="QR" style="display: none;">
+        
+          <div id="wechat" style="display: inline-block;">
+            <img id="wechat_qr" src="/img/wechat-reward-qr.png" alt="下位子 WeChat Pay"/>
+            <p>微信打赏</p>
+          </div>
+        
+        
+          <div id="alipay" style="display: inline-block">
+            <img id="alipay_qr" src="/img/alipay-reward-qr.png" alt="下位子 Alipay"/>
+            <p>支付宝打赏</p>
+          </div>
+        
+        <br>
+        <br>
+      </div>
+    </div>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#使用起来就很简单了："><span class="toc-number">1.</span> <span class="toc-text">使用起来就很简单了：</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"使用-Glide-实现圆角效果　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+        
+      <section class="livere" id="comments">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zNDM3Ny8xMDkxNA==">
+    <script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+    </script>
+    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/posts/41851/" title="上一篇: MVVM之DataBinding入门">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/posts/9202/" title="下一篇: Android-性能优化小结">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/posts/7b67faab/">读书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/31905/">hexo 博客小功能添加-评论、相册、字数统计...</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/39434/">个人博客全新上线(阿里域名+GitPages+hexo+Yelee)</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/34201/">Android 冷兵器 之 tools</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/25968/">自定义银行种类选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/46688/">我和极光的那些事---我和-Android-推送的时间简史</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/18215/">Python-自学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/6515/">Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/13147/">Android-自定义跑马灯</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/31642/">Android-分享会：Material-Design-在-Android-中的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/52360/">Git-命令小结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/13823/">使用Kotlin重构项目</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/40024/">Kotlin学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/41851/">MVVM之DataBinding入门</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/35908/">使用-Glide-实现圆角效果</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/9202/">Android-性能优化小结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/58454/">如何做个依赖库让别人依赖使用</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/64590/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/64591/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/7691/">基于MaterialDesign设计风格的妹纸app的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/62207/">快毕业了，撸一个小项目(新闻段子客户端)</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/2954/">基于LitePal操作数据库的学生管理系统的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/276/">基于环信的仿QQ即时通讯的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/7455/">高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/7798/">简单粗暴----RecyclerView</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/23091/">设计模式之建造者模式学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/17984/">一个菜鸟的图片三级缓存笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/44203/">Thinking-in-Java 读书笔记-10-内部类</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/30700/">Thinking-in-Java 读书笔记-9-接口</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/45901/">Thinking-in-Java 读书笔记-8-多态</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/43023/">Thinking-in-Java 读书笔记-7-复用类</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/46955/">Thinking-in-Java 读书笔记-6-访问权限控制</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/35035/">Thinking-in-Java-读书笔记-5-初始化与清理</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/64790/">Thinking-in-Java-读书笔记-4-控制执行流程</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/36989/">Thinking-in-Java-读书笔记-3-操作符</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/28343/">Thinking-in-Java-读书笔记-2-一切都是对象</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/12284/">Thinking-in-Java-读书笔记-1-对象导论</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2017-2018 下位子
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_uv">
+                      您是第 <span id="busuanzi_value_site_uv"></span> 位小伙伴
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+                    </span>
+                
+                <span>| </span>
+                <span class="post-count">  已经写了 55.6k 字啦</span>
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+    <script src="/js/GithubRepoWidget.js"></script>
+
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#e040fb", "#7c4dff", "#3d5afe", "#0288d1", "#0091ea", "#00e5ff", "#1de9b6", "#14e715", "#14e715", "#76ff03", "#ffea00", "#ff3d00", "#ff2d6f"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 6;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-113850534-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+             github: ".github-widget a", 
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "插播广告中... " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "广告结束，精彩继续！" + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+	<script type="text/javascript" src="/resources/love.js"></script>
+	<script type="text/javascript" src="/resources/float.js"></script>
+	<script type="text/javascript" src="/resources/typewriter.js"></script>
+	<script type="text/javascript" color=0,104,183 opacity=1 zindex=-1 count=50 src="/resources/particle.js"></script>
+
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false},"react":{"opacityDefault":0.5,"opacityOnHover":0.2}});</script></body>
+</html>

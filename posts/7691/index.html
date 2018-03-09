@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="下位子" />
+
+
+
+<meta name="description" content="今天看了郭神的第二行代码，深深的被MaterialDesign的设计风格所吸引，然后就照例做了一个小Demo，希望多多支持，图片资源来源于网络。先附上我的源码地址   我的博客地址">
+<meta name="keywords" content="Material Design,项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于MaterialDesign设计风格的妹纸app的简单实现">
+<meta property="og:url" content="http://xiaweizi.cn/posts/7691/index.html">
+<meta property="og:site_name" content="xiaweizi&#39;blog">
+<meta property="og:description" content="今天看了郭神的第二行代码，深深的被MaterialDesign的设计风格所吸引，然后就照例做了一个小Demo，希望多多支持，图片资源来源于网络。先附上我的源码地址   我的博客地址">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-df4822dd48cf72a6.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-b6f5b86bc9b0840f.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-218e6895dea63c4d.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-9621073a96aaae5a.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-04b9cdd7c0b12784.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-95e4cd9a50ff7c15.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-272ff740e4ec844b.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2018-03-09T02:14:16.511Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于MaterialDesign设计风格的妹纸app的简单实现">
+<meta name="twitter:description" content="今天看了郭神的第二行代码，深深的被MaterialDesign的设计风格所吸引，然后就照例做了一个小Demo，希望多多支持，图片资源来源于网络。先附上我的源码地址   我的博客地址">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4043475-df4822dd48cf72a6.gif?imageMogr2/auto-orient/strip">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="xiaweizi&#39;blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>基于MaterialDesign设计风格的妹纸app的简单实现 | xiaweizi&#39;blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?d8f1e419497cfa5779f9e99baab1e7af";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">下位子</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/pdf/">书籍</a></li>
+                        
+                            <li><a href="/photos/">相册</a></li>
+                        
+                            <li><a href="/message/">留言板</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1012126908@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/6444811129/profile?topnav=1&wvr=6" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/xiaweizi" title="GitHub"></a>
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/d36586119d8c" title="简书"></a>
+                            
+                                <a class="fa CSDN" href="http://blog.csdn.net/qq_22656383" title="CSDN"></a>
+                            
+                                <a class="fa QQ" href="http://wpa.qq.com/msgrd?v=3&uin=1012126908&site=qq&menu=yes" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataBinding/">DataBinding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-官方/">Google 官方</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/">Kotlin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVVM/">MVVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Material-Design/">Material Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片缓存/">图片缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工作积累/">工作积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能优化/">性能优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/第三方库/">第三方库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自定义-View/">自定义 View</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自定义-view/">自定义 view</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/造轮子/">造轮子</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目/">项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目重构/">项目重构</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://www.wanandroid.com/">玩Android</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/G-Joker/WeaponApp">WeaponApp</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://weaponzhi.online">WeaponZhi</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://coding-dream.github.io">编程之乐</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">下位子</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">下位子</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/pdf/">书籍</a></li>
+                
+                    <li><a href="/photos/">相册</a></li>
+                
+                    <li><a href="/message/">留言板</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1012126908@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/6444811129/profile?topnav=1&wvr=6" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/xiaweizi" title="GitHub"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/d36586119d8c" title="简书"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.net/qq_22656383" title="CSDN"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1012126908&site=qq&menu=yes" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-基于MaterialDesign设计风格的妹纸app的简单实现" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/posts/7691/" class="article-date">
+      <time datetime="2017-02-17T12:46:25.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      基于MaterialDesign设计风格的妹纸app的简单实现
+    </h1>
+  
+
+        
+           <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">2,368 字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">11 分</span>
+      </span>
+    </span>
+
+    
+        <span id="busuanzi_container_page_pv">
+          &nbsp; | &nbsp;  本文总阅读量: <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+    
+</div>
+        
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+          <br>
+          <br>
+        
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Material-Design/">Material Design</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目/">项目</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <p><em>今天看了郭神的第二行代码，深深的被MaterialDesign的设计风格所吸引，然后就照例做了一个小Demo，希望多多支持，图片资源来源于网络。先附上我的源码地址</em></p>
+<div class="github-widget" data-repo="xiaweizi/MaterialDesign"></div>
+
+<p><em><a href="http://xiaweizi.cn/">我的博客地址</a></em></p>
+<a id="more"></a>
+<p><strong>照例，一波动态图来袭：</strong></p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4043475-df4822dd48cf72a6.gif?imageMogr2/auto-orient/strip" alt="MaterialDesign风格.gif"></p>
+<blockquote>
+<p>效果还不错吧，就是有点失真…其实在这之前Android的UI风格都不是很美观，所谷歌的设计工程师们就开始研究出了一种新的设计语言—MaterialDesign。在2015年得谷歌大会上推出了DesignSupport库，使得开发者在即使不了解MaterialDesign的情况下也能非常轻松地将自己得应用Material化。</p>
+<p>接下来我会按照下面流程介绍如何实现这一效果</p>
+</blockquote>
+<ol>
+<li><code>Toolbar</code></li>
+<li><code>DrawerLayout</code></li>
+<li><code>SnackBar</code></li>
+<li><code>CardView</code></li>
+<li><code>RecyclerView</code></li>
+<li><code>SwipeRefreshLayout</code></li>
+<li><code>AppBarLayout</code></li>
+<li><code>CollapsingToolbarLayout</code></li>
+<li><code>沉浸式状态栏</code></li>
+</ol>
+<p>首先添加依赖：</p>
+<pre><code>compile &apos;com.android.support:appcompat-v7:24.2.1&apos;
+compile &apos;com.android.support:design:24.0.0&apos;
+compile&apos;com.android.support:recyclerview-v7:24.0.0&apos;
+compile &apos;com.github.bumptech.glide:glide:3.7.0&apos;
+compile &apos;com.android.support:cardview-v7:24.1.1&apos;
+compile &apos;de.hdodenhof:circleimageview:2.1.0&apos;
+</code></pre><h1 id="1-Toolbar"><a href="#1-Toolbar" class="headerlink" title="1. Toolbar"></a>1. Toolbar</h1><p>效果如下：<br><img src="http://upload-images.jianshu.io/upload_images/4043475-b6f5b86bc9b0840f.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="toolbar.PNG"></p>
+<p>它有点类似于之前得ActionBar，就是活动最顶部得哪个标题栏。但是，它只能位于活动得顶部，从而影响效果，所有官方现在已经不再建议使用ActionBar了。</p>
+<h4 id="1-设置AppTheme-“NoActionBar”"><a href="#1-设置AppTheme-“NoActionBar”" class="headerlink" title="1. 设置AppTheme(“NoActionBar”)"></a>1. 设置AppTheme(“NoActionBar”)</h4><pre><code>&lt;style name=&quot;AppTheme&quot; parent=&quot;Theme.AppCompat.Light.NoActionBar&quot;&gt;
+    &lt;!-- Customize your theme here. --&gt;
+    ...
+&lt;/style&gt;
+</code></pre><h4 id="2-添加控件"><a href="#2-添加控件" class="headerlink" title="2. 添加控件"></a>2. 添加控件</h4><pre><code>&lt;android.support.v7.widget.Toolbar
+    android:id=&quot;@+id/toolbar&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;?attr/actionBarSize&quot;
+    android:background=&quot;?attr/colorPrimary&quot;
+    android:theme=&quot;@style/ThemeOverlay.AppCompat.Dark.ActionBar&quot;
+    app:popupTheme=&quot;@style/Theme.AppCompat.Light&quot; /&gt;
+</code></pre><blockquote>
+<p>其他属性我就不说了，<code>app:popupTheme</code> 这个是单独将弹出得菜单项指定成淡色主题。</p>
+</blockquote>
+<blockquote>
+<p>这个时候需要指定一个新的命名空间 <code>xmlns:app</code> 这是由于MaterialDesign是在Android5.0系统中才出现得，而很多Material属性在5.0之前得系统中是不存在得，那么为了能够兼容之前得老系统，我们就得使用 <code>app:</code> 。 </p>
+</blockquote>
+<h4 id="3-在代码中使用"><a href="#3-在代码中使用" class="headerlink" title="3. 在代码中使用"></a>3. 在代码中使用</h4><pre><code>mToolbar = (Toolbar) findViewById(R.id.toolbar);
+setSupportActionBar(mToolbar);
+</code></pre><blockquote>
+<p>首先通过 <code>findViewById</code> 得到Toobar实例，然后调用setSupportActionBar()方法将实例传入。</p>
+</blockquote>
+<h4 id="4-设置菜单选项"><a href="#4-设置菜单选项" class="headerlink" title="4. 设置菜单选项"></a>4. 设置菜单选项</h4><pre><code>&lt;menu xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;&gt;
+&lt;item
+    android:id=&quot;@+id/backup&quot;
+    android:icon=&quot;@drawable/ic_backup&quot;
+    android:title=&quot;Backup&quot;
+    app:showAsAction=&quot;always&quot;/&gt;
+&lt;item
+    android:id=&quot;@+id/delete&quot;
+    android:icon=&quot;@drawable/ic_delete&quot;
+    android:title=&quot;Delete&quot;
+    app:showAsAction=&quot;ifRoom&quot;/&gt;
+&lt;item
+    android:id=&quot;@+id/settings&quot;
+    android:icon=&quot;@drawable/ic_settings&quot;
+    android:title=&quot;Settings&quot;
+    app:showAsAction=&quot;never&quot;/&gt;
+&lt;/menu&gt;
+</code></pre><blockquote>
+<p>在menu文件夹中创建xml文件</p>
+</blockquote>
+<blockquote>
+<p><code>app:showAsAction</code> 来指定按钮得显示位置</p>
+</blockquote>
+<blockquote>
+<p><code>ifRoom</code>: 表示屏幕空间足够得情况下显示再Toolbar，不够就显示再菜单中</p>
+</blockquote>
+<blockquote>
+<p><code>always</code>: 表示永远显示在Toolbar中，如果屏幕空间不够则不显示</p>
+</blockquote>
+<blockquote>
+<p><code>never</code>: 表示永远显示在菜单当中</p>
+</blockquote>
+<h4 id="5-在代码中实用菜单选项"><a href="#5-在代码中实用菜单选项" class="headerlink" title="5. 在代码中实用菜单选项"></a>5. 在代码中实用菜单选项</h4><pre><code>/***************************
+ * 创建菜单
+ ***************************/
+@Override
+public boolean onCreateOptionsMenu(Menu menu) {
+    getMenuInflater().inflate(R.menu.menu, menu);
+    return true;
+}
+
+/***************************
+ * 给菜单设置点击事件
+ ***************************/
+@Override
+public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+        case R.id.backup:
+            Toast.makeText(MainActivity.this, &quot;backup&quot;, Toast.LENGTH_SHORT).show();
+            break;
+        case R.id.delete:
+            Toast.makeText(this, &quot;delete&quot;, Toast.LENGTH_SHORT).show();
+            break;
+        case R.id.settings:
+            Toast.makeText(this, &quot;setting&quot;, Toast.LENGTH_SHORT).show();
+            break;
+        default:
+    }
+    return true;
+}
+</code></pre><h1 id="2-DrawerLayout"><a href="#2-DrawerLayout" class="headerlink" title="2. DrawerLayout"></a>2. DrawerLayout</h1><p>这个在我之前得文章讲过，可以直接点击查看 <a href="http://www.jianshu.com/p/ce8a7a20c03c" target="_blank" rel="noopener">高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题 </a><br>不过左侧可以再优化下，实用新的控件 <code>NavigationView</code><br><strong>NavigationView</strong></p>
+<blockquote>
+<p>在使用前，提前准备好两个东西：<code>menu</code> 和 <code>headerLayout</code> </p>
+</blockquote>
+<h4 id="1-创建menu"><a href="#1-创建menu" class="headerlink" title="1. 创建menu"></a>1. 创建menu</h4><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;menu xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;&gt;
+    &lt;group android:checkableBehavior=&quot;single&quot;&gt;
+        &lt;item
+            android:id=&quot;@+id/nav_call&quot;
+            android:icon=&quot;@drawable/nav_call&quot;
+            android:title=&quot;妹纸&quot; /&gt;
+        &lt;item
+            android:id=&quot;@+id/nav_friends&quot;
+            android:icon=&quot;@drawable/nav_friends&quot;
+            android:title=&quot;段子&quot; /&gt;
+        &lt;item
+            android:id=&quot;@+id/nav_location&quot;
+            android:icon=&quot;@drawable/nav_location&quot;
+            android:title=&quot;新闻&quot; /&gt;
+        &lt;item
+            android:id=&quot;@+id/nav_mail&quot;
+            android:icon=&quot;@drawable/nav_mail&quot;
+            android:title=&quot;本地&quot; /&gt;
+        &lt;item
+            android:id=&quot;@+id/nav_task&quot;
+            android:icon=&quot;@drawable/nav_task&quot;
+            android:title=&quot;收藏&quot; /&gt;
+    &lt;/group&gt;
+&lt;/menu&gt;
+</code></pre><blockquote>
+<p>将group得 <code>checkableBehavior</code> 属性指定为single，表示所有得菜单项只能单选</p>
+</blockquote>
+<h4 id="2-创建headerLayout"><a href="#2-创建headerLayout" class="headerlink" title="2. 创建headerLayout"></a>2. 创建headerLayout</h4><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+android:layout_width=&quot;match_parent&quot;
+android:layout_height=&quot;180dp&quot;
+android:background=&quot;?attr/colorPrimary&quot;
+android:padding=&quot;10dp&quot;&gt;
+
+    &lt;de.hdodenhof.circleimageview.CircleImageView
+        android:id=&quot;@+id/icon_image&quot;
+        android:layout_width=&quot;70dp&quot;
+        android:layout_height=&quot;70dp&quot;
+        android:layout_centerInParent=&quot;true&quot;
+        android:src=&quot;@drawable/nav_icon&quot; /&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/username&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_alignParentBottom=&quot;true&quot;
+        android:text=&quot;1012126908@qq.com&quot;
+        android:textColor=&quot;#FFF&quot;
+        android:textSize=&quot;14sp&quot; /&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/mail&quot;
+        android:layout_width=&quot;wrap_content&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_above=&quot;@id/username&quot;
+        android:text=&quot;夏韦子&quot;
+        android:textColor=&quot;#FFF&quot;
+        android:textSize=&quot;14sp&quot; /&gt;
+
+&lt;/RelativeLayout&gt;
+</code></pre><h4 id="3-在布局中使用"><a href="#3-在布局中使用" class="headerlink" title="3. 在布局中使用"></a>3. 在布局中使用</h4><pre><code>&lt;android.support.design.widget.NavigationView
+    android:id=&quot;@+id/nv_left&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:layout_gravity=&quot;left&quot;
+    app:headerLayout=&quot;@layout/nav_header&quot;
+    app:menu=&quot;@menu/nav_menu&quot;&gt;
+&lt;/android.support.design.widget.NavigationView&gt;
+</code></pre><blockquote>
+<p><code>app:headerLayout</code> ： headerLayout文件</p>
+<p><code>app:menu</code>: menu文件</p>
+</blockquote>
+<blockquote>
+<p><code>android:layout_gravity=&quot;left&quot;</code> 设置为左侧菜单</p>
+</blockquote>
+<h4 id="4-在代码中使用"><a href="#4-在代码中使用" class="headerlink" title="4. 在代码中使用"></a>4. 在代码中使用</h4><pre><code>//给NavigationView设置item选择事件
+mNavigationView.setCheckedItem(R.id.nav_call);
+mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        ...
+        return true;
+    }
+});
+</code></pre><h1 id="3-SnackBar"><a href="#3-SnackBar" class="headerlink" title="3. SnackBar"></a>3. SnackBar</h1><p>跟Toast有点相似，不过不同点在于加入一个可交互按钮，当用户点击按钮得时候可以执行一些额外得逻辑操作</p>
+<p>效果如下：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4043475-218e6895dea63c4d.gif?imageMogr2/auto-orient/strip" alt="SnackBar.gif"></p>
+<p>使用起来比较简单，跟Toast很像。</p>
+<pre><code>Snackbar snackbar = Snackbar.make(getCurrentFocus(), item.getTitle(), Snackbar.LENGTH_SHORT);
+snackbar.setAction(&quot;Undo&quot;, new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+
+    }
+});
+snackbar.setActionTextColor(Color.BLUE);
+snackbar.show();
+</code></pre><h1 id="4-CardView"><a href="#4-CardView" class="headerlink" title="4. CardView"></a>4. CardView</h1><p>效果如下：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4043475-9621073a96aaae5a.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="CardView.PNG"></p>
+<p><code>CardView</code> 其实是一个FrameLayout，只是额外提供了圆角和阴影效果，<br>直接在布局中使用。</p>
+<pre><code>&lt;android.support.v7.widget.CardView
+xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+android:layout_width=&quot;match_parent&quot;
+android:layout_height=&quot;wrap_content&quot;
+android:background=&quot;?android:attr/selectableItemBackground&quot;
+app:cardElevation=&quot;10dp&quot;
+android:layout_margin=&quot;5dp&quot;
+app:cardCornerRadius=&quot;18dp&quot;&gt;
+...//子布局
+&lt;/android.support.v7.widget.CardView&gt;
+</code></pre><blockquote>
+<p><code>app:cardCornerRadius</code> 指定卡片圆角得弧度，数值越大，圆角得弧度越大</p>
+</blockquote>
+<blockquote>
+<p><code>app:cardElevation</code> 制定卡片得高度，高度值越大，投影得范围越大</p>
+</blockquote>
+<h1 id="5-RecyclerView"><a href="#5-RecyclerView" class="headerlink" title="5. RecyclerView"></a>5. RecyclerView</h1><p>这个在之前得文章也说过，如果需要查看，请移驾到： <a href="http://www.jianshu.com/p/60819de9eb42" target="_blank" rel="noopener">简单粗暴—-RecyclerView</a><br>本次得Demo里数据我就不详细说了，太多了，很简单。</p>
+<h1 id="6-SwipeRefreshLayout"><a href="#6-SwipeRefreshLayout" class="headerlink" title="6. SwipeRefreshLayout"></a>6. SwipeRefreshLayout</h1><p>效果如下：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4043475-04b9cdd7c0b12784.gif?imageMogr2/auto-orient/strip" alt="SwipeRefreshLayout.gif"><br>使用 <code>SwipeRefreshLayout</code> 直接可以实现下拉刷新的功能</p>
+<h4 id="1-在布局中添加"><a href="#1-在布局中添加" class="headerlink" title="1. 在布局中添加"></a>1. 在布局中添加</h4><pre><code>&lt;android.support.v4.widget.SwipeRefreshLayout
+android:id=&quot;@+id/srl_main&quot;
+android:layout_width=&quot;match_parent&quot;
+android:layout_height=&quot;match_parent&quot;&gt;
+
+    &lt;android.support.v7.widget.RecyclerView
+        android:id=&quot;@+id/rv_main&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;&gt;
+
+    &lt;/android.support.v7.widget.RecyclerView&gt;
+&lt;/android.support.v4.widget.SwipeRefreshLayout&gt;
+</code></pre><h4 id="2-在代码中添加"><a href="#2-在代码中添加" class="headerlink" title="2. 在代码中添加"></a>2. 在代码中添加</h4><pre><code>mRefreshLayout.setColorSchemeColors(Color.RED, Color.BLUE, Color.YELLOW, Color.GREEN);
+mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+    @Override
+    public void onRefresh() {
+        refreshFruits();
+    }
+});
+</code></pre><blockquote>
+<p>可以给刷新得时候设置颜色的变换，在 <code>onRefresh()</code> 中实现刷新得功能</p>
+</blockquote>
+<h1 id="7-AppBarLayout"><a href="#7-AppBarLayout" class="headerlink" title="7. AppBarLayout"></a>7. AppBarLayout</h1><p>先看一下效果：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4043475-95e4cd9a50ff7c15.gif?imageMogr2/auto-orient/strip" alt="AppBarLayout.gif"></p>
+<blockquote>
+<p><code>AppBarLayout</code> 实际是一个垂直方向得 <code>LinearLayout</code>，它在内部做了很多滚动事件得封装，并应用了MaterialDesign设计理念。</p>
+</blockquote>
+<p>在布局中实用：</p>
+<pre><code>&lt;android.support.design.widget.CoordinatorLayout
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;&gt;
+    &lt;!--
+       android:theme 设置背景主题深色，这样字体会变成白色
+       app:popupTheme 设置弹出的主题是亮色
+    --&gt;
+    &lt;android.support.design.widget.AppBarLayout
+        android:fitsSystemWindows=&quot;true&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;&gt;
+
+        &lt;android.support.v7.widget.Toolbar
+            android:id=&quot;@+id/toolbar&quot;
+            android:fitsSystemWindows=&quot;true&quot;
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;?attr/actionBarSize&quot;
+            android:background=&quot;?attr/colorPrimary&quot;
+            android:theme=&quot;@style/ThemeOverlay.AppCompat.Dark.ActionBar&quot;
+            app:layout_scrollFlags=&quot;scroll|enterAlways|snap&quot;
+            app:popupTheme=&quot;@style/Theme.AppCompat.Light&quot; /&gt;
+    &lt;/android.support.design.widget.AppBarLayout&gt;
+
+    &lt;android.support.v4.widget.SwipeRefreshLayout
+        ...
+        app:layout_behavior=&quot;@string/appbar_scrolling_view_behavior&quot;&gt;
+        ...
+    &lt;/android.support.v4.widget.SwipeRefreshLayout&gt;
+
+&lt;/android.support.design.widget.CoordinatorLayout&gt;
+</code></pre><blockquote>
+<p><code>app:layout_scrollFlags</code>： 当AppBarLayout接收到滚动事件得时候，它内部得子空间就是通过这个属性影响这些事件的</p>
+</blockquote>
+<blockquote>
+<p><code>scroll</code>：表示当 <code>RecyclerView</code>向上滚动得时候，Toolbar会跟着一起向上滚动并实现隐藏。</p>
+</blockquote>
+<blockquote>
+<p><code>enterAlways</code>:表示当 <code>RecyclerView</code>向下滚动得时候，Toolbar会跟着一起向下滚动并重新显示。</p>
+</blockquote>
+<blockquote>
+<p><code>snap</code>：表示当Toolbar还没有完全隐藏或显示得时候，会根据当前滚动得距离，自动选择是隐藏还是显示。</p>
+</blockquote>
+<h1 id="8-CollapsingToolbarLayout"><a href="#8-CollapsingToolbarLayout" class="headerlink" title="8. CollapsingToolbarLayout"></a>8. CollapsingToolbarLayout</h1><p>效果如下：</p>
+<p><img src="http://upload-images.jianshu.io/upload_images/4043475-272ff740e4ec844b.gif?imageMogr2/auto-orient/strip" alt="CollapsingToolbarLayout.gif"><br><strong>可折叠式标题栏</strong>这个就比之前就负责点了，我先贴代码，然后一一解释。</p>
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;android.support.design.widget.CoordinatorLayout
+xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+xmlns:app=&quot;http://schemas.android.com/apk/res-auto&quot;
+android:layout_width=&quot;match_parent&quot;
+android:layout_height=&quot;match_parent&quot;
+android:fitsSystemWindows=&quot;true&quot;&gt;
+
+    &lt;android.support.design.widget.AppBarLayout
+        android:id=&quot;@+id/appBar&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;250dp&quot;
+        android:fitsSystemWindows=&quot;true&quot;&gt;
+
+        &lt;android.support.design.widget.CollapsingToolbarLayout
+            android:id=&quot;@+id/collapsing_toolbar&quot;
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;match_parent&quot;
+            android:theme=&quot;@style/ThemeOverlay.AppCompat.Dark.ActionBar&quot;
+            android:fitsSystemWindows=&quot;true&quot;
+            app:contentScrim=&quot;?attr/colorPrimary&quot;
+            app:layout_scrollFlags=&quot;scroll|exitUntilCollapsed&quot;&gt;
+
+            &lt;ImageView
+                android:id=&quot;@+id/fruit_image_view&quot;
+                android:layout_width=&quot;match_parent&quot;
+                android:layout_height=&quot;match_parent&quot;
+                android:scaleType=&quot;centerCrop&quot;
+                android:fitsSystemWindows=&quot;true&quot;
+                app:layout_collapseMode=&quot;parallax&quot; /&gt;
+
+            &lt;android.support.v7.widget.Toolbar
+                android:id=&quot;@+id/toolbar&quot;
+                android:layout_width=&quot;match_parent&quot;
+                android:layout_height=&quot;?attr/actionBarSize&quot;
+                app:layout_collapseMode=&quot;pin&quot; /&gt;
+        &lt;/android.support.design.widget.CollapsingToolbarLayout&gt;
+    &lt;/android.support.design.widget.AppBarLayout&gt;
+
+    &lt;android.support.v4.widget.NestedScrollView
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;match_parent&quot;
+        app:layout_behavior=&quot;@string/appbar_scrolling_view_behavior&quot;&gt;
+
+        &lt;LinearLayout
+            android:orientation=&quot;vertical&quot;
+            android:layout_width=&quot;match_parent&quot;
+            android:layout_height=&quot;wrap_content&quot;&gt;
+
+            &lt;android.support.v7.widget.CardView
+                android:layout_width=&quot;match_parent&quot;
+                android:layout_height=&quot;wrap_content&quot;
+                android:layout_marginBottom=&quot;15dp&quot;
+                android:layout_marginLeft=&quot;15dp&quot;
+                android:layout_marginRight=&quot;15dp&quot;
+                android:layout_marginTop=&quot;35dp&quot;
+                app:cardCornerRadius=&quot;4dp&quot;&gt;
+
+                &lt;TextView
+                    android:id=&quot;@+id/fruit_content_text&quot;
+                    android:layout_width=&quot;match_parent&quot;
+                    android:layout_height=&quot;wrap_content&quot;
+                    android:layout_margin=&quot;10dp&quot; /&gt;
+            &lt;/android.support.v7.widget.CardView&gt;
+        &lt;/LinearLayout&gt;
+    &lt;/android.support.v4.widget.NestedScrollView&gt;
+
+&lt;/android.support.design.widget.CoordinatorLayout&gt;
+</code></pre><blockquote>
+<p><code>app:contentScrim</code>:在趋于折叠状态以及折叠之后得背景色</p>
+</blockquote>
+<blockquote>
+<p><code>app:layout_scrollFlags</code> 这个之前讲过 </p>
+<p><code>scroll</code> :表示 <code>CollapsingToolbarLayout</code>会随着妹纸内容详情得滚动一起滚动</p>
+</blockquote>
+<blockquote>
+<p><code>exitUntilCollapsed</code>:表示当 <code>CollapsingToolbarLayout</code>随着滚动完成折叠之后就保留在界面上，不再移出屏幕</p>
+</blockquote>
+<blockquote>
+<p><code>app:layout_collapseMode=&quot;pin&quot;</code> 把Toolbar指定成pin，表示在折叠的过程中位置始终保持不变</p>
+</blockquote>
+<blockquote>
+<p><code>app:layout_collapseMode=&quot;parallax&quot;</code> ImageView 指定成 parallax，表示会在折叠得过程中产生一定得错位偏移，这种模式得视觉效果会非常好</p>
+</blockquote>
+<blockquote>
+<p><code>NestedScrollView</code> ：在ScrollView基础上增加了嵌套响应滚动事件得功能</p>
+</blockquote>
+<h1 id="9-沉浸式状态栏"><a href="#9-沉浸式状态栏" class="headerlink" title="9. 沉浸式状态栏"></a>9. 沉浸式状态栏</h1><p>这个只是在Android5.0后才有的，设置状态栏为透明</p>
+<p>在<code>setContentView();</code>之前添加代码：</p>
+<pre><code>if (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT) {
+    //透明状态栏
+    getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+    //透明导航栏
+    getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+}
+</code></pre><p>需要在直接子布局添加：<code>android:fitsSystemWindows=&quot;true</code> 表示该控件会出现在系统状态栏里</p>
+<p>我的源码地址：<a href="https://github.com/xiaweizi/MaterialDesign" target="_blank" rel="noopener">https://github.com/xiaweizi/MaterialDesign</a></p>
+<p><a href="http://xiaweizi.cn">我的博客</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/posts/7691/">基于MaterialDesign设计风格的妹纸app的简单实现</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">下位子</a></p>
+        <p><span>发布时间:</span>2017-02-17, 20:46:25</p>
+        <p><span>最后更新:</span>2018-03-09, 10:14:16</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/posts/7691/" title="基于MaterialDesign设计风格的妹纸app的简单实现">http://xiaweizi.cn/posts/7691/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/posts/7691/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/posts/64591/">
+                    jsoup爬虫简书首页数据做个小Demo
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/posts/62207/">
+                    快毕业了，撸一个小项目(新闻段子客户端)
+                </a>
+            </div>
+        
+    </nav>
+
+  
+  
+    
+    <div style="padding: 0; margin: 20px auto; width: 90%; text-align: center;">
+      <br>
+      <div>赏我 e(=2.72) 元咖啡钱吧，您的支持将鼓励我继续创作！</div>
+      <br>
+      <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+        <div class="btn btn-pay">打赏支持</div>
+      </button>
+      <br>
+      <br>
+      <div id="QR" style="display: none;">
+        
+          <div id="wechat" style="display: inline-block;">
+            <img id="wechat_qr" src="/img/wechat-reward-qr.png" alt="下位子 WeChat Pay"/>
+            <p>微信打赏</p>
+          </div>
+        
+        
+          <div id="alipay" style="display: inline-block">
+            <img id="alipay_qr" src="/img/alipay-reward-qr.png" alt="下位子 Alipay"/>
+            <p>支付宝打赏</p>
+          </div>
+        
+        <br>
+        <br>
+      </div>
+    </div>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-Toolbar"><span class="toc-number">1.</span> <span class="toc-text">1. Toolbar</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-设置AppTheme-“NoActionBar”"><span class="toc-number">1.0.0.1.</span> <span class="toc-text">1. 设置AppTheme(“NoActionBar”)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-添加控件"><span class="toc-number">1.0.0.2.</span> <span class="toc-text">2. 添加控件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-在代码中使用"><span class="toc-number">1.0.0.3.</span> <span class="toc-text">3. 在代码中使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-设置菜单选项"><span class="toc-number">1.0.0.4.</span> <span class="toc-text">4. 设置菜单选项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-在代码中实用菜单选项"><span class="toc-number">1.0.0.5.</span> <span class="toc-text">5. 在代码中实用菜单选项</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#2-DrawerLayout"><span class="toc-number">2.</span> <span class="toc-text">2. DrawerLayout</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-创建menu"><span class="toc-number">2.0.0.1.</span> <span class="toc-text">1. 创建menu</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-创建headerLayout"><span class="toc-number">2.0.0.2.</span> <span class="toc-text">2. 创建headerLayout</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-在布局中使用"><span class="toc-number">2.0.0.3.</span> <span class="toc-text">3. 在布局中使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-在代码中使用"><span class="toc-number">2.0.0.4.</span> <span class="toc-text">4. 在代码中使用</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#3-SnackBar"><span class="toc-number">3.</span> <span class="toc-text">3. SnackBar</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#4-CardView"><span class="toc-number">4.</span> <span class="toc-text">4. CardView</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#5-RecyclerView"><span class="toc-number">5.</span> <span class="toc-text">5. RecyclerView</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#6-SwipeRefreshLayout"><span class="toc-number">6.</span> <span class="toc-text">6. SwipeRefreshLayout</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-在布局中添加"><span class="toc-number">6.0.0.1.</span> <span class="toc-text">1. 在布局中添加</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-在代码中添加"><span class="toc-number">6.0.0.2.</span> <span class="toc-text">2. 在代码中添加</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#7-AppBarLayout"><span class="toc-number">7.</span> <span class="toc-text">7. AppBarLayout</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#8-CollapsingToolbarLayout"><span class="toc-number">8.</span> <span class="toc-text">8. CollapsingToolbarLayout</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#9-沉浸式状态栏"><span class="toc-number">9.</span> <span class="toc-text">9. 沉浸式状态栏</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"基于MaterialDesign设计风格的妹纸app的简单实现　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+        
+      <section class="livere" id="comments">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zNDM3Ny8xMDkxNA==">
+    <script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+    </script>
+    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/posts/64591/" title="上一篇: jsoup爬虫简书首页数据做个小Demo">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/posts/62207/" title="下一篇: 快毕业了，撸一个小项目(新闻段子客户端)">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/posts/7b67faab/">读书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/31905/">hexo 博客小功能添加-评论、相册、字数统计...</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/39434/">个人博客全新上线(阿里域名+GitPages+hexo+Yelee)</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/34201/">Android 冷兵器 之 tools</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/25968/">自定义银行种类选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/46688/">我和极光的那些事---我和-Android-推送的时间简史</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/18215/">Python-自学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/6515/">Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/13147/">Android-自定义跑马灯</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/31642/">Android-分享会：Material-Design-在-Android-中的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/52360/">Git-命令小结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/13823/">使用Kotlin重构项目</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/40024/">Kotlin学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/41851/">MVVM之DataBinding入门</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/35908/">使用-Glide-实现圆角效果</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/9202/">Android-性能优化小结</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/58454/">如何做个依赖库让别人依赖使用</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/64590/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/64591/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/7691/">基于MaterialDesign设计风格的妹纸app的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/62207/">快毕业了，撸一个小项目(新闻段子客户端)</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/2954/">基于LitePal操作数据库的学生管理系统的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/276/">基于环信的仿QQ即时通讯的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/7455/">高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/7798/">简单粗暴----RecyclerView</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/23091/">设计模式之建造者模式学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/17984/">一个菜鸟的图片三级缓存笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/44203/">Thinking-in-Java 读书笔记-10-内部类</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/30700/">Thinking-in-Java 读书笔记-9-接口</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/45901/">Thinking-in-Java 读书笔记-8-多态</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/43023/">Thinking-in-Java 读书笔记-7-复用类</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/46955/">Thinking-in-Java 读书笔记-6-访问权限控制</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/35035/">Thinking-in-Java-读书笔记-5-初始化与清理</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/64790/">Thinking-in-Java-读书笔记-4-控制执行流程</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/36989/">Thinking-in-Java-读书笔记-3-操作符</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/28343/">Thinking-in-Java-读书笔记-2-一切都是对象</a></li><li class="post-list-item"><a class="post-list-link" href="/posts/12284/">Thinking-in-Java-读书笔记-1-对象导论</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2017-2018 下位子
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_uv">
+                      您是第 <span id="busuanzi_value_site_uv"></span> 位小伙伴
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+                    </span>
+                
+                <span>| </span>
+                <span class="post-count">  已经写了 55.6k 字啦</span>
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+    <script src="/js/GithubRepoWidget.js"></script>
+
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#e040fb", "#7c4dff", "#3d5afe", "#0288d1", "#0091ea", "#00e5ff", "#1de9b6", "#14e715", "#14e715", "#76ff03", "#ffea00", "#ff3d00", "#ff2d6f"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 6;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-113850534-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+             github: ".github-widget a", 
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "插播广告中... " + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "广告结束，精彩继续！" + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+	<script type="text/javascript" src="/resources/love.js"></script>
+	<script type="text/javascript" src="/resources/float.js"></script>
+	<script type="text/javascript" src="/resources/typewriter.js"></script>
+	<script type="text/javascript" color=0,104,183 opacity=1 zindex=-1 count=50 src="/resources/particle.js"></script>
+
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false},"react":{"opacityDefault":0.5,"opacityOnHover":0.2}});</script></body>
+</html>
