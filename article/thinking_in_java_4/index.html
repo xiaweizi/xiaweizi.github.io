@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="如果我们说另一种不同的语言，那么我们就会觉得一个有些不同的世界。 —Luduing Wittgerstein(1889-1951)  1. 用引用操作对象尽管一切都是对象，但是操纵的标识符实际上是对象的一个「引用」，可以看做成日常生活中电视机和遥控器的关系。只要拥有遥控器，就能保持着与电视机的连接，对电视声音和节目的调整，实际上都是对遥控器(引用)的操作。">
+<meta name="description" content="就像有知觉的生物一样，程序必须在执行过程中控制它的世界，并做出选择。在 Java 中，你要使用执行控制语句来做出选择。 作为一名程序员，尤其经常接触业务需求的开发人员，那流程的接触是必不可少的，基本的用法也是很熟练，所以在这就不介绍流程的基础知识了，直接看代码。">
 <meta name="keywords" content="Thinking In Java,读书笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Thinking-in-Java-读书笔记-2-一切都是对象">
-<meta property="og:url" content="http://xiaweizi.cn/article/28343/index.html">
+<meta property="og:title" content="Thinking-in-Java-读书笔记-4-控制执行流程">
+<meta property="og:url" content="http://xiaweizi.cn/article/thinking_in_java_4/index.html">
 <meta property="og:site_name" content="xiaweizi&#39;blog">
-<meta property="og:description" content="如果我们说另一种不同的语言，那么我们就会觉得一个有些不同的世界。 —Luduing Wittgerstein(1889-1951)  1. 用引用操作对象尽管一切都是对象，但是操纵的标识符实际上是对象的一个「引用」，可以看做成日常生活中电视机和遥控器的关系。只要拥有遥控器，就能保持着与电视机的连接，对电视声音和节目的调整，实际上都是对遥控器(引用)的操作。">
+<meta property="og:description" content="就像有知觉的生物一样，程序必须在执行过程中控制它的世界，并做出选择。在 Java 中，你要使用执行控制语句来做出选择。 作为一名程序员，尤其经常接触业务需求的开发人员，那流程的接触是必不可少的，基本的用法也是很熟练，所以在这就不介绍流程的基础知识了，直接看代码。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-09T02:14:16.499Z">
+<meta property="og:updated_time" content="2018-03-09T08:27:52.950Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Thinking-in-Java-读书笔记-2-一切都是对象">
-<meta name="twitter:description" content="如果我们说另一种不同的语言，那么我们就会觉得一个有些不同的世界。 —Luduing Wittgerstein(1889-1951)  1. 用引用操作对象尽管一切都是对象，但是操纵的标识符实际上是对象的一个「引用」，可以看做成日常生活中电视机和遥控器的关系。只要拥有遥控器，就能保持着与电视机的连接，对电视声音和节目的调整，实际上都是对遥控器(引用)的操作。">
+<meta name="twitter:title" content="Thinking-in-Java-读书笔记-4-控制执行流程">
+<meta name="twitter:description" content="就像有知觉的生物一样，程序必须在执行过程中控制它的世界，并做出选择。在 Java 中，你要使用执行控制语句来做出选择。 作为一名程序员，尤其经常接触业务需求的开发人员，那流程的接触是必不可少的，基本的用法也是很熟练，所以在这就不介绍流程的基础知识了，直接看代码。">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -58,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Thinking-in-Java-读书笔记-2-一切都是对象 | xiaweizi&#39;blog</title>
+<title>Thinking-in-Java-读书笔记-4-控制执行流程 | xiaweizi&#39;blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -290,11 +290,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-Thinking-in-Java-读书笔记-2-一切都是对象" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Thinking-in-Java-读书笔记-4-控制执行流程" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/article/28343/" class="article-date">
-      <time datetime="1994-02-25T12:46:25.000Z" itemprop="datePublished">1994-02-25</time>
+      <a href="/article/thinking_in_java_4/" class="article-date">
+      <time datetime="1994-02-28T10:27:25.000Z" itemprop="datePublished">1994-02-28</time>
 </a>
 
 
@@ -309,7 +309,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Thinking-in-Java-读书笔记-2-一切都是对象
+      Thinking-in-Java-读书笔记-4-控制执行流程
     </h1>
   
 
@@ -319,7 +319,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1,239 字</span>
+        <span class="post-count">306 字</span>
       </span>
     </span>
 
@@ -328,7 +328,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">4 分</span>
+        <span class="post-count">2 分</span>
       </span>
     </span>
 
@@ -364,151 +364,13 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <blockquote>
-<p>如果我们说另一种不同的语言，那么我们就会觉得一个有些不同的世界。<br> —Luduing Wittgerstein(1889-1951)</p>
-</blockquote>
-<h2 id="1-用引用操作对象"><a href="#1-用引用操作对象" class="headerlink" title="1. 用引用操作对象"></a>1. 用引用操作对象</h2><p>尽管一切都是对象，但是操纵的标识符实际上是对象的一个「引用」，可以看做成日常生活中电视机和遥控器的关系。只要拥有遥控器，就能保持着与电视机的连接，对电视声音和节目的调整，实际上都是对遥控器(引用)的操作。</p>
+        <p><strong>就像有知觉的生物一样，程序必须在执行过程中控制它的世界，并做出选择。在 Java 中，你要使用执行控制语句来做出选择。</strong></p>
+<p>作为一名程序员，尤其经常接触业务需求的开发人员，那流程的接触是必不可少的，基本的用法也是很熟练，所以在这就不介绍流程的基础知识了，直接看代码。</p>
 <a id="more"></a>
-<pre><code>String s;
-</code></pre><p>这里只是创建了引用，并不是对象，如果此时想 s 发送一个消息，就会返回一个运行时错误，这是因为此时 s 实际上并没有与任何对象有联系，因此一个安全的做饭就是，创建一个引用的同时，要对其进行初始化。</p>
-<pre><code>String s = &quot;Hello wolrd
-</code></pre><p>但这里用到 Java 语言一个特性：字符串可以用带引号的文本初始化，通常，必须对对象采用一种更通用的初始化方法。</p>
-<h2 id="2-必须由你创建所有对象"><a href="#2-必须由你创建所有对象" class="headerlink" title="2. 必须由你创建所有对象"></a>2. 必须由你创建所有对象</h2><p><strong>存储的位置</strong></p>
-<p>程序运行时，对象是怎么进行防治安排的呢？有五个不同的地方可以存储数据：</p>
-<ol>
-<li><p><strong>寄存器。</strong> 这是最快的存储区，因为它位于不同于替他存储区的地方–处理器内部。但是寄存器的存储数量极其有限，所以寄存器的存储根据需求进行分配，你不能直接控制，也不能在程序中感觉到寄存器存在的任何迹象。</p>
-</li>
-<li><p><strong>堆栈。</strong> 位于通用 RAM(随机访问存储器),但通过堆栈指针可以从处理器那里获得直接支持。堆栈指针如果向下移动，则分配新的内存，如果向上移动，则释放那些内存。这是一种快速有效的分配存储方法，仅次于寄存器。创建程序时，Java 系统必须知道存储在堆栈内所有的确切的生命周期，以便上下移动堆栈指针，这也约束了程序的灵活性。</p>
-</li>
-<li><p><strong>堆。</strong>一种通用的内存池(也位于 RAM)，用于存储所有的 Java 对象，堆位于不同于堆栈的好处是：编译器不需要知道存储的数据在堆里存活多长时间。因此，在堆里分配存储有很大的灵活性，当需要一个对象时，只需要 new 写一行简单的代码，当执行这行代码时，会自动在堆里进行存储分配，当然，为这种灵活性必须付出相应的代价：用堆进行存储分配和清理可能比堆栈进行存储分配 需要更多的时间。</p>
-</li>
-<li><p><strong>常量存储。</strong> 常量通常直接存放在程序代码内部，这样做是安全的，因为它们永远不会被改变。</p>
-</li>
-<li><p><strong>非 RAM 存储。</strong> 如果数据完全存活于程序之外，那么它可以不受程序的任何控制，在程序没有运行时也可以存在。其中两个基本的例子是流对象和持久化对象。</p>
-</li>
-</ol>
-<p><strong>基本类型</strong></p>
-<p>不同于其他的 Java 对象，创建出来的时候存储在堆中，基本类型创建并非是应用的自动变量，这个变量直接存储值，并置于堆栈中，因此更加的高效。</p>
-<p>Java 中确定每种基本类型所占空间的大小，它们的大小并不像其他大多数语言那样所机器硬件架构的变化而变化。</p>
-<table>
-<thead>
-<tr>
-<th>基本类型</th>
-<th style="text-align:center">大小</th>
-<th style="text-align:center">最大值</th>
-<th style="text-align:center">最小值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>boolen</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">-</td>
-</tr>
-<tr>
-<td>char</td>
-<td style="text-align:center">16-bit</td>
-<td style="text-align:center">Unicode 0</td>
-<td style="text-align:center">Unicode 2^16-1</td>
-</tr>
-<tr>
-<td>byte</td>
-<td style="text-align:center">8-bit</td>
-<td style="text-align:center">-128</td>
-<td style="text-align:center">127</td>
-</tr>
-<tr>
-<td>short</td>
-<td style="text-align:center">16-bit</td>
-<td style="text-align:center">-2^15</td>
-<td style="text-align:center">2^15-1</td>
-</tr>
-<tr>
-<td>int</td>
-<td style="text-align:center">32-bit</td>
-<td style="text-align:center">-2^31</td>
-<td style="text-align:center">2^31-1</td>
-</tr>
-<tr>
-<td>long</td>
-<td style="text-align:center">64-bit</td>
-<td style="text-align:center">-2^63</td>
-<td style="text-align:center">2^63-1</td>
-</tr>
-<tr>
-<td>float</td>
-<td style="text-align:center">32-bit</td>
-<td style="text-align:center">IEEE754</td>
-<td style="text-align:center">IEEE754</td>
-</tr>
-<tr>
-<td>double</td>
-<td style="text-align:center">64-bit</td>
-<td style="text-align:center">IEEE754</td>
-<td style="text-align:center">IEEE754</td>
-</tr>
-<tr>
-<td>void</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">-</td>
-<td style="text-align:center">-</td>
-</tr>
-</tbody>
-</table>
-<h2 id="3-创建新的数据类型：类"><a href="#3-创建新的数据类型：类" class="headerlink" title="3. 创建新的数据类型：类"></a>3. 创建新的数据类型：类</h2><p>如果一切都是对象，那么是什么决定了某一类对象的外观与行为呢？通过关键字 class 创建类。</p>
-<p><strong>基本成员默认值</strong></p>
-<table>
-<thead>
-<tr>
-<th>基本类型</th>
-<th style="text-align:center">默认值</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>boolen</td>
-<td style="text-align:center">false</td>
-</tr>
-<tr>
-<td>char</td>
-<td style="text-align:center">‘\u0000’(null)</td>
-</tr>
-<tr>
-<td>byte</td>
-<td style="text-align:center">(byte)0</td>
-</tr>
-<tr>
-<td>short</td>
-<td style="text-align:center">(short)0</td>
-</tr>
-<tr>
-<td>int</td>
-<td style="text-align:center">0</td>
-</tr>
-<tr>
-<td>long</td>
-<td style="text-align:center">0L</td>
-</tr>
-<tr>
-<td>float</td>
-<td style="text-align:center">0.0f</td>
-</tr>
-<tr>
-<td>double</td>
-<td style="text-align:center">0.0d</td>
-</tr>
-</tbody>
-</table>
-<h2 id="4-static-关键字"><a href="#4-static-关键字" class="headerlink" title="4. static 关键字"></a>4. static 关键字</h2><p>通过 static 关键字可以满足两方面的需求：第一种，只想为特定域分哦诶单一存储空间，而不去考虑究竟要创建多少对象，甚至根本就不用创建对象。第二种，希望某个方法不与包含它的类的任何对象关联在一起，也就是说没有创建对象，也能够调用这个方法。及类数据和类方法两个概念。</p>
-<h2 id="5-注释相关"><a href="#5-注释相关" class="headerlink" title="5. 注释相关"></a>5. 注释相关</h2><p>基础的就不介绍了，介绍一些标签示例：</p>
-<p><strong>@see</strong></p>
-<pre><code>@see className
-@see fully-qualified-className&amp;methodName
-</code></pre><p><strong>@link</strong></p>
-<pre><code>{@link package.class#member label}
-</code></pre><h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>通过本章的学习，接触相当多的关于如何编写一个简单程序的 Java 编程知识，此外对 Java 语言及它的一些基本思想也有了一个总体认识。</p>
-
+<h2 id="if-else"><a href="#if-else" class="headerlink" title="if else"></a>if else</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">private static void checkGrade(int grade) &#123;</span><br><span class="line">        if (grade &gt;= 90) &#123;</span><br><span class="line">            System.out.println(&quot;优秀&quot;);</span><br><span class="line">        &#125; else if (grade &gt;= 80) &#123;</span><br><span class="line">            System.out.println(&quot;良好&quot;);</span><br><span class="line">        &#125; else if (grade &gt;= 70) &#123;</span><br><span class="line">            System.out.println(&quot;中等&quot;);</span><br><span class="line">        &#125; else if (grade &gt;= 60) &#123;</span><br><span class="line">            System.out.println(&quot;及格&quot;);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            System.out.println(&quot;不及格&quot;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="while"><a href="#while" class="headerlink" title="while"></a>while</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">private static void testWhile() &#123;</span><br><span class="line">    int i = 1;</span><br><span class="line">    int sum = 0;</span><br><span class="line">    while (i &lt;= 10) &#123;</span><br><span class="line">        sum += i;</span><br><span class="line">        i++;</span><br><span class="line">    &#125;</span><br><span class="line">    do &#123;</span><br><span class="line">        sum += i;</span><br><span class="line">        i++;</span><br><span class="line">    &#125; while (i &lt;= 10);</span><br><span class="line">    System.out.println(&quot;sum:&quot; + sum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="for"><a href="#for" class="headerlink" title="for"></a>for</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">private static void testFor() &#123;</span><br><span class="line">    for (int i = 1; i &lt; 20; i++) &#123;</span><br><span class="line">        if (i % 2 == 0) &#123;</span><br><span class="line">            System.out.println(i + &quot;是偶数&quot;);</span><br><span class="line">            continue;</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(i + &quot;是奇数&quot;);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="switch"><a href="#switch" class="headerlink" title="switch"></a>switch</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">private static void testSwitch() &#123;</span><br><span class="line">    int sex = 0;</span><br><span class="line">    switch (sex) &#123;</span><br><span class="line">        case 0:</span><br><span class="line">            System.out.println(&quot;男性&quot;);</span><br><span class="line">            break;</span><br><span class="line">        case 1:</span><br><span class="line">            System.out.println(&quot;男性&quot;);</span><br><span class="line">            break;</span><br><span class="line">        default:</span><br><span class="line">            System.out.println(&quot;未知&quot;);</span><br><span class="line">            break;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -516,13 +378,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/article/28343/">Thinking-in-Java-读书笔记-2-一切都是对象</a></p>
+        <p><span>本文标题:</span><a href="/article/thinking_in_java_4/">Thinking-in-Java-读书笔记-4-控制执行流程</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">下位子</a></p>
-        <p><span>发布时间:</span>1994-02-25, 20:46:25</p>
-        <p><span>最后更新:</span>2018-03-09, 10:14:16</p>
+        <p><span>发布时间:</span>1994-02-28, 18:27:25</p>
+        <p><span>最后更新:</span>2018-03-09, 16:27:52</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/article/28343/" title="Thinking-in-Java-读书笔记-2-一切都是对象">http://xiaweizi.cn/article/28343/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/article/28343/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/article/thinking_in_java_4/" title="Thinking-in-Java-读书笔记-4-控制执行流程">http://xiaweizi.cn/article/thinking_in_java_4/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/article/thinking_in_java_4/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -535,15 +397,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/article/36989/">
-                    Thinking-in-Java-读书笔记-3-操作符
+                <a href="/article/thinking_in_java_5/">
+                    Thinking-in-Java-读书笔记-5-初始化与清理
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/article/12284/">
-                    Thinking-in-Java-读书笔记-1-对象导论
+                <a href="/article/thinking_in_java_3/">
+                    Thinking-in-Java-读书笔记-3-操作符
                 </a>
             </div>
         
@@ -551,41 +413,51 @@
 
   
   
-    
-    <div style="padding: 0; margin: 20px auto; width: 90%; text-align: center;">
-      <br>
-      <div>赏我 e(=2.72) 元咖啡钱吧，您的支持将鼓励我继续创作！</div>
-      <br>
-      <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-        <div class="btn btn-pay">打赏支持</div>
-      </button>
-      <br>
-      <br>
-      <div id="QR" style="display: none;">
-        
-          <div id="wechat" style="display: inline-block;">
-            <img id="wechat_qr" src="/img/wechat-reward-qr.png" alt="下位子 WeChat Pay"/>
-            <p>微信打赏</p>
-          </div>
-        
-        
-          <div id="alipay" style="display: inline-block">
-            <img id="alipay_qr" src="/img/alipay-reward-qr.png" alt="下位子 Alipay"/>
-            <p>支付宝打赏</p>
-          </div>
-        
-        <br>
-        <br>
-      </div>
-    </div>
+    #rewardButton {
+    background-color: #ea6f5a;
+}
 
+.btn-pay {
+    margin-bottom: 20px;
+    padding: 8px 25px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #ea6f5a;
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#QR img{
+    height: 200px;
+    height: 200px;
+    margin: 20px;
+}
   
 </article>
 
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-用引用操作对象"><span class="toc-number">1.</span> <span class="toc-text">1. 用引用操作对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-必须由你创建所有对象"><span class="toc-number">2.</span> <span class="toc-text">2. 必须由你创建所有对象</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-创建新的数据类型：类"><span class="toc-number">3.</span> <span class="toc-text">3. 创建新的数据类型：类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-static-关键字"><span class="toc-number">4.</span> <span class="toc-text">4. static 关键字</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-注释相关"><span class="toc-number">5.</span> <span class="toc-text">5. 注释相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#if-else"><span class="toc-number">1.</span> <span class="toc-text">if else</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#while"><span class="toc-number">2.</span> <span class="toc-text">while</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#for"><span class="toc-number">3.</span> <span class="toc-text">for</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#switch"><span class="toc-number">4.</span> <span class="toc-text">switch</span></a></li></ol>
         
     </div>
     <style>
@@ -621,7 +493,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Thinking-in-Java-读书笔记-2-一切都是对象　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Thinking-in-Java-读书笔记-4-控制执行流程　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -662,7 +534,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/article/36989/" title="上一篇: Thinking-in-Java-读书笔记-3-操作符">
+            <a href="/article/thinking_in_java_5/" title="上一篇: Thinking-in-Java-读书笔记-5-初始化与清理">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -670,13 +542,13 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/article/12284/" title="下一篇: Thinking-in-Java-读书笔记-1-对象导论">
+            <a href="/article/thinking_in_java_3/" title="下一篇: Thinking-in-Java-读书笔记-3-操作符">
                 <i class="fa fa-angle-right"></i>
             </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/article/7b67faab/">读书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/31905/">hexo 博客小功能添加-评论、相册、字数统计...</a></li><li class="post-list-item"><a class="post-list-link" href="/article/39434/">个人博客全新上线(阿里域名+GitPages+hexo+Yelee)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/34201/">Android 冷兵器 之 tools</a></li><li class="post-list-item"><a class="post-list-link" href="/article/25968/">自定义银行种类选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/article/46688/">我和极光的那些事---我和-Android-推送的时间简史</a></li><li class="post-list-item"><a class="post-list-link" href="/article/18215/">Python-自学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/6515/">Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！</a></li><li class="post-list-item"><a class="post-list-link" href="/article/13147/">Android-自定义跑马灯</a></li><li class="post-list-item"><a class="post-list-link" href="/article/31642/">Android-分享会：Material-Design-在-Android-中的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/article/52360/">Git-命令小结</a></li><li class="post-list-item"><a class="post-list-link" href="/article/13823/">使用Kotlin重构项目</a></li><li class="post-list-item"><a class="post-list-link" href="/article/40024/">Kotlin学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/41851/">MVVM之DataBinding入门</a></li><li class="post-list-item"><a class="post-list-link" href="/article/35908/">使用-Glide-实现圆角效果</a></li><li class="post-list-item"><a class="post-list-link" href="/article/9202/">Android-性能优化小结</a></li><li class="post-list-item"><a class="post-list-link" href="/article/58454/">如何做个依赖库让别人依赖使用</a></li><li class="post-list-item"><a class="post-list-link" href="/article/64590/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/article/64591/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7691/">基于MaterialDesign设计风格的妹纸app的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/62207/">快毕业了，撸一个小项目(新闻段子客户端)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/2954/">基于LitePal操作数据库的学生管理系统的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/276/">基于环信的仿QQ即时通讯的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7455/">高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7798/">简单粗暴----RecyclerView</a></li><li class="post-list-item"><a class="post-list-link" href="/article/23091/">设计模式之建造者模式学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/17984/">一个菜鸟的图片三级缓存笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/44203/">Thinking-in-Java 读书笔记-10-内部类</a></li><li class="post-list-item"><a class="post-list-link" href="/article/30700/">Thinking-in-Java 读书笔记-9-接口</a></li><li class="post-list-item"><a class="post-list-link" href="/article/45901/">Thinking-in-Java 读书笔记-8-多态</a></li><li class="post-list-item"><a class="post-list-link" href="/article/43023/">Thinking-in-Java 读书笔记-7-复用类</a></li><li class="post-list-item"><a class="post-list-link" href="/article/46955/">Thinking-in-Java 读书笔记-6-访问权限控制</a></li><li class="post-list-item"><a class="post-list-link" href="/article/35035/">Thinking-in-Java-读书笔记-5-初始化与清理</a></li><li class="post-list-item"><a class="post-list-link" href="/article/64790/">Thinking-in-Java-读书笔记-4-控制执行流程</a></li><li class="post-list-item"><a class="post-list-link" href="/article/36989/">Thinking-in-Java-读书笔记-3-操作符</a></li><li class="post-list-item"><a class="post-list-link" href="/article/28343/">Thinking-in-Java-读书笔记-2-一切都是对象</a></li><li class="post-list-item"><a class="post-list-link" href="/article/12284/">Thinking-in-Java-读书笔记-1-对象导论</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/article/7b67faab/">读书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/31905/">hexo 博客小功能添加-评论、相册、字数统计...</a></li><li class="post-list-item"><a class="post-list-link" href="/article/39434/">个人博客全新上线(阿里域名+GitPages+hexo+Yelee)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/34201/">Android 冷兵器 之 tools</a></li><li class="post-list-item"><a class="post-list-link" href="/article/25968/">自定义银行种类选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/article/46688/">我和极光的那些事---我和-Android-推送的时间简史</a></li><li class="post-list-item"><a class="post-list-link" href="/article/18215/">Python-自学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/6515/">Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！</a></li><li class="post-list-item"><a class="post-list-link" href="/article/13147/">Android-自定义跑马灯</a></li><li class="post-list-item"><a class="post-list-link" href="/article/31642/">Android-分享会：Material-Design-在-Android-中的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/article/52360/">Git-命令小结</a></li><li class="post-list-item"><a class="post-list-link" href="/article/13823/">使用Kotlin重构项目</a></li><li class="post-list-item"><a class="post-list-link" href="/article/40024/">Kotlin学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/41851/">MVVM之DataBinding入门</a></li><li class="post-list-item"><a class="post-list-link" href="/article/35908/">使用-Glide-实现圆角效果</a></li><li class="post-list-item"><a class="post-list-link" href="/article/9202/">Android-性能优化小结</a></li><li class="post-list-item"><a class="post-list-link" href="/article/58454/">如何做个依赖库让别人依赖使用</a></li><li class="post-list-item"><a class="post-list-link" href="/article/64590/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/article/64591/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/article/62207/">快毕业了，撸一个小项目(新闻段子客户端)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7691/">基于MaterialDesign设计风格的妹纸app的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/2954/">基于LitePal操作数据库的学生管理系统的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/276/">基于环信的仿QQ即时通讯的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7455/">高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7798/">简单粗暴----RecyclerView</a></li><li class="post-list-item"><a class="post-list-link" href="/article/23091/">设计模式之建造者模式学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/17984/">一个菜鸟的图片三级缓存笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_10/">Thinking-in-Java 读书笔记-10-内部类</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_9/">Thinking-in-Java 读书笔记-9-接口</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_8/">Thinking-in-Java 读书笔记-8-多态</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_7/">Thinking-in-Java 读书笔记-7-复用类</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_6/">Thinking-in-Java 读书笔记-6-访问权限控制</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_5/">Thinking-in-Java-读书笔记-5-初始化与清理</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_4/">Thinking-in-Java-读书笔记-4-控制执行流程</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_3/">Thinking-in-Java-读书笔记-3-操作符</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_2/">Thinking-in-Java-读书笔记-2-一切都是对象</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_1/">Thinking-in-Java-读书笔记-1-对象导论</a></li></ul>
 
 
 
@@ -709,7 +581,7 @@
                     </span>
                 
                 <span>| </span>
-                <span class="post-count">  已经写了 55.6k 字啦</span>
+                <span class="post-count">  已经写了 55.9k 字啦</span>
             </div>
         
     </div>
