@@ -270,7 +270,7 @@ a {
 }
 #container .left-col {
   background: rgba(255,255,255,0.85);
-  width: 380px;
+  width: 370px;
   position: fixed;
   opacity: 1;
   -webkit-transition: all 0.2s ease-in;
@@ -301,7 +301,7 @@ a {
   right: 0;
   min-height: 100%;
   background: rgba(255,255,255,0.8);
-  left: 380px;
+  left: 370px;
   width: auto;
 }
 @media screen and (max-width: 800px) {
@@ -722,7 +722,7 @@ a {
 }
 #header .header-menu li a {
   font-size: 0.875rem;
-  min-width: 380px;
+  min-width: 370px;
 }
 #header .switch-area {
   position: relative;
@@ -1068,7 +1068,7 @@ a {
 }
 .hide-labels {
   position: fixed;
-  left: 458px;
+  left: 448px;
   top: 30px;
   padding: 1px;
   border: none;
@@ -1088,7 +1088,7 @@ a {
   opacity: 1;
 }
 #post-nav-button {
-  left: 380px;
+  left: 370px;
   top: 61.8%;
 }
 #post-nav-button a {
@@ -1751,7 +1751,7 @@ li:hover {
 }
 #tocButton {
   position: fixed;
-  left: 300px;
+  left: 290px;
   top: 385px;
   font-size: 0.9em;
   font-weight: bold;
@@ -1768,7 +1768,7 @@ li:hover {
 }
 .toc-article {
   position: fixed;
-  width: 310px;
+  width: 300px;
   top: 378px;
   bottom: 1em;
   left: 0;
