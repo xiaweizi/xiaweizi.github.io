@@ -15,18 +15,18 @@
 
 
 
-<meta name="description" content="随着计算机革命的发展，不安全的编码方式逐渐成为编程代价高昂的主因之一。  前言初始化和清理是涉及程序安全的了两个问题，如果处理不好的话，很容易在运行的时候出现奔溃，造成很不好的用户体验。首先初始化，在开发的过程中，每当创建基本类型或者是其他对象，都会下意识的初始化，虽然全局变量会默认有个初始值，局部变量编译时期就会报错，但是我们还是要养成创建同时初始化的好习惯。至于清理，不像 C/C++内存需要">
+<meta name="description" content="Thinking in java 读书笔记  随着计算机革命的发展，不安全的编码方式逐渐成为编程代价高昂的主因之一。  前言初始化和清理是涉及程序安全的了两个问题，如果处理不好的话，很容易在运行的时候出现奔溃，造成很不好的用户体验。首先初始化，在开发的过程中，每当创建基本类型或者是其他对象，都会下意识的初始化，虽然全局变量会默认有个初始值，局部变量编译时期就会报错，但是我们还是要养成创建同时初始化">
 <meta name="keywords" content="Thinking In Java,读书笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Thinking-in-Java-读书笔记-5-初始化与清理">
 <meta property="og:url" content="http://xiaweizi.cn/article/thinking_in_java_5/index.html">
 <meta property="og:site_name" content="xiaweizi&#39;blog">
-<meta property="og:description" content="随着计算机革命的发展，不安全的编码方式逐渐成为编程代价高昂的主因之一。  前言初始化和清理是涉及程序安全的了两个问题，如果处理不好的话，很容易在运行的时候出现奔溃，造成很不好的用户体验。首先初始化，在开发的过程中，每当创建基本类型或者是其他对象，都会下意识的初始化，虽然全局变量会默认有个初始值，局部变量编译时期就会报错，但是我们还是要养成创建同时初始化的好习惯。至于清理，不像 C/C++内存需要">
+<meta property="og:description" content="Thinking in java 读书笔记  随着计算机革命的发展，不安全的编码方式逐渐成为编程代价高昂的主因之一。  前言初始化和清理是涉及程序安全的了两个问题，如果处理不好的话，很容易在运行的时候出现奔溃，造成很不好的用户体验。首先初始化，在开发的过程中，每当创建基本类型或者是其他对象，都会下意识的初始化，虽然全局变量会默认有个初始值，局部变量编译时期就会报错，但是我们还是要养成创建同时初始化">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-09T08:27:59.444Z">
+<meta property="og:updated_time" content="2018-03-17T04:13:56.454Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Thinking-in-Java-读书笔记-5-初始化与清理">
-<meta name="twitter:description" content="随着计算机革命的发展，不安全的编码方式逐渐成为编程代价高昂的主因之一。  前言初始化和清理是涉及程序安全的了两个问题，如果处理不好的话，很容易在运行的时候出现奔溃，造成很不好的用户体验。首先初始化，在开发的过程中，每当创建基本类型或者是其他对象，都会下意识的初始化，虽然全局变量会默认有个初始值，局部变量编译时期就会报错，但是我们还是要养成创建同时初始化的好习惯。至于清理，不像 C/C++内存需要">
+<meta name="twitter:description" content="Thinking in java 读书笔记  随着计算机革命的发展，不安全的编码方式逐渐成为编程代价高昂的主因之一。  前言初始化和清理是涉及程序安全的了两个问题，如果处理不好的话，很容易在运行的时候出现奔溃，造成很不好的用户体验。首先初始化，在开发的过程中，每当创建基本类型或者是其他对象，都会下意识的初始化，虽然全局变量会默认有个初始值，局部变量编译时期就会报错，但是我们还是要养成创建同时初始化">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -321,7 +321,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2,187 字</span>
+        <span class="post-count">2,194 字</span>
       </span>
     </span>
 
@@ -366,7 +366,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <blockquote>
+        <p><a href="http://xiaweizi.cn/categories/Thinking-In-Java-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">Thinking in java 读书笔记</a></p>
+<blockquote>
 <p>随着计算机革命的发展，不安全的编码方式逐渐成为编程代价高昂的主因之一。</p>
 </blockquote>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>初始化和清理是涉及程序安全的了两个问题，如果处理不好的话，很容易在运行的时候出现奔溃，造成很不好的用户体验。首先初始化，在开发的过程中，每当创建基本类型或者是其他对象，都会下意识的初始化，虽然全局变量会默认有个初始值，局部变量编译时期就会报错，但是我们还是要养成创建同时初始化的好习惯。至于清理，不像 <code>C/C++</code>内存需要自己分配和释放，<code>Java</code>内置的虚拟机，已经帮助我们完成这件事情了，但是在开发的过程中，还是要注意一些资源的释放，免得造成内存泄漏等异常。</p>
@@ -458,7 +459,7 @@ switch (red) {
         <p><span>本文标题:</span><a href="/article/thinking_in_java_5/">Thinking-in-Java-读书笔记-5-初始化与清理</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">下位子</a></p>
         <p><span>发布时间:</span>1994-03-02, 16:25:00</p>
-        <p><span>最后更新:</span>2018-03-09, 16:27:59</p>
+        <p><span>最后更新:</span>2018-03-17, 12:13:56</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/article/thinking_in_java_5/" title="Thinking-in-Java-读书笔记-5-初始化与清理">http://xiaweizi.cn/article/thinking_in_java_5/</a>
             <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/article/thinking_in_java_5/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -615,7 +616,7 @@ switch (red) {
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/article/7b67faab/">读书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/31905/">hexo 博客小功能添加-评论、相册、字数统计...</a></li><li class="post-list-item"><a class="post-list-link" href="/article/39434/">个人博客全新上线(阿里域名+GitPages+hexo+Yelee)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/34201/">Android 冷兵器 之 tools</a></li><li class="post-list-item"><a class="post-list-link" href="/article/25968/">自定义银行种类选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/article/46688/">我和极光的那些事---我和-Android-推送的时间简史</a></li><li class="post-list-item"><a class="post-list-link" href="/article/18215/">Python-自学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/6515/">Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！</a></li><li class="post-list-item"><a class="post-list-link" href="/article/13147/">Android-自定义跑马灯</a></li><li class="post-list-item"><a class="post-list-link" href="/article/31642/">Android-分享会：Material-Design-在-Android-中的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/article/52360/">Git-命令小结</a></li><li class="post-list-item"><a class="post-list-link" href="/article/13823/">使用Kotlin重构项目</a></li><li class="post-list-item"><a class="post-list-link" href="/article/40024/">Kotlin学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/41851/">MVVM之DataBinding入门</a></li><li class="post-list-item"><a class="post-list-link" href="/article/35908/">使用-Glide-实现圆角效果</a></li><li class="post-list-item"><a class="post-list-link" href="/article/9202/">Android-性能优化小结</a></li><li class="post-list-item"><a class="post-list-link" href="/article/58454/">如何做个依赖库让别人依赖使用</a></li><li class="post-list-item"><a class="post-list-link" href="/article/64590/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/article/64591/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7691/">基于MaterialDesign设计风格的妹纸app的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/62207/">快毕业了，撸一个小项目(新闻段子客户端)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/2954/">基于LitePal操作数据库的学生管理系统的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/276/">基于环信的仿QQ即时通讯的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7455/">高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7798/">简单粗暴----RecyclerView</a></li><li class="post-list-item"><a class="post-list-link" href="/article/23091/">设计模式之建造者模式学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/17984/">一个菜鸟的图片三级缓存笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_12/">Thinking-in-Java 读书笔记-12-通过异常处理错误</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_11/">Thinking-in-Java 读书笔记-11-持有对象</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_10/">Thinking-in-Java 读书笔记-10-内部类</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_9/">Thinking-in-Java 读书笔记-9-接口</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_8/">Thinking-in-Java 读书笔记-8-多态</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_7/">Thinking-in-Java 读书笔记-7-复用类</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_6/">Thinking-in-Java 读书笔记-6-访问权限控制</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_5/">Thinking-in-Java-读书笔记-5-初始化与清理</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_4/">Thinking-in-Java-读书笔记-4-控制执行流程</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_3/">Thinking-in-Java-读书笔记-3-操作符</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_2/">Thinking-in-Java-读书笔记-2-一切都是对象</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_1/">Thinking-in-Java-读书笔记-1-对象导论</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/article/7b67faab/">读书笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/31905/">hexo 博客小功能添加-评论、相册、字数统计...</a></li><li class="post-list-item"><a class="post-list-link" href="/article/39434/">个人博客全新上线(阿里域名+GitPages+hexo+Yelee)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/34201/">Android 冷兵器 之 tools</a></li><li class="post-list-item"><a class="post-list-link" href="/article/25968/">自定义银行种类选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/article/46688/">我和极光的那些事---我和-Android-推送的时间简史</a></li><li class="post-list-item"><a class="post-list-link" href="/article/18215/">Python-自学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/6515/">Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！</a></li><li class="post-list-item"><a class="post-list-link" href="/article/13147/">Android-自定义跑马灯</a></li><li class="post-list-item"><a class="post-list-link" href="/article/31642/">Android-分享会：Material-Design-在-Android-中的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/article/52360/">Git-命令小结</a></li><li class="post-list-item"><a class="post-list-link" href="/article/13823/">使用Kotlin重构项目</a></li><li class="post-list-item"><a class="post-list-link" href="/article/40024/">Kotlin学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/41851/">MVVM之DataBinding入门</a></li><li class="post-list-item"><a class="post-list-link" href="/article/35908/">使用-Glide-实现圆角效果</a></li><li class="post-list-item"><a class="post-list-link" href="/article/9202/">Android-性能优化小结</a></li><li class="post-list-item"><a class="post-list-link" href="/article/58454/">如何做个依赖库让别人依赖使用</a></li><li class="post-list-item"><a class="post-list-link" href="/article/64590/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/article/64591/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/article/62207/">快毕业了，撸一个小项目(新闻段子客户端)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7691/">基于MaterialDesign设计风格的妹纸app的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/2954/">基于LitePal操作数据库的学生管理系统的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/276/">基于环信的仿QQ即时通讯的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7455/">高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7798/">简单粗暴----RecyclerView</a></li><li class="post-list-item"><a class="post-list-link" href="/article/23091/">设计模式之建造者模式学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/17984/">一个菜鸟的图片三级缓存笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_12/">Thinking-in-Java 读书笔记-12-通过异常处理错误</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_11/">Thinking-in-Java 读书笔记-11-持有对象</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_10/">Thinking-in-Java 读书笔记-10-内部类</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_9/">Thinking-in-Java 读书笔记-9-接口</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_8/">Thinking-in-Java 读书笔记-8-多态</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_7/">Thinking-in-Java 读书笔记-7-复用类</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_6/">Thinking-in-Java 读书笔记-6-访问权限控制</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_5/">Thinking-in-Java-读书笔记-5-初始化与清理</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_4/">Thinking-in-Java-读书笔记-4-控制执行流程</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_3/">Thinking-in-Java-读书笔记-3-操作符</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_2/">Thinking-in-Java-读书笔记-2-一切都是对象</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_1/">Thinking-in-Java-读书笔记-1-对象导论</a></li></ul>
 
 
 
@@ -648,7 +649,7 @@ switch (red) {
                     </span>
                 
                 <span>| </span>
-                <span class="post-count">  已经写了 58.7k 字啦</span>
+                <span class="post-count">  已经写了 58.8k 字啦</span>
             </div>
         
     </div>
