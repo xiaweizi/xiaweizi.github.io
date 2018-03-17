@@ -15,22 +15,33 @@
 
 
 
-<meta name="description" content="前言上周大概花了一个星期的时间初步学习了一下Kotlin，并且同步写了Kotlin 笔记，方便后面使用的时候查询一些语法的用法。">
-<meta name="keywords" content="Kotlin,项目重构">
+<meta name="description" content="前言作为程序员，相信对 MarkDown 语法并不陌生，平时知识的积累，博客的编写或者是工作的报告都或多或少会用到。  Markdown 是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。  那具体的介绍和使用语法就不用过多介绍，较为简单，网上一搜一大把。对应的编辑器也很多，比如之前使用的 MacDown，或者是笔记软件，更或者是博文平台都是支持">
+<meta name="keywords" content="工具软件,提高效率">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Kotlin重构项目">
-<meta property="og:url" content="http://xiaweizi.cn/article/13823/index.html">
+<meta property="og:title" content="程序员必备软件之编辑预览于一身的 Typora">
+<meta property="og:url" content="http://xiaweizi.cn/article/typora/index.html">
 <meta property="og:site_name" content="xiaweizi&#39;blog">
-<meta property="og:description" content="前言上周大概花了一个星期的时间初步学习了一下Kotlin，并且同步写了Kotlin 笔记，方便后面使用的时候查询一些语法的用法。">
+<meta property="og:description" content="前言作为程序员，相信对 MarkDown 语法并不陌生，平时知识的积累，博客的编写或者是工作的报告都或多或少会用到。  Markdown 是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。  那具体的介绍和使用语法就不用过多介绍，较为简单，网上一搜一大把。对应的编辑器也很多，比如之前使用的 MacDown，或者是笔记软件，更或者是博文平台都是支持">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-65effeb19b751e39.gif?imageMogr2/auto-orient/strip">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-f78dbad6f4cb211f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-eed2a897793f5265.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-03-09T02:14:16.509Z">
+<meta property="og:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-Typora%E9%A2%84%E8%A7%88%E6%95%88%E6%9E%9C.gif">
+<meta property="og:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-image-201803171450002.png">
+<meta property="og:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-%E6%A0%87%E9%A2%98.gif">
+<meta property="og:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-%E7%89%B9%E6%AE%8A%E6%A0%B7%E5%BC%8F.gif">
+<meta property="og:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-%E5%88%97%E8%A1%A8.gif">
+<meta property="og:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-%E4%BB%A3%E7%A0%81.gif">
+<meta property="og:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-%E8%A1%A8%E6%A0%BC.gif">
+<meta property="og:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-%E6%B5%81%E7%A8%8B%E5%9B%BE.gif">
+<meta property="og:image" content="https://ww4.sinaimg.cn/large/006tKfTcgy1fewqw208xmg30j60aske8.gif">
+<meta property="og:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87.gif">
+<meta property="og:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-image-201803171558408.png">
+<meta property="og:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-image-201803171603346.png">
+<meta property="og:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-image-201803171607569.png">
+<meta property="og:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2.gif">
+<meta property="og:updated_time" content="2018-03-17T08:17:22.635Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用Kotlin重构项目">
-<meta name="twitter:description" content="前言上周大概花了一个星期的时间初步学习了一下Kotlin，并且同步写了Kotlin 笔记，方便后面使用的时候查询一些语法的用法。">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4043475-65effeb19b751e39.gif?imageMogr2/auto-orient/strip">
+<meta name="twitter:title" content="程序员必备软件之编辑预览于一身的 Typora">
+<meta name="twitter:description" content="前言作为程序员，相信对 MarkDown 语法并不陌生，平时知识的积累，博客的编写或者是工作的报告都或多或少会用到。  Markdown 是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。  那具体的介绍和使用语法就不用过多介绍，较为简单，网上一搜一大把。对应的编辑器也很多，比如之前使用的 MacDown，或者是笔记软件，更或者是博文平台都是支持">
+<meta name="twitter:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-Typora%E9%A2%84%E8%A7%88%E6%95%88%E6%9E%9C.gif">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -62,7 +73,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>使用Kotlin重构项目 | xiaweizi&#39;blog</title>
+<title>程序员必备软件之编辑预览于一身的 Typora | xiaweizi&#39;blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -296,11 +307,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-使用Kotlin重构项目" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-程序员必备软件之编辑预览于一身的 Typora" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/article/13823/" class="article-date">
-      <time datetime="2017-09-09T12:46:25.000Z" itemprop="datePublished">2017-09-09</time>
+      <a href="/article/typora/" class="article-date">
+      <time datetime="2018-03-17T08:16:12.000Z" itemprop="datePublished">2018-03-17</time>
 </a>
 
 
@@ -315,7 +326,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      使用Kotlin重构项目
+      程序员必备软件之编辑预览于一身的 Typora
     </h1>
   
 
@@ -325,7 +336,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">527 字</span>
+        <span class="post-count">981 字</span>
       </span>
     </span>
 
@@ -334,7 +345,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2 分</span>
+        <span class="post-count">4 分</span>
       </span>
     </span>
 
@@ -354,13 +365,13 @@
         
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
+    <a class="article-category-link" href="/categories/程序员必备软件/">程序员必备软件</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目重构/">项目重构</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工具软件/">工具软件</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/提高效率/">提高效率</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -370,45 +381,49 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上周大概花了一个星期的时间初步学习了一下<code>Kotlin</code>，并且同步写了<a href="http://www.jianshu.com/p/f132e368b88d" target="_blank" rel="noopener">Kotlin 笔记</a>，方便后面使用的时候查询一些语法的用法。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>作为程序员，相信对 <code>MarkDown</code> 语法并不陌生，平时知识的积累，博客的编写或者是工作的报告都或多或少会用到。</p>
+<blockquote>
+<p><code>Markdown</code> 是一种可以使用普通文本编辑器编写的标记语言，通过简单的标记语法，它可以使普通文本内容具有一定的格式。</p>
+</blockquote>
+<p>那具体的介绍和使用语法就不用过多介绍，较为简单，网上一搜一大把。对应的编辑器也很多，比如之前使用的 <code>MacDown</code>，或者是笔记软件，更或者是博文平台都是支持 <code>MarkDown</code> 语法的。就我使用的过程来看，大部分的界面都是编辑+预览的，那 <code>Typora</code> 不同于其他的编辑工具，当输入相应的标记符号，系统便会自动渲染文本，形成相对应的格式。因此就达到了 <strong>编辑与预览</strong> 同一界面的效果。</p>
 <a id="more"></a>
-<p>一周的<code>Kotlin</code>学习下来，虽然只掌握了<code>Kotlin</code>的皮毛，但仍被其简单便捷的语法吸引。目前<code>Kotlin</code>已经成为<code>Android</code>的官方推荐语言，所以建议有时间的同学不妨学习一下，相信一定可以帮助你提高开发效率的。</p>
-<p>这里就不介绍<code>Kotlin</code>的语法使用，既然初步学习了<code>Kotlin</code>，那么就在实践中检验一下，使用的是之前的毕业设计项目</p>
-<div class="github-widget" data-repo="xiaweizi/QNews"></div>
+<p>看一下大概的效果，后面会一一介绍：</p>
+<p><img src="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-Typora%E9%A2%84%E8%A7%88%E6%95%88%E6%9E%9C.gif" alt="大概效果">功能还有很多，确实值得拥有。</p>
+<h2 id="获取"><a href="#获取" class="headerlink" title="获取"></a>获取</h2><p><a href="https://www.baidu.com/link?url=KYhuNjN8103k0Uz6EMLJnj07U89iX26TMslP5Yf1CUm&amp;wd=&amp;eqid=8aea3c1900083620000000035aacb943" target="_blank" rel="noopener"><em>Typora</em> — a markdown editor, markdown reader.</a></p>
+<p>进入官网可进行下载，目前 <code>Mac</code>、 <code>Windows</code> 和 <code>Linux</code> 都有对应的版本，当然也有详细的使用介绍。</p>
+<p><img src="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-image-201803171450002.png" alt="mage-20180317145000"></p>
+<h2 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h2><p><code>Typora</code> 支持原生的标记语法使用，也支持非常强大的快捷键使用，两者配合着使用，很大程度上可以提高工作效率。</p>
+<h4 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h4><p><img src="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-%E6%A0%87%E9%A2%98.gif" alt="标题"></p>
+<h4 id="特殊样式"><a href="#特殊样式" class="headerlink" title="特殊样式"></a>特殊样式</h4><p><img src="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-%E7%89%B9%E6%AE%8A%E6%A0%B7%E5%BC%8F.gif" alt="特殊样式"></p>
+<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><p><img src="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-%E5%88%97%E8%A1%A8.gif" alt="列表"></p>
+<h4 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h4><p><img src="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-%E4%BB%A3%E7%A0%81.gif" alt="代码"></p>
+<h4 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h4><p><img src="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-%E8%A1%A8%E6%A0%BC.gif" alt="表格"></p>
+<h4 id="流程图-时序图"><a href="#流程图-时序图" class="headerlink" title="流程图 时序图"></a>流程图 时序图</h4><p><img src="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-%E6%B5%81%E7%A8%8B%E5%9B%BE.gif" alt="流程图"></p>
+<p>相关对应的代码:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">// 流程图 flow</span><br><span class="line">st=&gt;start: Start</span><br><span class="line">op=&gt;operation: Your Operation</span><br><span class="line">cond=&gt;condition: Yes or No?</span><br><span class="line">e=&gt;end</span><br><span class="line">st-&gt;op-&gt;cond</span><br><span class="line">cond(yes)-&gt;e</span><br><span class="line">cond(no)-&gt;op</span><br><span class="line"></span><br><span class="line">// sequence</span><br><span class="line">Title:连接建立的过程</span><br><span class="line">客户主机-&gt;服务器主机: 连接请求（SYN=1,seq=client_isn） </span><br><span class="line">服务器主机-&gt;客户主机: 授予连接（SYN=1,seq=client_isn）\n ack=client_isn+1</span><br><span class="line">客户主机-&gt;服务器主机: 确认（SYN=0,seq=client_isn+1）\nack=server_isn+1</span><br><span class="line"></span><br><span class="line">// mermaid</span><br><span class="line">graph TD</span><br><span class="line">client1--&gt;|read / write|SVN((SVN server))</span><br><span class="line">client2--&gt;|read only|SVN</span><br><span class="line">client3--&gt;|read / write|SVN</span><br><span class="line">client4--&gt;|read only|SVN</span><br><span class="line">client5(...)--&gt;SVN</span><br><span class="line">SVN---|store the data|sharedrive</span><br></pre></td></tr></table></figure>
+<h2 id="进阶使用"><a href="#进阶使用" class="headerlink" title="进阶使用"></a>进阶使用</h2><h4 id="插入图片"><a href="#插入图片" class="headerlink" title="插入图片"></a>插入图片</h4><p>有人说插入图片凭什么算作为 <strong>进阶使用</strong>，不就一行代码的事情吗 <code>![]()</code>，但是我要说的可不一样。</p>
+<p>我们平常需要插入文章应该怎么办？</p>
+<ol>
+<li>直接从网络上获取图片的链接地址，作为自己的图片链接(万一链接改变，图片便显示不出)</li>
+<li>直接本地文件的相对路径(万一博客需要共享，自然别人看不到图片)</li>
+<li>先通过别的平台上传图片(七牛云)，然后拷贝链接地址(操作较为麻烦)</li>
+<li>当然可以直接在简书上直接拖拽文件到编辑见面(那又何必用 <strong>Typora</strong>。。。)</li>
+</ol>
+<p>有图床神器 <strong><a href="https://itunes.apple.com/cn/app/id1101244278?mt=12" target="_blank" rel="noopener">iPic</a></strong>，可以通过拖拽、快捷键等方式上传图片，支持微博、七牛、又拍、阿里云、Imgur、Flickr、Amazon S3 等图床，自动保存 Markdown 格式链接，给你前所未有的插图体验。</p>
+<p>看一下效果:</p>
+<p><img src="https://ww4.sinaimg.cn/large/006tKfTcgy1fewqw208xmg30j60aske8.gif" alt="效果"></p>
+<p>或者是直接拷贝粘贴图片到编辑器中也可以：</p>
+<p><img src="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-%E6%8F%92%E5%85%A5%E5%9B%BE%E7%89%87.gif" alt="截图拷贝"></p>
+<p>还可以支持多文件上传哦，具体教程请见 <a href="https://www.toolinbox.net/iPic/" target="_blank" rel="noopener">ipic使用教程</a></p>
+<h4 id="版本回溯"><a href="#版本回溯" class="headerlink" title="版本回溯"></a>版本回溯</h4><p>我觉得这是它最牛逼的地方了！有点点类似开发过程中的代码回退，比如你想回到某个版本，通过 <code>git reset [commit]</code> 即可回到需要的版本，那 <strong>Typora</strong> 的效果如何呢？</p>
+<p><img src="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-image-201803171558408.png" alt="mage-20180317155840"></p>
+<p>首先点击 <strong>浏览所有版本</strong>，即可以看到历史的版本：</p>
+<p><img src="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-image-201803171603346.png" alt="mage-20180317160334"></p>
+<h4 id="主题更换"><a href="#主题更换" class="headerlink" title="主题更换"></a>主题更换</h4><p><strong>Typora</strong> 支持各种主题的更换</p>
+<p><img src="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-image-201803171607569.png" alt="mage-20180317160756"></p>
+<p><img src="http://owj4ejy7m.bkt.clouddn.com/2018-03-17-%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2.gif" alt="主题更换"></p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p><strong>Typora</strong> 用习惯了后，真的是离不开他，不仅界面相当友好，而且快捷键功能强大，更提供了方面的插入图片方式，拥有并学会它，一定可以帮助您提高开发效率的。</p>
 
-<p>，这个项目总体来说很适合初学者，所以就拿它上手，改起来相对比较简单。</p>
-<p>所以本篇文章就介绍一下<code>Kotlin</code>在<code>Android</code>中的使用，相信你会爱上他的。</p>
-<p>先看一下运行效果吧，跟之前<a href="http://www.jianshu.com/p/ae4aa11f35a4" target="_blank" rel="noopener">快毕业了，撸个小项目</a>效果是一模一样，所以大致看一下即可：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4043475-65effeb19b751e39.gif?imageMogr2/auto-orient/strip" alt="运行效果.gif"></p>
-<p>这里就展示一下基本的效果，想要了解详情的就<code>fork</code>一下我的代码吧:<a href="https://github.com/xiaweizi/QNews" target="_blank" rel="noopener">QNews</a></p>
-<h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h2><h3 id="1-Android-Studio集成Kotlin插件"><a href="#1-Android-Studio集成Kotlin插件" class="headerlink" title="1. Android Studio集成Kotlin插件"></a>1. <code>Android Studio</code>集成<code>Kotlin</code>插件</h3><p>通过<code>Android Studio</code>添加<code>Kotlin</code>插件：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4043475-f78dbad6f4cb211f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Kotlin插件"></p>
-<p>进行相关的配置：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4043475-eed2a897793f5265.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="相关配置"></p>
-<p>集成好了，记得同步一下，这个时候在<code>build.gradle</code>下会生成对<code>Kotlin</code>插件的引用：</p>
-<pre><code>// 根 build.gradle
-classpath &quot;org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version&quot;
-
-// module build.gradle
-
-apply plugin: &apos;kotlin-android&apos;
-compile &quot;org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version&quot;
-</code></pre><p>这个时候配合着<a href="https://github.com/Kotlin/anko" target="_blank" rel="noopener">anko</a>使用效果更好呦，只需要在<code>build.gradle</code>中进行相应的配置：</p>
-<pre><code>apply plugin: &apos;kotlin-android-extensions&apos;
-compile &quot;org.jetbrains.anko:anko-sdk15:0.9.1&quot;
-</code></pre><p>就这么两行的配置即可告别<code>findViewById</code>的繁琐过程，目前这个项目对于<code>ButterKnife</code>的依赖我都去掉了，极其方便。</p>
-<p>只要<code>XML</code>定义了<code>&quot;@+id/test&quot;</code>，就可以直接引用这个<code>View</code>.</p>
-<p>比如我的这个跳转界面<code>SplashActivity</code>的<code>XML</code>：</p>
-<pre><code>&lt;ImageView
-    android:id=&quot;@+id/iv_splash&quot;
-    android:background=&quot;?attr/colorPrimary&quot;
-    android:layout_centerInParent=&quot;true&quot;
-    android:src=&quot;@mipmap/ic_splash&quot;
-    android:layout_width=&quot;wrap_content&quot;
-    android:layout_height=&quot;wrap_content&quot; /&gt;
-</code></pre><p>代码中可以直接使用(属性动画)：</p>
-<pre><code>val translationX: ObjectAnimator = ObjectAnimator.ofFloat(iv_splash, &quot;translationX&quot;, 600f, 0f)
-</code></pre>
       
     </div>
     
@@ -416,13 +431,13 @@ compile &quot;org.jetbrains.anko:anko-sdk15:0.9.1&quot;
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/article/13823/">使用Kotlin重构项目</a></p>
+        <p><span>本文标题:</span><a href="/article/typora/">程序员必备软件之编辑预览于一身的 Typora</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">下位子</a></p>
-        <p><span>发布时间:</span>2017-09-09, 20:46:25</p>
-        <p><span>最后更新:</span>2018-03-09, 10:14:16</p>
+        <p><span>发布时间:</span>2018-03-17, 16:16:12</p>
+        <p><span>最后更新:</span>2018-03-17, 16:17:22</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/article/13823/" title="使用Kotlin重构项目">http://xiaweizi.cn/article/13823/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/article/13823/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/article/typora/" title="程序员必备软件之编辑预览于一身的 Typora">http://xiaweizi.cn/article/typora/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/article/typora/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -434,16 +449,10 @@ compile &quot;org.jetbrains.anko:anko-sdk15:0.9.1&quot;
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/article/52360/">
-                    Git-命令小结
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/article/40024/">
-                    Kotlin学习笔记
+                <a href="/article/7b67faab/">
+                    读书笔记
                 </a>
             </div>
         
@@ -485,7 +494,7 @@ compile &quot;org.jetbrains.anko:anko-sdk15:0.9.1&quot;
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用步骤"><span class="toc-number">2.</span> <span class="toc-text">使用步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Android-Studio集成Kotlin插件"><span class="toc-number">2.1.</span> <span class="toc-text">1. Android Studio集成Kotlin插件</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#获取"><span class="toc-number">2.</span> <span class="toc-text">获取</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基本使用"><span class="toc-number">3.</span> <span class="toc-text">基本使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#标题"><span class="toc-number">3.0.1.</span> <span class="toc-text">标题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#特殊样式"><span class="toc-number">3.0.2.</span> <span class="toc-text">特殊样式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#列表"><span class="toc-number">3.0.3.</span> <span class="toc-text">列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码"><span class="toc-number">3.0.4.</span> <span class="toc-text">代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#表格"><span class="toc-number">3.0.5.</span> <span class="toc-text">表格</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#流程图-时序图"><span class="toc-number">3.0.6.</span> <span class="toc-text">流程图 时序图</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进阶使用"><span class="toc-number">4.</span> <span class="toc-text">进阶使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#插入图片"><span class="toc-number">4.0.1.</span> <span class="toc-text">插入图片</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#版本回溯"><span class="toc-number">4.0.2.</span> <span class="toc-text">版本回溯</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#主题更换"><span class="toc-number">4.0.3.</span> <span class="toc-text">主题更换</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol>
         
     </div>
     <style>
@@ -521,7 +530,7 @@ compile &quot;org.jetbrains.anko:anko-sdk15:0.9.1&quot;
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"使用Kotlin重构项目　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"程序员必备软件之编辑预览于一身的 Typora　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -562,15 +571,13 @@ compile &quot;org.jetbrains.anko:anko-sdk15:0.9.1&quot;
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/article/52360/" title="上一篇: Git-命令小结">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/article/40024/" title="下一篇: Kotlin学习笔记">
+            <a href="/article/7b67faab/" title="下一篇: 读书笔记">
                 <i class="fa fa-angle-right"></i>
             </a>
         
