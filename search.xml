@@ -5,7 +5,7 @@
     <entry>
       <title>读书笔记</title>
       <link href="/article/7b67faab/"/>
-      <content type="html"><![CDATA[<blockquote><p>书籍是人类进步的阶梯</p></blockquote><p>已经开发<code>Android</code>一年的我，虽然也看了几本书，但是都是走马观花式看法，并没有细致的了解其内部原理。</p><p>因此打算利用空余时间充实一下自己的知识体系，夯实基础，毕竟底层基础决定上层建筑。顺便会记录一下学习笔记，这个笔记的主要作用也是在于巩固自己的学习内容，更是方便后面对遗忘知识点的回顾。</p><p>记录方式以文章内容为主，附带本人的学习心得和练习代码，最终能对所读书籍的内容做到百分之八十的吸收，为以后的开发编程铺下基础。</p><h3 id="Thinking-in-java"><a href="#Thinking-in-java" class="headerlink" title="Thinking in java"></a><a href="http://xiaweizi.cn/categories/Thinking-In-Java-读书笔记/">Thinking in java</a></h3><blockquote><p>这本书是相当厚，当然内容也是很丰富，对<code>Java</code>知识点的介绍循序渐进，不论是<code>Java</code>的入门还是进阶都是不二之选，绝对值得一读！</p></blockquote><a id="more"></a><table><thead><tr><th style="text-align:left">章</th><th style="text-align:left">标题</th></tr></thead><tbody><tr><td style="text-align:left">1</td><td style="text-align:left"><a href="http://xiaweizi.cn/article/thinking_in_java_1/">对象导论</a></td></tr><tr><td style="text-align:left">2</td><td style="text-align:left"><a href="http://xiaweizi.cn/article/thinking_in_java_2/">一切都是对象</a></td></tr><tr><td style="text-align:left">3</td><td style="text-align:left"><a href="http://xiaweizi.cn/article/thinking_in_java_3/">操作符</a></td></tr><tr><td style="text-align:left">4</td><td style="text-align:left"><a href="http://xiaweizi.cn/article/thinking_in_java_4/">控制执行流程</a></td></tr><tr><td style="text-align:left">5</td><td style="text-align:left"><a href="http://xiaweizi.cn/article/thinking_in_java_5/">初始化与清理</a></td></tr><tr><td style="text-align:left">6</td><td style="text-align:left"><a href="http://xiaweizi.cn/article/thinking_in_java_6/">访问权限控制</a></td></tr><tr><td style="text-align:left">7</td><td style="text-align:left"><a href="http://xiaweizi.cn/article/thinking_in_java_7/">复用类</a></td></tr><tr><td style="text-align:left">8</td><td style="text-align:left"><a href="http://xiaweizi.cn/article/thinking_in_java_8/">多态</a></td></tr><tr><td style="text-align:left">9</td><td style="text-align:left"><a href="http://xiaweizi.cn/article/thinking_in_java_9/">接口</a></td></tr><tr><td style="text-align:left">10</td><td style="text-align:left"><a href="http://xiaweizi.cn/article/thinking_in_java_10/">内部类</a></td></tr><tr><td style="text-align:left">11</td><td style="text-align:left"><a href="http://xiaweizi.cn/article/thinking_in_java_10/">持有对象</a></td></tr></tbody></table>]]></content>
+      <content type="html"><![CDATA[<blockquote><p>书籍是人类进步的阶梯</p></blockquote><p>已经开发<code>Android</code>一年的我，虽然也看了几本书，但是都是走马观花式看法，并没有细致的了解其内部原理。</p><p>因此打算利用空余时间充实一下自己的知识体系，夯实基础，毕竟底层基础决定上层建筑。顺便会记录一下学习笔记，这个笔记的主要作用也是在于巩固自己的学习内容，更是方便后面对遗忘知识点的回顾。</p><p>记录方式以文章内容为主，附带本人的学习心得和练习代码，最终能对所读书籍的内容做到百分之八十的吸收，为以后的开发编程铺下基础。</p><h3 id="Thinking-in-java"><a href="#Thinking-in-java" class="headerlink" title="Thinking in java"></a><a href="http://xiaweizi.cn/categories/Thinking-In-Java-读书笔记/">Thinking in java</a></h3><blockquote><p>这本书是相当厚，当然内容也是很丰富，对<code>Java</code>知识点的介绍循序渐进，不论是<code>Java</code>的入门还是进阶都是不二之选，绝对值得一读！</p></blockquote><a id="more"></a><table><thead><tr><th style="text-align:left">章</th><th style="text-align:left">标题</th></tr></thead><tbody><tr><td style="text-align:left">1</td><td style="text-align:left"><a href="http://xiaweizi.cn/article/thinking_in_java_1/">对象导论</a></td></tr><tr><td style="text-align:left">2</td><td style="text-align:left"><a href="http://xiaweizi.cn/article/thinking_in_java_2/">一切都是对象</a></td></tr><tr><td style="text-align:left">3</td><td style="text-align:left"><a href="http://xiaweizi.cn/article/thinking_in_java_3/">操作符</a></td></tr><tr><td style="text-align:left">4</td><td style="text-align:left"><a href="http://xiaweizi.cn/article/thinking_in_java_4/">控制执行流程</a></td></tr><tr><td style="text-align:left">5</td><td style="text-align:left"><a href="http://xiaweizi.cn/article/thinking_in_java_5/">初始化与清理</a></td></tr><tr><td style="text-align:left">6</td><td style="text-align:left"><a href="http://xiaweizi.cn/article/thinking_in_java_6/">访问权限控制</a></td></tr><tr><td style="text-align:left">7</td><td style="text-align:left"><a href="http://xiaweizi.cn/article/thinking_in_java_7/">复用类</a></td></tr><tr><td style="text-align:left">8</td><td style="text-align:left"><a href="http://xiaweizi.cn/article/thinking_in_java_8/">多态</a></td></tr><tr><td style="text-align:left">9</td><td style="text-align:left"><a href="http://xiaweizi.cn/article/thinking_in_java_9/">接口</a></td></tr><tr><td style="text-align:left">10</td><td style="text-align:left"><a href="http://xiaweizi.cn/article/thinking_in_java_10/">内部类</a></td></tr><tr><td style="text-align:left">11</td><td style="text-align:left"><a href="http://xiaweizi.cn/article/thinking_in_java_11/">持有对象</a></td></tr></tbody></table>]]></content>
       
       
         <tags>
@@ -50,9 +50,9 @@
       
         <tags>
             
-            <tag> hexo </tag>
-            
             <tag> 博客 </tag>
+            
+            <tag> hexo </tag>
             
         </tags>
       
@@ -176,9 +176,9 @@
       
         <tags>
             
-            <tag> 工作积累 </tag>
-            
             <tag> 自定义 View </tag>
+            
+            <tag> 工作积累 </tag>
             
         </tags>
       
@@ -198,9 +198,9 @@
       
         <tags>
             
-            <tag> Material Design </tag>
-            
             <tag> 工作积累 </tag>
+            
+            <tag> Material Design </tag>
             
         </tags>
       
@@ -304,9 +304,9 @@
       
         <tags>
             
-            <tag> 工作积累 </tag>
-            
             <tag> 自定义 View </tag>
+            
+            <tag> 工作积累 </tag>
             
             <tag> 第三方库 </tag>
             
@@ -368,9 +368,9 @@
       
         <tags>
             
-            <tag> 第三方库 </tag>
-            
             <tag> 项目 </tag>
+            
+            <tag> 第三方库 </tag>
             
         </tags>
       
@@ -390,7 +390,27 @@
       
         <tags>
             
+            <tag> 项目 </tag>
+            
             <tag> 第三方库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>快毕业了，撸一个小项目(新闻段子客户端)</title>
+      <link href="/article/62207/"/>
+      <content type="html"><![CDATA[<p><em>最近一直在找工作，感觉好难找呀，简历投了都没人打电话给我，伤心…但是不能闲着，于是利用大概七天的下午时间撸了一个小项目(QNews)作为我的毕业设计。项目地址</em></p><div class="github-widget" data-repo="xiaweizi/QNews"></div><p><em><a href="http://xiaweizi.cn/">我的博客地址</a></em></p><a id="more"></a><blockquote><p>上线的时候遇到了问题，这问题也是醉了…<br><img src="http://upload-images.jianshu.io/upload_images/4043475-db899365f04e45a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="aa.png"></p></blockquote><p><img src="http://upload-images.jianshu.io/upload_images/4043475-c6b119e8514b3629.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="bb.png"></p><blockquote><p>这个项目从头到尾是我一个人默默撸出来的，很心酸，可能有些代码写的不是很好，请见谅。这个项目虽然小，但是也遇到了很多bug，欣慰的是，最后都解决了，我想这是程序猿最大乐趣了。</p></blockquote><blockquote><p>我通过一下目录进行项目的演示：</p></blockquote><blockquote><p><a href="#title1">1. 整体风格和个人页面</a></p><p><a href="#title2">2. 跳转界面</a></p><p><a href="#title3">3. 新闻模块</a></p><p><a href="#title4">4. 段子模块</a></p><p><a href="#title5">5. 趣图模块</a></p><p><a href="#title6">6. 历史上的今天模块</a></p><p><a href="#title7">7. 图灵机器人模块</a></p><p><a href="#title8">8. 主题切换以及夜间模式模块</a></p><p><a href="#title9">9. 用到的第三方开源库</a></p></blockquote><p>##</p><p id="title1">1. 整体风格和个人页面</p><br><em>整体采用的是Material Design风格，看起来好看一点</em><br><img src="http://upload-images.jianshu.io/upload_images/4043475-eb1932393eedabec.gif?imageMogr2/auto-orient/strip" alt="整体风格.gif"><p></p><blockquote><p>如果觉得还行，请给个star吧</p></blockquote><p>##</p><p id="title2">2. 跳转界面</p><br><img src="http://upload-images.jianshu.io/upload_images/4043475-f8fdb6021cf5d558.gif?imageMogr2/auto-orient/strip" alt="跳转界面.gif"><p></p><blockquote><p>这个就是属性动画(translationX + translationY)</p></blockquote><p>##</p><p id="title3">3. 新闻模块</p><br><img src="http://upload-images.jianshu.io/upload_images/4043475-19e7b7c64e0989fc.gif?imageMogr2/auto-orient/strip" alt="新闻模块.gif"><p></p><blockquote><p>数据来源: 聚合数据</p><p>网络框架: okhttp</p><p>图片框架: Glide</p></blockquote><p>##</p><p id="title4">4. 段子模块</p><br><img src="http://upload-images.jianshu.io/upload_images/4043475-672753f228c57c18.gif?imageMogr2/auto-orient/strip" alt="段子模块.gif"><p></p><blockquote><p>支持下拉刷新，下拉加载更多</p></blockquote><p>##</p><p id="title5">5. 趣图模块</p><br><em>这个是个小彩蛋，在段子界面，在点击一下段子就会跳转到趣图模块</em><br><img src="http://upload-images.jianshu.io/upload_images/4043475-811a7bef92721664.gif?imageMogr2/auto-orient/strip" alt="趣图模块.gif"><p></p><blockquote><p>这里是随机从服务器中获取趣图，有时候也会有动态图</p></blockquote><p>##</p><p id="title6">6. 历史上的今天模块</p><br><em>这部分我觉得既好玩，又很有意义</em><br><img src="http://upload-images.jianshu.io/upload_images/4043475-2a88baf13919023b.gif?imageMogr2/auto-orient/strip" alt="历史上的今天.gif"><p></p><blockquote><p>说实话，我还挺喜欢叶圣陶的。</p></blockquote><blockquote><p>其实点进去上面是viewpager展示图片的，但是不知道怎么搞得，聚合数据图片不提供了，也是醉了。</p></blockquote><p>##</p><p id="title7">7. 图灵机器人模块</p><br><img src="http://upload-images.jianshu.io/upload_images/4043475-8858ce0eaeda160f.gif?imageMogr2/auto-orient/strip" alt="图灵机器人.gif"><p></p><blockquote><p>闲来没事，单身狗可以玩一下，嘻嘻…</p></blockquote><p>##</p><p id="title8">8. 主题切换以及夜间模式</p><br><img src="http://upload-images.jianshu.io/upload_images/4043475-211cf778e95c0898.gif?imageMogr2/auto-orient/strip" alt="换肤.gif"><p></p><blockquote><p>我用采用的方式比较简单，就是直接setTheme(int resId)方式，网上有一些好的实现方式，不妨上网搜一下。</p></blockquote><p>##</p><p id="title9">8. 用到的第三方开源库</p><p></p><ol><li>数据来源： <a href="https://www.juhe.cn/docs" target="_blank" rel="noopener">聚合数据</a></li><li>标题来源： <a href="http://www.akuziti.com/" target="_blank" rel="noopener">艺术字生成</a></li><li>小图标来源： <a href="http://www.iconfont.cn/" target="_blank" rel="noopener">阿里适量图</a></li><li>图片加载框架： <a href="https://github.com/bumptech/glide" target="_blank" rel="noopener">Glide</a></li><li>网络请求框架： <a href="https://github.com/hongyangAndroid/okhttputils" target="_blank" rel="noopener">鸿洋大神的okhttputils</a></li><li>view注解框架： <a href="https://github.com/JakeWharton/butterknife" target="_blank" rel="noopener">butterknife</a></li><li>基类适配器： <a href="https://github.com/CymChad/BaseRecyclerViewAdapterHelper" target="_blank" rel="noopener">BaseRecyclerViewAdapterHelper</a></li><li>指示器： <a href="https://github.com/hackware1993/MagicIndicator" target="_blank" rel="noopener">MagicIndicator</a></li><li>底部栏： <a href="https://github.com/Nightonke/BoomMenu" target="_blank" rel="noopener">BoomMenu</a></li></ol><blockquote><p>好了，到此项目已经大概结束了，有一些功能还没实现，比如数据库的缓存，第三方分享等，如果有兴趣的话，可以看一下我的源码 <a href="https://github.com/xiaweizi/QNews" target="_blank" rel="noopener">https://github.com/xiaweizi/QNews</a>，如果有那么点喜欢的话就star一下吧</p></blockquote><blockquote><p>如果有人能介绍我工作，本人不甚感激！！</p></blockquote><p><a href="http://xiaweizi.cn">我的博客</a></p>]]></content>
+      
+      <categories>
+          
+          <category> 技术分享 </category>
+          
+      </categories>
+      
+      
+        <tags>
             
             <tag> 项目 </tag>
             
@@ -421,26 +441,6 @@
     </entry>
     
     <entry>
-      <title>快毕业了，撸一个小项目(新闻段子客户端)</title>
-      <link href="/article/62207/"/>
-      <content type="html"><![CDATA[<p><em>最近一直在找工作，感觉好难找呀，简历投了都没人打电话给我，伤心…但是不能闲着，于是利用大概七天的下午时间撸了一个小项目(QNews)作为我的毕业设计。项目地址</em></p><div class="github-widget" data-repo="xiaweizi/QNews"></div><p><em><a href="http://xiaweizi.cn/">我的博客地址</a></em></p><a id="more"></a><blockquote><p>上线的时候遇到了问题，这问题也是醉了…<br><img src="http://upload-images.jianshu.io/upload_images/4043475-db899365f04e45a9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="aa.png"></p></blockquote><p><img src="http://upload-images.jianshu.io/upload_images/4043475-c6b119e8514b3629.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="bb.png"></p><blockquote><p>这个项目从头到尾是我一个人默默撸出来的，很心酸，可能有些代码写的不是很好，请见谅。这个项目虽然小，但是也遇到了很多bug，欣慰的是，最后都解决了，我想这是程序猿最大乐趣了。</p></blockquote><blockquote><p>我通过一下目录进行项目的演示：</p></blockquote><blockquote><p><a href="#title1">1. 整体风格和个人页面</a></p><p><a href="#title2">2. 跳转界面</a></p><p><a href="#title3">3. 新闻模块</a></p><p><a href="#title4">4. 段子模块</a></p><p><a href="#title5">5. 趣图模块</a></p><p><a href="#title6">6. 历史上的今天模块</a></p><p><a href="#title7">7. 图灵机器人模块</a></p><p><a href="#title8">8. 主题切换以及夜间模式模块</a></p><p><a href="#title9">9. 用到的第三方开源库</a></p></blockquote><p>##</p><p id="title1">1. 整体风格和个人页面</p><br><em>整体采用的是Material Design风格，看起来好看一点</em><br><img src="http://upload-images.jianshu.io/upload_images/4043475-eb1932393eedabec.gif?imageMogr2/auto-orient/strip" alt="整体风格.gif"><p></p><blockquote><p>如果觉得还行，请给个star吧</p></blockquote><p>##</p><p id="title2">2. 跳转界面</p><br><img src="http://upload-images.jianshu.io/upload_images/4043475-f8fdb6021cf5d558.gif?imageMogr2/auto-orient/strip" alt="跳转界面.gif"><p></p><blockquote><p>这个就是属性动画(translationX + translationY)</p></blockquote><p>##</p><p id="title3">3. 新闻模块</p><br><img src="http://upload-images.jianshu.io/upload_images/4043475-19e7b7c64e0989fc.gif?imageMogr2/auto-orient/strip" alt="新闻模块.gif"><p></p><blockquote><p>数据来源: 聚合数据</p><p>网络框架: okhttp</p><p>图片框架: Glide</p></blockquote><p>##</p><p id="title4">4. 段子模块</p><br><img src="http://upload-images.jianshu.io/upload_images/4043475-672753f228c57c18.gif?imageMogr2/auto-orient/strip" alt="段子模块.gif"><p></p><blockquote><p>支持下拉刷新，下拉加载更多</p></blockquote><p>##</p><p id="title5">5. 趣图模块</p><br><em>这个是个小彩蛋，在段子界面，在点击一下段子就会跳转到趣图模块</em><br><img src="http://upload-images.jianshu.io/upload_images/4043475-811a7bef92721664.gif?imageMogr2/auto-orient/strip" alt="趣图模块.gif"><p></p><blockquote><p>这里是随机从服务器中获取趣图，有时候也会有动态图</p></blockquote><p>##</p><p id="title6">6. 历史上的今天模块</p><br><em>这部分我觉得既好玩，又很有意义</em><br><img src="http://upload-images.jianshu.io/upload_images/4043475-2a88baf13919023b.gif?imageMogr2/auto-orient/strip" alt="历史上的今天.gif"><p></p><blockquote><p>说实话，我还挺喜欢叶圣陶的。</p></blockquote><blockquote><p>其实点进去上面是viewpager展示图片的，但是不知道怎么搞得，聚合数据图片不提供了，也是醉了。</p></blockquote><p>##</p><p id="title7">7. 图灵机器人模块</p><br><img src="http://upload-images.jianshu.io/upload_images/4043475-8858ce0eaeda160f.gif?imageMogr2/auto-orient/strip" alt="图灵机器人.gif"><p></p><blockquote><p>闲来没事，单身狗可以玩一下，嘻嘻…</p></blockquote><p>##</p><p id="title8">8. 主题切换以及夜间模式</p><br><img src="http://upload-images.jianshu.io/upload_images/4043475-211cf778e95c0898.gif?imageMogr2/auto-orient/strip" alt="换肤.gif"><p></p><blockquote><p>我用采用的方式比较简单，就是直接setTheme(int resId)方式，网上有一些好的实现方式，不妨上网搜一下。</p></blockquote><p>##</p><p id="title9">8. 用到的第三方开源库</p><p></p><ol><li>数据来源： <a href="https://www.juhe.cn/docs" target="_blank" rel="noopener">聚合数据</a></li><li>标题来源： <a href="http://www.akuziti.com/" target="_blank" rel="noopener">艺术字生成</a></li><li>小图标来源： <a href="http://www.iconfont.cn/" target="_blank" rel="noopener">阿里适量图</a></li><li>图片加载框架： <a href="https://github.com/bumptech/glide" target="_blank" rel="noopener">Glide</a></li><li>网络请求框架： <a href="https://github.com/hongyangAndroid/okhttputils" target="_blank" rel="noopener">鸿洋大神的okhttputils</a></li><li>view注解框架： <a href="https://github.com/JakeWharton/butterknife" target="_blank" rel="noopener">butterknife</a></li><li>基类适配器： <a href="https://github.com/CymChad/BaseRecyclerViewAdapterHelper" target="_blank" rel="noopener">BaseRecyclerViewAdapterHelper</a></li><li>指示器： <a href="https://github.com/hackware1993/MagicIndicator" target="_blank" rel="noopener">MagicIndicator</a></li><li>底部栏： <a href="https://github.com/Nightonke/BoomMenu" target="_blank" rel="noopener">BoomMenu</a></li></ol><blockquote><p>好了，到此项目已经大概结束了，有一些功能还没实现，比如数据库的缓存，第三方分享等，如果有兴趣的话，可以看一下我的源码 <a href="https://github.com/xiaweizi/QNews" target="_blank" rel="noopener">https://github.com/xiaweizi/QNews</a>，如果有那么点喜欢的话就star一下吧</p></blockquote><blockquote><p>如果有人能介绍我工作，本人不甚感激！！</p></blockquote><p><a href="http://xiaweizi.cn">我的博客</a></p>]]></content>
-      
-      <categories>
-          
-          <category> 技术分享 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> 项目 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
       <title>基于LitePal操作数据库的学生管理系统的简单实现</title>
       <link href="/article/2954/"/>
       <content type="html"><![CDATA[<h4 id="今天看了郭神的《第二行代码》的第六章，才发现LitePal用起来是多么方便简介，就花了下午的时间做了一个小Demo，界面功能都简单，请见谅"><a href="#今天看了郭神的《第二行代码》的第六章，才发现LitePal用起来是多么方便简介，就花了下午的时间做了一个小Demo，界面功能都简单，请见谅" class="headerlink" title="今天看了郭神的《第二行代码》的第六章，才发现LitePal用起来是多么方便简介，就花了下午的时间做了一个小Demo，界面功能都简单，请见谅"></a>今天看了郭神的《第二行代码》的第六章，才发现LitePal用起来是多么方便简介，就花了下午的时间做了一个小Demo，界面功能都简单，请见谅</h4><hr><p><em>本文只是LitePal的简单应用，目的是快速入门LitePal。界面和功能都简单，若不满，请自行添加。</em></p><a id="more"></a><p>照例来波动态图<br><img src="http://upload-images.jianshu.io/upload_images/4043475-0fff41c510bbc5c6.gif?imageMogr2/auto-orient/strip" alt="学生管理应用.gif"></p><blockquote><p>主要功能就是: 数据的 <strong>增、删、改、查</strong>。</p><p>主要知识点: <strong>LitePal的配置和使用</strong></p><p>界面我就不介绍了，用的是RecyclerView之前也讲过 <a href="http://www.jianshu.com/p/60819de9eb42" target="_blank" rel="noopener">简单粗暴—-RecyclerView</a></p><p>首先添加依赖 </p></blockquote><pre><code>compile&apos;com.android.support:recyclerview-v7:24.0.0&apos;compile &apos;org.litepal.android:core:1.4.1&apos;</code></pre><h1 id="1-LitePal简介"><a href="#1-LitePal简介" class="headerlink" title="1. LitePal简介"></a>1. LitePal简介</h1><p>LitePal是一款开源的Android数据库框架，它采用了对象关系映射（ORM）的模式，并将我们平时开发最常用的一些数据库功能进行了封装，是的不用编写一行SQL语句就可以完成各种建表和增删改查的操作。</p><h1 id="2-LitePal的配置"><a href="#2-LitePal的配置" class="headerlink" title="2. LitePal的配置"></a>2. LitePal的配置</h1><p>创建一个 <code>assets</code> 目录，在 <code>assets</code> 目录下新建一个 <code>litepal.xml</code> 文件，接着编写文件内容，如下：</p><pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;&lt;litepal&gt;    &lt;!-- 数据库名 --&gt;    &lt;dbname value=&quot;Student&quot;&gt;&lt;/dbname&gt;    &lt;!-- 版本号 --&gt;    &lt;version value=&quot;1&quot;&gt;&lt;/version&gt;    &lt;!-- 创建表 --&gt;    &lt;list&gt;        &lt;mapping class=&quot;映射的javaBean的完整类名&quot;&gt;&lt;/mapping&gt;    &lt;/list&gt;&lt;/litepal&gt;</code></pre><p>接下来修改清单文件代码，配置Application</p><pre><code>&lt;application    android:name=&quot;org.litepal.LitePalApplication&quot;    ...&lt;/application&gt;</code></pre><p>最后代码中创建数据库</p><pre><code>LitePal.getDatabase();</code></pre><h1 id="3-创建表"><a href="#3-创建表" class="headerlink" title="3. 创建表"></a>3. 创建表</h1><h4 id="a-需要一个JavaBean对象，也就是数据库的表"><a href="#a-需要一个JavaBean对象，也就是数据库的表" class="headerlink" title="a. 需要一个JavaBean对象，也就是数据库的表"></a>a. 需要一个JavaBean对象，也就是数据库的表</h4><hr><pre><code>public class Student extends DataSupport{    private int id;    private String name;//姓名    private int studentId;//学号    private String sex;//性别    public int getId() {        return id;    }    public void setId(int id) {        this.id = id;    }    public String getName() {        return name;    }    public void setName(String name) {        this.name = name;    }    public int getStudentId() {        return studentId;    }    public void setStudentId(int studentId) {        this.studentId = studentId;    }    public String getSex() {        return sex;    }    public void setSex(String sex) {        this.sex = sex;    }}</code></pre><h4 id="b-修改litepal-xml中的代码"><a href="#b-修改litepal-xml中的代码" class="headerlink" title="b. 修改litepal.xml中的代码"></a>b. 修改litepal.xml中的代码</h4><hr><pre><code>&lt;list&gt;    &lt;mapping class=&quot;com.xiaweizi.studentsystem.Student&quot;&gt;&lt;/mapping&gt;&lt;/list&gt;</code></pre><blockquote><p>运行一下程序，然后你就可以在data/data/包名的文件下看到数据库已经创建了：</p></blockquote><p><img src="http://upload-images.jianshu.io/upload_images/4043475-7d01854c495230ad.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="数据库.PNG"></p><blockquote><p>然后把他导出来，借用工具打开，然后就是下面界面</p></blockquote><p><img src="http://upload-images.jianshu.io/upload_images/4043475-3e4c37de6dcd5cdb.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="表的创建.PNG"></p><h1 id="4-增、删、改、查"><a href="#4-增、删、改、查" class="headerlink" title="4. 增、删、改、查"></a>4. 增、删、改、查</h1><h3 id="1-添加数据"><a href="#1-添加数据" class="headerlink" title="1. 添加数据"></a>1. 添加数据</h3><pre><code>Student student = new Student();student.setName(name);student.setSex(sex);student.setStudentId(Integer.parseInt(studentId));student.save();</code></pre><p>效果如下：<br><img src="http://upload-images.jianshu.io/upload_images/4043475-bf48d4c2d74d168e.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="添加数据.PNG"></p><h3 id="2-删除数据"><a href="#2-删除数据" class="headerlink" title="2. 删除数据"></a>2. 删除数据</h3><pre><code>DataSupport.deleteAll(Student.class, &quot;id = ?&quot;, id +&quot;&quot;);</code></pre><blockquote><p>一行代码搞定，只要调用<code>DataSupport.deleteAll()</code>即可，第一参数，是要删除哪张表的数据，后面则为约束条件，不难看懂。</p></blockquote><h3 id="3-修改数据"><a href="#3-修改数据" class="headerlink" title="3. 修改数据"></a>3. 修改数据</h3><pre><code>Student student = new Student();student.setName(name);student.setSex(sex);student.setStudentId(Integer.parseInt(studentId));student.updateAll(&quot;id = ?&quot;, id+&quot;&quot;);</code></pre><blockquote><p>还是要new一个实例，然后要设置更新的数据，最后调用<code>updateAll()</code>方法执行更新操作。参数跟删除数据很像，也是约束条件，如果不传参数，则修改所有的数据。</p></blockquote><blockquote><p>这里需要注意一点，如果想让数据恢复成默认值，<strong>是不能直接设置默认值的。</strong></p><p>比如，如果让学号为0，是不能 <code>student.setStudentId(0);</code> 这是错误的！！！那么如果想恢复成默认值该怎么办呢，LitePal提供了<code>setToDefault()</code> 方法。</p></blockquote><pre><code>  Student student = new Student();student.setToDefault(&quot;studentId&quot;);student.updateAll();</code></pre><h3 id="4-查询数据"><a href="#4-查询数据" class="headerlink" title="4. 查询数据"></a>4. 查询数据</h3><pre><code>mList = DataSupport.findAll(Student.class);</code></pre><blockquote><p>一行代码搞定，直接就可以查询数据库中Student表的所有数据，返回这个对象的集合。<br>借用工具可以查看我们的所有数据：<br><img src="http://upload-images.jianshu.io/upload_images/4043475-436d22171cb8b0d0.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="所有数据.PNG"></p></blockquote><p>到此一个简单的学生管理系统已经结束了，主要目的就是快速入门LitePal！</p>]]></content>
@@ -454,9 +454,9 @@
       
         <tags>
             
-            <tag> 第三方库 </tag>
-            
             <tag> 项目 </tag>
+            
+            <tag> 第三方库 </tag>
             
         </tags>
       
@@ -476,9 +476,9 @@
       
         <tags>
             
-            <tag> 第三方库 </tag>
-            
             <tag> 项目 </tag>
+            
+            <tag> 第三方库 </tag>
             
         </tags>
       
