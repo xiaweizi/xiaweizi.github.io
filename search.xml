@@ -9,16 +9,16 @@
       
       <categories>
           
-          <category> 自定义 View </category>
-          
-          <category> 工作积累 </category>
+          <category> 自定义View实战 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 自定义View实战 </tag>
+            <tag> 自定义 View </tag>
+            
+            <tag> 工作积累 </tag>
             
         </tags>
       
@@ -160,9 +160,9 @@
       
         <tags>
             
-            <tag> 工作积累 </tag>
-            
             <tag> 自定义 View </tag>
+            
+            <tag> 工作积累 </tag>
             
         </tags>
       
@@ -242,9 +242,9 @@
       
         <tags>
             
-            <tag> 工作积累 </tag>
-            
             <tag> 自定义 View </tag>
+            
+            <tag> 工作积累 </tag>
             
         </tags>
       
@@ -264,9 +264,9 @@
       
         <tags>
             
-            <tag> Material Design </tag>
-            
             <tag> 工作积累 </tag>
+            
+            <tag> Material Design </tag>
             
         </tags>
       
@@ -370,9 +370,9 @@
       
         <tags>
             
-            <tag> 工作积累 </tag>
-            
             <tag> 自定义 View </tag>
+            
+            <tag> 工作积累 </tag>
             
             <tag> 第三方库 </tag>
             
