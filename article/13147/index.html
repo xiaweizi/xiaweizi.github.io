@@ -15,19 +15,19 @@
 
 
 
-<meta name="description" content="前言最近公司接到小需求–「可以滚动的提示」，其实就是跑马灯。这让我想到了大学时专业物联网，当时学的单片机入门教程就是跑马灯，很是亲切。其实就是灯(或文字)按照某个方向循环滚动。">
-<meta name="keywords" content="自定义 View,工作积累">
+<meta name="description" content="在工作中难免遇到自定义 View 的相关需求，本身这方面比较薄弱，因此做个记录，也是自己学习和成长的积累。自定义View实战  前言最近公司接到小需求–「可以滚动的提示」，其实就是跑马灯。这让我想到了大学时专业物联网，当时学的单片机入门教程就是跑马灯，很是亲切。其实就是灯(或文字)按照某个方向循环滚动。">
+<meta name="keywords" content="工作积累,自定义 View">
 <meta property="og:type" content="article">
 <meta property="og:title" content="『自定义View实战』—— 跑马灯">
 <meta property="og:url" content="http://xiaweizi.cn/article/13147/index.html">
 <meta property="og:site_name" content="xiaweizi&#39;blog">
-<meta property="og:description" content="前言最近公司接到小需求–「可以滚动的提示」，其实就是跑马灯。这让我想到了大学时专业物联网，当时学的单片机入门教程就是跑马灯，很是亲切。其实就是灯(或文字)按照某个方向循环滚动。">
+<meta property="og:description" content="在工作中难免遇到自定义 View 的相关需求，本身这方面比较薄弱，因此做个记录，也是自己学习和成长的积累。自定义View实战  前言最近公司接到小需求–「可以滚动的提示」，其实就是跑马灯。这让我想到了大学时专业物联网，当时学的单片机入门教程就是跑马灯，很是亲切。其实就是灯(或文字)按照某个方向循环滚动。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-693d71be1451c080.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-03-23T03:00:49.617Z">
+<meta property="og:updated_time" content="2018-03-23T13:06:38.892Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="『自定义View实战』—— 跑马灯">
-<meta name="twitter:description" content="前言最近公司接到小需求–「可以滚动的提示」，其实就是跑马灯。这让我想到了大学时专业物联网，当时学的单片机入门教程就是跑马灯，很是亲切。其实就是灯(或文字)按照某个方向循环滚动。">
+<meta name="twitter:description" content="在工作中难免遇到自定义 View 的相关需求，本身这方面比较薄弱，因此做个记录，也是自己学习和成长的积累。自定义View实战  前言最近公司接到小需求–「可以滚动的提示」，其实就是跑马灯。这让我想到了大学时专业物联网，当时学的单片机入门教程就是跑马灯，很是亲切。其实就是灯(或文字)按照某个方向循环滚动。">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4043475-693d71be1451c080.gif?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -323,7 +323,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1,038 字</span>
+        <span class="post-count">1,088 字</span>
       </span>
     </span>
 
@@ -368,7 +368,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近公司接到小需求–「可以滚动的提示」，其实就是跑马灯。这让我想到了大学时专业<strong>物联网</strong>，当时学的单片机入门教程就是跑马灯，很是亲切。其实就是灯(或文字)按照某个方向循环滚动。</p>
+        <blockquote>
+<p>在工作中难免遇到自定义 <code>View</code> 的相关需求，本身这方面比较薄弱，因此做个记录，也是自己学习和成长的积累。<a href="https://link.jianshu.com/?t=http%3A%2F%2Fxiaweizi.cn%2Fcategories%2F%25E8%2587%25AA%25E5%25AE%259A%25E4%25B9%2589View%25E5%25AE%259E%25E6%2588%2598%2F" target="_blank" rel="noopener">自定义View实战</a></p>
+</blockquote>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近公司接到小需求–「可以滚动的提示」，其实就是跑马灯。这让我想到了大学时专业<strong>物联网</strong>，当时学的单片机入门教程就是跑马灯，很是亲切。其实就是灯(或文字)按照某个方向循环滚动。</p>
 <a id="more"></a>
 <h2 id="Android-原生的跑马灯"><a href="#Android-原生的跑马灯" class="headerlink" title="Android 原生的跑马灯"></a>Android 原生的跑马灯</h2><p>其实，<code>Android</code>中的<code>TextView</code>自带跑马灯效果，只需要通过简单的配置，就可以完成滚动的效果。</p>
 <p>在<code>XML</code>中进行配置</p>
@@ -494,7 +497,7 @@ private int calculateScrollingLen() {
         <p><span>本文标题:</span><a href="/article/13147/">『自定义View实战』—— 跑马灯</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">下位子</a></p>
         <p><span>发布时间:</span>2017-12-26, 20:46:25</p>
-        <p><span>最后更新:</span>2018-03-23, 11:00:49</p>
+        <p><span>最后更新:</span>2018-03-23, 21:06:38</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/article/13147/" title="『自定义View实战』—— 跑马灯">http://xiaweizi.cn/article/13147/</a>
             <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/article/13147/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -684,7 +687,7 @@ private int calculateScrollingLen() {
                     </span>
                 
                 <span>| </span>
-                <span class="post-count">  已经写了 61.2k 字啦</span>
+                <span class="post-count">  已经写了 61.4k 字啦</span>
             </div>
         
     </div>

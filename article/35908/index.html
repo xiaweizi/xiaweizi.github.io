@@ -15,23 +15,23 @@
 
 
 
-<meta name="description" content="上周接到个小需求，就是让一张图片的右下角为圆角，然后百度了一下，发现 Glide 直接支持对图片进行操作，只要继承 BitmapTransformation,或者实现 Transformation的接口，就可以获得原图的 Bitmap对象，通过 Canvas对图片重新绘制，最后 Glide.with(this).load(R.drawable.test).asBitmap().transform(">
-<meta name="keywords" content="自定义 View,工作积累,第三方库">
+<meta name="description" content="在工作中难免遇到自定义 View 的相关需求，本身这方面比较薄弱，因此做个记录，也是自己学习和成长的积累。自定义View实战  上周接到个小需求，就是让一张图片的右下角为圆角，然后百度了一下，发现 Glide 直接支持对图片进行操作，只要继承 BitmapTransformation,或者实现 Transformation的接口，就可以获得原图的 Bitmap对象，通过 Canvas对图片重新绘">
+<meta name="keywords" content="工作积累,自定义 View,第三方库">
 <meta property="og:type" content="article">
 <meta property="og:title" content="『自定义View实战』—— 实现图片的圆角效果">
 <meta property="og:url" content="http://xiaweizi.cn/article/35908/index.html">
 <meta property="og:site_name" content="xiaweizi&#39;blog">
-<meta property="og:description" content="上周接到个小需求，就是让一张图片的右下角为圆角，然后百度了一下，发现 Glide 直接支持对图片进行操作，只要继承 BitmapTransformation,或者实现 Transformation的接口，就可以获得原图的 Bitmap对象，通过 Canvas对图片重新绘制，最后 Glide.with(this).load(R.drawable.test).asBitmap().transform(">
+<meta property="og:description" content="在工作中难免遇到自定义 View 的相关需求，本身这方面比较薄弱，因此做个记录，也是自己学习和成长的积累。自定义View实战  上周接到个小需求，就是让一张图片的右下角为圆角，然后百度了一下，发现 Glide 直接支持对图片进行操作，只要继承 BitmapTransformation,或者实现 Transformation的接口，就可以获得原图的 Bitmap对象，通过 Canvas对图片重新绘">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-36eb01d918e79ca6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-0335ab7c9965900c.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-7baad3b9b576f3e5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-9422183b9fae1da5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-8c2be5bd03d7a674.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-03-23T03:00:32.320Z">
+<meta property="og:updated_time" content="2018-03-23T13:06:10.934Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="『自定义View实战』—— 实现图片的圆角效果">
-<meta name="twitter:description" content="上周接到个小需求，就是让一张图片的右下角为圆角，然后百度了一下，发现 Glide 直接支持对图片进行操作，只要继承 BitmapTransformation,或者实现 Transformation的接口，就可以获得原图的 Bitmap对象，通过 Canvas对图片重新绘制，最后 Glide.with(this).load(R.drawable.test).asBitmap().transform(">
+<meta name="twitter:description" content="在工作中难免遇到自定义 View 的相关需求，本身这方面比较薄弱，因此做个记录，也是自己学习和成长的积累。自定义View实战  上周接到个小需求，就是让一张图片的右下角为圆角，然后百度了一下，发现 Glide 直接支持对图片进行操作，只要继承 BitmapTransformation,或者实现 Transformation的接口，就可以获得原图的 Bitmap对象，通过 Canvas对图片重新绘">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4043475-36eb01d918e79ca6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -327,7 +327,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">686 字</span>
+        <span class="post-count">736 字</span>
       </span>
     </span>
 
@@ -372,7 +372,10 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>上周接到个小需求，就是让一张图片的右下角为圆角，然后百度了一下，发现 <code>Glide</code> 直接支持对图片进行操作，只要继承 <code>BitmapTransformation</code>,或者实现 <code>Transformation</code>的接口，就可以获得原图的 <code>Bitmap</code>对象，通过 <code>Canvas</code>对图片重新绘制，最后 <code>Glide.with(this).load(R.drawable.test).asBitmap().transform(transformation).into(mImageView);</code>传入新建的<code>transformation</code>对象即可。</p>
+        <blockquote>
+<p>在工作中难免遇到自定义 <code>View</code> 的相关需求，本身这方面比较薄弱，因此做个记录，也是自己学习和成长的积累。<a href="https://link.jianshu.com/?t=http%3A%2F%2Fxiaweizi.cn%2Fcategories%2F%25E8%2587%25AA%25E5%25AE%259A%25E4%25B9%2589View%25E5%25AE%259E%25E6%2588%2598%2F" target="_blank" rel="noopener">自定义View实战</a></p>
+</blockquote>
+<p>上周接到个小需求，就是让一张图片的右下角为圆角，然后百度了一下，发现 <code>Glide</code> 直接支持对图片进行操作，只要继承 <code>BitmapTransformation</code>,或者实现 <code>Transformation</code>的接口，就可以获得原图的 <code>Bitmap</code>对象，通过 <code>Canvas</code>对图片重新绘制，最后 <code>Glide.with(this).load(R.drawable.test).asBitmap().transform(transformation).into(mImageView);</code>传入新建的<code>transformation</code>对象即可。</p>
 <a id="more"></a>
 <p>这里推荐<code>GitHub</code>上的一个开源库，完全满足日常需求:<a href="https://github.com/wasabeef/glide-transformations" target="_blank" rel="noopener">glide-transformations</a>,里面有各种各样的对图片的处理，很是强大。</p>
 <p>不过实际使用的过程中，我倒是发现一个小问题…假如只有右下角是圆角的情况下，当服务器返回的是一张半透明的图片时，结果就成了这样:</p>
@@ -455,7 +458,7 @@ Glide.with(MainActivity.this)
         <p><span>本文标题:</span><a href="/article/35908/">『自定义View实战』—— 实现图片的圆角效果</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">下位子</a></p>
         <p><span>发布时间:</span>2017-08-22, 20:46:25</p>
-        <p><span>最后更新:</span>2018-03-23, 11:00:32</p>
+        <p><span>最后更新:</span>2018-03-23, 21:06:10</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/article/35908/" title="『自定义View实战』—— 实现图片的圆角效果">http://xiaweizi.cn/article/35908/</a>
             <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/article/35908/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -645,7 +648,7 @@ Glide.with(MainActivity.this)
                     </span>
                 
                 <span>| </span>
-                <span class="post-count">  已经写了 61.2k 字啦</span>
+                <span class="post-count">  已经写了 61.4k 字啦</span>
             </div>
         
     </div>
