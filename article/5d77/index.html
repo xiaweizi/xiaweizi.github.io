@@ -15,22 +15,22 @@
 
 
 
-<meta name="description" content="在工作中难免遇到自定义 View 的相关需求，本身这方面比较薄弱，因此做个记录，也是自己学习和成长的积累。自定义View实战  前言最近项目需要接入环信客服 SDK ，我配合这同事完成，其中我负责文件下载这部分。 因为时间比较紧张，8 天的时间完成 环信客服模块 的接入，就直接用了环信提供的 UI 控件，但是一些细节的部分， UI 还是会给出设计图，按照设计图完成最终效果。">
+<meta name="description" content="在工作中难免遇到自定义 View 的相关需求，本身这方面比较薄弱，因此做个记录，也是自己学习和成长的积累。自定义View实战.  前言最近项目需要接入环信客服 SDK ，我配合这同事完成，其中我负责文件下载这部分。 因为时间比较紧张，8 天的时间完成 环信客服模块 的接入，就直接用了环信提供的 UI 控件，但是一些细节的部分， UI 还是会给出设计图，按照设计图完成最终效果。">
 <meta name="keywords" content="工作积累,自定义 View">
 <meta property="og:type" content="article">
 <meta property="og:title" content="『自定义View实战』—— 仿ios图标下载view">
 <meta property="og:url" content="http://xiaweizi.cn/article/5d77/index.html">
 <meta property="og:site_name" content="xiaweizi&#39;blog">
-<meta property="og:description" content="在工作中难免遇到自定义 View 的相关需求，本身这方面比较薄弱，因此做个记录，也是自己学习和成长的积累。自定义View实战  前言最近项目需要接入环信客服 SDK ，我配合这同事完成，其中我负责文件下载这部分。 因为时间比较紧张，8 天的时间完成 环信客服模块 的接入，就直接用了环信提供的 UI 控件，但是一些细节的部分， UI 还是会给出设计图，按照设计图完成最终效果。">
+<meta property="og:description" content="在工作中难免遇到自定义 View 的相关需求，本身这方面比较薄弱，因此做个记录，也是自己学习和成长的积累。自定义View实战.  前言最近项目需要接入环信客服 SDK ，我配合这同事完成，其中我负责文件下载这部分。 因为时间比较紧张，8 天的时间完成 环信客服模块 的接入，就直接用了环信提供的 UI 控件，但是一些细节的部分， UI 还是会给出设计图，按照设计图完成最终效果。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-03-23-12A0620B-7476-42BE-BE83-09280E35CD18.png">
 <meta property="og:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-03-23-DownloadView.gif">
 <meta property="og:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-03-23-115616.png">
 <meta property="og:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-03-23-122007.png">
-<meta property="og:updated_time" content="2018-03-23T13:05:59.822Z">
+<meta property="og:updated_time" content="2018-03-28T01:14:37.059Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="『自定义View实战』—— 仿ios图标下载view">
-<meta name="twitter:description" content="在工作中难免遇到自定义 View 的相关需求，本身这方面比较薄弱，因此做个记录，也是自己学习和成长的积累。自定义View实战  前言最近项目需要接入环信客服 SDK ，我配合这同事完成，其中我负责文件下载这部分。 因为时间比较紧张，8 天的时间完成 环信客服模块 的接入，就直接用了环信提供的 UI 控件，但是一些细节的部分， UI 还是会给出设计图，按照设计图完成最终效果。">
+<meta name="twitter:description" content="在工作中难免遇到自定义 View 的相关需求，本身这方面比较薄弱，因此做个记录，也是自己学习和成长的积累。自定义View实战.  前言最近项目需要接入环信客服 SDK ，我配合这同事完成，其中我负责文件下载这部分。 因为时间比较紧张，8 天的时间完成 环信客服模块 的接入，就直接用了环信提供的 UI 控件，但是一些细节的部分， UI 还是会给出设计图，按照设计图完成最终效果。">
 <meta name="twitter:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-03-23-12A0620B-7476-42BE-BE83-09280E35CD18.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -233,6 +233,8 @@
                     
                       <a class="main-nav-link switch-friends-link" href="https://txiner.top/">Hundred Blog</a>
                     
+                      <a class="main-nav-link switch-friends-link" href="https://www.xiaohoutongxue.cn/">xiaoHou</a>
+                    
                     </div>
                 </section>
                 
@@ -372,7 +374,7 @@
       
           
         <blockquote>
-<p>在工作中难免遇到自定义 <code>View</code> 的相关需求，本身这方面比较薄弱，因此做个记录，也是自己学习和成长的积累。<a href="https://link.jianshu.com/?t=http%3A%2F%2Fxiaweizi.cn%2Fcategories%2F%25E8%2587%25AA%25E5%25AE%259A%25E4%25B9%2589View%25E5%25AE%259E%25E6%2588%2598%2F" target="_blank" rel="noopener">自定义View实战</a></p>
+<p>在工作中难免遇到自定义 <code>View</code> 的相关需求，本身这方面比较薄弱，因此做个记录，也是自己学习和成长的积累。<a href="https://link.jianshu.com/?t=http%3A%2F%2Fxiaweizi.cn%2Fcategories%2F%25E8%2587%25AA%25E5%25AE%259A%25E4%25B9%2589View%25E5%25AE%259E%25E6%2588%2598%2F" target="_blank" rel="noopener">自定义View实战</a>.</p>
 </blockquote>
 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近项目需要接入环信客服 <code>SDK</code> ，我配合这同事完成，其中我负责文件下载这部分。</p>
 <p>因为时间比较紧张，8 天的时间完成 <strong>环信客服模块</strong> 的接入，就直接用了环信提供的 <code>UI</code> 控件，但是一些细节的部分， <code>UI</code> 还是会给出设计图，按照设计图完成最终效果。</p>
@@ -429,7 +431,7 @@
         <p><span>本文标题:</span><a href="/article/5d77/">『自定义View实战』—— 仿ios图标下载view</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">下位子</a></p>
         <p><span>发布时间:</span>2018-03-23, 20:11:12</p>
-        <p><span>最后更新:</span>2018-03-23, 21:05:59</p>
+        <p><span>最后更新:</span>2018-03-28, 09:14:37</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/article/5d77/" title="『自定义View实战』—— 仿ios图标下载view">http://xiaweizi.cn/article/5d77/</a>
             <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/article/5d77/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
