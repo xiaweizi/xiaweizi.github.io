@@ -559,11 +559,11 @@ ga('send', 'pageview');
         var titleTime;
         document.addEventListener("visibilitychange", function() {
             if (document.hidden) {
-                document.title = "插播广告中... " + originTitle;
+                document.title = "产品提需求啦！！" + originTitle;
                 clearTimeout(titleTime);
             }
             else {
-                document.title = "广告结束，精彩继续！" + originTitle;
+                document.title = "又要改bug了..." + originTitle;
                 titleTime = setTimeout(function() {
                     document.title = originTitle;
                 }, 2000);
