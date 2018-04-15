@@ -14,17 +14,22 @@
 <meta name="author" content="下位子" />
 
 
-    
-    
 
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="xiaweizi&#39;blog">
-<meta property="og:url" content="http://xiaweizi.cn/page/4/index.html">
+<meta name="description" content="Thinking in java 读书笔记 不可变 String String 对象是不可变的，具有只读特性。  1234567891011121314151617public class Immutable &amp;#123;      public static String upcase(String s) &amp;#123;          return s.toUpperCase();">
+<meta name="keywords" content="Thinking In Java,读书笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="『Thinking in Java 读书笔记』—— 13-字符串">
+<meta property="og:url" content="http://xiaweizi.cn/article/thinking_in_java_13/index.html">
 <meta property="og:site_name" content="xiaweizi&#39;blog">
+<meta property="og:description" content="Thinking in java 读书笔记 不可变 String String 对象是不可变的，具有只读特性。  1234567891011121314151617public class Immutable &amp;#123;      public static String upcase(String s) &amp;#123;          return s.toUpperCase();">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-04-15-String%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95.png">
+<meta property="og:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-04-15-String%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95.png">
+<meta property="og:updated_time" content="2018-04-15T06:11:31.637Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="xiaweizi&#39;blog">
+<meta name="twitter:title" content="『Thinking in Java 读书笔记』—— 13-字符串">
+<meta name="twitter:description" content="Thinking in java 读书笔记 不可变 String String 对象是不可变的，具有只读特性。  1234567891011121314151617public class Immutable &amp;#123;      public static String upcase(String s) &amp;#123;          return s.toUpperCase();">
+<meta name="twitter:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-04-15-String%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -52,13 +57,11 @@
 <link rel="stylesheet" href="/css/style.css">
 
 
-    <style> .article { opacity: 0;} </style>
-
 
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>xiaweizi&#39;blog</title>
+<title>『Thinking in Java 读书笔记』—— 13-字符串 | xiaweizi&#39;blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -67,8 +70,8 @@
     var yiliaConfig = {
         fancybox: true,
         animate: true,
-        isHome: true,
-        isPost: false,
+        isHome: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -294,195 +297,7 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-设计模式之建造者模式学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/article/23091/" class="article-date">
-      <time datetime="2017-01-04T12:46:25.000Z" itemprop="datePublished">2017-01-04</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/article/23091/">设计模式之建造者模式学习笔记</a>
-    </h1>
-  
-
-        
-           <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">934 字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">4 分</span>
-      </span>
-    </span>
-
-    
-</div>
-        
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><em><a href="http://xiaweizi.cn/">我的博客地址</a></em></p>
-<h2 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h2><blockquote>
-<p>主要参考了 /<em><a href="http://blog.csdn.net/bingjianit" target="_blank" rel="noopener">冰鉴</a></em>/ 的一篇博客，觉得写的很详细，然后自己敲了一遍。学习了 <strong>设计模式之建造者模式</strong>， 并做了一些笔记。</p>
-</blockquote>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/设计模式/">设计模式</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/article/23091/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-一个菜鸟的图片三级缓存笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/article/17984/" class="article-date">
-      <time datetime="2016-12-29T12:46:25.000Z" itemprop="datePublished">2016-12-29</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/article/17984/">一个菜鸟的图片三级缓存笔记</a>
-    </h1>
-  
-
-        
-           <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">772 字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">4 分</span>
-      </span>
-    </span>
-
-    
-</div>
-        
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><em>先附上我的源码Github地址<br><a href="https://github.com/xiaweizi/ImageCache.git" target="_blank" rel="noopener">https://github.com/xiaweizi/ImageCache.git</a></em></p>
-<p><em><a href="http://xiaweizi.cn/">我的博客地址</a></em></p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Android-自学笔记/">Android 自学笔记</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图片缓存/">图片缓存</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/article/17984/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Thinking-in-Java-读书笔记-13-字符串" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-Thinking-in-Java-读书笔记-13-字符串" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/article/thinking_in_java_13/" class="article-date">
@@ -500,8 +315,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/article/thinking_in_java_13/">『Thinking in Java 读书笔记』—— 13-字符串</a>
+    <h1 class="article-title" itemprop="name">
+      『Thinking in Java 读书笔记』—— 13-字符串
     </h1>
   
 
@@ -525,9 +340,32 @@
     </span>
 
     
+        <span id="busuanzi_container_page_pv">
+          &nbsp; | &nbsp;  本文总阅读量: <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+    
 </div>
         
       </header>
+      
+      <div class="article-info article-info-post">
+        
+          <br>
+          <br>
+        
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Thinking-In-Java-读书笔记/">Thinking In Java 读书笔记</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -805,713 +643,178 @@
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Thinking-In-Java-读书笔记/">Thinking In Java 读书笔记</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
   
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Thinking-in-Java-读书笔记-12-通过异常处理错误" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/article/thinking_in_java_12/" class="article-date">
-      <time datetime="1994-03-11T07:13:33.000Z" itemprop="datePublished">1994-03-11</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/article/thinking_in_java_12/">『Thinking in Java 读书笔记』—— 12-通过异常处理错误</a>
-    </h1>
-  
-
-        
-           <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1,201 字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">5 分</span>
-      </span>
-    </span>
-
-    
-</div>
-        
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><a href="http://xiaweizi.cn/categories/Thinking-In-Java-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">Thinking in java 读书笔记</a></p>
-<blockquote>
-<p><code>Java</code> 的基本理念是 「结构不佳的代码不能运行。</p>
-</blockquote>
-<p>发现错误的理想时机是在编译阶段，也就是在你试图运行程序之前。然而，编译期间并不能找出所有的错误，余下的问题必须在运行期间解决。这就需要错误源通过某种方式，把适当的信息传递给某个接受者—接收者将知道如何正确处理这个问题。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Thinking-In-Java-读书笔记/">Thinking In Java 读书笔记</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/article/thinking_in_java_12/#more">阅读全文 >></a>
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/article/thinking_in_java_13/">『Thinking in Java 读书笔记』—— 13-字符串</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">下位子</a></p>
+        <p><span>发布时间:</span>1994-04-15, 15:13:33</p>
+        <p><span>最后更新:</span>2018-04-15, 14:11:31</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/article/thinking_in_java_13/" title="『Thinking in Java 读书笔记』—— 13-字符串">http://xiaweizi.cn/article/thinking_in_java_13/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/article/thinking_in_java_13/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Thinking-in-Java-读书笔记-11-持有对象" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/article/thinking_in_java_11/" class="article-date">
-      <time datetime="1994-03-10T07:13:33.000Z" itemprop="datePublished">1994-03-10</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/article/thinking_in_java_11/">『Thinking in Java 读书笔记』—— 11-持有对象</a>
-    </h1>
-  
-
-        
-           <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1,640 字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">7 分</span>
-      </span>
-    </span>
-
-    
-</div>
-        
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><a href="http://xiaweizi.cn/categories/Thinking-In-Java-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">Thinking in java 读书笔记</a></p>
-<blockquote>
-<p>如果一个程序只包含固定数量的且其生命期都是已知的对象，那么这是一个非常简单的程序。</p>
-</blockquote>
-<p>通常，程序总是根据运行时才知道的某些条件去创建新对象，在此之前，不会知道所需对象的数量，甚至不知道确切的类型。为解决这个普遍的编程问题，需要在任意时刻和任意位置创建任意数量的对象。所以，就不能依靠创建命名的引用来持有每一个对象。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Thinking-In-Java-读书笔记/">Thinking In Java 读书笔记</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/article/thinking_in_java_11/#more">阅读全文 >></a>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
         </p>
-      
-      <div class="clearfix"></div>
     </div>
-    
-  </div>
-  
-  
-</article>
 
 
 
-
-
-
-
-
-
-  
-    <article id="post-Thinking-in-Java-读书笔记-10-内部类" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/article/thinking_in_java_10/" class="article-date">
-      <time datetime="1994-03-09T07:13:33.000Z" itemprop="datePublished">1994-03-09</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+    <nav id="article-nav">
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/article/thinking_in_java_10/">『Thinking in Java 读书笔记』—— 10-内部类</a>
-    </h1>
-  
-
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/article/17984/">
+                    一个菜鸟的图片三级缓存笔记
+                </a>
+            </div>
         
-           <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1,467 字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6 分</span>
-      </span>
-    </span>
-
-    
-</div>
         
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><a href="http://xiaweizi.cn/categories/Thinking-In-Java-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">Thinking in java 读书笔记</a></p>
-<blockquote>
-<p>可以将一个类的定义放在另一个类的定义内部，这就是内部类。</p>
-</blockquote>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>内部类非常的有用，因为它允许你把一些逻辑相关的类组织在一块，并控制位于内部的类的可视性，内部类和组合是完全不同的概念，这点很重要。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Thinking-In-Java-读书笔记/">Thinking In Java 读书笔记</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/article/thinking_in_java_10/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Thinking-in-Java-读书笔记-9-接口" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/article/thinking_in_java_9/" class="article-date">
-      <time datetime="1994-03-08T07:13:33.000Z" itemprop="datePublished">1994-03-08</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/article/thinking_in_java_12/">
+                    『Thinking in Java 读书笔记』—— 12-通过异常处理错误
+                </a>
+            </div>
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/article/thinking_in_java_9/">『Thinking in Java 读书笔记』—— 9-接口</a>
-    </h1>
-  
-
-        
-           <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">880 字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">4 分</span>
-      </span>
-    </span>
-
-    
-</div>
-        
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><a href="http://xiaweizi.cn/categories/Thinking-In-Java-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">Thinking in java 读书笔记</a></p>
-<blockquote>
-<p>接口和内部类为我们提供一种将接口与实现分离的更加结构化的方法。</p>
-</blockquote>
-<h2 id="接口"><a href="#接口" class="headerlink" title="接口"></a>接口</h2><p><code>interface</code>关键字使抽象的概念更买进一步，<code>abstract</code>关键字允许人们在类中创建一个或者多个没有任何定义的方法，但是没有提供任何相应的具体实现，这些实现是由此类创建者创建。<code>interface</code>这个关键字产生一个完全抽象类。它根本就没有具体的实现。</p>
-<p><code>interface</code>不仅仅是一个极度抽象的类，因为它允许人们通过创建一个能够被向上转型为多种基类的类型，来实现某种类似多重继承变种的特性。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Thinking-In-Java-读书笔记/">Thinking In Java 读书笔记</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/article/thinking_in_java_9/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Thinking-in-Java-读书笔记-8-多态" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/article/thinking_in_java_8/" class="article-date">
-      <time datetime="1994-03-07T07:13:33.000Z" itemprop="datePublished">1994-03-07</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/article/thinking_in_java_8/">『Thinking in Java 读书笔记』—— 8-多态</a>
-    </h1>
-  
-
-        
-           <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1,463 字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6 分</span>
-      </span>
-    </span>
-
-    
-</div>
-        
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><a href="http://xiaweizi.cn/categories/Thinking-In-Java-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">Thinking in java 读书笔记</a></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>记得刚接触<code>Java</code>的时候，整天被老师灌输的就是「封装」、「继承」、「抽象」和「多态」，因为这是面向对象语言基本的特征。尴尬的是，直到大学毕业了也没有彻底搞懂…</p>
-<p>多态通过分离「做什么」和「怎么做」，从另一个角度将接口和实现分离开来。多态不但能够改善代码的组织结构和可读性，还能创建可扩展的程序–即无论在项目最初创建时还是需要添加新功能都可以生长的程序。</p>
-<p>「封装」通过合并特征和行为来创建新的数据类型，实现隐藏则通过将细节私有化把接口和实现分离开来，这种类型的组织机制对那些拥有过程化程序设计背景的人来说，更容易理解。而「多态」的作用则是消除类型之间的耦合关系。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Thinking-In-Java-读书笔记/">Thinking In Java 读书笔记</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/article/thinking_in_java_8/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Thinking-in-Java-读书笔记-7-复用类" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/article/thinking_in_java_7/" class="article-date">
-      <time datetime="1994-03-06T07:13:33.000Z" itemprop="datePublished">1994-03-06</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/article/thinking_in_java_7/">『Thinking in Java 读书笔记』—— 7-复用类</a>
-    </h1>
-  
-
-        
-           <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1,448 字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6 分</span>
-      </span>
-    </span>
-
-    
-</div>
-        
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><a href="http://xiaweizi.cn/categories/Thinking-In-Java-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">Thinking in java 读书笔记</a></p>
-<blockquote>
-<p>复用代码是 Java 众多引人注目的功能之一。但要想成为极具革命性的语言，仅仅能够复制diamante并对之加以改变是不够的，它还必须能够做更多的事情。</p>
-</blockquote>
-<h2 id="组合用法"><a href="#组合用法" class="headerlink" title="组合用法"></a>组合用法</h2><p>这个用户最为常用，即在新建的类中，持有别的对象的引用。假设你需要某个对象，它要具有多个 String 对象，几个基本类型数据，以及另一个了类的对象，这种使用在开发中最为常见。对于非基本类型的对象，必须将其引用置于新的类中。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Thinking-In-Java-读书笔记/">Thinking In Java 读书笔记</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/article/thinking_in_java_7/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-Thinking-in-Java-读书笔记-6-访问权限控制" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/article/thinking_in_java_6/" class="article-date">
-      <time datetime="1994-03-05T02:12:00.000Z" itemprop="datePublished">1994-03-05</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/article/thinking_in_java_6/">『Thinking in Java 读书笔记』—— 6-访问权限控制</a>
-    </h1>
-  
-
-        
-           <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">616 字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2 分</span>
-      </span>
-    </span>
-
-    
-</div>
-        
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><a href="http://xiaweizi.cn/categories/Thinking-In-Java-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">Thinking in java 读书笔记</a></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我还记得第一次面试的时候，就是问 <code>public</code>、<code>protected</code>和<code>private</code>的区别，当时技术很渣，虽然知道是什么意思，但是表述的不是那么清楚，当时搞得自己很紧张，后面的问题也没有回答的很好。。。</p>
-<blockquote>
-<p>访问控制（或隐藏具体实现）与“最初的实现并不恰当”有关</p>
-</blockquote>
-<h2 id="Java-访问权限修饰词"><a href="#Java-访问权限修饰词" class="headerlink" title="Java 访问权限修饰词"></a>Java 访问权限修饰词</h2><p><strong>public</strong></p>
-<p>使用关键字<code>public</code>关键字，就意味着<code>public</code>之后紧跟着的成员声明自己对每个人都是可用的，尤其是使用类库的客户程序员更是如此。</p>
-<p><strong>protected</strong></p>
-<p>继承访问权限，通过继承可以利用一个现有类~我们将其称为基类，基类的创建者会希望有某个特定成员，把它的访问权限赋予派生类而不是所有类。<code>protected</code>也提供包访问权限，也就是说，相同包内的其他类也可以访问<code>protected</code>元素。</p>
-<p><strong>private</strong></p>
-<p>除了包含该成员的类之外，其他任何类都无法访问这个成员，等于说是隔离了自己。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Thinking-In-Java-读书笔记/">Thinking In Java 读书笔记</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/article/thinking_in_java_6/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
+
   
+  
+    
+    <div style="padding: 0; margin: 20px auto; width: 90%; text-align: center;">
+      <br>
+      <div>赏我 e(=2.72) 元咖啡钱吧，您的支持将鼓励我继续创作！</div>
+      <br>
+      <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+        <div class="btn btn-pay">打赏支持</div>
+      </button>
+      <br>
+      <br>
+      <div id="QR" style="display: none;">
+        
+          <div id="wechat" style="display: inline-block;">
+            <img id="wechat_qr" src="/img/wechat-reward-qr.png" alt="下位子 WeChat Pay"/>
+            <p>微信打赏</p>
+          </div>
+        
+        
+          <div id="alipay" style="display: inline-block">
+            <img id="alipay_qr" src="/img/alipay-reward-qr.png" alt="下位子 Alipay"/>
+            <p>支付宝打赏</p>
+          </div>
+        
+        <br>
+        <br>
+      </div>
+    </div>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#不可变-String"><span class="toc-number">1.</span> <span class="toc-text">不可变 String</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重载运算符-与-StringBuilder"><span class="toc-number">2.</span> <span class="toc-text">重载运算符 + 与 StringBuilder</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#重载"><span class="toc-number">2.0.1.</span> <span class="toc-text">重载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#通过-javap-来反编译-Concatenation"><span class="toc-number">2.0.2.</span> <span class="toc-text">通过 javap 来反编译 Concatenation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#编译器对-String-的优化"><span class="toc-number">2.0.3.</span> <span class="toc-text">编译器对 String 的优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#StringBuilder-其他特点"><span class="toc-number">2.0.4.</span> <span class="toc-text">StringBuilder 其他特点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#无意识的递归"><span class="toc-number">3.</span> <span class="toc-text">无意识的递归</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-上的操作"><span class="toc-number">4.</span> <span class="toc-text">String 上的操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#格式化输出"><span class="toc-number">5.</span> <span class="toc-text">格式化输出</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#正则表达式"><span class="toc-number">6.</span> <span class="toc-text">正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Pattern-和-Matcher"><span class="toc-number">6.0.1.</span> <span class="toc-text">Pattern 和 Matcher</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#扫描输入"><span class="toc-number">7.</span> <span class="toc-text">扫描输入</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">8.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#感谢"><span class="toc-number">9.</span> <span class="toc-text">感谢</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"『Thinking in Java 读书笔记』—— 13-字符串　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+        
+      <section class="livere" id="comments">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zNDM3Ny8xMDkxNA==">
+    <script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+    </script>
+    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/article/17984/" title="上一篇: 一个菜鸟的图片三级缓存笔记">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/article/thinking_in_java_12/" title="下一篇: 『Thinking in Java 读书笔记』—— 12-通过异常处理错误">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/article/18a/">『自定义View实战』—— 客服好评View</a></li><li class="post-list-item"><a class="post-list-link" href="/article/licecap/">『程序员必备软件』—— 短小精悍的GIF录制软件LICEcap</a></li><li class="post-list-item"><a class="post-list-link" href="/article/5d77/">『自定义View实战』—— 仿ios图标下载view</a></li><li class="post-list-item"><a class="post-list-link" href="/article/3cfa/">程序员必备软件(持续更新中...)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/typora/">『程序员必备软件』—— 编辑预览于一身的 Typora</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7b67faab/">读书笔记(持续更新...)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/31905/">hexo 博客小功能添加-评论、相册、字数统计...</a></li><li class="post-list-item"><a class="post-list-link" href="/article/39434/">『技术分享』— 个人博客全新上线(阿里域名+GitPages+hexo+Yelee)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/34201/">Android 冷兵器 之 tools</a></li><li class="post-list-item"><a class="post-list-link" href="/article/25968/">『自定义View实战』—— 银行种类选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/article/46688/">我和极光的那些事---我和-Android-推送的时间简史</a></li><li class="post-list-item"><a class="post-list-link" href="/article/18215/">Python-自学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/6515/">Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！</a></li><li class="post-list-item"><a class="post-list-link" href="/article/13147/">『自定义View实战』—— 跑马灯</a></li><li class="post-list-item"><a class="post-list-link" href="/article/31642/">Android-分享会：Material-Design-在-Android-中的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/article/52360/">Git-命令小结</a></li><li class="post-list-item"><a class="post-list-link" href="/article/13823/">使用Kotlin重构项目</a></li><li class="post-list-item"><a class="post-list-link" href="/article/40024/">Kotlin学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/41851/">MVVM之DataBinding入门</a></li><li class="post-list-item"><a class="post-list-link" href="/article/35908/">『自定义View实战』—— 实现图片的圆角效果</a></li><li class="post-list-item"><a class="post-list-link" href="/article/9202/">Android-性能优化小结</a></li><li class="post-list-item"><a class="post-list-link" href="/article/58454/">如何做个依赖库让别人依赖使用</a></li><li class="post-list-item"><a class="post-list-link" href="/article/64590/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/article/64591/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7691/">基于MaterialDesign设计风格的妹纸app的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/62207/">快毕业了，撸一个小项目(新闻段子客户端)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/2954/">基于LitePal操作数据库的学生管理系统的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/276/">基于环信的仿QQ即时通讯的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7455/">高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7798/">简单粗暴----RecyclerView</a></li><li class="post-list-item"><a class="post-list-link" href="/article/23091/">设计模式之建造者模式学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/17984/">一个菜鸟的图片三级缓存笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_13/">『Thinking in Java 读书笔记』—— 13-字符串</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_12/">『Thinking in Java 读书笔记』—— 12-通过异常处理错误</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_11/">『Thinking in Java 读书笔记』—— 11-持有对象</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_10/">『Thinking in Java 读书笔记』—— 10-内部类</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_9/">『Thinking in Java 读书笔记』—— 9-接口</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_8/">『Thinking in Java 读书笔记』—— 8-多态</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_7/">『Thinking in Java 读书笔记』—— 7-复用类</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_6/">『Thinking in Java 读书笔记』—— 6-访问权限控制</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_5/">『Thinking in Java 读书笔记』—— 5-初始化与清理</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_4/">『Thinking in Java 读书笔记』—— 4-控制执行流程</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_3/">『Thinking in Java 读书笔记』—— 3-操作符</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_2/">『Thinking in Java 读书笔记』—— 2-一切都是对象</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_1/">『Thinking in Java 读书笔记』—— 1-对象导论</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
