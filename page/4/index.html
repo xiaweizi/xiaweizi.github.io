@@ -482,6 +482,102 @@
 
 
   
+    <article id="post-Thinking-in-Java-读书笔记-14-类型信息" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/article/thinking_in_java_14/" class="article-date">
+      <time datetime="1994-04-15T08:13:33.000Z" itemprop="datePublished">1994-04-15</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/article/thinking_in_java_14/">『Thinking in Java 读书笔记』—— 14-类型信息</a>
+    </h1>
+  
+
+        
+           <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">5,128 字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">24 分</span>
+      </span>
+    </span>
+
+    
+</div>
+        
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <p><a href="http://xiaweizi.cn/categories/Thinking-In-Java-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">Thinking in java 读书笔记</a></p>
+<blockquote>
+<p>运行时类型信息使得你可以在程序运行时发现和使用类型信息。</p>
+<p>Java 通过两种方式在运行时识别对象和类信息的，一种是 <strong>传统的RTTI</strong>，(RunTime Type Identification 运行时类型定义)，假定我们在编译时已经知道了所有的类型。第二种是 <strong>反射机制</strong>，它允许在运行时发现和使用类信息。</p>
+</blockquote>
+<h2 id="为什么需要-RTTI"><a href="#为什么需要-RTTI" class="headerlink" title="为什么需要 RTTI"></a>为什么需要 RTTI</h2><p><strong>啥叫多态</strong>，父类方法在子类可能会被覆盖，但是由于方法是动态绑定的，所以即使是通过泛化的父类引用来调用方法，也是可以产生正确的行为，这就是多态。</p>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Thinking-In-Java-读书笔记/">Thinking In Java 读书笔记</a>
+    </div>
+
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/article/thinking_in_java_14/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-Thinking-in-Java-读书笔记-13-字符串" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -533,275 +629,12 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p><a href="http://xiaweizi.cn/categories/Thinking-In-Java-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">Thinking in java 读书笔记</a></p>
+              <p><a href="http://xiaweizi.cn/categories/Thinking-In-Java-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">Thinking in java 读书笔记</a></p>
 <h2 id="不可变-String"><a href="#不可变-String" class="headerlink" title="不可变 String"></a>不可变 String</h2><blockquote>
 <p><code>String</code> 对象是不可变的，具有只读特性。</p>
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Immutable</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">upcase</span><span class="params">(String s)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">return</span> s.toUpperCase();  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </span><br><span class="line">        String q = <span class="string">"howdy"</span>;  </span><br><span class="line">        print(q); <span class="comment">// howdy  </span></span><br><span class="line">        String qq = upcase(q);  </span><br><span class="line">        print(qq); <span class="comment">// HOWDY  </span></span><br><span class="line">        print(q); <span class="comment">// howdy(原有 String 没有改变)  </span></span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="comment">// out:</span></span><br><span class="line"><span class="comment">// howdy  </span></span><br><span class="line"><span class="comment">// HOWDY  </span></span><br><span class="line"><span class="comment">// howdy</span></span><br></pre></td></tr></table></figure>
-<h2 id="重载运算符-与-StringBuilder"><a href="#重载运算符-与-StringBuilder" class="headerlink" title="重载运算符 + 与 StringBuilder"></a>重载运算符 + 与 StringBuilder</h2><h4 id="重载"><a href="#重载" class="headerlink" title="重载"></a>重载</h4><blockquote>
-<p> 一个操作符在应用于特定的类时， 被赋予特殊意义。用于<code>String</code> 的 + 和 +=  是java中仅有的两个重载过的操作符，而java 并不允许程序员重载任何操作符</p>
-</blockquote>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Concatenation</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </span><br><span class="line">        String mango = <span class="string">"mango"</span>;  </span><br><span class="line">        String s = <span class="string">"abc"</span> + mango + <span class="string">"def"</span> + <span class="number">47</span>;  </span><br><span class="line">        System.out.println(s);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="comment">// out:</span></span><br><span class="line"><span class="comment">// abcmangodef47</span></span><br></pre></td></tr></table></figure>
-<p>字符串连接符 + 的性能非常低下。。因为为了生成最终的 <code>string</code>， 会产生大量需要垃圾回收的中间对象.</p>
-<h4 id="通过-javap-来反编译-Concatenation"><a href="#通过-javap-来反编译-Concatenation" class="headerlink" title="通过 javap 来反编译 Concatenation"></a>通过 javap 来反编译 Concatenation</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">Compiled from <span class="string">"Concatenation.java"</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">chapter13</span>.<span class="title">Concatenation</span> &#123;</span>  </span><br><span class="line">  <span class="keyword">public</span> chapter13.Concatenation();  </span><br><span class="line">    Code:  </span><br><span class="line">       <span class="number">0</span>: aload_0  </span><br><span class="line">       <span class="number">1</span>: invokespecial #<span class="number">1</span>                  <span class="comment">// Method java/lang/Object."&lt;init&gt;":()V  </span></span><br><span class="line">       <span class="number">4</span>: <span class="keyword">return</span>  </span><br><span class="line">  </span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> main(java.lang.String[]);  </span><br><span class="line">    Code:  </span><br><span class="line">       <span class="number">0</span>: ldc           #<span class="number">2</span>                  <span class="comment">// String mango  </span></span><br><span class="line">       <span class="number">2</span>: astore_1  </span><br><span class="line">       <span class="number">3</span>: <span class="keyword">new</span>           #<span class="number">3</span>                  <span class="comment">// class java/lang/StringBuilder  </span></span><br><span class="line">       <span class="number">6</span>: dup  </span><br><span class="line">       <span class="number">7</span>: invokespecial #<span class="number">4</span>                  <span class="comment">// Method java/lang/StringBuilder."&lt;init&gt;":()V  </span></span><br><span class="line">      <span class="number">10</span>: ldc           #<span class="number">5</span>                  <span class="comment">// String abc  </span></span><br><span class="line">      <span class="number">12</span>: invokevirtual #<span class="number">6</span>                  <span class="comment">// Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;  </span></span><br><span class="line">      <span class="number">15</span>: aload_1  </span><br><span class="line">      <span class="number">16</span>: invokevirtual #<span class="number">6</span>                  <span class="comment">// Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;  </span></span><br><span class="line">      <span class="number">19</span>: ldc           #<span class="number">7</span>                  <span class="comment">// String def  </span></span><br><span class="line">      <span class="number">21</span>: invokevirtual #<span class="number">6</span>                  <span class="comment">// Method java/lang/StringBuilder.append:(Ljava/lang/String;)Ljava/lang/StringBuilder;  </span></span><br><span class="line">      <span class="number">24</span>: bipush        <span class="number">47</span>  </span><br><span class="line">      <span class="number">26</span>: invokevirtual #<span class="number">8</span>                  <span class="comment">// Method java/lang/StringBuilder.append:(I)Ljava/lang/StringBuilder;  </span></span><br><span class="line">      <span class="number">29</span>: invokevirtual #<span class="number">9</span>                  <span class="comment">// Method java/lang/StringBuilder.toString:()Ljava/lang/String;  </span></span><br><span class="line">      <span class="number">32</span>: astore_2  </span><br><span class="line">      <span class="number">33</span>: getstatic     #<span class="number">10</span>                 <span class="comment">// Field java/lang/System.out:Ljava/io/PrintStream;  </span></span><br><span class="line">      <span class="number">36</span>: aload_2  </span><br><span class="line">      <span class="number">37</span>: invokevirtual #<span class="number">11</span>                 <span class="comment">// Method java/io/PrintStream.println:(Ljava/lang/String;)V  </span></span><br><span class="line">      <span class="number">40</span>: <span class="keyword">return</span>  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>编译器自动引入了 <code>java.lang.StringBuilder</code> 类，即使源代码中没有使用 <code>StringBuilder</code>， 但是显然<code>StringBuilder</code> 更加有效。</p>
-<h4 id="编译器对-String-的优化"><a href="#编译器对-String-的优化" class="headerlink" title="编译器对 String 的优化"></a>编译器对 String 的优化</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 利用 StringBuilder.append() 来重载 + 运算符  </span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">WhitherStringBuilder</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">implicit</span><span class="params">(String[] fields)</span> </span>&#123; <span class="comment">// 方法一：使用多个String对象  </span></span><br><span class="line">        String result = <span class="string">""</span>;  </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; fields.length; i++) <span class="comment">// （效率低）隐式创建 StringBuilder  </span></span><br><span class="line">            result += fields[i];   </span><br><span class="line">        <span class="keyword">return</span> result;  </span><br><span class="line">    &#125; <span class="comment">// 因为 StringBuilder是在循环内创建的，这意味着 每经过循环一次，就会创建一个新的 StringBuilder对象  </span></span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">explicit</span><span class="params">(String[] fields)</span> </span>&#123;  <span class="comment">// 方法二：使用StringBuilder，因为效率高  </span></span><br><span class="line">        StringBuilder result = <span class="keyword">new</span> StringBuilder(); <span class="comment">// （效率高）显式创建 StringBuilder  </span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; fields.length; i++)  </span><br><span class="line">            result.append(fields[i]);  </span><br><span class="line">        <span class="keyword">return</span> result.toString();  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="StringBuilder-其他特点"><a href="#StringBuilder-其他特点" class="headerlink" title="StringBuilder 其他特点"></a>StringBuilder 其他特点</h4><p>可以为<code>StringBuilder</code> 预先指定大小，如果知道最终的字符串长度，可以预先指定<code>StringBuilder</code>的大小， 以避免多次 重新分配缓冲。</p>
-<p>如果要在toString() 方法中使用循环的话，最好自己创建一个<code>StringBuidler</code> 对象。</p>
-<p> insert, replace, substring, reverse, 最常用的方法是 <code>append</code> 和 <code>toString()</code> 方法。</p>
-<p><code>StringBuilder</code> 线程不安全，效率高， <code>StringBuffer</code> 线程安全，效率低。</p>
-<h2 id="无意识的递归"><a href="#无意识的递归" class="headerlink" title="无意识的递归"></a>无意识的递归</h2><p><strong>所有java的根基类都是 Object，</strong> 所以容器类都有 <code>toString()</code> 方法。 容器的<code>toString()</code> 方法都能够表达容器自身和容器所包含的 对象。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 无限递归 使得 java虚拟机栈被顶满, 然后抛出异常  </span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">InfiniteRecursion</span> </span>&#123;  </span><br><span class="line">    <span class="meta">@Override</span>  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">         <span class="comment">// toString() 中的this关键字是 引起无限递归的原因  </span></span><br><span class="line"><span class="comment">//      return " InfiniteRecursion address: " + this + "\n"; // Exception in thread "main" java.lang.StackOverflowError  </span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">" InfiniteRecursion address: "</span> + <span class="keyword">super</span>.toString() + <span class="string">"\n"</span>;  </span><br><span class="line">    &#125;  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </span><br><span class="line">        List&lt;InfiniteRecursion&gt; v = <span class="keyword">new</span> ArrayList&lt;InfiniteRecursion&gt;();  </span><br><span class="line">          </span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++)  </span><br><span class="line">            v.add(<span class="keyword">new</span> InfiniteRecursion());  </span><br><span class="line">        System.out.println(v);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;    </span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">[ InfiniteRecursion address: chapter13.InfiniteRecursion@15db9742 </span></span><br><span class="line"><span class="comment">,  InfiniteRecursion address: chapter13.InfiniteRecursion@6d06d69c </span></span><br><span class="line"><span class="comment">,  InfiniteRecursion address: chapter13.InfiniteRecursion@7852e922 </span></span><br><span class="line"><span class="comment">,  InfiniteRecursion address: chapter13.InfiniteRecursion@4e25154f </span></span><br><span class="line"><span class="comment">,  InfiniteRecursion address: chapter13.InfiniteRecursion@70dea4e </span></span><br><span class="line"><span class="comment">,  InfiniteRecursion address: chapter13.InfiniteRecursion@5c647e05 </span></span><br><span class="line"><span class="comment">,  InfiniteRecursion address: chapter13.InfiniteRecursion@33909752 </span></span><br><span class="line"><span class="comment">,  InfiniteRecursion address: chapter13.InfiniteRecursion@55f96302 </span></span><br><span class="line"><span class="comment">,  InfiniteRecursion address: chapter13.InfiniteRecursion@3d4eac69 </span></span><br><span class="line"><span class="comment">,  InfiniteRecursion address: chapter13.InfiniteRecursion@42a57993 </span></span><br><span class="line"><span class="comment">] </span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<p><strong>这里发生了自动类型转换：</strong> 由 <code>InfiniteRecursion</code>类型转换为 <code>String</code> 类型。 this前面的是字符串，后面是换行符， 所以 <code>this</code> 转换为 <code>String</code>， 即调用了 <code>this.toString()</code> 方法， 于是就发生了 <strong>递归调用 toString() 方法</strong>，无限递归使得 java 虚拟机栈被顶满； 然后抛出异常；<strong>把this换做 super.toString() 方法后 执行成功</strong></p>
-<h2 id="String-上的操作"><a href="#String-上的操作" class="headerlink" title="String 上的操作"></a>String 上的操作</h2><p><code>String</code> 对象的基本方法</p>
-<p><img src="http://owj4ejy7m.bkt.clouddn.com/2018-04-15-String%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95.png" alt="String基本方法1"></p>
-<p><img src="http://owj4ejy7m.bkt.clouddn.com/2018-04-15-String%E5%9F%BA%E6%9C%AC%E6%96%B9%E6%B3%95.png" alt="String基本方法2"></p>
-<p>当需要改变字符串的内容， <code>String</code> 类的方法都会返回一个新的 <code>String</code> 对象，如果没有改变，则返回原对象的引用。</p>
-<h2 id="格式化输出"><a href="#格式化输出" class="headerlink" title="格式化输出"></a>格式化输出</h2><p>通过 <code>System.out.format()</code> 输出格式。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="comment">// System.out.format() 输出格式  </span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleFormat</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">int</span> x = <span class="number">5</span>;  </span><br><span class="line">        <span class="keyword">double</span> y = <span class="number">5.332542</span>;  </span><br><span class="line">        <span class="comment">// The old way:  </span></span><br><span class="line">        System.out.println(<span class="string">"Row 1: ["</span> + x + <span class="string">" "</span> + y + <span class="string">"]"</span>);  </span><br><span class="line">        <span class="comment">// The new way:  </span></span><br><span class="line">        System.out.format(<span class="string">"Row 1: [%d %f]\n"</span>, x, y); <span class="comment">// format() 方法的荔枝  </span></span><br><span class="line">        <span class="comment">// or  </span></span><br><span class="line">        System.out.printf(<span class="string">"Row 1: [%d %f]\n"</span>, x, y); <span class="comment">// printf() 方法荔枝  </span></span><br><span class="line">    &#125;  </span><br><span class="line">&#125;    </span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">Row 1: [5 5.332542] </span></span><br><span class="line"><span class="comment">Row 1: [5 5.332542] </span></span><br><span class="line"><span class="comment">Row 1: [5 5.332542] </span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<p>具体转换字符格式</p>
-<table>
-<thead>
-<tr>
-<th>字符</th>
-<th>含义</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>d</td>
-<td>整数型(10进制)</td>
-</tr>
-<tr>
-<td>c</td>
-<td>Unicode 字符</td>
-</tr>
-<tr>
-<td>b</td>
-<td>Boolean 值</td>
-</tr>
-<tr>
-<td>s</td>
-<td>String</td>
-</tr>
-<tr>
-<td>f</td>
-<td>浮点数</td>
-</tr>
-<tr>
-<td>x</td>
-<td>整数(16进制)</td>
-</tr>
-<tr>
-<td>h</td>
-<td>散列码(16进制)</td>
-</tr>
-<tr>
-<td>%</td>
-<td>字符 % 或类型转换字符前缀</td>
-</tr>
-</tbody>
-</table>
-<p>具体例子：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* Formatter 对各种数据类型转换的荔枝 */</span>  </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Conversion</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </span><br><span class="line">        Formatter f = <span class="keyword">new</span> Formatter(System.out);  </span><br><span class="line">  </span><br><span class="line">        <span class="keyword">char</span> u = <span class="string">'a'</span>;    </span><br><span class="line">        System.out.println(<span class="string">"u = 'a'"</span>); <span class="comment">// u = 'a'  </span></span><br><span class="line">          </span><br><span class="line">        f.format(<span class="string">"%%s: %s\n"</span>, u); <span class="comment">// %s: a  </span></span><br><span class="line">          </span><br><span class="line">        f.format(<span class="string">"%%c: %c\n"</span>, u); <span class="comment">// %c: a  </span></span><br><span class="line">        f.format(<span class="string">"%%b: %b\n"</span>, u); <span class="comment">// %b: true  </span></span><br><span class="line">        f.format(<span class="string">"%%h: %h\n"</span>, u); <span class="comment">// %h: 61  </span></span><br><span class="line"><span class="comment">//       f.format("d: %d\n", u); //  java.util.IllegalFormatConversionException: d != java.lang.Character  </span></span><br><span class="line"><span class="comment">//       f.format("f: %f\n", u); // java.util.IllegalFormatConversionException: f != java.lang.Character  </span></span><br><span class="line"><span class="comment">//       f.format("e: %e\n", u); // java.util.IllegalFormatConversionException: e != java.lang.Character  </span></span><br><span class="line"><span class="comment">//       f.format("x: %x\n", u); // java.util.IllegalFormatConversionException: x != java.lang.Character  </span></span><br><span class="line">  </span><br><span class="line">        <span class="keyword">int</span> v = <span class="number">121</span>;  </span><br><span class="line">        System.out.println();  </span><br><span class="line">        System.out.println(<span class="string">"v = 121"</span>); <span class="comment">// v = 121  </span></span><br><span class="line">          </span><br><span class="line">        f.format(<span class="string">"%%d: %d\n"</span>, v); <span class="comment">// %d: 121  </span></span><br><span class="line">        f.format(<span class="string">"%%c: %c\n"</span>, v); <span class="comment">// %c: y  </span></span><br><span class="line">        f.format(<span class="string">"%%b: %b\n"</span>, v); <span class="comment">// %b: true   </span></span><br><span class="line">        f.format(<span class="string">"%%s: %s\n"</span>, v); <span class="comment">// %s: 121  </span></span><br><span class="line">        f.format(<span class="string">"%%x: %x\n"</span>, v); <span class="comment">// %x: 79  </span></span><br><span class="line">        f.format(<span class="string">"%%h: %h\n"</span>, v); <span class="comment">// %h: 79   </span></span><br><span class="line"><span class="comment">//       f.format("f: %f\n", v); // java.util.IllegalFormatConversionException: f != java.lang.Integer  </span></span><br><span class="line"><span class="comment">//       f.format("e: %e\n", v); // java.util.IllegalFormatConversionException: e != java.lang.Integer  </span></span><br><span class="line">  </span><br><span class="line">        BigInteger w = <span class="keyword">new</span> BigInteger(<span class="string">"50000000000000"</span>);  </span><br><span class="line">        System.out.println();  </span><br><span class="line">        System.out.println(<span class="string">"w = new BigInteger(\"50000000000000\")"</span>); <span class="comment">// w = new BigInteger("50000000000000")  </span></span><br><span class="line">        f.format(<span class="string">"%%d: %d\n"</span>, w); <span class="comment">// %d: 50000000000000  </span></span><br><span class="line">        f.format(<span class="string">"%%b: %b\n"</span>, w); <span class="comment">// %b: true  </span></span><br><span class="line">        f.format(<span class="string">"%%s: %s\n"</span>, w); <span class="comment">// %s: 50000000000000  </span></span><br><span class="line">        f.format(<span class="string">"%%x: %x\n"</span>, w); <span class="comment">// %x: 2d79883d2000  </span></span><br><span class="line">        f.format(<span class="string">"%%h: %h\n"</span>, w); <span class="comment">// %h: 8842a1a7  </span></span><br><span class="line"><span class="comment">//       f.format("c: %c\n", w); // java.util.IllegalFormatConversionException: c != java.math.BigInteger  </span></span><br><span class="line"><span class="comment">//       f.format("f: %f\n", w); // java.util.IllegalFormatConversionException: f != java.math.BigInteger  </span></span><br><span class="line"><span class="comment">//       f.format("e: %e\n", w); // java.util.IllegalFormatConversionException: e != java.math.BigInteger  </span></span><br><span class="line">  </span><br><span class="line">        <span class="keyword">double</span> x = <span class="number">179.543</span>;  </span><br><span class="line">        System.out.println();  </span><br><span class="line">        System.out.println(<span class="string">"x = 179.543"</span>); <span class="comment">// x = 179.543  </span></span><br><span class="line">        f.format(<span class="string">"%%b: %b\n"</span>, x); <span class="comment">// %b: true  </span></span><br><span class="line">        f.format(<span class="string">"%%s: %s\n"</span>, x); <span class="comment">// %s: 179.543  </span></span><br><span class="line">        f.format(<span class="string">"%%f: %f\n"</span>, x); <span class="comment">// %f: 179.543000  </span></span><br><span class="line">        f.format(<span class="string">"%%e: %e\n"</span>, x); <span class="comment">//%e: 1.795430e+02, 科学表示法  </span></span><br><span class="line">        f.format(<span class="string">"%%h: %h\n"</span>, x); <span class="comment">// %h: 1ef462c  </span></span><br><span class="line"><span class="comment">//       f.format("d: %d\n", x); // java.util.IllegalFormatConversionException: d != java.lang.Double  </span></span><br><span class="line"><span class="comment">//       f.format("c: %c\n", x); // java.util.IllegalFormatConversionException: c != java.lang.Double  </span></span><br><span class="line"><span class="comment">//       f.format("x: %x\n", x); // java.util.IllegalFormatConversionException: x != java.lang.Double  </span></span><br><span class="line">  </span><br><span class="line">        Conversion y = <span class="keyword">new</span> Conversion();  </span><br><span class="line">        System.out.println();  </span><br><span class="line">        System.out.println(<span class="string">"y = new Conversion()"</span>); <span class="comment">// y = new Conversion()  </span></span><br><span class="line">        f.format(<span class="string">"%%b: %b\n"</span>, y); <span class="comment">// %b: true  </span></span><br><span class="line">        f.format(<span class="string">"%%s: %s\n"</span>, y); <span class="comment">// %s: chapter13.Conversion@4aa298b7  </span></span><br><span class="line">        f.format(<span class="string">"%%h: %h\n"</span>, y); <span class="comment">// %h: 4aa298b7  </span></span><br><span class="line"><span class="comment">//       f.format("d: %d\n", y); // java.util.IllegalFormatConversionException: d != chapter13.Conversion  </span></span><br><span class="line"><span class="comment">//       f.format("c: %c\n", y); // java.util.IllegalFormatConversionException: c != chapter13.Conversion  </span></span><br><span class="line"><span class="comment">//       f.format("f: %f\n", y); // java.util.IllegalFormatConversionException: f != chapter13.Conversion  </span></span><br><span class="line"><span class="comment">//       f.format("e: %e\n", y); // java.util.IllegalFormatConversionException: e != chapter13.Conversion  </span></span><br><span class="line"><span class="comment">//       f.format("x: %x\n", y); // java.util.IllegalFormatConversionException: x != chapter13.Conversion  </span></span><br><span class="line">  </span><br><span class="line">        <span class="keyword">boolean</span> z = <span class="keyword">false</span>;  </span><br><span class="line">        System.out.println();  </span><br><span class="line">        System.out.println(<span class="string">"z = false"</span>); <span class="comment">// z = false  </span></span><br><span class="line">        f.format(<span class="string">"%%b: %b\n"</span>, z); <span class="comment">// %b: false  </span></span><br><span class="line">        f.format(<span class="string">"%%s: %s\n"</span>, z); <span class="comment">// %s: false  </span></span><br><span class="line">        f.format(<span class="string">"%%h: %h\n"</span>, z); <span class="comment">// %h: 4d5  </span></span><br><span class="line"><span class="comment">//       f.format("d: %d\n", z); // java.util.IllegalFormatConversionException: d != java.lang.Boolean  </span></span><br><span class="line"><span class="comment">//       f.format("c: %c\n", z); // java.util.IllegalFormatConversionException: c != java.lang.Boolean  </span></span><br><span class="line"><span class="comment">//       f.format("f: %f\n", z); // java.util.IllegalFormatConversionException: f != java.lang.Boolean  </span></span><br><span class="line"><span class="comment">//       f.format("e: %e\n", z); // java.util.IllegalFormatConversionException: e != java.lang.Boolean  </span></span><br><span class="line"><span class="comment">//       f.format("x: %x\n", z); // java.util.IllegalFormatConversionException: x != java.lang.Boolean  </span></span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p>要想学好正则表达式，基本上要记住的就是一堆语法。</p>
-<p>废话不多说，直接看如何创建正则表达式。</p>
-<p><strong>字符</strong></p>
-<table>
-<thead>
-<tr>
-<th>正则表达式</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>B</td>
-<td>指定字符B</td>
-</tr>
-<tr>
-<td>\xhh</td>
-<td>十六进制值为0xhh的字符</td>
-</tr>
-<tr>
-<td>\uhhhh</td>
-<td>十六进制表示为0xhhhh的Unicode字符</td>
-</tr>
-<tr>
-<td>\t</td>
-<td>制表符Tab</td>
-</tr>
-<tr>
-<td>\n</td>
-<td>换行符</td>
-</tr>
-<tr>
-<td>\r</td>
-<td>回车</td>
-</tr>
-<tr>
-<td>\f</td>
-<td>换页</td>
-</tr>
-<tr>
-<td>\e</td>
-<td>转义</td>
-</tr>
-</tbody>
-</table>
-<p><strong>字符类</strong></p>
-<table>
-<thead>
-<tr>
-<th>正则表达式</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>.</td>
-<td>任意字符</td>
-</tr>
-<tr>
-<td>[abc]</td>
-<td>包含a、b和c的任何字符</td>
-</tr>
-<tr>
-<td>[^abc]</td>
-<td>除了a、b和c之外的任何字符(否定)</td>
-</tr>
-<tr>
-<td>[a-zA-Z]</td>
-<td>从a到z或从A到Z的任何字符(范围)</td>
-</tr>
-<tr>
-<td>[abc[hij]]</td>
-<td>任意abchij字符</td>
-</tr>
-<tr>
-<td>[a-z&amp;&amp;[hij]]</td>
-<td>任意h、i或j(相交)</td>
-</tr>
-<tr>
-<td>\s</td>
-<td>空白符(空格、tab、换行和回车)</td>
-</tr>
-<tr>
-<td>\S</td>
-<td>非空白符</td>
-</tr>
-<tr>
-<td>\d</td>
-<td>数字[0-9]</td>
-</tr>
-<tr>
-<td>\D</td>
-<td>非数字<code>[^0-9]</code></td>
-</tr>
-<tr>
-<td>\w</td>
-<td>词字符([a-zA-Z0-9])</td>
-</tr>
-<tr>
-<td>\W</td>
-<td>非词字符</td>
-</tr>
-</tbody>
-</table>
-<p><strong>逻辑操作符</strong></p>
-<table>
-<thead>
-<tr>
-<th>正则表达式</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>XY</td>
-<td>Y跟在后面</td>
-</tr>
-<tr>
-<td>`X\</td>
-<td>Y`</td>
-<td>X或Y</td>
-</tr>
-<tr>
-<td>(X)</td>
-<td>捕获组</td>
-</tr>
-</tbody>
-</table>
-<p><strong>量词</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">贪婪型</th>
-<th style="text-align:center">勉强型</th>
-<th style="text-align:center">占有型</th>
-<th style="text-align:center">如何匹配</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">X?</td>
-<td style="text-align:center">X??</td>
-<td style="text-align:center">X?+</td>
-<td style="text-align:center">一个或零个X</td>
-</tr>
-<tr>
-<td style="text-align:center">X*</td>
-<td style="text-align:center">X*?</td>
-<td style="text-align:center">X*+</td>
-<td style="text-align:center">零个或多个X</td>
-</tr>
-<tr>
-<td style="text-align:center">X+</td>
-<td style="text-align:center">X+?</td>
-<td style="text-align:center">X++</td>
-<td style="text-align:center">一个或多个X</td>
-</tr>
-<tr>
-<td style="text-align:center">X{n}</td>
-<td style="text-align:center">x{n}?</td>
-<td style="text-align:center">X{n}+</td>
-<td style="text-align:center">恰好n次X</td>
-</tr>
-<tr>
-<td style="text-align:center">X{n,}</td>
-<td style="text-align:center">X{n,}?</td>
-<td style="text-align:center">X{n,}+</td>
-<td style="text-align:center">至少n次X</td>
-</tr>
-<tr>
-<td style="text-align:center">X{n,m}</td>
-<td style="text-align:center">X{n,m}?</td>
-<td style="text-align:center">X{n,m}+</td>
-<td style="text-align:center">X至少n次，且不超过m次</td>
-</tr>
-</tbody>
-</table>
-<p>表达式 X 通常必须用圆括号括起来。</p>
-<h4 id="Pattern-和-Matcher"><a href="#Pattern-和-Matcher" class="headerlink" title="Pattern 和 Matcher"></a>Pattern 和 Matcher</h4><ol>
-<li>Pattern.compile(regex) 编译 <code>regex</code> 并产生 <code>Pattern</code> 对象。</li>
-<li>Pattern.matcher(检索的字符串)生成一个 <code>Matcher</code> 对象。</li>
-</ol>
-<p><strong>基本用法</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestRegularExpression</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </span><br><span class="line">        String[] array = &#123;<span class="string">"aabbcc"</span>, <span class="string">"aab"</span>, <span class="string">"aab+"</span>, <span class="string">"(b+)"</span>&#125;;  </span><br><span class="line">          </span><br><span class="line">        <span class="keyword">for</span> (String arg : array) &#123;  </span><br><span class="line">            System.out.println();  </span><br><span class="line">            print(<span class="string">"Regular expression: \""</span> + arg + <span class="string">"\""</span>);  </span><br><span class="line">            Pattern p = Pattern.compile(arg); <span class="comment">// step1: Pattern 表示编译后的匹配模型Pattern.（编译后的正则表达式）  </span></span><br><span class="line">            Matcher m = p.matcher(<span class="string">"aabbcc"</span>); <span class="comment">// step2: 模型实例 检索 待匹配字符串并 生成一个匹配对象Matcher， Matcher有很多方法  </span></span><br><span class="line">            <span class="keyword">while</span> (m.find()) &#123;  </span><br><span class="line">                print(<span class="string">"Match \""</span> + m.group() <span class="comment">// 待匹配的字符串  </span></span><br><span class="line">                                 + <span class="string">"\" at positions "</span>   </span><br><span class="line">                                 + m.start() <span class="comment">// 字符串匹配regex的起始位置  </span></span><br><span class="line">                                 + <span class="string">"-"</span> + (m.end() - <span class="number">1</span>)); <span class="comment">// 字符串匹配regex的终点位置  </span></span><br><span class="line">            &#125;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>Matcher 方法</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">matches</span><span class="params">()</span></span>; <span class="comment">//判断 输入字符串 是否匹配正则表达式regex；  </span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">lookingAt</span><span class="params">()</span></span>; <span class="comment">//判断输入字符串（不是整个）的开始部分是否匹配 regex；  </span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">find</span><span class="params">()</span></span>; <span class="comment">//用于 在 CharSequence 输入字符串中查找多个匹配；  </span></span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> start)</span></span>;  <span class="comment">//用于在 CharSequence 输入字符串的start 位置开始查找多个匹配；  </span></span><br><span class="line"><span class="function">String <span class="title">group</span><span class="params">()</span></span>; <span class="comment">//用于返回匹配regex的输入字符串的子串；</span></span><br></pre></td></tr></table></figure>
-<p><strong>常用的 Pattern 标记</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> Pattern <span class="title">compile</span><span class="params">(String regex, <span class="keyword">int</span> flags)</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> Pattern(regex, flags);  </span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">// Pattern.CASE_INSENSITIVE：  不区分大小写；</span></span><br><span class="line"><span class="comment">// Pattern.MULTILINE： 允许多行，即不以换行字符作为分隔符；</span></span><br><span class="line"><span class="comment">// Pattern.COMMENTS： 模式中允许空格和注释， 不以空格和注释作为分隔符</span></span><br></pre></td></tr></table></figure>
-<p><strong>Pattern.split()</strong></p>
-<p>将字符串分割成符合 <code>regex</code> 的字符数组。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SplitDemo</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </span><br><span class="line">        String input = <span class="string">"This!!unusual use!!of exclamation!!points"</span>;  </span><br><span class="line">        print(Arrays.toString(Pattern.compile(<span class="string">"!!"</span>).split(input))); <span class="comment">// split(input, 0); 对匹配次数不做任何限制  </span></span><br><span class="line">  </span><br><span class="line">        <span class="comment">/* (只匹配前2个 !! ) */</span>  </span><br><span class="line">        <span class="comment">/* 注意：分割边界在分割结果中被删除 */</span>  </span><br><span class="line">        print(Arrays.toString(Pattern.compile(<span class="string">"!!"</span>).split(input, <span class="number">3</span>))); <span class="comment">// 限定匹配次数，limit限制将输入字符串分割成数组的数组大小  </span></span><br><span class="line">    &#125;  </span><br><span class="line">&#125;    </span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">[This, unusual use, of exclamation, points] </span></span><br><span class="line"><span class="comment">[This, unusual use, of exclamation!!points] </span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<h2 id="扫描输入"><a href="#扫描输入" class="headerlink" title="扫描输入"></a>扫描输入</h2><p>使用 <code>BufferedReader</code> 实现。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleRead</span> </span>&#123;  </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> BufferedReader input = <span class="keyword">new</span> BufferedReader(<span class="keyword">new</span> StringReader(  </span><br><span class="line">            <span class="string">"Sir Robin of Camelot\n22 1.61803"</span>));  </span><br><span class="line">  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </span><br><span class="line">        <span class="keyword">try</span> &#123;  </span><br><span class="line">            System.out.println(<span class="string">"\n1.What is your name?"</span>);  </span><br><span class="line">            String name = input.readLine();  </span><br><span class="line">            System.out.println(name); <span class="comment">// Sir Robin of Camelot  </span></span><br><span class="line">              </span><br><span class="line">            System.out.println(<span class="string">"\n2.input: &lt;age&gt; &lt;double&gt;"</span>);  </span><br><span class="line">            String numbers = input.readLine();  </span><br><span class="line">            System.out.println(<span class="string">"input.readLine() = "</span> + numbers); <span class="comment">// 22 1.61803  </span></span><br><span class="line">              </span><br><span class="line">            String[] numArray = numbers.split(<span class="string">" "</span>);  </span><br><span class="line">            <span class="keyword">int</span> age = Integer.parseInt(numArray[<span class="number">0</span>]); <span class="comment">// 22  </span></span><br><span class="line">            <span class="keyword">double</span> favorite = Double.parseDouble(numArray[<span class="number">1</span>]); <span class="comment">// 1.61803  </span></span><br><span class="line">              </span><br><span class="line">            System.out.format(<span class="string">"Hi %s.\n"</span>, name);  </span><br><span class="line">            System.out.format(<span class="string">"In 5 years you will be %d.\n"</span>, age + <span class="number">5</span>);  </span><br><span class="line">            System.out.format(<span class="string">"My favorite double is %f."</span>, favorite / <span class="number">2</span>);  </span><br><span class="line">        &#125; <span class="keyword">catch</span> (IOException e) &#123;  </span><br><span class="line">            System.err.println(<span class="string">"I/O exception"</span>);  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line"><span class="comment">// output:</span></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment"> 1.What is your name? </span></span><br><span class="line"><span class="comment">Sir Robin of Camelot </span></span><br><span class="line"><span class="comment"> </span></span><br><span class="line"><span class="comment">2.input: &lt;age&gt; &lt;double&gt; </span></span><br><span class="line"><span class="comment">input.readLine() = 22 1.61803 </span></span><br><span class="line"><span class="comment">Hi Sir Robin of Camelot. </span></span><br><span class="line"><span class="comment">In 5 years you will be 27. </span></span><br><span class="line"><span class="comment">My favorite double is 0.809015. </span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
-<p>使用 <code>Scanner</code> 实现</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">BetterRead</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;  </span><br><span class="line">        <span class="comment">// Scanner 可以接受任何类型的 Readable 输入对象  </span></span><br><span class="line">        Scanner stdin = <span class="keyword">new</span> Scanner(SimpleRead.input);  </span><br><span class="line">        System.out.println(<span class="string">"What is your name?"</span>);  </span><br><span class="line">        <span class="comment">// 所有的输入，分词以及翻译的操作都隐藏在不同类型的 next 方法 中.  </span></span><br><span class="line">        String name = stdin.nextLine(); <span class="comment">// nextLine() 返回 String  </span></span><br><span class="line">        System.out.println(name);  </span><br><span class="line">          </span><br><span class="line">        System.out.println(<span class="string">"How old are you? What is your favorite double?"</span>);  </span><br><span class="line">        System.out.println(<span class="string">"(input: &lt;age&gt; &lt;double&gt;)"</span>);  </span><br><span class="line">          </span><br><span class="line">        <span class="comment">// Scanner 直接读入 integer 和 double 类型数据  </span></span><br><span class="line">        <span class="keyword">int</span> age = stdin.nextInt();  </span><br><span class="line">        <span class="keyword">double</span> favorite = stdin.nextDouble();  </span><br><span class="line">        System.out.println(age);  </span><br><span class="line">        System.out.println(favorite);  </span><br><span class="line">          </span><br><span class="line">        System.out.format(<span class="string">"Hi %s.\n"</span>, name);  </span><br><span class="line">        System.out.format(<span class="string">"In 5 years you will be %d.\n"</span>, age + <span class="number">5</span>);  </span><br><span class="line">        System.out.format(<span class="string">"My favorite double is %f."</span>, favorite / <span class="number">2</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125; </span><br><span class="line"><span class="comment">// output:</span></span><br><span class="line"><span class="comment">/* </span></span><br><span class="line"><span class="comment">What is your name? </span></span><br><span class="line"><span class="comment">Sir Robin of Camelot </span></span><br><span class="line"><span class="comment">How old are you? What is your favorite double? </span></span><br><span class="line"><span class="comment">(input: &lt;age&gt; &lt;double&gt;) </span></span><br><span class="line"><span class="comment">22 </span></span><br><span class="line"><span class="comment">1.61803 </span></span><br><span class="line"><span class="comment">Hi Sir Robin of Camelot. </span></span><br><span class="line"><span class="comment">In 5 years you will be 27. </span></span><br><span class="line"><span class="comment">My favorite double is 0.809015.</span></span><br></pre></td></tr></table></figure>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>过去， <code>Java</code> 对字符串操作的支持相当不完善。不过随着近几个版本的升级，我们可以看到， <code>Java</code> 已经从其他语言中吸取了许多成熟的经验。到目前为止，它对字符串操作的支持已经很完善了。不过，有时你还要在细节上注意效率的问题，例如恰当地使用 <code>StringBuilder</code> 等。</p>
-<h2 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h2><p><a href="https://blog.csdn.net/pacosonswjtu/article/details/78631796" target="_blank" rel="noopener">thinking-in-java(13) String字符串</a></p>
-
+          
       
     </div>
     
@@ -818,6 +651,10 @@
         <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
     </div>
 
+      
+        <p class="article-more-link">
+          <a href="/article/thinking_in_java_13/#more">阅读全文 >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -1406,107 +1243,6 @@
 
 
   
-    <article id="post-Thinking-in-Java-读书笔记-6-访问权限控制" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/article/thinking_in_java_6/" class="article-date">
-      <time datetime="1994-03-05T02:12:00.000Z" itemprop="datePublished">1994-03-05</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/article/thinking_in_java_6/">『Thinking in Java 读书笔记』—— 6-访问权限控制</a>
-    </h1>
-  
-
-        
-           <div style="margin-top:10px;">
-    <span class="post-time">
-      <span class="post-meta-item-icon">
-        <i class="fa fa-keyboard-o"></i>
-        <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">616 字</span>
-      </span>
-    </span>
-
-    <span class="post-time">
-      &nbsp; | &nbsp;
-      <span class="post-meta-item-icon">
-        <i class="fa fa-hourglass-half"></i>
-        <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2 分</span>
-      </span>
-    </span>
-
-    
-</div>
-        
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p><a href="http://xiaweizi.cn/categories/Thinking-In-Java-%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/">Thinking in java 读书笔记</a></p>
-<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我还记得第一次面试的时候，就是问 <code>public</code>、<code>protected</code>和<code>private</code>的区别，当时技术很渣，虽然知道是什么意思，但是表述的不是那么清楚，当时搞得自己很紧张，后面的问题也没有回答的很好。。。</p>
-<blockquote>
-<p>访问控制（或隐藏具体实现）与“最初的实现并不恰当”有关</p>
-</blockquote>
-<h2 id="Java-访问权限修饰词"><a href="#Java-访问权限修饰词" class="headerlink" title="Java 访问权限修饰词"></a>Java 访问权限修饰词</h2><p><strong>public</strong></p>
-<p>使用关键字<code>public</code>关键字，就意味着<code>public</code>之后紧跟着的成员声明自己对每个人都是可用的，尤其是使用类库的客户程序员更是如此。</p>
-<p><strong>protected</strong></p>
-<p>继承访问权限，通过继承可以利用一个现有类~我们将其称为基类，基类的创建者会希望有某个特定成员，把它的访问权限赋予派生类而不是所有类。<code>protected</code>也提供包访问权限，也就是说，相同包内的其他类也可以访问<code>protected</code>元素。</p>
-<p><strong>private</strong></p>
-<p>除了包含该成员的类之外，其他任何类都无法访问这个成员，等于说是隔离了自己。</p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-    <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/Thinking-In-Java-读书笔记/">Thinking In Java 读书笔记</a>
-    </div>
-
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/article/thinking_in_java_6/#more">阅读全文 >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
@@ -1537,7 +1273,7 @@
                     </span>
                 
                 <span>| </span>
-                <span class="post-count">  已经写了 67.9k 字啦</span>
+                <span class="post-count">  已经写了 73.1k 字啦</span>
             </div>
         
         </br>
