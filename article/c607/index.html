@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="下位子" />
+
+
+
+<meta name="description" content="前言我去年3月份写了一个小项目 快毕业了，撸一个小项目(趣闻)  作为自己的毕设项目，当时接触 Android 也才半年的时间，所以写的略简单，偏入门级别的，有兴趣的话可以 clone 看一下。趣闻 小程序 的火热程度我就不多说了，我之前对这个就蛮有兴趣的，于是花了大概5天的时间，完成了 学习-入门-写项目 这一套流程。作为前端 0 基础的我都这么快入门了，可想而知，微信小程序的封装是相当好的，基">
+<meta name="keywords" content="小程序,项目,提高效率">
+<meta property="og:type" content="article">
+<meta property="og:title" content="『技术分享』—— 我的第一个微信小程序-趣闻">
+<meta property="og:url" content="http://xiaweizi.cn/article/c607/index.html">
+<meta property="og:site_name" content="xiaweizi&#39;blog">
+<meta property="og:description" content="前言我去年3月份写了一个小项目 快毕业了，撸一个小项目(趣闻)  作为自己的毕设项目，当时接触 Android 也才半年的时间，所以写的略简单，偏入门级别的，有兴趣的话可以 clone 看一下。趣闻 小程序 的火热程度我就不多说了，我之前对这个就蛮有兴趣的，于是花了大概5天的时间，完成了 学习-入门-写项目 这一套流程。作为前端 0 基础的我都这么快入门了，可想而知，微信小程序的封装是相当好的，基">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-06-15-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A2%84%E8%A7%88.gif">
+<meta property="og:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-06-15-news.gif">
+<meta property="og:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-06-15-joker.gif">
+<meta property="og:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-06-15-today.gif">
+<meta property="og:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-06-15-girl.gif">
+<meta property="og:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-06-15-065055.png">
+<meta property="og:updated_time" content="2018-06-15T07:32:13.400Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="『技术分享』—— 我的第一个微信小程序-趣闻">
+<meta name="twitter:description" content="前言我去年3月份写了一个小项目 快毕业了，撸一个小项目(趣闻)  作为自己的毕设项目，当时接触 Android 也才半年的时间，所以写的略简单，偏入门级别的，有兴趣的话可以 clone 看一下。趣闻 小程序 的火热程度我就不多说了，我之前对这个就蛮有兴趣的，于是花了大概5天的时间，完成了 学习-入门-写项目 这一套流程。作为前端 0 基础的我都这么快入门了，可想而知，微信小程序的封装是相当好的，基">
+<meta name="twitter:image" content="http://owj4ejy7m.bkt.clouddn.com/2018-06-15-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A2%84%E8%A7%88.gif">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="xiaweizi&#39;blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>『技术分享』—— 我的第一个微信小程序-趣闻 | xiaweizi&#39;blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?d8f1e419497cfa5779f9e99baab1e7af";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">下位子</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/pdf/">书籍</a></li>
+                        
+                            <li><a href="/photos/">相册</a></li>
+                        
+                            <li><a href="/message/">留言板</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1012126908@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/6444811129/profile?topnav=1&wvr=6" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/xiaweizi" title="GitHub"></a>
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/d36586119d8c" title="简书"></a>
+                            
+                                <a class="fa CSDN" href="http://blog.csdn.net/qq_22656383" title="CSDN"></a>
+                            
+                                <a class="fa QQ" href="http://wpa.qq.com/msgrd?v=3&uin=1012126908&site=qq&menu=yes" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataBinding/">DataBinding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-官方/">Google 官方</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/">Kotlin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVVM/">MVVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Material-Design/">Material Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片缓存/">图片缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工作积累/">工作积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具软件/">工具软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能优化/">性能优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/提高效率/">提高效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/第三方库/">第三方库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自定义-View/">自定义 View</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/造轮子/">造轮子</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目/">项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目重构/">项目重构</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://www.wanandroid.com/">玩Android</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/G-Joker/WeaponApp">WeaponApp</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://weaponzhi.online">WeaponZhi</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://coding-dream.github.io">编程之乐</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://txiner.top/">Hundred Blog</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://www.xiaohoutongxue.cn/">xiaoHou</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">下位子</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">下位子</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/pdf/">书籍</a></li>
+                
+                    <li><a href="/photos/">相册</a></li>
+                
+                    <li><a href="/message/">留言板</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1012126908@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/6444811129/profile?topnav=1&wvr=6" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/xiaweizi" title="GitHub"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/d36586119d8c" title="简书"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.net/qq_22656383" title="CSDN"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1012126908&site=qq&menu=yes" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-『技术分享』—— 我的第一个微信小程序-趣闻" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/article/c607/" class="article-date">
+      <time datetime="2018-06-15T14:11:12.000Z" itemprop="datePublished">2018-06-15</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      『技术分享』—— 我的第一个微信小程序-趣闻
+    </h1>
+  
+
+        
+           <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">1,531 字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">5 分</span>
+      </span>
+    </span>
+
+    
+        <span id="busuanzi_container_page_pv">
+          &nbsp; | &nbsp;  本文总阅读量: <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+    
+</div>
+        
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+          <br>
+          <br>
+        
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/小程序/">小程序</a><a class="article-category-link" href="/categories/小程序/技术分享/">技术分享</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/小程序/">小程序</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/提高效率/">提高效率</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目/">项目</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>我去年3月份写了一个小项目 <a href="https://www.jianshu.com/p/ae4aa11f35a4" target="_blank" rel="noopener">快毕业了，撸一个小项目(趣闻)</a>  作为自己的毕设项目，当时接触 <code>Android</code> 也才半年的时间，所以写的略简单，偏入门级别的，有兴趣的话可以 <code>clone</code> 看一下。<a href="https://github.com/xiaweizi/QNews" target="_blank" rel="noopener">趣闻</a></p>
+<p><strong>小程序</strong> 的火热程度我就不多说了，我之前对这个就蛮有兴趣的，于是花了大概5天的时间，完成了 学习-入门-写项目 这一套流程。作为前端 0 基础的我都这么快入门了，可想而知，微信小程序的封装是相当好的，基本上过一遍官方文档就可以进行编写了。</p>
+<a id="more"></a>
+<h2 id="项目预览"><a href="#项目预览" class="headerlink" title="项目预览"></a>项目预览</h2><p>话不多说，看一下项目的整体预览：<em>建议在 wifi 进行查看</em></p>
+<p><img src="http://owj4ejy7m.bkt.clouddn.com/2018-06-15-%E5%B0%8F%E7%A8%8B%E5%BA%8F%E9%A2%84%E8%A7%88.gif" alt="项目整体预览"></p>
+<p>整体的效果就是仿照之前的趣闻项目，基本的功能都是有的。其中包括四大模块：新闻、段子、历史上的今天和小爱同学。</p>
+<p>后面对每个模块的特点进行说明。</p>
+<h3 id="新闻模块"><a href="#新闻模块" class="headerlink" title="新闻模块"></a>新闻模块</h3><p>这里先声明一下，因为该项目涉及到文娱信息，需要上传相关资格证，所以就上不了线。不过我个人对此并不是很在意，因为之前的 <code>Android</code> 项目已经经历过上线失败了。。。</p>
+<p>而且这个小程序本身就是自己的练手项目，没有必要非得上线不可，达到目的不就行了，如果感兴趣的也是可以把项目 <code>clone</code> 下来预览一下的。</p>
+<p>看一下预览图</p>
+<p><img src="http://owj4ejy7m.bkt.clouddn.com/2018-06-15-news.gif" alt="新闻"></p>
+<p>功能：查看多种类型的实时新闻，点击新闻查看新闻里面的图片</p>
+<p>这里因为个人小程序是不支持外链的，因此不能查看新闻的详情。如果确实想看新闻的详情，可以点击 <code>url</code> 便可复制到剪贴板上，粘贴到本地浏览器进行查看。</p>
+<h3 id="段子模块"><a href="#段子模块" class="headerlink" title="段子模块"></a>段子模块</h3><p><img src="http://owj4ejy7m.bkt.clouddn.com/2018-06-15-joker.gif" alt="段子"></p>
+<p>功能：查看最新的段子笑话，支持下拉刷新和上拉加载更多功能，并可以长按段子进行复制分享。</p>
+<h3 id="历史上的今天"><a href="#历史上的今天" class="headerlink" title="历史上的今天"></a>历史上的今天</h3><p><img src="http://owj4ejy7m.bkt.clouddn.com/2018-06-15-today.gif" alt="历史上的今天"></p>
+<p>功能：查看历史上今天的所有相关事件列表，支持下拉刷新，点击单个事件，查看事件的详情介绍。</p>
+<h3 id="小爱同学"><a href="#小爱同学" class="headerlink" title="小爱同学"></a>小爱同学</h3><p><img src="http://owj4ejy7m.bkt.clouddn.com/2018-06-15-girl.gif" alt="小爱同学"></p>
+<p><strong>其实跟小爱同学没有任何关系</strong> (快来欺负老实人)。。这里就是普通的机器人，不过可以智能记录上次的会话内容，比如，你跟他说 「我叫小爱」，接着你再问 「我叫什么」的时候回答出你上次记录的名字。</p>
+<h2 id="项目知识点"><a href="#项目知识点" class="headerlink" title="项目知识点"></a>项目知识点</h2><p>这里记录一下自己开发过程中遇到的对于我来说比较复杂的地方。</p>
+<blockquote>
+<p>对 css 和 js 零基础的我，只能在使用过程根据需要进行查找对应的使用方法，也是蛮坎坷的。</p>
+</blockquote>
+<p><strong>布局</strong></p>
+<p>当然是使用 <code>Flex</code> 布局，介绍两篇好的文章 <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&amp;__biz=MzIxNjc0ODExMA==&amp;scene=124&amp;#wechat_redirect" target="_blank" rel="noopener">Flex1</a>、 <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&amp;__biz=MzIxNjc0ODExMA==&amp;scene=124&amp;#wechat_redirect" target="_blank" rel="noopener">Flex2</a>，讲的很详细，足够日常的开发使用了。我这里大概总结一下。</p>
+<ul>
+<li>Flex-direction 决定元素的排列方式</li>
+<li>Flex-wrap 决定元素如何换行</li>
+<li>Flex-flow flex-direction 和 flex-wrap 的简写</li>
+<li>Justify-content 元素在主轴上的对齐方式</li>
+<li>Align-items 元素在交叉轴的对其方式</li>
+</ul>
+<ul>
+<li>Flex-grow 当有多余空间时，元素的放大比例</li>
+<li>flex-shrink 当空间不足时，元素的缩小比例</li>
+<li>Flex-basis 元素在主轴上占据的空间</li>
+<li>flex 是 grow shrink basis 的简写</li>
+<li>Order 定义元素的排列顺序</li>
+<li>Aligh-self 定义元素自身的对其方式</li>
+</ul>
+<p><strong>圆角和阴影</strong></p>
+<p><code>border-radius</code> : 设置圆角</p>
+<p><code>box-shadow</code>: 设置圆角</p>
+<p><strong>文字的显示行数限制</strong></p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">word-break</span>: <span class="selector-tag">break-all</span>;</span><br><span class="line"><span class="selector-tag">display</span>: <span class="selector-tag">-webkit-box</span>;</span><br><span class="line"><span class="selector-tag">-webkit-box-orient</span>: <span class="selector-tag">vertical</span>;</span><br><span class="line"><span class="selector-tag">-webkit-line-clamp</span>: 3;</span><br><span class="line"><span class="selector-tag">overflow</span>: <span class="selector-tag">hidden</span>;</span><br></pre></td></tr></table></figure>
+<p>其他的就是官方文档的组件使用，很详细就不多说了。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>从学习到开发完一个小的项目一共用了4天的时间，不得不承认官方的文档很详细，当然也会有不少的坑，但是我相信这些坑，官方会慢慢维护和完善的。根据这几天的学习开发说说我自己的心得和感受。</p>
+<h3 id="学习来源"><a href="#学习来源" class="headerlink" title="学习来源"></a>学习来源</h3><ul>
+<li><a href="https://developers.weixin.qq.com/miniprogram/introduction/index.html?t=1529045132" target="_blank" rel="noopener">官方文档</a> (毋庸置疑，有全面、又详细)</li>
+<li>某客学院的 vip 视频(有需要私聊发给你)</li>
+<li><a href="http://www.runoob.com/w3cnote/wx-xcx-repo.html" target="_blank" rel="noopener">菜鸟教程</a> (这个因为时间原因没看多少，但是干货还是蛮多的)</li>
+</ul>
+<h3 id="数据来源"><a href="#数据来源" class="headerlink" title="数据来源"></a>数据来源</h3><p>数据同 <a href="https://www.jianshu.com/p/ae4aa11f35a4" target="_blank" rel="noopener">趣闻</a> 来源于 <a href="https://www.juhe.cn/" target="_blank" rel="noopener">聚合数据</a>，不过我最近也在学后端，买了服务器，写了接口，不过还有许多需要完善的，就没有用，而且也是为了仿照之前项目，就直接拿聚合接口使用了。</p>
+<p><img src="http://owj4ejy7m.bkt.clouddn.com/2018-06-15-065055.png" alt="image-20180615145049660"></p>
+<p>不过很有趣的是，单单一个新闻的接口就已经请求了 50000+，而且聚合数据平台对免费用户设置了 100次/天/接口 的限制，为了能让项目正常运行，也是特定充了 <strong>VIP</strong> 进行续命，也是很无奈。迟早有一天我要把他的数据爬到自己的服务器！</p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><ul>
+<li>入门快 (如果之前就开发前端的，毫无压力)</li>
+<li>官方文档详细</li>
+<li>编译快 (作为开发 <code>Android</code> 人员，开发五分钟，编译两小时实在受不了)</li>
+<li>调试方便 (自带模拟器本身就很强大，而且支持远程调试)</li>
+<li>API 全面 (封装了大量的通用组件和接口，直接调用即可，开发者不用进行繁琐的逻辑判断)</li>
+<li>稳定 (官方也在持续维护中)</li>
+</ul>
+<h3 id="不足之处"><a href="#不足之处" class="headerlink" title="不足之处"></a>不足之处</h3><ul>
+<li>有些时候界面略微卡顿</li>
+<li><code>input</code>组件(类似于 <code>EditText</code>) 焦点不易控制</li>
+<li>不太适合负责的嵌套滑动，会卡顿</li>
+<li>封装太好对应的就是一些需要自定义的功能不太好实现</li>
+<li>个人小程序不支持外链</li>
+</ul>
+<p>总体的感觉还是蛮不错的，代码提交到了 <code>Github</code> 上了：<a href="https://github.com/xiaweizi/QNews_we_chat" target="_blank" rel="noopener">QNews_we_chat</a> ,本人也是小白，代码可能有很多需要优化的地方，请多指教，也请多多支持。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/article/c607/">『技术分享』—— 我的第一个微信小程序-趣闻</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">下位子</a></p>
+        <p><span>发布时间:</span>2018-06-15, 22:11:12</p>
+        <p><span>最后更新:</span>2018-06-15, 15:32:13</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/article/c607/" title="『技术分享』—— 我的第一个微信小程序-趣闻">http://xiaweizi.cn/article/c607/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/article/c607/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/article/496f/">
+                    『Android Tips』—— 模拟手势操作
+                </a>
+            </div>
+        
+    </nav>
+
+  
+  
+    
+    <div style="padding: 0; margin: 20px auto; width: 90%; text-align: center;">
+      <br>
+      <div>赏我 e(=2.72) 元咖啡钱吧，您的支持将鼓励我继续创作！</div>
+      <br>
+      <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+        <div class="btn btn-pay">打赏支持</div>
+      </button>
+      <br>
+      <br>
+      <div id="QR" style="display: none;">
+        
+          <div id="wechat" style="display: inline-block;">
+            <img id="wechat_qr" src="/img/wechat-reward-qr.png" alt="下位子 WeChat Pay"/>
+            <p>微信打赏</p>
+          </div>
+        
+        
+          <div id="alipay" style="display: inline-block">
+            <img id="alipay_qr" src="/img/alipay-reward-qr.png" alt="下位子 Alipay"/>
+            <p>支付宝打赏</p>
+          </div>
+        
+        <br>
+        <br>
+      </div>
+    </div>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目预览"><span class="toc-number">2.</span> <span class="toc-text">项目预览</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#新闻模块"><span class="toc-number">2.1.</span> <span class="toc-text">新闻模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#段子模块"><span class="toc-number">2.2.</span> <span class="toc-text">段子模块</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#历史上的今天"><span class="toc-number">2.3.</span> <span class="toc-text">历史上的今天</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#小爱同学"><span class="toc-number">2.4.</span> <span class="toc-text">小爱同学</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#项目知识点"><span class="toc-number">3.</span> <span class="toc-text">项目知识点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">4.</span> <span class="toc-text">总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#学习来源"><span class="toc-number">4.1.</span> <span class="toc-text">学习来源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#数据来源"><span class="toc-number">4.2.</span> <span class="toc-text">数据来源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#优点"><span class="toc-number">4.3.</span> <span class="toc-text">优点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#不足之处"><span class="toc-number">4.4.</span> <span class="toc-text">不足之处</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"『技术分享』—— 我的第一个微信小程序-趣闻　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+        
+      <section class="livere" id="comments">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zNDM3Ny8xMDkxNA==">
+    <script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+    </script>
+    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/article/496f/" title="下一篇: 『Android Tips』—— 模拟手势操作">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/article/c607/">『技术分享』—— 我的第一个微信小程序-趣闻</a></li><li class="post-list-item"><a class="post-list-link" href="/article/496f/">『Android Tips』—— 模拟手势操作</a></li><li class="post-list-item"><a class="post-list-link" href="/article/18a/">『自定义View实战』—— 客服好评View</a></li><li class="post-list-item"><a class="post-list-link" href="/article/licecap/">『程序员必备软件』—— 短小精悍的GIF录制软件LICEcap</a></li><li class="post-list-item"><a class="post-list-link" href="/article/5d77/">『自定义View实战』—— 仿ios图标下载view</a></li><li class="post-list-item"><a class="post-list-link" href="/article/3cfa/">程序员必备软件(持续更新中...)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/typora/">『程序员必备软件』—— 编辑预览于一身的 Typora</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7b67faab/">读书笔记(持续更新...)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/31905/">hexo 博客小功能添加-评论、相册、字数统计...</a></li><li class="post-list-item"><a class="post-list-link" href="/article/39434/">『技术分享』— 个人博客全新上线(阿里域名+GitPages+hexo+Yelee)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/34201/">Android 冷兵器 之 tools</a></li><li class="post-list-item"><a class="post-list-link" href="/article/25968/">『自定义View实战』—— 银行种类选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/article/46688/">我和极光的那些事---我和-Android-推送的时间简史</a></li><li class="post-list-item"><a class="post-list-link" href="/article/18215/">Python-自学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/6515/">Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！</a></li><li class="post-list-item"><a class="post-list-link" href="/article/13147/">『自定义View实战』—— 跑马灯</a></li><li class="post-list-item"><a class="post-list-link" href="/article/31642/">Android-分享会：Material-Design-在-Android-中的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/article/52360/">Git-命令小结</a></li><li class="post-list-item"><a class="post-list-link" href="/article/13823/">使用Kotlin重构项目</a></li><li class="post-list-item"><a class="post-list-link" href="/article/40024/">Kotlin学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/41851/">MVVM之DataBinding入门</a></li><li class="post-list-item"><a class="post-list-link" href="/article/35908/">『自定义View实战』—— 实现图片的圆角效果</a></li><li class="post-list-item"><a class="post-list-link" href="/article/9202/">Android-性能优化小结</a></li><li class="post-list-item"><a class="post-list-link" href="/article/58454/">如何做个依赖库让别人依赖使用</a></li><li class="post-list-item"><a class="post-list-link" href="/article/64590/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/article/64591/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7691/">基于MaterialDesign设计风格的妹纸app的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/62207/">快毕业了，撸一个小项目(新闻段子客户端)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/2954/">『Android Tips』-- 基于LitePal操作数据库的学生管理系统的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/276/">『Android Tips』-- 基于环信的仿QQ即时通讯的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7455/">高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7798/">简单粗暴----RecyclerView</a></li><li class="post-list-item"><a class="post-list-link" href="/article/23091/">设计模式之建造者模式学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/17984/">一个菜鸟的图片三级缓存笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_15/">『Thinking in Java 读书笔记』—— 15-泛型</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_14/">『Thinking in Java 读书笔记』—— 14-类型信息</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_13/">『Thinking in Java 读书笔记』—— 13-字符串</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_12/">『Thinking in Java 读书笔记』—— 12-通过异常处理错误</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_11/">『Thinking in Java 读书笔记』—— 11-持有对象</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_10/">『Thinking in Java 读书笔记』—— 10-内部类</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_9/">『Thinking in Java 读书笔记』—— 9-接口</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_8/">『Thinking in Java 读书笔记』—— 8-多态</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_7/">『Thinking in Java 读书笔记』—— 7-复用类</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_6/">『Thinking in Java 读书笔记』—— 6-访问权限控制</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_5/">『Thinking in Java 读书笔记』—— 5-初始化与清理</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_4/">『Thinking in Java 读书笔记』—— 4-控制执行流程</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_3/">『Thinking in Java 读书笔记』—— 3-操作符</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_2/">『Thinking in Java 读书笔记』—— 2-一切都是对象</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_1/">『Thinking in Java 读书笔记』—— 1-对象导论</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018 下位子
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_uv">
+                      您是第 <span id="busuanzi_value_site_uv"></span> 位小伙伴
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+                    </span>
+                
+                <span>| </span>
+                <span class="post-count">  已经写了 81.2k 字啦</span>
+            </div>
+        
+        </br>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+        <script>
+            var now = new Date(); 
+            function createtime(){ var grt= new Date("02/14/2018 12:49:00");//此处修改你的建站时间或者网站上线时间 
+            now.setTime(now.getTime()+250); 
+            days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+            hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+            if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+            mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+            seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+            snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+            document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+            document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; } 
+            setInterval("createtime()",250);
+        </script>
+    </div>
+</footer>
+    </div>
+    
+    <script src="/js/GithubRepoWidget.js"></script>
+
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#e040fb", "#7c4dff", "#3d5afe", "#0288d1", "#0091ea", "#00e5ff", "#1de9b6", "#14e715", "#14e715", "#76ff03", "#ffea00", "#ff3d00", "#ff2d6f"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 6;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-113850534-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+             github: ".github-widget a", 
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "产品提需求啦！！" + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "又要改bug了..." + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+	<script type="text/javascript" src="/resources/love.js"></script>
+	<script type="text/javascript" src="/resources/float.js"></script>
+	<script type="text/javascript" src="/resources/typewriter.js"></script>
+	<script type="text/javascript" color=0,104,183 opacity=1 zindex=-1 count=50 src="/resources/particle.js"></script>
+
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false},"react":{"opacityDefault":0.5,"opacityOnHover":0.2}});</script></body>
+</html>
