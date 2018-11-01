@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>『数据结构与算法』—— 复杂度</title>
+      <link href="/article/6b9d/"/>
+      <url>/article/6b9d/</url>
+      
+        <content type="html"><![CDATA[<h3 id="重要性"><a href="#重要性" class="headerlink" title="重要性"></a>重要性</h3><p>复杂度分析是整个算法学习的精髓，只要掌握了它，数据结构和算法的内容基本上就掌握了一半。</p><ol><li><p>测试结果非常依赖测试环境</p></li><li><p>测试结果受数据规模的影响很大</p></li></ol><p>我们需要一个不用具体的测试数据来测试，就可以粗略地估计算法的执行效率的方法。</p><a id="more"></a><h3 id="大-O-复杂度表示法"><a href="#大-O-复杂度表示法" class="headerlink" title="大 O 复杂度表示法"></a>大 O 复杂度表示法</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">cal</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">int</span> i = <span class="number">1</span>;</span><br><span class="line">  <span class="keyword">for</span> (; i &lt;= n; ++i) &#123;</span><br><span class="line">    sum = sum + i;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> sum;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>第 2、3 行代码分别需要 1 个 unit_time 的执行时间，第 4、5 行都运行了 n 遍，所以需要 2n<em>unit_time 的执行时间，所以这段代码总的执行时间就是 (2n+2)</em>unit_time。可以看出来，所有代码的执行时间 T(n) 与每行代码的执行次数成正比。</p><p>所有代码的执行时间 T(n) 与每行代码的执行次数 n 成正比。</p><p>$T(n) = O(f(n))$</p><p>这就是大 O 时间复杂度表示法，大 O 时间复杂度实际上并不具体代表代码真正的执行时间，而是表示代码执行时间随数据规模增长的变化趋势，所以也叫做 <strong>渐进时间复杂度</strong>，简称 <strong>时间复杂度</strong>。</p><h3 id="分析时间复杂度"><a href="#分析时间复杂度" class="headerlink" title="分析时间复杂度"></a>分析时间复杂度</h3><ol><li><p>只关注循环执行次数最多的一点代码</p><p>我们在分析一个算法、一段代码的时间复杂度的时候，也只关注循环执行次数最多的那一段代码就可以了。</p></li><li><p>加法法则：总复杂度等于量级最大的那段代码的复杂度</p></li><li><p>乘法法则：嵌套代码的复杂度等于嵌套内外代码复杂度的乘积</p></li></ol><h3 id="时间复杂度实例分析"><a href="#时间复杂度实例分析" class="headerlink" title="时间复杂度实例分析"></a>时间复杂度实例分析</h3><p><img src="http://owj4ejy7m.bkt.clouddn.com/2018-11-01-011935.png" alt="image-20181030151057149"></p><h3 id="空间复杂度分析"><a href="#空间复杂度分析" class="headerlink" title="空间复杂度分析"></a>空间复杂度分析</h3><p>时间复杂度的全称是 <strong>渐进时间复杂度</strong>，表示算法的执行时间与数据规模之间的增长关系。类比一下，空间复杂度全称就是渐进空间复杂度，表示算法的存储空间与数据规模之间的增长关系。</p><h3 id="复杂度种类"><a href="#复杂度种类" class="headerlink" title="复杂度种类"></a>复杂度种类</h3><ol><li><p>最好情况时间复杂度</p><p>最好情况时间复杂度就是，在最理想的情况下，执行这段代码的时间复杂度。</p></li><li><p>最坏情况时间复杂度</p><p>最坏情况时间复杂度就是，在最糟糕的情况下，执行这段代码的时间复杂度。</p></li><li><p>平均情况时间复杂度</p></li><li><p>均摊时间复杂度</p></li></ol><p>例子：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 全局变量，大小为 10 的数组 array，长度 len，下标 i。</span></span><br><span class="line"><span class="keyword">int</span> array[] = <span class="keyword">new</span> <span class="keyword">int</span>[<span class="number">10</span>]; </span><br><span class="line"><span class="keyword">int</span> len = <span class="number">10</span>;</span><br><span class="line"><span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 往数组中添加一个元素</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> element)</span> </span>&#123;</span><br><span class="line">   <span class="keyword">if</span> (i &gt;= len) &#123; <span class="comment">// 数组空间不够了</span></span><br><span class="line">     <span class="comment">// 重新申请一个 2 倍大小的数组空间</span></span><br><span class="line">     <span class="keyword">int</span> new_array[] = <span class="keyword">new</span> <span class="keyword">int</span>[len*<span class="number">2</span>];</span><br><span class="line">     <span class="comment">// 把原来 array 数组中的数据依次 copy 到 new_array</span></span><br><span class="line">     <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; len; ++j) &#123;</span><br><span class="line">       new_array[j] = array[j];</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="comment">// new_array 复制给 array，array 现在大小就是 2 倍 len 了</span></span><br><span class="line">     array = new_array;</span><br><span class="line">     len = <span class="number">2</span> * len;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">// 将 element 放到下标为 i 的位置，下标 i 加一</span></span><br><span class="line">   array[i] = element;</span><br><span class="line">   ++i;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>最好 $O(1)$，最坏 $O(n)$，平均 $O(n)$，均摊 $O(1)$</p><p>Android 开发艺术探索</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构与算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 进阶 </tag>
+            
+            <tag> 数据结构与算法 </tag>
+            
+            <tag> 平时积累 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>『进阶之路』—— 线程池</title>
       <link href="/article/thread-pool/"/>
       <url>/article/thread-pool/</url>
