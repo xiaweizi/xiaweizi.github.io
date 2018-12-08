@@ -7,7 +7,7 @@
       <link href="/article/452b/"/>
       <url>/article/452b/</url>
       
-        <content type="html"><![CDATA[<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>最简单的例子，常见的推荐有奖营销活动，如果需要找到最终的推荐人，那么就需要用到  <strong>递归</strong>。递归是一种应用非常广泛的算法或者是编程技巧。其中有两个难点：动态规划和递归。</p><h4 id="递归需要满足的三个条件"><a href="#递归需要满足的三个条件" class="headerlink" title="递归需要满足的三个条件"></a>递归需要满足的三个条件</h4><ol><li>一个问题的解可以分解为几个子问题的解</li><li>这个问题与分解之后的子问题，除了数据规模不同，求解思路完全一样</li><li>存在递归终止条件</li></ol><h3 id="编写递归代码"><a href="#编写递归代码" class="headerlink" title="编写递归代码"></a>编写递归代码</h3><p>编写递归代码关键在于 <strong>写出递推公式，找到终止条件。</strong>一个简单的例子：</p><p>假如这里有 n 个台阶，每次可以跨 1 个台阶或者 2 个台阶，请问走 n 个台阶有多少种走法？</p><p>仔细想一下，所有的走法可以分成两类，第一类是第一步走了 1 个台阶，另一类是第一步走了 2 个台阶。所以 n 个台阶的走法就等于先走 1 个台阶后，n-1 个台阶的走法加上先走 2 个台阶后，n-2 个台阶的走法，用公式表示就是:</p><p>$f(n) = f(n-1)+f(n-2)​$</p><p>当递推公式出来后，递归代码基本上就走了一半。终止条件和递推公式合并后就是：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f(<span class="number">1</span>) = <span class="number">1</span>;</span><br><span class="line">f(<span class="number">2</span>) = <span class="number">2</span>;</span><br><span class="line">f(n) = f(n-<span class="number">1</span>) + f(n-<span class="number">2</span>);</span><br></pre></td></tr></table></figure><p>总结一下，<strong>写递归代码的关键就是找到如何将大问题分解为小问题的规律，并且基于此写出递推公式，然后再推敲终止条件，最后将递推公式和终止条件翻译成代码。</strong></p><p>还有一点：<strong>编写递归代码的关键是，知道遇到递归，我们就把它抽象成一个递推公司，不用想一层层的调用关系，不要试图用人脑去分解递归的每个步骤。</strong></p><h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><h4 id="警惕堆栈溢出"><a href="#警惕堆栈溢出" class="headerlink" title="警惕堆栈溢出"></a>警惕堆栈溢出</h4><p>递归代码需要重复调用自身的方法，当调用次数过大是，很有可能就会抛出堆栈溢出的异常。函数调用会使用栈来保存临时变量，每调用一个函数，都会临时变量封装为栈帧压入内存栈，等函数执行完成返回后，才会出栈。系统栈或者虚拟机控件一般都不大。如果递归求解的数据规模很大，调用层次很深，一直压入栈，就会有堆栈溢出的风险。</p><p>如何避免堆栈溢出的出现，最常见的办法就是使用循环遍历来替代递归，但是可读性可能会降低。后面会介绍例子。</p><h4 id="警惕重复计算"><a href="#警惕重复计算" class="headerlink" title="警惕重复计算"></a>警惕重复计算</h4><p>如果把算台阶走法的题目分解一下，就是这样的：</p><p><img src="https://static001.geekbang.org/resource/image/e7/bf/e7e778994e90265344f6ac9da39e01bf.jpg" alt=""></p><p>从图中可以发现有些是重复计算的，为了避免计算，就可以通过 HashMap 来保存计算的值，优化这个问题。</p><h3 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h3><p>首先使用普通的递归方式来实现台阶走法那个题目：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">findLadder</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">2</span>) <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> findLadder(n - <span class="number">1</span>) + findLadder(n - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>转换成循环迭代的方式：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">findLadderNormal</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">2</span>) <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> pre1 = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> pre2 =<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">3</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        result = pre1 + pre2;</span><br><span class="line">        pre1 = pre2;</span><br><span class="line">        pre2 = result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>在递归的基础上，优化重复计算：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">findLadderAdvanced</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">2</span>) <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (cached.containsKey(n)) &#123;</span><br><span class="line">        <span class="keyword">return</span> cached.get(n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> result = findLadderAdvanced(n - <span class="number">1</span>) + findLadderAdvanced(n - <span class="number">2</span>);</span><br><span class="line">    cached.put(n, result);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>递归是一种非常高效、简洁的编码技巧。只要满足三个条件的问题就可以通过递归代码来解决。</p><p>不过递归代码也比较难写、难理解。编写递归代码的关键就是不要把自己绕进去，正确姿势是写出递推公式，找出终止条件，然后再翻译成递归代码。</p><p>参考自<a href="https://time.geekbang.org/column/126" target="_blank" rel="noopener">极客时间</a></p>]]></content>
+        <content type="html"><![CDATA[<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>最简单的例子，常见的推荐有奖营销活动，如果需要找到最终的推荐人，那么就需要用到  <strong>递归</strong>。递归是一种应用非常广泛的算法或者是编程技巧。其中有两个难点：动态规划和递归。</p><a id="more"></a><h4 id="递归需要满足的三个条件"><a href="#递归需要满足的三个条件" class="headerlink" title="递归需要满足的三个条件"></a>递归需要满足的三个条件</h4><ol><li>一个问题的解可以分解为几个子问题的解</li><li>这个问题与分解之后的子问题，除了数据规模不同，求解思路完全一样</li><li>存在递归终止条件</li></ol><h3 id="编写递归代码"><a href="#编写递归代码" class="headerlink" title="编写递归代码"></a>编写递归代码</h3><p>编写递归代码关键在于 <strong>写出递推公式，找到终止条件。</strong>一个简单的例子：</p><p>假如这里有 n 个台阶，每次可以跨 1 个台阶或者 2 个台阶，请问走 n 个台阶有多少种走法？</p><p>仔细想一下，所有的走法可以分成两类，第一类是第一步走了 1 个台阶，另一类是第一步走了 2 个台阶。所以 n 个台阶的走法就等于先走 1 个台阶后，n-1 个台阶的走法加上先走 2 个台阶后，n-2 个台阶的走法，用公式表示就是:</p><p>$f(n) = f(n-1)+f(n-2)​$</p><p>当递推公式出来后，递归代码基本上就走了一半。终止条件和递推公式合并后就是：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">f(<span class="number">1</span>) = <span class="number">1</span>;</span><br><span class="line">f(<span class="number">2</span>) = <span class="number">2</span>;</span><br><span class="line">f(n) = f(n-<span class="number">1</span>) + f(n-<span class="number">2</span>);</span><br></pre></td></tr></table></figure><p>总结一下，<strong>写递归代码的关键就是找到如何将大问题分解为小问题的规律，并且基于此写出递推公式，然后再推敲终止条件，最后将递推公式和终止条件翻译成代码。</strong></p><p>还有一点：<strong>编写递归代码的关键是，知道遇到递归，我们就把它抽象成一个递推公司，不用想一层层的调用关系，不要试图用人脑去分解递归的每个步骤。</strong></p><h3 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h3><h4 id="警惕堆栈溢出"><a href="#警惕堆栈溢出" class="headerlink" title="警惕堆栈溢出"></a>警惕堆栈溢出</h4><p>递归代码需要重复调用自身的方法，当调用次数过大是，很有可能就会抛出堆栈溢出的异常。函数调用会使用栈来保存临时变量，每调用一个函数，都会临时变量封装为栈帧压入内存栈，等函数执行完成返回后，才会出栈。系统栈或者虚拟机控件一般都不大。如果递归求解的数据规模很大，调用层次很深，一直压入栈，就会有堆栈溢出的风险。</p><p>如何避免堆栈溢出的出现，最常见的办法就是使用循环遍历来替代递归，但是可读性可能会降低。后面会介绍例子。</p><h4 id="警惕重复计算"><a href="#警惕重复计算" class="headerlink" title="警惕重复计算"></a>警惕重复计算</h4><p>如果把算台阶走法的题目分解一下，就是这样的：</p><p><img src="https://static001.geekbang.org/resource/image/e7/bf/e7e778994e90265344f6ac9da39e01bf.jpg" alt=""></p><p>从图中可以发现有些是重复计算的，为了避免计算，就可以通过 HashMap 来保存计算的值，优化这个问题。</p><h3 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h3><p>首先使用普通的递归方式来实现台阶走法那个题目：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">findLadder</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">2</span>) <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">return</span> findLadder(n - <span class="number">1</span>) + findLadder(n - <span class="number">2</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>转换成循环迭代的方式：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">findLadderNormal</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">2</span>) <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">int</span> result = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> pre1 = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">int</span> pre2 =<span class="number">2</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">3</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        result = pre1 + pre2;</span><br><span class="line">        pre1 = pre2;</span><br><span class="line">        pre2 = result;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>在递归的基础上，优化重复计算：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">int</span> <span class="title">findLadderAdvanced</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">2</span>) <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (cached.containsKey(n)) &#123;</span><br><span class="line">        <span class="keyword">return</span> cached.get(n);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> result = findLadderAdvanced(n - <span class="number">1</span>) + findLadderAdvanced(n - <span class="number">2</span>);</span><br><span class="line">    cached.put(n, result);</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>递归是一种非常高效、简洁的编码技巧。只要满足三个条件的问题就可以通过递归代码来解决。</p><p>不过递归代码也比较难写、难理解。编写递归代码的关键就是不要把自己绕进去，正确姿势是写出递推公式，找出终止条件，然后再翻译成递归代码。</p><p>参考自<a href="https://time.geekbang.org/column/126" target="_blank" rel="noopener">极客时间</a></p>]]></content>
       
       
       <categories>
@@ -239,9 +239,9 @@
             
             <tag> 项目 </tag>
             
-            <tag> 提高效率 </tag>
-            
             <tag> 小程序 </tag>
+            
+            <tag> 提高效率 </tag>
             
         </tags>
       
@@ -289,9 +289,9 @@
       
         <tags>
             
-            <tag> 自定义 View </tag>
-            
             <tag> 工作积累 </tag>
+            
+            <tag> 自定义 View </tag>
             
         </tags>
       
@@ -314,9 +314,9 @@
       
         <tags>
             
-            <tag> 工具软件 </tag>
-            
             <tag> 提高效率 </tag>
+            
+            <tag> 工具软件 </tag>
             
         </tags>
       
@@ -339,9 +339,9 @@
       
         <tags>
             
-            <tag> 自定义 View </tag>
-            
             <tag> 工作积累 </tag>
+            
+            <tag> 自定义 View </tag>
             
         </tags>
       
@@ -364,9 +364,9 @@
       
         <tags>
             
-            <tag> 工具软件 </tag>
-            
             <tag> 提高效率 </tag>
+            
+            <tag> 工具软件 </tag>
             
         </tags>
       
@@ -389,9 +389,9 @@
       
         <tags>
             
-            <tag> 工具软件 </tag>
-            
             <tag> 提高效率 </tag>
+            
+            <tag> 工具软件 </tag>
             
         </tags>
       
@@ -504,9 +504,9 @@
       
         <tags>
             
-            <tag> 自定义 View </tag>
-            
             <tag> 工作积累 </tag>
+            
+            <tag> 自定义 View </tag>
             
         </tags>
       
@@ -598,9 +598,9 @@
       
         <tags>
             
-            <tag> 自定义 View </tag>
-            
             <tag> 工作积累 </tag>
+            
+            <tag> 自定义 View </tag>
             
         </tags>
       
@@ -623,9 +623,9 @@
       
         <tags>
             
-            <tag> 工作积累 </tag>
-            
             <tag> Material Design </tag>
+            
+            <tag> 工作积累 </tag>
             
         </tags>
       
@@ -744,9 +744,9 @@
       
         <tags>
             
-            <tag> 自定义 View </tag>
-            
             <tag> 工作积累 </tag>
+            
+            <tag> 自定义 View </tag>
             
             <tag> 第三方库 </tag>
             

@@ -15,19 +15,19 @@
 
 
 
-<meta name="description" content="定义最简单的例子，常见的推荐有奖营销活动，如果需要找到最终的推荐人，那么就需要用到  递归。递归是一种应用非常广泛的算法或者是编程技巧。其中有两个难点：动态规划和递归。 递归需要满足的三个条件 一个问题的解可以分解为几个子问题的解 这个问题与分解之后的子问题，除了数据规模不同，求解思路完全一样 存在递归终止条件  编写递归代码编写递归代码关键在于 写出递推公式，找到终止条件。一个简单的例子： 假如">
+<meta name="description" content="定义最简单的例子，常见的推荐有奖营销活动，如果需要找到最终的推荐人，那么就需要用到  递归。递归是一种应用非常广泛的算法或者是编程技巧。其中有两个难点：动态规划和递归。">
 <meta name="keywords" content="进阶,数据结构与算法,平时积累">
 <meta property="og:type" content="article">
 <meta property="og:title" content="『数据结构与算法』—— 递归">
 <meta property="og:url" content="http://xiaweizi.cn/article/452b/index.html">
 <meta property="og:site_name" content="xiaweizi&#39;blog">
-<meta property="og:description" content="定义最简单的例子，常见的推荐有奖营销活动，如果需要找到最终的推荐人，那么就需要用到  递归。递归是一种应用非常广泛的算法或者是编程技巧。其中有两个难点：动态规划和递归。 递归需要满足的三个条件 一个问题的解可以分解为几个子问题的解 这个问题与分解之后的子问题，除了数据规模不同，求解思路完全一样 存在递归终止条件  编写递归代码编写递归代码关键在于 写出递推公式，找到终止条件。一个简单的例子： 假如">
+<meta property="og:description" content="定义最简单的例子，常见的推荐有奖营销活动，如果需要找到最终的推荐人，那么就需要用到  递归。递归是一种应用非常广泛的算法或者是编程技巧。其中有两个难点：动态规划和递归。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://static001.geekbang.org/resource/image/e7/bf/e7e778994e90265344f6ac9da39e01bf.jpg">
-<meta property="og:updated_time" content="2018-12-08T08:39:49.393Z">
+<meta property="og:updated_time" content="2018-12-08T08:43:12.242Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="『数据结构与算法』—— 递归">
-<meta name="twitter:description" content="定义最简单的例子，常见的推荐有奖营销活动，如果需要找到最终的推荐人，那么就需要用到  递归。递归是一种应用非常广泛的算法或者是编程技巧。其中有两个难点：动态规划和递归。 递归需要满足的三个条件 一个问题的解可以分解为几个子问题的解 这个问题与分解之后的子问题，除了数据规模不同，求解思路完全一样 存在递归终止条件  编写递归代码编写递归代码关键在于 写出递推公式，找到终止条件。一个简单的例子： 假如">
+<meta name="twitter:description" content="定义最简单的例子，常见的推荐有奖营销活动，如果需要找到最终的推荐人，那么就需要用到  递归。递归是一种应用非常广泛的算法或者是编程技巧。其中有两个难点：动态规划和递归。">
 <meta name="twitter:image" content="https://static001.geekbang.org/resource/image/e7/bf/e7e778994e90265344f6ac9da39e01bf.jpg">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
@@ -373,6 +373,7 @@
       
           
         <h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>最简单的例子，常见的推荐有奖营销活动，如果需要找到最终的推荐人，那么就需要用到  <strong>递归</strong>。递归是一种应用非常广泛的算法或者是编程技巧。其中有两个难点：动态规划和递归。</p>
+<a id="more"></a>
 <h4 id="递归需要满足的三个条件"><a href="#递归需要满足的三个条件" class="headerlink" title="递归需要满足的三个条件"></a>递归需要满足的三个条件</h4><ol>
 <li>一个问题的解可以分解为几个子问题的解</li>
 <li>这个问题与分解之后的子问题，除了数据规模不同，求解思路完全一样</li>
@@ -411,7 +412,7 @@
         <p><span>本文标题:</span><a href="/article/452b/">『数据结构与算法』—— 递归</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">下位子</a></p>
         <p><span>发布时间:</span>2018-11-21, 15:10:00</p>
-        <p><span>最后更新:</span>2018-12-08, 16:39:49</p>
+        <p><span>最后更新:</span>2018-12-08, 16:43:12</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/article/452b/" title="『数据结构与算法』—— 递归">http://xiaweizi.cn/article/452b/</a>
             <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/article/452b/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -437,34 +438,44 @@
 
   
   
-    
-    <div style="padding: 0; margin: 20px auto; width: 90%; text-align: center;">
-      <br>
-      <div>赏我 e(=2.72) 元咖啡钱吧，您的支持将鼓励我继续创作！</div>
-      <br>
-      <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-        <div class="btn btn-pay">打赏支持</div>
-      </button>
-      <br>
-      <br>
-      <div id="QR" style="display: none;">
-        
-          <div id="wechat" style="display: inline-block;">
-            <img id="wechat_qr" src="/img/wechat-reward-qr.png" alt="下位子 WeChat Pay"/>
-            <p>微信打赏</p>
-          </div>
-        
-        
-          <div id="alipay" style="display: inline-block">
-            <img id="alipay_qr" src="/img/alipay-reward-qr.png" alt="下位子 Alipay"/>
-            <p>支付宝打赏</p>
-          </div>
-        
-        <br>
-        <br>
-      </div>
-    </div>
+    #rewardButton {
+    background-color: #ea6f5a;
+}
 
+.btn-pay {
+    margin-bottom: 20px;
+    padding: 8px 25px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #ea6f5a;
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#QR img{
+    height: 200px;
+    height: 200px;
+    margin: 20px;
+}
   
 </article>
 

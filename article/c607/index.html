@@ -16,7 +16,7 @@
 
 
 <meta name="description" content="前言我去年3月份写了一个小项目 快毕业了，撸一个小项目(趣闻)  作为自己的毕设项目，当时接触 Android 也才半年的时间，所以写的略简单，偏入门级别的，有兴趣的话可以 clone 看一下。趣闻 小程序 的火热程度我就不多说了，我之前对这个就蛮有兴趣的，于是花了大概5天的时间，完成了 学习-入门-写项目 这一套流程。作为前端 0 基础的我都这么快入门了，可想而知，微信小程序的封装是相当好的，基">
-<meta name="keywords" content="项目,提高效率,小程序">
+<meta name="keywords" content="项目,小程序,提高效率">
 <meta property="og:type" content="article">
 <meta property="og:title" content="『技术分享』—— 我的第一个微信小程序-趣闻">
 <meta property="og:url" content="http://xiaweizi.cn/article/c607/index.html">
@@ -491,34 +491,44 @@
 
   
   
-    
-    <div style="padding: 0; margin: 20px auto; width: 90%; text-align: center;">
-      <br>
-      <div>赏我 e(=2.72) 元咖啡钱吧，您的支持将鼓励我继续创作！</div>
-      <br>
-      <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-        <div class="btn btn-pay">打赏支持</div>
-      </button>
-      <br>
-      <br>
-      <div id="QR" style="display: none;">
-        
-          <div id="wechat" style="display: inline-block;">
-            <img id="wechat_qr" src="/img/wechat-reward-qr.png" alt="下位子 WeChat Pay"/>
-            <p>微信打赏</p>
-          </div>
-        
-        
-          <div id="alipay" style="display: inline-block">
-            <img id="alipay_qr" src="/img/alipay-reward-qr.png" alt="下位子 Alipay"/>
-            <p>支付宝打赏</p>
-          </div>
-        
-        <br>
-        <br>
-      </div>
-    </div>
+    #rewardButton {
+    background-color: #ea6f5a;
+}
 
+.btn-pay {
+    margin-bottom: 20px;
+    padding: 8px 25px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #ea6f5a;
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#QR img{
+    height: 200px;
+    height: 200px;
+    margin: 20px;
+}
   
 </article>
 

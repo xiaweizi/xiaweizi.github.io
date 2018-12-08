@@ -16,7 +16,7 @@
 
 
 <meta name="description" content="在工作中难免遇到自定义 View 的相关需求，本身这方面比较薄弱，因此做个记录，也是自己学习和成长的积累。自定义View实战  前言年前的最后一个开发需求，将之前H5开卡界面转变成native。意思就是开卡这个需求做成Android原生的界面，就这单单一个界面需要请求 8 个接口！可想逻辑是有多复杂，其中中间有个小需求-「选择银行卡」。来看一下UI出图。">
-<meta name="keywords" content="自定义 View,工作积累">
+<meta name="keywords" content="工作积累,自定义 View">
 <meta property="og:type" content="article">
 <meta property="og:title" content="『自定义View实战』—— 银行种类选择器">
 <meta property="og:url" content="http://xiaweizi.cn/article/25968/index.html">
@@ -469,34 +469,44 @@ public boolean onKey(View v, int keyCode, KeyEvent event) {
 
   
   
-    
-    <div style="padding: 0; margin: 20px auto; width: 90%; text-align: center;">
-      <br>
-      <div>赏我 e(=2.72) 元咖啡钱吧，您的支持将鼓励我继续创作！</div>
-      <br>
-      <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-        <div class="btn btn-pay">打赏支持</div>
-      </button>
-      <br>
-      <br>
-      <div id="QR" style="display: none;">
-        
-          <div id="wechat" style="display: inline-block;">
-            <img id="wechat_qr" src="/img/wechat-reward-qr.png" alt="下位子 WeChat Pay"/>
-            <p>微信打赏</p>
-          </div>
-        
-        
-          <div id="alipay" style="display: inline-block">
-            <img id="alipay_qr" src="/img/alipay-reward-qr.png" alt="下位子 Alipay"/>
-            <p>支付宝打赏</p>
-          </div>
-        
-        <br>
-        <br>
-      </div>
-    </div>
+    #rewardButton {
+    background-color: #ea6f5a;
+}
 
+.btn-pay {
+    margin-bottom: 20px;
+    padding: 8px 25px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #ea6f5a;
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#QR img{
+    height: 200px;
+    height: 200px;
+    margin: 20px;
+}
   
 </article>
 

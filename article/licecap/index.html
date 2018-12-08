@@ -16,7 +16,7 @@
 
 
 <meta name="description" content="平时学习和开发的过程中，总有一些软件可以提高工作或者开发效率，特此记录一下，并附上简单的入门教程，方便自己查找，但愿也可以帮助到您 程序员必备软件  前言想必经常写博客的小伙伴经常会需要上传运行的效果图，也就是 GIF 动态图，目前有很多方式可供选择。  先使用视频录制软件(比如QQ自带的录制)，然后通过某些转换工具(比如 GIF Brewery)将视频文件转换成 GIF格式 或者直接使用某些">
-<meta name="keywords" content="工具软件,提高效率">
+<meta name="keywords" content="提高效率,工具软件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="『程序员必备软件』—— 短小精悍的GIF录制软件LICEcap">
 <meta property="og:url" content="http://xiaweizi.cn/article/licecap/index.html">
@@ -481,34 +481,44 @@
 
   
   
-    
-    <div style="padding: 0; margin: 20px auto; width: 90%; text-align: center;">
-      <br>
-      <div>赏我 e(=2.72) 元咖啡钱吧，您的支持将鼓励我继续创作！</div>
-      <br>
-      <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
-        <div class="btn btn-pay">打赏支持</div>
-      </button>
-      <br>
-      <br>
-      <div id="QR" style="display: none;">
-        
-          <div id="wechat" style="display: inline-block;">
-            <img id="wechat_qr" src="/img/wechat-reward-qr.png" alt="下位子 WeChat Pay"/>
-            <p>微信打赏</p>
-          </div>
-        
-        
-          <div id="alipay" style="display: inline-block">
-            <img id="alipay_qr" src="/img/alipay-reward-qr.png" alt="下位子 Alipay"/>
-            <p>支付宝打赏</p>
-          </div>
-        
-        <br>
-        <br>
-      </div>
-    </div>
+    #rewardButton {
+    background-color: #ea6f5a;
+}
 
+.btn-pay {
+    margin-bottom: 20px;
+    padding: 8px 25px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #ea6f5a;
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#QR img{
+    height: 200px;
+    height: 200px;
+    margin: 20px;
+}
   
 </article>
 
