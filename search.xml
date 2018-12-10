@@ -3,6 +3,33 @@
   
     
     <entry>
+      <title>『数据结构与算法』—— 排序-冒泡&amp;选择&amp;插入</title>
+      <link href="/article/6cfc/"/>
+      <url>/article/6cfc/</url>
+      
+        <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>终于进入排序了，这应该是大学课上学的第一个算法，当时学的还不是很成熟，只是当时学会了如何去写，并没有深究其原理和时间复杂度等细节信息，在之后不久就忘记怎么写了。其实在大部分的编程语言中，也提供了排序函数。</p><a id="more"></a><p>其实在项目中也会经常用到排序算法，就拿我之前在两日三日 K 线时，服务端不愿意计算，只能所有逻辑放在客户端来算， 这对客户端来说无疑是增加了难度。因为数据规模很大，如果算法不是很好的话，会浪费很多的时间在数据的计算上，尤其我们项目中的计算大部分是放在主线程中计算的，过长时间的计算，很大可能上会阻塞 UI 上的更新，造成卡顿，影响用户体验。</p><p>当然，排序算法也有很多种类，最经典最常用的有：冒泡、插入、选择、归并、快排、计数、基数排序、桶排序、按照时间复杂度可以分成三类：</p><p><img src="https://static001.geekbang.org/resource/image/fb/cd/fb8394a588b12ff6695cfd664afb17cd.jpg" alt=""></p><h3 id="如何分析排序算法"><a href="#如何分析排序算法" class="headerlink" title="如何分析排序算法"></a>如何分析排序算法</h3><p>大学时只是学了如何写，现在要想学好排序，除了学习其原理和代码实现之外，更重的是要学会如何评价和分析一个排序算法。分析一个拍排序算法从以下三种方式入手：</p><h4 id="排序算法的执行效率"><a href="#排序算法的执行效率" class="headerlink" title="排序算法的执行效率"></a>排序算法的执行效率</h4><ol><li><p>最好情况、最坏情况、平均情况时间复杂度</p><p>要分析排序算法，就必须把这些因素全部考虑到。</p></li><li><p>时间复杂度的系数、常数和低阶</p><p>在算时间复杂度的时候，往往会把这三个因素忽略到，因为考虑到数据规模的无线庞大，那这几个因素的影响可以忽略不计。但在实际的项目中，数据规模是有限的，那么如何选择一个排序算法，就必须将这些因素重新放在考虑之中了。</p></li><li><p>比较次数和交换(或移动)次数</p><p>一切影响性能或者影响时间的因素都要放在考虑之中。</p></li></ol><h4 id="排序算法的内存消耗"><a href="#排序算法的内存消耗" class="headerlink" title="排序算法的内存消耗"></a>排序算法的内存消耗</h4><p>空间复杂度当然也是考量的标准，不过针对排序算法的空间复杂度，引入累计额一个新的概念，<strong>原地排序</strong>。原地排序算法，就是特指空间复杂度是 $O(1)$ 的排序算法。冒泡、选择和插入都是原地排序算法。</p><h4 id="排序算法的稳定性"><a href="#排序算法的稳定性" class="headerlink" title="排序算法的稳定性"></a>排序算法的稳定性</h4><p>除了以上的标准外，还有一个因素需要被考虑进去，<strong>稳定性</strong>。简单来说，在排序中，对于相同元素（针对此次排序的 key 相同）来说，在进行排序后，还能保证原来的顺序，那么这个排序算法就叫做 <strong>稳定的排序算法</strong>。</p><p><strong>稳定排序算法可以保持相同的两个对象，在排序之后的前后顺序不发生改变。</strong></p><h3 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h3><p>冒泡排序只会操作相邻的两个数据，每次冒泡操作都会对相邻的两个元素进行比较，不满足则需要进行交换。来看第一次冒泡的详细过程。</p><p><img src="https://static001.geekbang.org/resource/image/40/e9/4038f64f47975ab9f519e4f739e464e9.jpg" alt=""></p><p>这么看来的话，一共需要 n 次冒泡，但是可以进行优化，如果某次没有交换，说明已经完全有序，就不需要进行冒泡。</p><p>代码实现：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">boolean</span> dataChanged = <span class="keyword">false</span>;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">bubbleSort</span><span class="params">(<span class="keyword">int</span>[] data, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        dataChanged = <span class="keyword">false</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n - <span class="number">1</span> - i; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (data[j] &gt; data[j + <span class="number">1</span>]) &#123;</span><br><span class="line">                <span class="keyword">int</span> temp = data[j + <span class="number">1</span>];</span><br><span class="line">                data[j + <span class="number">1</span>] = data[j];</span><br><span class="line">                data[j] = temp;</span><br><span class="line">                dataChanged = <span class="keyword">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (!dataChanged) <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>根据之前总结的排序算法特性，来看一下冒泡排序的特点：</p><ol><li><p>是原地排序算法</p></li><li><p>是稳定的排序算法</p></li><li><p>最坏时间复杂度 $O(n^2)$，最好时间复杂度 $O(n)$，平均时间复杂度 $O(n^2)$</p><p>这里引入两个概念 <strong>有序度</strong> 和 <strong>逆序度</strong>。有序度 是数组中具有有序关系的元素对的个数，通常的表达式：<code>有序元素对：a[i] &lt;= a[j], 如果 i &lt; j。</code></p><p>满有序度 = $n*(n-1)/2$ ，满有序度=有序度+逆序度。</p></li></ol><h3 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h3><p>插入排序的关键思想是将数组中的数据分为两个区间 <strong>已排序区间</strong> 和 <strong>未排序区间</strong>。初始已排序区间只有一个元素，每次从未排序区间取出一个元素，在已排序区间找到合适的位置插入，并保证已排序区间数据一直有序。</p><p>如何找到合适的位置插入？依次比较待插入的区间，不符合要求的进行数据迁移，直至找到满足条件的停止迁移。如图：</p><p><img src="https://static001.geekbang.org/resource/image/7b/a6/7b257e179787c633d2bd171a764171a6.jpg" alt=""></p><p>假设要排序的数据是 4,5,6,1,3,2,其中左侧是已排序区间，右侧是未排序区间。</p><p><img src="https://static001.geekbang.org/resource/image/b6/e1/b60f61ec487358ac037bf2b6974d2de1.jpg" alt=""></p><p>整个过程包含两种操作， <strong>元素的比较</strong> 和 <strong>元素的移动</strong>。用到上面说的有序度相关知识，数据移动的个数等于逆序度。</p><p>代码实现：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">insertSort</span><span class="params">(<span class="keyword">int</span>[] data, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> value = data[i];</span><br><span class="line">        <span class="keyword">int</span> j = i - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (; j &gt;= <span class="number">0</span>; j--) &#123;</span><br><span class="line">            <span class="keyword">if</span> (data[j] &gt; value) &#123;</span><br><span class="line">                data[j + <span class="number">1</span>] = data[j];</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        data[j + <span class="number">1</span>] = value;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>特点：</p><ol><li>是原地排序算法</li><li>稳定的排序算法</li><li>最坏时间复杂度 $O(n^2)$，最好时间复杂度 $O(n)$，平均时间复杂度  $O(n^2)$</li></ol><h3 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h3><p>核心思想：每次找到最小的元素放置在已排序区间。</p><p>代码实现：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">selectSort</span><span class="params">(<span class="keyword">int</span>[] data, <span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n &lt;= <span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">int</span> minIndex = i;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; n; j++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (data[j] &lt; data[minIndex]) &#123;</span><br><span class="line">                minIndex = j;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (i != minIndex) &#123;</span><br><span class="line">            <span class="keyword">int</span> temp = data[i];</span><br><span class="line">            data[i] = data[minIndex];</span><br><span class="line">            data[minIndex] = temp;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>特点：</p><ol><li>是原地排序算法</li><li>不是稳定的排序算法</li><li>最好最坏都是 $O(n^2)$</li></ol><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>为了对比三者的时间复杂度，我构造了一个二维数组，作用在于随机创建 200 条 长度为 4000 的数据，用三种排序算法对其进行排序，对比他们的总耗时：</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[][] createRandomData(<span class="keyword">int</span> count, <span class="keyword">int</span> perNum) &#123;</span><br><span class="line">    <span class="keyword">int</span>[][] data = <span class="keyword">new</span> <span class="keyword">int</span>[count][perNum];</span><br><span class="line">    Random random = <span class="keyword">new</span> Random();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; count; j++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; perNum; i++) &#123;</span><br><span class="line">            data[j][i] = (<span class="keyword">int</span>) (random.nextDouble() * <span class="number">1000</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> data;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>结果：</p><p>冒泡排序：3601ms</p><p>选择排序：1998ms</p><p>插入排序：694ms</p><p>数据越庞大，对比效果越明显，冒泡排序多了一个比较交换的操作，时间复杂度会高上一点，插入排序表现尤为出色，因此优先会选插入排序。最后看一下三者比较一览图：</p><p><img src="https://static001.geekbang.org/resource/image/34/50/348604caaf0a1b1d7fee0512822f0e50.jpg" alt=""></p><p>参考自<a href="https://time.geekbang.org/column/126" target="_blank" rel="noopener">极客时间</a><a href="https://time.geekbang.org/column/126" target="_blank" rel="noopener">https://time.geekbang.org/column/126</a>)</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构与算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 进阶 </tag>
+            
+            <tag> 数据结构与算法 </tag>
+            
+            <tag> 平时积累 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>『数据结构与算法』—— 递归</title>
       <link href="/article/452b/"/>
       <url>/article/452b/</url>
@@ -239,9 +266,9 @@
             
             <tag> 项目 </tag>
             
-            <tag> 小程序 </tag>
-            
             <tag> 提高效率 </tag>
+            
+            <tag> 小程序 </tag>
             
         </tags>
       
@@ -314,9 +341,9 @@
       
         <tags>
             
-            <tag> 提高效率 </tag>
-            
             <tag> 工具软件 </tag>
+            
+            <tag> 提高效率 </tag>
             
         </tags>
       
@@ -364,9 +391,9 @@
       
         <tags>
             
-            <tag> 提高效率 </tag>
-            
             <tag> 工具软件 </tag>
+            
+            <tag> 提高效率 </tag>
             
         </tags>
       
@@ -389,9 +416,9 @@
       
         <tags>
             
-            <tag> 提高效率 </tag>
-            
             <tag> 工具软件 </tag>
+            
+            <tag> 提高效率 </tag>
             
         </tags>
       
