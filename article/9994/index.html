@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="下位子" />
+
+
+
+<meta name="description" content="前言距离上次极光征文不知不觉已经过了将近一年的时间，先感谢上次的征文比赛，通过 《我和 Android 推送的时间简史》 这篇文章获奖，这次又厚着脸皮再次参与，因为项目一直很忙，只得利用周末时间准备 demo 素材和写文章，不好之处，多多见谅。">
+<meta name="keywords" content="第三方库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="『技术分享』-- 使用极光 IM 构建聊天功能">
+<meta property="og:url" content="http://xiaweizi.cn/article/9994/index.html">
+<meta property="og:site_name" content="xiaweizi&#39;blog">
+<meta property="og:description" content="前言距离上次极光征文不知不觉已经过了将近一年的时间，先感谢上次的征文比赛，通过 《我和 Android 推送的时间简史》 这篇文章获奖，这次又厚着脸皮再次参与，因为项目一直很忙，只得利用周末时间准备 demo 素材和写文章，不好之处，多多见谅。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4043475-3dd0dcf335cdbc88.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4043475-a53af219038797aa.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4043475-7e5df3865ab51e6b.gif?imageMogr2/auto-orient/strip">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4043475-77639a4f09ce7db6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/4043475-036a2c3f7678d783.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2019-01-20T04:38:58.017Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="『技术分享』-- 使用极光 IM 构建聊天功能">
+<meta name="twitter:description" content="前言距离上次极光征文不知不觉已经过了将近一年的时间，先感谢上次的征文比赛，通过 《我和 Android 推送的时间简史》 这篇文章获奖，这次又厚着脸皮再次参与，因为项目一直很忙，只得利用周末时间准备 demo 素材和写文章，不好之处，多多见谅。">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/4043475-3dd0dcf335cdbc88.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="xiaweizi&#39;blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>『技术分享』-- 使用极光 IM 构建聊天功能 | xiaweizi&#39;blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?d8f1e419497cfa5779f9e99baab1e7af";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">下位子</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/pdf/">书籍</a></li>
+                        
+                            <li><a href="/photos/">相册</a></li>
+                        
+                            <li><a href="/message/">留言板</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1012126908@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/6444811129/profile?topnav=1&wvr=6" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/xiaweizi" title="GitHub"></a>
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/d36586119d8c" title="简书"></a>
+                            
+                                <a class="fa CSDN" href="http://blog.csdn.net/qq_22656383" title="CSDN"></a>
+                            
+                                <a class="fa QQ" href="http://wpa.qq.com/msgrd?v=3&uin=1012126908&site=qq&menu=yes" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataBinding/">DataBinding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-官方/">Google 官方</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/">Kotlin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVVM/">MVVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Material-Design/">Material Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-native/">react native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片缓存/">图片缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工作积累/">工作积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具软件/">工具软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/平时积累/">平时积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能优化/">性能优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/提高效率/">提高效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构与算法/">数据结构与算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/第三方库/">第三方库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自定义-View/">自定义 View</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/进阶/">进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/造轮子/">造轮子</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目/">项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目重构/">项目重构</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://www.wanandroid.com/">玩Android</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/G-Joker/WeaponApp">WeaponApp</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://weaponzhi.online">WeaponZhi</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://coding-dream.github.io">编程之乐</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://txiner.top/">Hundred Blog</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://www.xiaohoutongxue.cn/">xiaoHou</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://www.anlan.club/">anlance</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">下位子</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">下位子</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/pdf/">书籍</a></li>
+                
+                    <li><a href="/photos/">相册</a></li>
+                
+                    <li><a href="/message/">留言板</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1012126908@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/6444811129/profile?topnav=1&wvr=6" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/xiaweizi" title="GitHub"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/d36586119d8c" title="简书"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.net/qq_22656383" title="CSDN"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1012126908&site=qq&menu=yes" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-使用极光 IM 构建聊天功能" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/article/9994/" class="article-date">
+      <time datetime="2019-01-19T12:46:25.000Z" itemprop="datePublished">2019-01-19</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      『技术分享』-- 使用极光 IM 构建聊天功能
+    </h1>
+  
+
+        
+           <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">2,369 字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">9 分</span>
+      </span>
+    </span>
+
+    
+        <span id="busuanzi_container_page_pv">
+          &nbsp; | &nbsp;  本文总阅读量: <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+    
+</div>
+        
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+          <br>
+          <br>
+        
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/第三方库/">第三方库</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>距离上次<a href="https://www.jiguang.cn/" target="_blank" rel="noopener">极光</a>征文不知不觉已经过了将近一年的时间，先感谢上次的征文比赛，通过 <a href="https://www.jianshu.com/p/083d992c3cd1" target="_blank" rel="noopener">《我和 Android 推送的时间简史》</a> 这篇文章获奖，这次又厚着脸皮再次参与，因为项目一直很忙，只得利用周末时间准备 demo 素材和写文章，不好之处，多多见谅。</p>
+<a id="more"></a>
+<p>上一篇文章主要讲述了 我跟 <strong>极光推送</strong> 的关系，以及简单的描述了其集成和使用，作为三个项目都在使用极光推送的我，对其了解也是相当多的，当然坑也踩了不少，不得不再次感谢大侠(极光技术人员)对我的帮助，虽然这一年没有继续接触推送的业务，但是当我遇到困惑依然有问必答，服务态度不容置疑！</p>
+<p>在准备参加征文时就在想应该从哪个角度来写呢，正好之前跟前同事一起写了一个开源项目 <a href="https://github.com/G-Joker/WeaponApp" target="_blank" rel="noopener">WeaponApp</a>, 现在已经有 800+ 的 star 了。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4043475-3dd0dcf335cdbc88.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>里面涉及的技术我就不一一阐述了，感兴趣的话可以自行看一下，里面有一个模块由我单独负责- <strong>IM模块</strong>，因为已经集成了极光推送，考虑到成本和使用，最终选择了极光IM，毕竟是以极光推送的大规模、高并发、稳定的推送为技术基础，并继承这些特性。那这篇文章就以我集成的经历和使用做个介绍，快速的实现具有 IM 功能的 APP。</p>
+<h2 id="展示"><a href="#展示" class="headerlink" title="展示"></a>展示</h2><p>这里只对 IM 模块功能做简单的演示，感兴趣可以点击 <a href="http://xiaweizi.top/joker-1-1.0.apk" target="_blank" rel="noopener">链接</a> 进行下载，如下 gif 图：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4043475-a53af219038797aa.gif?imageMogr2/auto-orient/strip" alt="register.gif"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4043475-7e5df3865ab51e6b.gif?imageMogr2/auto-orient/strip" alt="ceshi.gif"></p>
+<p>基本的聊天功能已经实现，其中包括：</p>
+<ol>
+<li>登录、注册、强踢和退登</li>
+<li>个人信息查看和修改</li>
+<li>查找好友并进行聊天</li>
+<li>群聊</li>
+<li>个人中心展示</li>
+<li>删除会话和清空聊天记录</li>
+</ol>
+<p>后续会根据需要添加新的功能。</p>
+<h2 id="集成"><a href="#集成" class="headerlink" title="集成"></a>集成</h2><p>因为前项已经集成了极光推送服务，很多东西已经不需要重复操作，只需要将 JMessage 相关的组件集成到项目中即可，详情的步骤可直接参考<a href="https://docs.jiguang.cn/jmessage/client/jmessage_android_guide/" target="_blank" rel="noopener">官网</a>。</p>
+<p><strong>1. 导入jmessage jar 包</strong><br><strong>2. 在 AndroidManifest 中添加相应的事件</strong></p>
+<p>没了。。由此可以看出，由推送到 IM 过渡是多么流畅！</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>其实在使用的过程，无非是根据自己的业务需求，到 <a href="https://docs.jiguang.cn/jmessage/client/android_sdk/basic/" target="_blank" rel="noopener">官网</a> 查找 API 来实现自己想要的功能，那我就根据目前项目中有的功能进行介绍。</p>
+<h4 id="注册、登录和退登"><a href="#注册、登录和退登" class="headerlink" title="注册、登录和退登"></a>注册、登录和退登</h4><p>这其实是用户的信息管理，极光 IM 统一用 <code>UserInfo</code> 进行管理，内部包含了用户的大部分信息：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="keyword">long</span> userID;</span><br><span class="line"><span class="keyword">protected</span> String userName;</span><br><span class="line"><span class="keyword">protected</span> String nickname = <span class="string">""</span>;</span><br><span class="line"><span class="keyword">protected</span> String avatarMediaID;</span><br><span class="line"><span class="keyword">protected</span> String birthday = <span class="string">""</span>;</span><br><span class="line"><span class="keyword">protected</span> String signature = <span class="string">""</span>;</span><br><span class="line"><span class="keyword">protected</span> String gender = <span class="string">""</span>;</span><br><span class="line"><span class="keyword">protected</span> String region = <span class="string">""</span>;</span><br><span class="line"><span class="keyword">protected</span> String address = <span class="string">""</span>;</span><br><span class="line"><span class="keyword">protected</span> String appkey = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">protected</span> String notename = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">protected</span> String noteText = <span class="keyword">null</span>;</span><br><span class="line"><span class="keyword">protected</span> <span class="keyword">int</span> mTime;</span><br><span class="line"><span class="keyword">protected</span> Map&lt;String, String&gt; extras = <span class="keyword">new</span> ConcurrentHashMap();</span><br></pre></td></tr></table></figure>
+<p><strong>1. 注册</strong></p>
+<blockquote>
+<p>一开始打算自己写用户服务器，事实上却是由另一位开发者完成了，但是考虑到 IM 的集成，用户数据的迁移和转存过程繁琐，就干脆直接用极光的用户接口，其实内部的数据也确实很详细，还支持自定义字段，完全满足日常需求。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">JMessageClient.register(userName, password, <span class="keyword">new</span> JMessageCallBack() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSuccess</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        registerSuccess(userName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailed</span><span class="params">(<span class="keyword">int</span> status, String desc)</span> </span>&#123;</span><br><span class="line">        registerFailed(desc);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>注册需要用户名和密码，注册成功后通过 <code>setResult</code> 的方法，将账户和密码传回登录页面。</p>
+<p><strong>2. 登录</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">JMessageClient.login(userName, password, <span class="keyword">new</span> JMessageCallBack() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSuccess</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        loginSuccess(userName);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailed</span><span class="params">(<span class="keyword">int</span> status, String desc)</span> </span>&#123;</span><br><span class="line">        loginFailed(desc);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>同注册一样，登录也需要用户名和密码进行登录，如果格式有误会直接触发 <code>onFailed</code> 回调，弹出相应的提示。成功后本地便会保存一个 <code>UserInfo</code> 对象储存用户的信息。</p>
+<p><strong>3. 退登</strong></p>
+<p>极光支持主动退出账号的功能，即：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">JMessageClient.logout();</span><br></pre></td></tr></table></figure>
+<p>直接清除本地保存的用户信息，同样他支持多端同时在线:</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4043475-77639a4f09ce7db6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>如果不打开开关，另一台设备登录，会用 <code>EventBus</code> 发送 <code>LoginStateChangeEvent</code>，告知开发者改账号已在另一台设备登录，并且会携带三种状态：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">case</span> user_password_change:</span><br><span class="line">	forcedExit(<span class="string">"账号密码被修改"</span>);</span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> user_logout:</span><br><span class="line">	forcedExit(<span class="string">"账号在另一台设备登录"</span>);</span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line"><span class="keyword">case</span> user_deleted:</span><br><span class="line">	forcedExit(<span class="string">"账号被删除"</span>);</span><br><span class="line">	<span class="keyword">break</span>;</span><br></pre></td></tr></table></figure>
+<p>根据自己的需要进行处理。</p>
+<h4 id="信息查看和修改"><a href="#信息查看和修改" class="headerlink" title="信息查看和修改"></a>信息查看和修改</h4><p><strong>1. 个人</strong></p>
+<p>自己的用户信息其实是保存在本地的数据库中，通过调用:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mUserInfo = JMessageClient.getMyInfo();</span><br></pre></td></tr></table></figure>
+<p>获取用户信息，之前提过 <code>UserInfo</code> 里面包含了用户的所有数据。与之对应的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">JMessageClient.updateMyInfo(UserInfo.Field.gender, mUserInfo, <span class="keyword">new</span> JMessageCallBack() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onSuccess</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onFailed</span><span class="params">(<span class="keyword">int</span> status, String desc)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这个就是修改自己信息的方法，通过传入 <code>UserInfo.Field</code> 来区分修改属性值。</p>
+<p><strong>2. 他人</strong></p>
+<p>如果需要查看好友的信息，可通过 <code>userName</code> 进行请求查询：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">JMessageClient.getUserInfo(userName, <span class="keyword">new</span> GetUserInfoCallback() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">gotResult</span><span class="params">(<span class="keyword">int</span> status, String desc, UserInfo userInfo)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (status == <span class="number">0</span>) &#123;</span><br><span class="line">            getViewModel().setUserInfo(userInfo);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            getViewModel().setError(desc);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>具体的结果如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/4043475-036a2c3f7678d783.gif?imageMogr2/auto-orient/strip" alt="ceshi.gif"></p>
+<p>如果是个人信息，直接可以修改和退登，如果是他人只能查看并与其进行聊天。</p>
+<h4 id="聊天"><a href="#聊天" class="headerlink" title="聊天"></a>聊天</h4><p>终于到了核心的聊天功能，其实实现起来并不复杂，极光 IM 已经给了丰富的 API 和使用说明，足够完成基本的需求。</p>
+<p><strong>1. 发消息</strong></p>
+<p>发消息，前提是需要构建 <code>Message</code> 对象，以基础文本为例:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> Message message = mConversation.createSendTextMessage(sendContent);</span><br><span class="line">message.setOnSendCompleteCallback(<span class="keyword">new</span> BasicCallback() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">gotResult</span><span class="params">(<span class="keyword">int</span> status, String desc)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (status == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="comment">// 消息发送成功</span></span><br><span class="line">            MobclickAgent.onEvent(getContext().getApplicationContext(), <span class="string">"send_message"</span>, sendContent);</span><br><span class="line">            addSendMessage(message);</span><br><span class="line">            ++curCount;</span><br><span class="line">            setSendContent(<span class="string">""</span>);</span><br><span class="line">            getView().scrollToPosition(items.size() - <span class="number">1</span>);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">// 消息发送失败</span></span><br><span class="line">            Toast.makeText(getContext(), desc, Toast.LENGTH_SHORT).show();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">JMessageClient.sendMessage(message);</span><br></pre></td></tr></table></figure>
+<p>最终通过 <code>JmessageClient.sendMessage(message)</code> 将消息发送出去。</p>
+<p><strong>2. 接收消息</strong></p>
+<p>他这里比较简单粗暴，直接使用 <code>EventBus</code> 进行消息接收的回调。</p>
+<blockquote>
+<p>他 jar 里集成了 EventBus，项目中也有了 EventBus，这一点还是蛮坑的。换想一下，这里也是为了方便接收，不然会有很多相互应用，各种耦合，不过使用过 EventBus 的小伙伴，应该知道，如果维护不好 EventBus 会导致逻辑非常的混乱，维护和拓展异常困难。</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"> * 接收消息事件</span><br><span class="line"> * 目前只支持文字消息，后面再进行优化</span><br><span class="line"> *</span><br><span class="line"> * <span class="meta">@param</span> event 消息事件</span><br><span class="line"> */</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onEventMainThread</span><span class="params">(MessageEvent event)</span> </span>&#123;</span><br><span class="line">    Message message = event.getMessage();</span><br><span class="line">    <span class="keyword">switch</span> (message.getContentType()) &#123;</span><br><span class="line">        <span class="keyword">case</span> text:</span><br><span class="line">            <span class="comment">// 处理文字消息</span></span><br><span class="line">            String userName = ((UserInfo) message.getTargetInfo()).getUserName();</span><br><span class="line">            <span class="keyword">if</span> (TextUtils.equals(userName, mUserName)) &#123;</span><br><span class="line">                <span class="comment">// 当收到的消息是官方消息才进行更新UI</span></span><br><span class="line">                getViewModel().receiveMessage(message);</span><br><span class="line">            &#125;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            LogUtils.i(<span class="string">"office"</span>, message.getFromType());</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>根据 <code>contentType</code> 区分消息实体的类型，并做相应的处理。 在需要接收消息的地方进行事件的注册和取消注册。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">JMessageClient.registerEventReceiver(<span class="keyword">this</span>, <span class="number">200</span>);</span><br><span class="line">JMessageClient.unRegisterEventReceiver(<span class="keyword">this</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>3. 单聊</strong></p>
+<p>这里引入一个 <code>Conversation</code> 概念，当你与他人聊天必然会建立会话，那会话的消息和聊天的对象都会存在这个会话中，那单聊则通过传入 <code>userName</code> 进行联系，由此可见 <code>userName</code> 的唯一性和重要性。</p>
+<p>因为刚进去需要获取历史信息，所以通过 <code>conversion</code> 获取所有的消息，并展示在界面上。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">mConversation = Conversation.createSingleConversation(userName);</span><br><span class="line">JMessageClient.getUserInfo(userName, <span class="keyword">this</span>);</span><br><span class="line"><span class="keyword">if</span> (mConversation == <span class="keyword">null</span>) &#123;</span><br><span class="line">    getView().finish();</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 获取本地所有的消息</span></span><br><span class="line">msgCount = mConversation.getAllMessage().size();</span><br><span class="line">List&lt;Message&gt; messagesFromNewest = mConversation.getMessagesFromNewest(curCount, LIM_COUNT);</span><br><span class="line">curCount = messagesFromNewest.size();</span><br><span class="line"><span class="comment">// 第一条消息是正序的，需要反转一下</span></span><br><span class="line">Collections.reverse(messagesFromNewest);</span><br><span class="line"><span class="keyword">for</span> (Message message : messagesFromNewest) &#123;</span><br><span class="line">    MessageDirect direct = message.getDirect();</span><br><span class="line">    <span class="keyword">if</span> (direct == MessageDirect.send) &#123;</span><br><span class="line">        addSendMessage(message);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        addReceiverMessage(message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>4. 群聊</strong></p>
+<p>群聊与单聊有点类似，不过建立会话的前提参数不是 <code>userName</code>， 而是 <code>groupId</code> 群的唯一标识 ID。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">mConversation = Conversation.createGroupConversation(groupId);</span><br><span class="line"><span class="keyword">if</span> (mConversation == <span class="keyword">null</span>) &#123;</span><br><span class="line">    getView().finish();</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">&#125;</span><br><span class="line">List&lt;Message&gt; messagesFromNewest = mConversation.getMessagesFromNewest(curCount, LIM_COUNT);</span><br><span class="line">curCount = messagesFromNewest.size();</span><br><span class="line">Collections.reverse(messagesFromNewest);</span><br><span class="line"><span class="keyword">for</span> (Message message : messagesFromNewest) &#123;</span><br><span class="line">    MessageDirect direct = message.getDirect();</span><br><span class="line">    <span class="keyword">if</span> (direct == MessageDirect.send) &#123;</span><br><span class="line">        addSendMessage(message);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        addReceiverMessage(message);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>具体的代码很相似，只是创建的过程不一样，不再赘述。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>前段时间王欣、字节跳动等都推出社交软件，不过在微信平台被封杀，这点还是蛮狠的，不过另一方面反映出社交 聊天在各个行业应用的广泛，无论是金融、教育、销售等软件都需要一个 IM 作为用户与用户、用户和平台之间的沟通桥梁，因此作为开发者，还是要多多学习一下 IM 相关的知识。当然自己能独立完成最好，如果没有经历或者暂时能力不够，又或者公司急切需要集成 IM 功能，建议你可以考虑极光 IM 服务，其推送服务做得还是蛮不错的，而且还在不断的维护迭代中，有时间不妨尝试一波吧！</p>
+<p><a href="https://github.com/G-Joker/WeaponApp" target="_blank" rel="noopener">WeaponApp</a><br><a href="http://xiaweizi.top/joker-1-1.0.apk" target="_blank" rel="noopener">APK下载</a></p>
+<p>本文为<a href="https://www.jianshu.com/c/41f9ea6ca9b2" target="_blank" rel="noopener">极光征文</a>参赛文章</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/article/9994/">『技术分享』-- 使用极光 IM 构建聊天功能</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">下位子</a></p>
+        <p><span>发布时间:</span>2019-01-19, 20:46:25</p>
+        <p><span>最后更新:</span>2019-01-20, 12:38:58</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/article/9994/" title="『技术分享』-- 使用极光 IM 构建聊天功能">http://xiaweizi.cn/article/9994/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/article/9994/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/article/6cfc/">
+                    『数据结构与算法』—— 排序-冒泡&amp;选择&amp;插入
+                </a>
+            </div>
+        
+    </nav>
+
+  
+  
+    
+    <div style="padding: 0; margin: 20px auto; width: 90%; text-align: center;">
+      <br>
+      <div>赏我 e(=2.72) 元咖啡钱吧，您的支持将鼓励我继续创作！</div>
+      <br>
+      <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+        <div class="btn btn-pay">打赏支持</div>
+      </button>
+      <br>
+      <br>
+      <div id="QR" style="display: none;">
+        
+          <div id="wechat" style="display: inline-block;">
+            <img id="wechat_qr" src="/img/wechat-reward-qr.png" alt="下位子 WeChat Pay"/>
+            <p>微信打赏</p>
+          </div>
+        
+        
+          <div id="alipay" style="display: inline-block">
+            <img id="alipay_qr" src="/img/alipay-reward-qr.png" alt="下位子 Alipay"/>
+            <p>支付宝打赏</p>
+          </div>
+        
+        <br>
+        <br>
+      </div>
+    </div>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#展示"><span class="toc-number">2.</span> <span class="toc-text">展示</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#集成"><span class="toc-number">3.</span> <span class="toc-text">集成</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-number">4.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#注册、登录和退登"><span class="toc-number">4.0.1.</span> <span class="toc-text">注册、登录和退登</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#信息查看和修改"><span class="toc-number">4.0.2.</span> <span class="toc-text">信息查看和修改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#聊天"><span class="toc-number">4.0.3.</span> <span class="toc-text">聊天</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"『技术分享』-- 使用极光 IM 构建聊天功能　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+        
+      <section class="livere" id="comments">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zNDM3Ny8xMDkxNA==">
+    <script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+    </script>
+    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/article/6cfc/" title="下一篇: 『数据结构与算法』—— 排序-冒泡&amp;选择&amp;插入">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/article/9994/">『技术分享』-- 使用极光 IM 构建聊天功能</a></li><li class="post-list-item"><a class="post-list-link" href="/article/6cfc/">『数据结构与算法』—— 排序-冒泡&选择&插入</a></li><li class="post-list-item"><a class="post-list-link" href="/article/452b/">『数据结构与算法』—— 递归</a></li><li class="post-list-item"><a class="post-list-link" href="/article/b8de/">『数据结构与算法』—— 队列</a></li><li class="post-list-item"><a class="post-list-link" href="/article/2e31/">『数据结构与算法』—— 栈</a></li><li class="post-list-item"><a class="post-list-link" href="/article/6bf/">『数据结构与算法』—— 链表</a></li><li class="post-list-item"><a class="post-list-link" href="/article/af0f/">『数据结构与算法』—— 数组</a></li><li class="post-list-item"><a class="post-list-link" href="/article/6b9d/">『数据结构与算法』—— 复杂度</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thread-pool/">『进阶之路』—— 线程池</a></li><li class="post-list-item"><a class="post-list-link" href="/article/68ab/">『技术分享』—— 我的第一个 RN 项目-趣闻</a></li><li class="post-list-item"><a class="post-list-link" href="/article/c607/">『技术分享』—— 我的第一个微信小程序-趣闻</a></li><li class="post-list-item"><a class="post-list-link" href="/article/496f/">『Android Tips』—— 模拟手势操作</a></li><li class="post-list-item"><a class="post-list-link" href="/article/18a/">『自定义View实战』—— 客服好评View</a></li><li class="post-list-item"><a class="post-list-link" href="/article/licecap/">『程序员必备软件』—— 短小精悍的GIF录制软件LICEcap</a></li><li class="post-list-item"><a class="post-list-link" href="/article/5d77/">『自定义View实战』—— 仿ios图标下载view</a></li><li class="post-list-item"><a class="post-list-link" href="/article/3cfa/">程序员必备软件(持续更新中...)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/typora/">『程序员必备软件』—— 编辑预览于一身的 Typora</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7b67faab/">读书笔记(持续更新...)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/31905/">hexo 博客小功能添加-评论、相册、字数统计...</a></li><li class="post-list-item"><a class="post-list-link" href="/article/39434/">『技术分享』— 个人博客全新上线(阿里域名+GitPages+hexo+Yelee)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/34201/">Android 冷兵器 之 tools</a></li><li class="post-list-item"><a class="post-list-link" href="/article/25968/">『自定义View实战』—— 银行种类选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/article/46688/">我和极光的那些事---我和-Android-推送的时间简史</a></li><li class="post-list-item"><a class="post-list-link" href="/article/18215/">Python-自学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/6515/">Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！</a></li><li class="post-list-item"><a class="post-list-link" href="/article/13147/">『自定义View实战』—— 跑马灯</a></li><li class="post-list-item"><a class="post-list-link" href="/article/31642/">Android-分享会：Material-Design-在-Android-中的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/article/52360/">Git-命令小结</a></li><li class="post-list-item"><a class="post-list-link" href="/article/13823/">使用Kotlin重构项目</a></li><li class="post-list-item"><a class="post-list-link" href="/article/40024/">Kotlin学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/41851/">MVVM之DataBinding入门</a></li><li class="post-list-item"><a class="post-list-link" href="/article/35908/">『自定义View实战』—— 实现图片的圆角效果</a></li><li class="post-list-item"><a class="post-list-link" href="/article/9202/">Android-性能优化小结</a></li><li class="post-list-item"><a class="post-list-link" href="/article/58454/">如何做个依赖库让别人依赖使用</a></li><li class="post-list-item"><a class="post-list-link" href="/article/64590/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/article/64591/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7691/">基于MaterialDesign设计风格的妹纸app的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/62207/">快毕业了，撸一个小项目(新闻段子客户端)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/2954/">『Android Tips』-- 基于LitePal操作数据库的学生管理系统的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/276/">『Android Tips』-- 基于环信的仿QQ即时通讯的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7455/">高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7798/">简单粗暴----RecyclerView</a></li><li class="post-list-item"><a class="post-list-link" href="/article/23091/">设计模式之建造者模式学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/17984/">一个菜鸟的图片三级缓存笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_15/">『Thinking in Java 读书笔记』—— 15-泛型</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_14/">『Thinking in Java 读书笔记』—— 14-类型信息</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_13/">『Thinking in Java 读书笔记』—— 13-字符串</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_12/">『Thinking in Java 读书笔记』—— 12-通过异常处理错误</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_11/">『Thinking in Java 读书笔记』—— 11-持有对象</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_10/">『Thinking in Java 读书笔记』—— 10-内部类</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_9/">『Thinking in Java 读书笔记』—— 9-接口</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_8/">『Thinking in Java 读书笔记』—— 8-多态</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_7/">『Thinking in Java 读书笔记』—— 7-复用类</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_6/">『Thinking in Java 读书笔记』—— 6-访问权限控制</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_5/">『Thinking in Java 读书笔记』—— 5-初始化与清理</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_4/">『Thinking in Java 读书笔记』—— 4-控制执行流程</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_3/">『Thinking in Java 读书笔记』—— 3-操作符</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_2/">『Thinking in Java 读书笔记』—— 2-一切都是对象</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_1/">『Thinking in Java 读书笔记』—— 1-对象导论</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018-2019 下位子
+                <br></br>
+                <br>苏ICP备18034197号</br>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_uv">
+                      您是第 <span id="busuanzi_value_site_uv"></span> 位小伙伴
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+                    </span>
+                
+                <span>| </span>
+                <span class="post-count">  已经写了 100.2k 字啦</span>
+            </div>
+        
+        </br>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+        <script>
+            var now = new Date(); 
+            function createtime(){ var grt= new Date("02/14/2018 12:49:00");//此处修改你的建站时间或者网站上线时间 
+            now.setTime(now.getTime()+250); 
+            days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+            hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+            if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+            mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+            seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+            snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+            document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+            document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; } 
+            setInterval("createtime()",250);
+        </script>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+    </div>
+</footer>
+    </div>
+    
+    <script src="/js/GithubRepoWidget.js"></script>
+
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#e040fb", "#7c4dff", "#3d5afe", "#0288d1", "#0091ea", "#00e5ff", "#1de9b6", "#14e715", "#14e715", "#76ff03", "#ffea00", "#ff3d00", "#ff2d6f"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 6;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-113850534-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+             github: ".github-widget a", 
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "产品提需求啦！！" + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "又要改bug了..." + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+	<script type="text/javascript" src="/resources/love.js"></script>
+	<script type="text/javascript" src="/resources/float.js"></script>
+	<script type="text/javascript" src="/resources/typewriter.js"></script>
+	<script type="text/javascript" color=0,104,183 opacity=1 zindex=-1 count=50 src="/resources/particle.js"></script>
+
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false},"react":{"opacityDefault":0.5,"opacityOnHover":0.2}});</script></body>
+</html>
