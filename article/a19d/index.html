@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="下位子" />
+
+
+
+<meta name="description" content="平时 Android 开发中总会遇到奇葩的功能或者需求，这里做个记录和积累，以便后面开发过程中遇到类似的问题，可以快速的解决。Android tips  开篇Shortcuts 功能跟随着 Android7.1 Nougat 一起诞生，其主要目在于用户可以定义一些常用的操作路径，以快捷方式的形式存在，这些快捷方式展示在可以支持的设备上，帮助用户快速启动常用或者推荐的页面和行为。 最近也是有 Sh">
+<meta name="keywords" content="工作积累,工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="『Android Tips』—— Shortcuts 快捷方式">
+<meta property="og:url" content="http://xiaweizi.cn/article/a19d/index.html">
+<meta property="og:site_name" content="xiaweizi&#39;blog">
+<meta property="og:description" content="平时 Android 开发中总会遇到奇葩的功能或者需求，这里做个记录和积累，以便后面开发过程中遇到类似的问题，可以快速的解决。Android tips  开篇Shortcuts 功能跟随着 Android7.1 Nougat 一起诞生，其主要目在于用户可以定义一些常用的操作路径，以快捷方式的形式存在，这些快捷方式展示在可以支持的设备上，帮助用户快速启动常用或者推荐的页面和行为。 最近也是有 Sh">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="http://xiaweizi.top/2019-05-11-063929.png">
+<meta property="og:image" content="http://xiaweizi.top/2019-05-11-064004.png">
+<meta property="og:image" content="http://xiaweizi.top/2019-05-11-064241.gif">
+<meta property="og:image" content="http://xiaweizi.top/2019-05-11-083019.png">
+<meta property="og:image" content="http://xiaweizi.top/2019-05-11-070214.gif">
+<meta property="og:image" content="http://xiaweizi.top/2019-05-11-073049.gif">
+<meta property="og:image" content="http://xiaweizi.top/2019-05-11-073908.gif">
+<meta property="og:image" content="http://xiaweizi.top/2019-05-11-080231.gif">
+<meta property="og:image" content="http://xiaweizi.top/2019-05-11-081929.gif">
+<meta property="og:image" content="http://xiaweizi.top/2019-05-11-081940.gif">
+<meta property="og:updated_time" content="2019-05-14T09:51:23.482Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="『Android Tips』—— Shortcuts 快捷方式">
+<meta name="twitter:description" content="平时 Android 开发中总会遇到奇葩的功能或者需求，这里做个记录和积累，以便后面开发过程中遇到类似的问题，可以快速的解决。Android tips  开篇Shortcuts 功能跟随着 Android7.1 Nougat 一起诞生，其主要目在于用户可以定义一些常用的操作路径，以快捷方式的形式存在，这些快捷方式展示在可以支持的设备上，帮助用户快速启动常用或者推荐的页面和行为。 最近也是有 Sh">
+<meta name="twitter:image" content="http://xiaweizi.top/2019-05-11-063929.png">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="xiaweizi&#39;blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>『Android Tips』—— Shortcuts 快捷方式 | xiaweizi&#39;blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?d8f1e419497cfa5779f9e99baab1e7af";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">下位子</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/pdf/">书籍</a></li>
+                        
+                            <li><a href="/photos/">相册</a></li>
+                        
+                            <li><a href="/message/">留言板</a></li>
+                        
+                            <li><a href="/resume/">简历</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1012126908@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/6444811129/profile?topnav=1&wvr=6" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/xiaweizi" title="GitHub"></a>
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/d36586119d8c" title="简书"></a>
+                            
+                                <a class="fa CSDN" href="http://blog.csdn.net/qq_22656383" title="CSDN"></a>
+                            
+                                <a class="fa QQ" href="http://wpa.qq.com/msgrd?v=3&uin=1012126908&site=qq&menu=yes" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataBinding/">DataBinding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-官方/">Google 官方</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/">Kotlin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVVM/">MVVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Material-Design/">Material Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-native/">react native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片缓存/">图片缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工作积累/">工作积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具软件/">工具软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/平时积累/">平时积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能优化/">性能优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/提高效率/">提高效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构与算法/">数据结构与算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/第三方库/">第三方库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自定义-View/">自定义 View</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/进阶/">进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/造轮子/">造轮子</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目/">项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目重构/">项目重构</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://www.wanandroid.com/">玩Android</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/G-Joker/WeaponApp">WeaponApp</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://weaponzhi.online">WeaponZhi</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://coding-dream.github.io">编程之乐</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://txiner.top/">Hundred Blog</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://www.xiaohoutongxue.cn/">xiaoHou</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://www.anlan.club/">anlance</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">下位子</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">下位子</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/pdf/">书籍</a></li>
+                
+                    <li><a href="/photos/">相册</a></li>
+                
+                    <li><a href="/message/">留言板</a></li>
+                
+                    <li><a href="/resume/">简历</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1012126908@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/6444811129/profile?topnav=1&wvr=6" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/xiaweizi" title="GitHub"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/d36586119d8c" title="简书"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.net/qq_22656383" title="CSDN"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1012126908&site=qq&menu=yes" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-『Android Tips』-- Shortcuts 快捷方式" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/article/a19d/" class="article-date">
+      <time datetime="2019-05-14T11:11:12.000Z" itemprop="datePublished">2019-05-14</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      『Android Tips』—— Shortcuts 快捷方式
+    </h1>
+  
+
+        
+           <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">4,855 字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">19 分</span>
+      </span>
+    </span>
+
+    
+        <span id="busuanzi_container_page_pv">
+          &nbsp; | &nbsp;  本文总阅读量: <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+    
+</div>
+        
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+          <br>
+          <br>
+        
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Android-tips/">Android tips</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工作积累/">工作积累</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工具/">工具</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <blockquote>
+<p>平时 <code>Android</code> 开发中总会遇到奇葩的功能或者需求，这里做个记录和积累，以便后面开发过程中遇到类似的问题，可以快速的解决。<a href="http://xiaweizi.cn/categories/Android-tips/">Android tips</a></p>
+</blockquote>
+<h2 id="开篇"><a href="#开篇" class="headerlink" title="开篇"></a>开篇</h2><p><code>Shortcuts</code> 功能跟随着 Android7.1 Nougat 一起诞生，其主要目在于用户可以定义一些常用的操作路径，以快捷方式的形式存在，这些快捷方式展示在可以支持的设备上，帮助用户快速启动常用或者推荐的页面和行为。</p>
+<p>最近也是有 Shortcut 相关的需求需要开发，特此进行了总结，希望可以帮助到大家。<a href="https://github.com/xiaweizi/ShortcutsDemo" target="_blank" rel="noopener">ShortcutsDemo</a></p>
+<a id="more"></a>
+<h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><p>快捷方式一般是以两种方式存在：</p>
+<p>一种通过 <strong>长按</strong> 应用 icon，此时会弹出列表弹窗，里面展示需要操作的路径，对于没有配置快捷方式的应用，一般只会展示分享或者应用信息的入口(不同手机可能展示不一样)。如果该应用配置了快捷方式，那么在列表中则会展示对应的快捷方式入口。</p>
+<p><img src="http://xiaweizi.top/2019-05-11-063929.png" alt="没有配置"></p>
+<p><img src="http://xiaweizi.top/2019-05-11-064004.png" alt="配置的"></p>
+<p>如上图所示，配置和没有配置快捷方式的区别就在于，列表中是否配置自定义的快捷方式入口。</p>
+<p>另一种则以桌面快捷方式的形式存在，同一种行为可以存在多个相同的桌面快捷方式。</p>
+<p><img src="http://xiaweizi.top/2019-05-11-064241.gif" alt="pinedShow"></p>
+<p>如上图，对于 <strong>Chrome-打开新的标签页</strong> 这种行为可以有多个相同的桌面快捷方式。</p>
+<h3 id="Shortcuts-类型"><a href="#Shortcuts-类型" class="headerlink" title="Shortcuts 类型"></a>Shortcuts 类型</h3><p>每个快捷方式都可以携带一个或多个 intent，当用户点击快捷方式时，每个 intent 都会触发应用中对应的操作，一般快捷方式的创建类型取决于你具体快捷方式存在的形态和你想赋予他什么样的行为。可以以下面的例子作为参考：</p>
+<ul>
+<li>在天气应用中，想查看最近几天天气的趋势</li>
+<li>在电子邮件应用中，想创建新的电子邮件</li>
+<li>在地图应用中，定位一个具体的位置</li>
+<li>在聊天应用中，向指定好友发送信息</li>
+<li>在媒体应用中，播放电视节目的下一集</li>
+<li>在游戏应用中，加载游戏最后一个保存的时间点</li>
+</ul>
+<p>… …</p>
+<p>你可以为你的应用发布以下类型的快捷方式‘</p>
+<ul>
+<li><strong>静态的快捷方式：</strong>  其直接会打包到 apk 或 apk bundle 中，安装完应用便存在快捷方式入口。</li>
+<li><strong>动态的快捷方式：</strong> 只有在应用运行时才会创建，可以随时的更新、添加和删除对应的快捷方式。</li>
+<li><strong>桌面快捷方式：</strong> 必须在用户授权的情况下，可以主动的添加快捷方式到桌面，同样可以拷贝动态和静态的快捷方式到桌面。</li>
+</ul>
+<h3 id="Shortcuts-限制条件"><a href="#Shortcuts-限制条件" class="headerlink" title="Shortcuts 限制条件"></a>Shortcuts 限制条件</h3><p>虽然对于一个应用程序一般可以创建五个快捷方式，其中包括静态和动态的，但是但多数的设备上只能展示 <strong>四个</strong>。</p>
+<p>但是桌面快捷方式是不做限制的，不过桌面快捷方式非用户主动删除的话，是没法移除的，只能通过禁用的方式让该桌面快捷方式失效。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>快捷方式可以帮助用户快速访问常用的路径和页面，从而为用户提供特定类型的内容。代码以上传至 <a href="https://github.com/xiaweizi/ShortcutsDemo" target="_blank" rel="noopener">ShortcutsDemo</a></p>
+<h3 id="Shortcuts-类型选择"><a href="#Shortcuts-类型选择" class="headerlink" title="Shortcuts 类型选择"></a>Shortcuts 类型选择</h3><p>那该如何选择快捷方式类型，这取决你的快捷方式是应用驱动还是用户驱动。虽然静态快捷方式意图不可更改，动态的可更改，但是这两种都是属于应用驱动。如果用户想自定义想要的意图，通过桌面快捷方式形式的展现，那这就是用户驱动。</p>
+<p>怎么理解呢？用简书作为例子进行讲解：</p>
+<p><img src="http://xiaweizi.top/2019-05-11-083019.png" alt="image-20190511163016540"></p>
+<ul>
+<li><p><strong>静态快捷方式：</strong> 这种最适合那种在整个程序的生命周期中，意图不会改变,始完成整同一种行为。鉴于程序一般只能显示四个快捷方式，那静态的快捷方式一般对于那种比较常见的行为非常有用和有必要。</p>
+<p>例如上图简书中，像「搜索」入口就比较常见，不需要传递参数或传递的参数不会改变，那这种就建议使用静态快捷方式。</p>
+</li>
+<li><p><strong>动态快捷方式：</strong> 这种一般对意图较为敏感的操作。意图可能在应用运行中发生改变，需要更新快捷方式。</p>
+<p>例如简书入口中的 「我的公开文章」，因为多账号的原因，可能切换账号，那跳转的页面所携带的参数就会改变，快捷方式就需要更新，这种就需要使用静态快捷方式。</p>
+</li>
+<li><p><strong>桌面快捷方式：</strong> 这种允许用户自定义跳转意图。</p>
+<p>例如简书支持将关注的人创建快捷方式到桌面，下次直接可以访问该人的动态信息，这种完全是用户自发的创建，所以使用桌面快捷方式。</p>
+</li>
+</ul>
+<h3 id="Shortcuts-类型创建"><a href="#Shortcuts-类型创建" class="headerlink" title="Shortcuts 类型创建"></a>Shortcuts 类型创建</h3><p>有了上述类型的具体描述，下面针对这三种快捷方式的创建进行例子介绍。</p>
+<h4 id="创建静态快捷方式"><a href="#创建静态快捷方式" class="headerlink" title="创建静态快捷方式"></a>创建静态快捷方式</h4><p>静态快捷方式提供应用程序内的通用跳转，这些一般在整个程序的生命周期内是保持不变的。</p>
+<p>通过以下步骤完成静态快捷方式的创建：</p>
+<ol>
+<li><p>在 <code>AndroidManifest.xml</code> 中找到配置 <code>android.intent.action.MAIN</code> 和 <code>android.intent.category.LAUNCHER</code> 的 <code>Activity</code>。</p>
+</li>
+<li><p>添加 <code>&lt;meta-data&gt;</code> 元素到 Activity 中</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">activity</span> <span class="attr">android:name</span>=<span class="string">".MainActivity"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">intent-filter</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">action</span> <span class="attr">android:name</span>=<span class="string">"android.intent.action.MAIN"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">category</span> <span class="attr">android:name</span>=<span class="string">"android.intent.category.LAUNCHER"</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">intent-filter</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">meta-data</span></span></span><br><span class="line"><span class="tag">             <span class="attr">android:name</span>=<span class="string">"android.app.shortcuts"</span></span></span><br><span class="line"><span class="tag">             <span class="attr">android:resource</span>=<span class="string">"@xml/shortcuts"</span> /&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">activity</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建新的资源文件：<code>res/xml/shortcuts.xml</code></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span><br><span class="line"><span class="tag">&lt;<span class="name">shortcuts</span> <span class="attr">xmlns:android</span>=<span class="string">"http://schemas.android.com/apk/res/android"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">shortcut</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:enabled</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:icon</span>=<span class="string">"@drawable/add"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:shortcutDisabledMessage</span>=<span class="string">"@string/static_disabled_message"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:shortcutId</span>=<span class="string">"staticId"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:shortcutLongLabel</span>=<span class="string">"@string/static_shortcut_long_label"</span></span></span><br><span class="line"><span class="tag">        <span class="attr">android:shortcutShortLabel</span>=<span class="string">"@string/static_shortcut_short_label"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">intent</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:action</span>=<span class="string">"android.intent.action.VIEW"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:data</span>=<span class="string">"content://xiaweizi.com/fromStaticShortcut"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:targetClass</span>=<span class="string">"com.example.xiaweizi.shortcutsdemo.TestActivity"</span></span></span><br><span class="line"><span class="tag">            <span class="attr">android:targetPackage</span>=<span class="string">"com.example.xiaweizi.shortcutsdemo"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">categories</span> <span class="attr">android:name</span>=<span class="string">"android.shortcut.conversation"</span> /&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">shortcut</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">shortcuts</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>具体参数配置说明如下：</p>
+<table>
+<thead>
+<tr>
+<th>标签名称</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>android:shortcutId</td>
+<td>shortcut 的唯一标识，更新删除都需要他最为关键字</td>
+</tr>
+<tr>
+<td>android:shortcutShortLabel</td>
+<td>描述快捷方式的简明短语，如果可能尽可能控制为 10 个字符</td>
+</tr>
+<tr>
+<td>android:shortcutLongLabel</td>
+<td>描述快捷方式的扩展短语，如果空间足够会显示此值，尽可能控制在 25 个字符</td>
+</tr>
+<tr>
+<td>android:shortcutDisabledMessage</td>
+<td>如果桌面快捷方式被禁用，点击会弹出此提示内容</td>
+</tr>
+<tr>
+<td>android:enabled</td>
+<td>控制桌面快捷方式是否被禁用</td>
+</tr>
+<tr>
+<td>android:icon</td>
+<td>快捷方式旁边的图标</td>
+</tr>
+<tr>
+<td>android:action</td>
+<td>intent 跳转的 action</td>
+</tr>
+<tr>
+<td>android:targetPackage</td>
+<td>跳转页面的包名</td>
+</tr>
+<tr>
+<td>android:targetClass</td>
+<td>跳转页面的完整路径</td>
+</tr>
+</tbody>
+</table>
+<ol>
+<li><p>如果有数据的传递，要有对应的解析</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (getIntent().getData() != <span class="keyword">null</span> &amp;&amp; TextUtils.equals(getIntent().getAction(), Intent.ACTION_VIEW)) &#123;</span><br><span class="line">  Uri uri = getIntent().getData();</span><br><span class="line">  List&lt;String&gt; pathSegments = uri.getPathSegments();</span><br><span class="line">  <span class="keyword">if</span> (pathSegments != <span class="keyword">null</span> &amp;&amp; pathSegments.size() &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    tvTest.setText(pathSegments.get(<span class="number">0</span>));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>最终的运行效果：</strong></p>
+<p><img src="http://xiaweizi.top/2019-05-11-070214.gif" alt="staticShortcut"></p>
+<h4 id="创建动态快捷方式"><a href="#创建动态快捷方式" class="headerlink" title="创建动态快捷方式"></a>创建动态快捷方式</h4><p>动态快捷方式提供向指向应用内特定的跳转或数据传递，这些跳转和数据可能会在应用执行中发生变化。</p>
+<p>此时需要借助 <code>ShortcutManager</code> 提供的 API 来完成动态快捷方式的相应操作：</p>
+<ul>
+<li><strong>创建：</strong> 使用 <code>setDynamicShortcuts()</code> 重新定义动态快捷方式的完整列表</li>
+<li><strong>添加：</strong> 使用 <code>addDynamicShortcut()</code> 来扩充现有的动态快捷方式列表</li>
+<li><strong>更新：</strong> 使用 <code>updateShortcuts()</code> 方法进行更新现有的动态快捷方式列表</li>
+<li><strong>删除：</strong> 使用 <code>removeDynamicShortcuts()</code> 移除一组动态快捷方式，或者使用 <code>removeAllDynamicShortcuts()</code> 移除所有动态快捷方式</li>
+</ul>
+<p>以创建为例，其他差不多，自行尝试，具体的操作可参考下面的代码：</p>
+<ol>
+<li><p>创建 <code>ShortcutInfo</code> 对象</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@TargetApi</span>(Build.VERSION_CODES.N_MR1)</span><br><span class="line"><span class="function"><span class="keyword">private</span> ShortcutInfo <span class="title">createShortcutInfo1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> ShortcutInfo.Builder(<span class="keyword">this</span>, ID_DYNAMIC_1)</span><br><span class="line">    .setShortLabel(getString(R.string.dynamic_shortcut_short_label1))</span><br><span class="line">    .setLongLabel(getString(R.string.dynamic_shortcut_long_label1))</span><br><span class="line">    .setIcon(Icon.createWithResource(<span class="keyword">this</span>, R.drawable.add))</span><br><span class="line">    .setIntent(<span class="keyword">new</span> Intent(Intent.ACTION_VIEW, Uri.parse(<span class="string">"http://xiaweizi.cn/"</span>)))</span><br><span class="line">    .build();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>调用  <code>setDynamicShortcuts()</code> 覆盖掉之前的，重新设置新的动态快捷方式列表</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">setDynamicShortcuts</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (android.os.Build.VERSION.SDK_INT &gt;= android.os.Build.VERSION_CODES.N_MR1) &#123;</span><br><span class="line">    ShortcutManager shortcutManager = getSystemService(ShortcutManager.class);</span><br><span class="line">    List&lt;ShortcutInfo&gt; shortcutInfo = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    shortcutInfo.add(createShortcutInfo1());</span><br><span class="line">    shortcutInfo.add(createShortcutInfo2());</span><br><span class="line">    <span class="keyword">if</span> (shortcutManager != <span class="keyword">null</span>) &#123;</span><br><span class="line">      shortcutManager.setDynamicShortcuts(shortcutInfo);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>可以配置 label 的字体颜色</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@TargetApi</span>(Build.VERSION_CODES.N_MR1)</span><br><span class="line"><span class="function"><span class="keyword">private</span> ShortcutInfo <span class="title">createShortcutInfo2</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, TestActivity.class);</span><br><span class="line">  intent.setAction(Intent.ACTION_VIEW);</span><br><span class="line">  intent.putExtra(<span class="string">"key"</span>, <span class="string">"fromDynamicShortcut"</span>);</span><br><span class="line">  ForegroundColorSpan colorSpan = <span class="keyword">new</span> ForegroundColorSpan(Color.BLUE);</span><br><span class="line">  String label = getResources().getString(R.string.dynamic_shortcut_short_label2);</span><br><span class="line">  SpannableStringBuilder colouredLabel = <span class="keyword">new</span> SpannableStringBuilder(label);</span><br><span class="line">  colouredLabel.setSpan(colorSpan, <span class="number">0</span>, label.length(), Spanned.SPAN_INCLUSIVE_INCLUSIVE);</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> ShortcutInfo.Builder(<span class="keyword">this</span>, ID_DYNAMIC_2)</span><br><span class="line">    .setShortLabel(colouredLabel)</span><br><span class="line">    .setLongLabel(getString(R.string.dynamic_shortcut_long_label2))</span><br><span class="line">    .setIcon(Icon.createWithResource(<span class="keyword">this</span>, R.drawable.link))</span><br><span class="line">    .setIntent(intent)</span><br><span class="line">    .build();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<p><strong>最终的运行效果：</strong></p>
+<p><img src="http://xiaweizi.top/2019-05-11-073049.gif" alt="dynamicShortcut"></p>
+<h4 id="创建桌面快捷方式"><a href="#创建桌面快捷方式" class="headerlink" title="创建桌面快捷方式"></a>创建桌面快捷方式</h4><p>在 Android 8.0（API26）或者更高的版本上，可以创建桌面快捷方式。与静态和动态快捷方式不同，桌面快捷方式支持在设备上单独的 icon 展示。</p>
+<p>如果想创建桌面快捷方式，按照以下步骤进行完成：</p>
+<ol>
+<li>使用 <code>isRequestPinShortcutSupported()</code> 来验证设备是否支持应用创建桌面快捷方式</li>
+<li>根据快捷方式是否已经存在，用下面两种方式之一来创建 <code>ShortcutInfo</code> 对象：<ol>
+<li>如果快捷方式已经存在，请创建仅包含现有快捷方式 id 的 <code>ShortcutInfo</code> 对象，系统自动查找并带上与快捷方式有关的所有相关数据</li>
+<li>如果要固定新的快捷方式，请创建一个 <code>ShortcutInfo</code> 对象，其中包含新的快捷方式 id、意图和短标签</li>
+</ol>
+</li>
+<li>尝试通过调用 <code>requestPinShortcut()</code> 将快捷方式固定到设备桌面上，在此过程中，可以传入 <code>pendingIntent</code> 对象，该对象仅在快捷方式成功固定时告知应用。</li>
+</ol>
+<p>具体的代码可参考下面：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">createPinnedShortcuts</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (android.os.Build.VERSION.SDK_INT &gt;= android.os.Build.VERSION_CODES.O) &#123;</span><br><span class="line">    ShortcutManager shortcutManager = getSystemService(ShortcutManager.class);</span><br><span class="line">    <span class="keyword">if</span> (shortcutManager != <span class="keyword">null</span> &amp;&amp; shortcutManager.isRequestPinShortcutSupported()) &#123;</span><br><span class="line">      Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, TestActivity.class);</span><br><span class="line">      intent.setAction(Intent.ACTION_VIEW);</span><br><span class="line">      intent.putExtra(<span class="string">"key"</span>, <span class="string">"fromPinnedShortcut"</span>);</span><br><span class="line">      ShortcutInfo pinShortcutInfo = <span class="keyword">new</span> ShortcutInfo.Builder(<span class="keyword">this</span>, <span class="string">"my-shortcut"</span>)</span><br><span class="line">        .setShortLabel(getString(R.string.pinned_shortcut_short_label2))</span><br><span class="line">        .setLongLabel(getString(R.string.pinned_shortcut_long_label2))</span><br><span class="line">        .setIcon(Icon.createWithResource(<span class="keyword">this</span>, R.drawable.add))</span><br><span class="line">        .setIntent(intent)</span><br><span class="line">        .build();</span><br><span class="line">      Intent pinnedShortcutCallbackIntent = shortcutManager.createShortcutResultIntent(pinShortcutInfo);</span><br><span class="line">      PendingIntent successCallback = PendingIntent.getBroadcast(<span class="keyword">this</span>, <span class="number">0</span>,</span><br><span class="line">                                                                 pinnedShortcutCallbackIntent, <span class="number">0</span>);</span><br><span class="line">      <span class="keyword">boolean</span> b = shortcutManager.requestPinShortcut(pinShortcutInfo, successCallback.getIntentSender());</span><br><span class="line">      Utils.showToast(<span class="keyword">this</span>, <span class="string">"set pinned shortcuts "</span> + (b ? <span class="string">"success"</span> : <span class="string">"failed"</span>) + <span class="string">"!"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>最终运行效果：</strong></p>
+<p><img src="http://xiaweizi.top/2019-05-11-073908.gif" alt="pinnedShortcut"></p>
+<p>好了，基础简单的使用就介绍到这了，相信对 Shortcuts 的使用场景和具体实现都有一定的了解了，接下来开始介绍进阶的使用。</p>
+<h3 id="Shortcuts-进阶使用"><a href="#Shortcuts-进阶使用" class="headerlink" title="Shortcuts 进阶使用"></a>Shortcuts 进阶使用</h3><p>快捷方式创建完成后，可能还需要对其进行管理，比如动态更新或者禁用某些快捷方式，此时就需要了解一些进阶的使用了。</p>
+<h4 id="移除-Shortcut"><a href="#移除-Shortcut" class="headerlink" title="移除 Shortcut"></a>移除 Shortcut</h4><p>对于 <strong>静态快捷方式</strong> 而言，其在一开始就打包到了 apk 或者 apk bundle 中，是不允许对其进行更改的，除非发布新的版本覆盖掉之前的快捷方式，不然会一直存在。</p>
+<p>对于 <strong>动态快捷方式</strong> ，既然可以在代码中进行创建，同样也可以在代码中进行移除，这个之前也介绍过。</p>
+<p>而对于 <strong>桌面快捷方式</strong>，它直接展示在桌面上，始终可见，仅在以下情况才能删除桌面快捷方式。</p>
+<ul>
+<li>用户主动移除</li>
+<li>卸载与快捷方式的应用</li>
+<li>用户在应用信息中，清除全部的缓存数据</li>
+</ul>
+<h4 id="Shortcut-展示顺序"><a href="#Shortcut-展示顺序" class="headerlink" title="Shortcut 展示顺序"></a>Shortcut 展示顺序</h4><p>对于一个应用上所有的快捷方式，展示的规则按照以下顺序：</p>
+<ol>
+<li><strong>静态快捷方式：</strong> <code>isDeclaredInManifest()</code> 放回 true 的快捷方式</li>
+<li><strong>动态快捷方式</strong>：<code>ShortcutInfo.isDynamic()</code> 返回 true 的快捷方式</li>
+</ol>
+<p>在每种快捷方式中，又会按照 <code>ShortcutInfo.getRank()</code> 按等级递增的顺序排序。等级是非负的，连续的整数， 调用 <code>updateShortcuts(List)</code>，<code>addDynamicShortcuts(List)</code> 或 <code>setDynamicShortcuts(List)</code> 时，可以更新现有快捷方式的等级。</p>
+<blockquote>
+<p>排名是自动调整的，因此它们对于每种类型的快捷方式都是唯一的。 例如，有三个 rank 分别为 0、1和2 的动态快捷方式，此时再添加一个 rank 为 1 的动态快捷方式放在第二的位置上，那最后两个就会被顺延一个位置，rank 变成 2和3。</p>
+</blockquote>
+<h4 id="Shortcut-intents-配置"><a href="#Shortcut-intents-配置" class="headerlink" title="Shortcut intents 配置"></a>Shortcut intents 配置</h4><p>如果希望应用在用户激活快捷方式时执行多项操作，则可以将其配置为触发后多项活动。你可以通过分配多个 intent，启动一个 activity 到另一个 activity，具体的要取决你快捷方式的类型。</p>
+<p>使用 <code>ShortcutInfo.Builder</code> 创建快捷方式时，可以使用 <code>setIntents()</code> 而不是 <code>setIntent()</code>。通过调用 <code>setIntents()</code> 你可以在用户点击快捷方式时触发多个 activity，将除列表中最后一个 activity 之外的所有 activity 放在后续堆栈中。如果此时点击返回按钮，会按照之前存储的堆栈 activity 顺序进行展示，而不是直接回到首页。</p>
+<p>比如按照下面代码配置多个 intent：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@TargetApi</span>(Build.VERSION_CODES.N_MR1)</span><br><span class="line"><span class="function"><span class="keyword">private</span> ShortcutInfo <span class="title">createShortcutInfo1</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  Intent intent1 = <span class="keyword">new</span> Intent(Intent.ACTION_VIEW, Uri.parse(<span class="string">"http://xiaweizi.cn/"</span>));</span><br><span class="line">  Intent intent = <span class="keyword">new</span> Intent(<span class="keyword">this</span>, TestActivity.class);</span><br><span class="line">  intent.setAction(Intent.ACTION_VIEW);</span><br><span class="line">  intent.putExtra(<span class="string">"key"</span>, <span class="string">"fromDynamicShortcut"</span>);</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> ShortcutInfo.Builder(<span class="keyword">this</span>, ID_DYNAMIC_1)</span><br><span class="line">    .setShortLabel(getString(R.string.dynamic_shortcut_short_label1))</span><br><span class="line">    .setLongLabel(getString(R.string.dynamic_shortcut_long_label1))</span><br><span class="line">    .setIcon(Icon.createWithResource(<span class="keyword">this</span>, R.drawable.add))</span><br><span class="line">    .setIntents(<span class="keyword">new</span> Intent[]&#123;intent, intent1&#125;)</span><br><span class="line">    .build();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>那么它会一次触发 intent 和 intent1,此时 intent 被压入 intent1 的栈底，点击返回，则展示 intent 的信息。如图：</p>
+<p><img src="http://xiaweizi.top/2019-05-11-080231.gif" alt="intents"></p>
+<p>还有一个问题，静态快捷方式是不能拥有自定的 <code>intent flag</code> 的，静态快捷方式始终设置为 <code>Intent.FLAG_ACTIVITY_NEW_TASK</code> 和 <code>Intent.FLAG_ACTIVITY_CLEAR_TASK</code> 这意味着，当应用程序已经在运行时，启动静态快捷方式时，应用中所有的活动都将被销毁。如果不希望出现这种情况，可以使用 trampoline activity，或者在 <code>Activity.onCreate(Bundle)</code> 中启动一个 不可见的 activity，然后调用 <code>Activity.finish()</code>。</p>
+<ol>
+<li>在 <code>AndroidManifest.xml</code> 中， <code>trampoline activity</code> 应用设置 <code>android:taskAffinity=&quot;&quot;</code>。</li>
+<li>在快捷方式资源文件中，静态快捷方式中的 intent 应引用 <code>trampoline activity</code>。</li>
+</ol>
+<h4 id="更新-pinned-Shortcuts"><a href="#更新-pinned-Shortcuts" class="headerlink" title="更新 pinned Shortcuts"></a>更新 pinned Shortcuts</h4><p>每个应用最多包含 <code>getMaxShortcutCountPerActivity()</code> 个快捷方式，其中包括动态和静态的总和。但是桌面快捷方式的数量是不限制的。</p>
+<p>当动态快捷方式被放置到桌面时，即使代码中将该动态快捷方式移除，桌面的还依然存在，因此对于桌面的快捷方式是不止 <code>getMaxShortcutCountPerActivity</code> 的限制的。</p>
+<p>假设 <code>getMaxShortcutCountPerActivity()</code> 的值为4：</p>
+<ol>
+<li><p>聊天应用程序发布四个动态快捷方式，表示最近的四个对话(c1,c2,c3,c4)</p>
+</li>
+<li><p>用户将所有的快捷方式复制到桌面</p>
+</li>
+<li><p>然后用户又启动三个额外的最近对话(c5,c6和c7)，这是重新发布更新动态快捷方式，那新的快捷方式列表为：c4,c5,c6,c7。改应用必须删除过 c1,c2喝c3，因为只能展示四个快捷方式，但是桌面已经保存的这三个快捷方式是可以正常访问的。</p>
+<p>用户现在其实可以总共访问七个快捷方式，其中包括四个最大的动态快捷方式和桌面的三个快捷方式</p>
+</li>
+<li><p>应用程序可以使用 <code>updateShortcuts(List)</code> 来更新上述七个任意快捷方式</p>
+</li>
+<li><p>使用 <code>addDynamicShortcuts()</code> 和 <code>setDynamicShortcuts()</code> 同样可以更新具有相同 shortcutId 的快捷方式对象，但是他们不能跟新非动态的快捷方式。</p>
+</li>
+</ol>
+<h4 id="系统设置更改"><a href="#系统设置更改" class="headerlink" title="系统设置更改"></a>系统设置更改</h4><p>系统设置的更改，比如修改系统的语言，Shortcuts 是不能动态更新的，此时需要创建广播监听 <code>Intent.ACTION_LOCALE_CHANGED</code> ,当收到广播时重新更新快捷方式，保证快捷方式展示没有问题。</p>
+<p>处理前：</p>
+<p><img src="http://xiaweizi.top/2019-05-11-081929.gif" alt="before"></p>
+<p>处理后：</p>
+<p><img src="http://xiaweizi.top/2019-05-11-081940.gif" alt="after"></p>
+<h4 id="track-Shortcuts"><a href="#track-Shortcuts" class="headerlink" title="track Shortcuts"></a>track Shortcuts</h4><p>为了确定静态和动态快捷方式以哪种方式出现，每次启动都会检查快捷方式的激活历史记录。可以通过调用 <code>reportShortcutUsed()</code> 方法传入其 shortcutId，提高 action 的响应速度。</p>
+<h4 id="ShortCuts-频率限制"><a href="#ShortCuts-频率限制" class="headerlink" title="ShortCuts 频率限制"></a>ShortCuts 频率限制</h4><p>当使用 <code>setDynamicShortcuts()</code>、<code>addDynamicShortcuts()</code> 和 <code>updateDynamicShortcuts()</code> 方法时，需要注意的是，你可能在后台调用这方法是有固定的次数限制的，那可以调用方法的次数限制就是 <em>rate limiting</em>。此功能用于防止 <code>ShortcutManager</code> 过度消耗设备资源。</p>
+<p>当处于 <em>rate limiting</em> 中，<code>isRateLimitingActive()</code> 返回 true，但是在某些操作执行会重置这个值，因此即使是在后台应用程序也可以调用 <code>shortcutManager</code>方法，直到再次达到速率限制。这些操作包括：</p>
+<ol>
+<li>应用再次回到前台</li>
+<li>系统区域设置更改</li>
+<li>用户在通知栏处理嵌入的交互操作</li>
+</ol>
+<p>如果在开发或者测试中遇到次数被限制的情况，可以在 开发者选项中 -&gt; <strong>重置 ShortcutsManager 调用频率限制 来</strong>恢复。或者使用 adb 命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adb shell cmd shortcut reset-throttling [ --user your-user-id ]</span><br></pre></td></tr></table></figure>
+<h3 id="建议"><a href="#建议" class="headerlink" title="建议"></a>建议</h3><p>在设计和创建快捷方式时，请遵循以下建议：</p>
+<h4 id="遵循设计准则"><a href="#遵循设计准则" class="headerlink" title="遵循设计准则"></a>遵循设计准则</h4><p>要使应用程序的快捷方式与系统应用程序使用的快捷方式在视觉上保持一致，请遵循 <a href="https://developer.android.com/shareables/design/app-shortcuts-design-guidelines.pdf" target="_blank" rel="noopener">快捷方式设计指南</a></p>
+<h4 id="仅发布四个不同的快捷方式"><a href="#仅发布四个不同的快捷方式" class="headerlink" title="仅发布四个不同的快捷方式"></a>仅发布四个不同的快捷方式</h4><p>尽管 API 目前支持给任何应用最多五个快捷方式(静态和动态)，但还是建议仅发布四个不同的快捷方式，以改善在设备上的视觉效果。</p>
+<h4 id="限制快捷方式的描述长度"><a href="#限制快捷方式的描述长度" class="headerlink" title="限制快捷方式的描述长度"></a>限制快捷方式的描述长度</h4><p>快捷方式的菜单空间有限，在桌面展示应用程序需要考虑到这个因素。如果可以的话，将快捷方式的 <strong>shortLable</strong> 长度限制在 10 个字符，并将 <strong>longLable</strong> 长度限制在 25个字符。</p>
+<h4 id="记录快捷方式和其操作的历史记录"><a href="#记录快捷方式和其操作的历史记录" class="headerlink" title="记录快捷方式和其操作的历史记录"></a>记录快捷方式和其操作的历史记录</h4><p>对于创建的每个快捷方式，请考虑用户在应用中是否可以直接用不同方式来完成相同的任务，需要记住的是，这种情况下，调用 <code>reportShortcutUsed()</code> ，这样 launcher 就可以提高 shortcut 对应的 actions 的响应速度。</p>
+<h4 id="只有在-shortcuts-的意义存在时更新"><a href="#只有在-shortcuts-的意义存在时更新" class="headerlink" title="只有在 shortcuts 的意义存在时更新"></a>只有在 shortcuts 的意义存在时更新</h4><p>当改变动态快捷方式时，只有在 shortcut 仍然保持它的含义时，调用 <code>updateShortcuts()</code> 方法改变它的信息，否则，应该使用 <code>addDynamicShortcuts()</code> 或 <code>setDynamicShortcuts()</code> 创建一个具有新含义的 shortcutId 的快捷方式。</p>
+<p>例如，如果我们已经创建了导航到一个超市的快捷方式，如果超市的名称改变了但是位置并没有变化时，只更新信息是合适的，但是如果用户开始再一个不同位置的超市购物时，最好就是创建一个新的快捷方式。</p>
+<h4 id="每次打开-APP-都需要检查快捷方式"><a href="#每次打开-APP-都需要检查快捷方式" class="headerlink" title="每次打开 APP 都需要检查快捷方式"></a>每次打开 APP 都需要检查快捷方式</h4><p>在备份或恢复时，动态 shortcuts 不会被保存， 正是因为这个原因，推荐我们在需要 APP 启动和重新发布动态快捷方式时，检查 <code>getDynamicShortcuts()</code> 的对象的数量。</p>
+<p>参考自</p>
+<p><a href="https://github.com/googlesamples/android-AppShortcuts" target="_blank" rel="noopener">官方Demo</a></p>
+<p><a href="https://developer.android.com/guide/topics/ui/shortcuts" target="_blank" rel="noopener">官方文档</a></p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/article/a19d/">『Android Tips』—— Shortcuts 快捷方式</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">下位子</a></p>
+        <p><span>发布时间:</span>2019-05-14, 19:11:12</p>
+        <p><span>最后更新:</span>2019-05-14, 17:51:23</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/article/a19d/" title="『Android Tips』—— Shortcuts 快捷方式">http://xiaweizi.cn/article/a19d/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/article/a19d/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/article/9994/">
+                    『技术分享』-- 使用极光 IM 构建聊天功能
+                </a>
+            </div>
+        
+    </nav>
+
+  
+  
+    
+    <div style="padding: 0; margin: 20px auto; width: 90%; text-align: center;">
+      <br>
+      <div>赏我 e(=2.72) 元咖啡钱吧，您的支持将鼓励我继续创作！</div>
+      <br>
+      <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+        <div class="btn btn-pay">打赏支持</div>
+      </button>
+      <br>
+      <br>
+      <div id="QR" style="display: none;">
+        
+          <div id="wechat" style="display: inline-block;">
+            <img id="wechat_qr" src="/img/wechat-reward-qr.png" alt="下位子 WeChat Pay"/>
+            <p>微信打赏</p>
+          </div>
+        
+        
+          <div id="alipay" style="display: inline-block">
+            <img id="alipay_qr" src="/img/alipay-reward-qr.png" alt="下位子 Alipay"/>
+            <p>支付宝打赏</p>
+          </div>
+        
+        <br>
+        <br>
+      </div>
+    </div>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#开篇"><span class="toc-number">1.</span> <span class="toc-text">开篇</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#概览"><span class="toc-number">2.</span> <span class="toc-text">概览</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shortcuts-类型"><span class="toc-number">2.1.</span> <span class="toc-text">Shortcuts 类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shortcuts-限制条件"><span class="toc-number">2.2.</span> <span class="toc-text">Shortcuts 限制条件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-number">3.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shortcuts-类型选择"><span class="toc-number">3.1.</span> <span class="toc-text">Shortcuts 类型选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shortcuts-类型创建"><span class="toc-number">3.2.</span> <span class="toc-text">Shortcuts 类型创建</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#创建静态快捷方式"><span class="toc-number">3.2.1.</span> <span class="toc-text">创建静态快捷方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建动态快捷方式"><span class="toc-number">3.2.2.</span> <span class="toc-text">创建动态快捷方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建桌面快捷方式"><span class="toc-number">3.2.3.</span> <span class="toc-text">创建桌面快捷方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shortcuts-进阶使用"><span class="toc-number">3.3.</span> <span class="toc-text">Shortcuts 进阶使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#移除-Shortcut"><span class="toc-number">3.3.1.</span> <span class="toc-text">移除 Shortcut</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Shortcut-展示顺序"><span class="toc-number">3.3.2.</span> <span class="toc-text">Shortcut 展示顺序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Shortcut-intents-配置"><span class="toc-number">3.3.3.</span> <span class="toc-text">Shortcut intents 配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#更新-pinned-Shortcuts"><span class="toc-number">3.3.4.</span> <span class="toc-text">更新 pinned Shortcuts</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#系统设置更改"><span class="toc-number">3.3.5.</span> <span class="toc-text">系统设置更改</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#track-Shortcuts"><span class="toc-number">3.3.6.</span> <span class="toc-text">track Shortcuts</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ShortCuts-频率限制"><span class="toc-number">3.3.7.</span> <span class="toc-text">ShortCuts 频率限制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#建议"><span class="toc-number">3.4.</span> <span class="toc-text">建议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#遵循设计准则"><span class="toc-number">3.4.1.</span> <span class="toc-text">遵循设计准则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#仅发布四个不同的快捷方式"><span class="toc-number">3.4.2.</span> <span class="toc-text">仅发布四个不同的快捷方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#限制快捷方式的描述长度"><span class="toc-number">3.4.3.</span> <span class="toc-text">限制快捷方式的描述长度</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#记录快捷方式和其操作的历史记录"><span class="toc-number">3.4.4.</span> <span class="toc-text">记录快捷方式和其操作的历史记录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#只有在-shortcuts-的意义存在时更新"><span class="toc-number">3.4.5.</span> <span class="toc-text">只有在 shortcuts 的意义存在时更新</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#每次打开-APP-都需要检查快捷方式"><span class="toc-number">3.4.6.</span> <span class="toc-text">每次打开 APP 都需要检查快捷方式</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"『Android Tips』—— Shortcuts 快捷方式　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+        
+      <section class="livere" id="comments">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zNDM3Ny8xMDkxNA==">
+    <script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+    </script>
+    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/article/9994/" title="下一篇: 『技术分享』-- 使用极光 IM 构建聊天功能">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/article/a19d/">『Android Tips』—— Shortcuts 快捷方式</a></li><li class="post-list-item"><a class="post-list-link" href="/article/9994/">『技术分享』-- 使用极光 IM 构建聊天功能</a></li><li class="post-list-item"><a class="post-list-link" href="/article/6cfc/">『数据结构与算法』—— 排序-冒泡&选择&插入</a></li><li class="post-list-item"><a class="post-list-link" href="/article/452b/">『数据结构与算法』—— 递归</a></li><li class="post-list-item"><a class="post-list-link" href="/article/b8de/">『数据结构与算法』—— 队列</a></li><li class="post-list-item"><a class="post-list-link" href="/article/2e31/">『数据结构与算法』—— 栈</a></li><li class="post-list-item"><a class="post-list-link" href="/article/6bf/">『数据结构与算法』—— 链表</a></li><li class="post-list-item"><a class="post-list-link" href="/article/af0f/">『数据结构与算法』—— 数组</a></li><li class="post-list-item"><a class="post-list-link" href="/article/6b9d/">『数据结构与算法』—— 复杂度</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thread-pool/">『进阶之路』—— 线程池</a></li><li class="post-list-item"><a class="post-list-link" href="/article/68ab/">『技术分享』—— 我的第一个 RN 项目-趣闻</a></li><li class="post-list-item"><a class="post-list-link" href="/article/c607/">『技术分享』—— 我的第一个微信小程序-趣闻</a></li><li class="post-list-item"><a class="post-list-link" href="/article/496f/">『Android Tips』—— 模拟手势操作</a></li><li class="post-list-item"><a class="post-list-link" href="/article/18a/">『自定义View实战』—— 客服好评View</a></li><li class="post-list-item"><a class="post-list-link" href="/article/licecap/">『程序员必备软件』—— 短小精悍的GIF录制软件LICEcap</a></li><li class="post-list-item"><a class="post-list-link" href="/article/5d77/">『自定义View实战』—— 仿ios图标下载view</a></li><li class="post-list-item"><a class="post-list-link" href="/article/3cfa/">程序员必备软件(持续更新中...)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/typora/">『程序员必备软件』—— 编辑预览于一身的 Typora</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7b67faab/">读书笔记(持续更新...)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/31905/">hexo 博客小功能添加-评论、相册、字数统计...</a></li><li class="post-list-item"><a class="post-list-link" href="/article/39434/">『技术分享』— 个人博客全新上线(阿里域名+GitPages+hexo+Yelee)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/34201/">Android 冷兵器 之 tools</a></li><li class="post-list-item"><a class="post-list-link" href="/article/25968/">『自定义View实战』—— 银行种类选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/article/46688/">我和极光的那些事---我和-Android-推送的时间简史</a></li><li class="post-list-item"><a class="post-list-link" href="/article/18215/">Python-自学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/6515/">Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！</a></li><li class="post-list-item"><a class="post-list-link" href="/article/13147/">『自定义View实战』—— 跑马灯</a></li><li class="post-list-item"><a class="post-list-link" href="/article/31642/">Android-分享会：Material-Design-在-Android-中的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/article/52360/">Git-命令小结</a></li><li class="post-list-item"><a class="post-list-link" href="/article/13823/">使用Kotlin重构项目</a></li><li class="post-list-item"><a class="post-list-link" href="/article/40024/">Kotlin学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/41851/">MVVM之DataBinding入门</a></li><li class="post-list-item"><a class="post-list-link" href="/article/35908/">『自定义View实战』—— 实现图片的圆角效果</a></li><li class="post-list-item"><a class="post-list-link" href="/article/9202/">Android-性能优化小结</a></li><li class="post-list-item"><a class="post-list-link" href="/article/58454/">如何做个依赖库让别人依赖使用</a></li><li class="post-list-item"><a class="post-list-link" href="/article/64590/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/article/64591/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/article/62207/">快毕业了，撸一个小项目(新闻段子客户端)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7691/">基于MaterialDesign设计风格的妹纸app的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/2954/">『Android Tips』-- 基于LitePal操作数据库的学生管理系统的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/276/">『Android Tips』-- 基于环信的仿QQ即时通讯的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7455/">高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7798/">简单粗暴----RecyclerView</a></li><li class="post-list-item"><a class="post-list-link" href="/article/23091/">设计模式之建造者模式学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/17984/">一个菜鸟的图片三级缓存笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_15/">『Thinking in Java 读书笔记』—— 15-泛型</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_14/">『Thinking in Java 读书笔记』—— 14-类型信息</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_13/">『Thinking in Java 读书笔记』—— 13-字符串</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_12/">『Thinking in Java 读书笔记』—— 12-通过异常处理错误</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_11/">『Thinking in Java 读书笔记』—— 11-持有对象</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_10/">『Thinking in Java 读书笔记』—— 10-内部类</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_9/">『Thinking in Java 读书笔记』—— 9-接口</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_8/">『Thinking in Java 读书笔记』—— 8-多态</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_7/">『Thinking in Java 读书笔记』—— 7-复用类</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_6/">『Thinking in Java 读书笔记』—— 6-访问权限控制</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_5/">『Thinking in Java 读书笔记』—— 5-初始化与清理</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_4/">『Thinking in Java 读书笔记』—— 4-控制执行流程</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_3/">『Thinking in Java 读书笔记』—— 3-操作符</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_2/">『Thinking in Java 读书笔记』—— 2-一切都是对象</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_1/">『Thinking in Java 读书笔记』—— 1-对象导论</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018-2019 下位子
+                <br></br>
+                <br>苏ICP备18034197号</br>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_uv">
+                      您是第 <span id="busuanzi_value_site_uv"></span> 位小伙伴
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+                    </span>
+                
+                <span>| </span>
+                <span class="post-count">  已经写了 105.0k 字啦</span>
+            </div>
+        
+        </br>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+        <script>
+            var now = new Date(); 
+            function createtime(){ var grt= new Date("02/14/2018 12:49:00");//此处修改你的建站时间或者网站上线时间 
+            now.setTime(now.getTime()+250); 
+            days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+            hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+            if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+            mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+            seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+            snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+            document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+            document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; } 
+            setInterval("createtime()",250);
+        </script>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+    </div>
+</footer>
+    </div>
+    
+    <script src="/js/GithubRepoWidget.js"></script>
+
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#e040fb", "#7c4dff", "#3d5afe", "#0288d1", "#0091ea", "#00e5ff", "#1de9b6", "#14e715", "#14e715", "#76ff03", "#ffea00", "#ff3d00", "#ff2d6f"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 6;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-113850534-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+             github: ".github-widget a", 
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "产品提需求啦！！" + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "又要改bug了..." + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript">
+        /* 鼠标点击特效 - 7Core.CN */
+        var a_idx = 0;jQuery(document).ready(function($) {$("body").click(function(e) {var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善");var $i = $("<span/>").text(a[a_idx]);
+        a_idx = (a_idx + 1) % a.length;var x = e.pageX,y = e.pageY;$i.css({"z-index": 100000000,"top": y - 20,"left": x,"position": "absolute","font-weight": "bold","color": "#ff6651"});$("body").append($i);$i.animate({"top": y - 180,"opacity": 0},1500,function() {$i.remove();});});});
+</script>
+	<script type="text/javascript" src="/resources/love.js"></script>
+	<script type="text/javascript" src="/resources/float.js"></script>
+	<script type="text/javascript" src="/resources/typewriter.js"></script>
+	<script type="text/javascript" color=0,104,183 opacity=1 zindex=-1 count=50 src="/resources/particle.js"></script>
+
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false},"react":{"opacityDefault":0.5,"opacityOnHover":0.2}});</script></body>
+</html>
