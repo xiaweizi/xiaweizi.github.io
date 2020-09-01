@@ -15,22 +15,23 @@
 
 
 
-<meta name="description" content="前言上周大概花了一个星期的时间初步学习了一下Kotlin，并且同步写了Kotlin 笔记，方便后面使用的时候查询一些语法的用法。">
-<meta name="keywords" content="Kotlin,项目重构">
+<meta name="description" content="前言前不久，利用周末时间学习并完成一个简单的 Flutter 项目 -  简悦天气，简约不简单，丰富不复杂，这是一款简约风格的 flutter 天气项目，提供实时、多日、24 小时、台风路径以及生活指数等服务，支持定位、删除、搜索等操作。">
+<meta name="keywords" content="Flutter,跨平台">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Kotlin重构项目">
-<meta property="og:url" content="http://xiaweizi.cn/article/13823/index.html">
+<meta property="og:title" content="『Flutter-绘制篇』实现炫酷的雨雪特效">
+<meta property="og:url" content="http://xiaweizi.cn/article/1840/index.html">
 <meta property="og:site_name" content="xiaweizi&#39;blog">
-<meta property="og:description" content="前言上周大概花了一个星期的时间初步学习了一下Kotlin，并且同步写了Kotlin 笔记，方便后面使用的时候查询一些语法的用法。">
+<meta property="og:description" content="前言前不久，利用周末时间学习并完成一个简单的 Flutter 项目 -  简悦天气，简约不简单，丰富不复杂，这是一款简约风格的 flutter 天气项目，提供实时、多日、24 小时、台风路径以及生活指数等服务，支持定位、删除、搜索等操作。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-65effeb19b751e39.gif?imageMogr2/auto-orient/strip">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-f78dbad6f4cb211f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-eed2a897793f5265.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-03-09T02:14:16.509Z">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/76bdbd8781d64fe49f253207020b53b4~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/37cf495377b146cc9212cc49853c5591~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/478eccd10f79400690ca115b8c764be5~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6529e0543da34a188c8ce68438ceab3a~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:updated_time" content="2020-09-01T12:08:27.503Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用Kotlin重构项目">
-<meta name="twitter:description" content="前言上周大概花了一个星期的时间初步学习了一下Kotlin，并且同步写了Kotlin 笔记，方便后面使用的时候查询一些语法的用法。">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4043475-65effeb19b751e39.gif?imageMogr2/auto-orient/strip">
+<meta name="twitter:title" content="『Flutter-绘制篇』实现炫酷的雨雪特效">
+<meta name="twitter:description" content="前言前不久，利用周末时间学习并完成一个简单的 Flutter 项目 -  简悦天气，简约不简单，丰富不复杂，这是一款简约风格的 flutter 天气项目，提供实时、多日、24 小时、台风路径以及生活指数等服务，支持定位、删除、搜索等操作。">
+<meta name="twitter:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/76bdbd8781d64fe49f253207020b53b4~tplv-k3u1fbpfcp-zoom-1.image">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -62,7 +63,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>使用Kotlin重构项目 | xiaweizi&#39;blog</title>
+<title>『Flutter-绘制篇』实现炫酷的雨雪特效 | xiaweizi&#39;blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -304,11 +305,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-使用Kotlin重构项目" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-『Flutter-绘制篇』实现炫酷的雨雪特效" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/article/13823/" class="article-date">
-      <time datetime="2017-09-09T12:46:25.000Z" itemprop="datePublished">2017-09-09</time>
+      <a href="/article/1840/" class="article-date">
+      <time datetime="2020-09-01T14:11:12.000Z" itemprop="datePublished">2020-09-01</time>
 </a>
 
 
@@ -323,7 +324,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      使用Kotlin重构项目
+      『Flutter-绘制篇』实现炫酷的雨雪特效
     </h1>
   
 
@@ -333,7 +334,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">527 字</span>
+        <span class="post-count">1,916 字</span>
       </span>
     </span>
 
@@ -342,7 +343,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">2 分</span>
+        <span class="post-count">8 分</span>
       </span>
     </span>
 
@@ -362,13 +363,13 @@
         
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
+    <a class="article-category-link" href="/categories/Flutter/">Flutter</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Kotlin/">Kotlin</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目重构/">项目重构</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flutter/">Flutter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/跨平台/">跨平台</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -378,45 +379,46 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>上周大概花了一个星期的时间初步学习了一下<code>Kotlin</code>，并且同步写了<a href="http://www.jianshu.com/p/f132e368b88d" target="_blank" rel="noopener">Kotlin 笔记</a>，方便后面使用的时候查询一些语法的用法。</p>
+        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>前不久，利用周末时间学习并完成一个简单的 Flutter 项目 -  <a href="https://juejin.im/post/6866400501290926094" target="_blank" rel="noopener"><strong>简悦天气</strong></a>，<em>简约不简单，丰富不复杂</em>，这是一款简约风格的 flutter 天气项目，提供实时、多日、24 小时、台风路径以及生活指数等服务，支持定位、删除、搜索等操作。</p>
 <a id="more"></a>
-<p>一周的<code>Kotlin</code>学习下来，虽然只掌握了<code>Kotlin</code>的皮毛，但仍被其简单便捷的语法吸引。目前<code>Kotlin</code>已经成为<code>Android</code>的官方推荐语言，所以建议有时间的同学不妨学习一下，相信一定可以帮助你提高开发效率的。</p>
-<p>这里就不介绍<code>Kotlin</code>的语法使用，既然初步学习了<code>Kotlin</code>，那么就在实践中检验一下，使用的是之前的毕业设计项目</p>
-<div class="github-widget" data-repo="xiaweizi/QNews"></div>
+<p>下图为主页效果：</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/76bdbd8781d64fe49f253207020b53b4~tplv-k3u1fbpfcp-zoom-1.image" alt="图1"></p>
+<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p>项目中很多自定义 widget，今天的主角是 <strong>背景层</strong>，不同的天气气象有不一样的呈现效果，一共实现了 <strong>12</strong> 种类别，其中有 晴、多云、阴天、小中大雨、小中大雪、雾、霾、浮尘，而背景层又分为三层：</p>
+<ul>
+<li>背景颜色层。从上到下的渐变效果</li>
+<li>云层。只有一种图片，对其位移、数量、染色做不同变化达到不同效果</li>
+<li>雨雪层。为雨雪天气单独做了动画，很炫酷。</li>
+</ul>
+<p>好，真正的主角就是这个<strong>雨雪层</strong>，为了更好的预览效果，在关于页面有上角添加切换天气类型的入口，实时查看不同气象下不同的背景效果。如下图，为雨雪的最终效果(gif 效果看起来会失真，请下载 <a href="http://xiaweizi.top/SimplicityWeather-1_7.apk" target="_blank" rel="noopener">apk</a> 自行体验)：</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/37cf495377b146cc9212cc49853c5591~tplv-k3u1fbpfcp-zoom-1.image" alt="图5"></p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/478eccd10f79400690ca115b8c764be5~tplv-k3u1fbpfcp-zoom-1.image" alt="图6"></p>
+<p>不得不说，如此复杂的动画(复杂并不是指多难实现，而是<strong>不停</strong>的绘制<strong>很多</strong>图片下)，Flutter 还能有不错的性能表现，媲美原生效果。</p>
+<h3 id="效果实现"><a href="#效果实现" class="headerlink" title="效果实现"></a>效果实现</h3><p>这里不赘述绘制和动画相关知识，网上已经有很多文章介绍，本篇只针对项目中用到的实现方式和相关知识进行讲述，具有一定的局限性，适合简单的绘制动画逻辑。</p>
+<h4 id="创建绘制类"><a href="#创建绘制类" class="headerlink" title="创建绘制类"></a>创建绘制类</h4><p>因为 Flutter 处处是 widget，自定义 View 需要用到的是 CustomPaint，而成员变量中需要传入实现 CustomPainter 的类，那咱们先创建此类。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RainSnowPainter</span> <span class="keyword">extends</span> <span class="title">CustomPainter</span> </span>&#123;</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> paint(Canvas canvas, Size size) &#123;</span><br><span class="line">    </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="built_in">bool</span> shouldRepaint(CustomPainter oldDelegate) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有没有很熟悉，看到了 Canvas 的类，自然也有 Paint 类，有了画笔和画板，剩下就好办了。</p>
+<h4 id="构造雨雪对象"><a href="#构造雨雪对象" class="headerlink" title="构造雨雪对象"></a>构造雨雪对象</h4><p>对需要实现的效果进行分析，首先雨雪效果是由一张图片不同属性拼接而成，每个雨滴和雪花落实在屏幕上，必须有 x,y 的坐标属性。为了营造<strong>远近</strong>的效果，需要加上 scale 值，由于更加还原真实的视觉效果，雨滴的远近，必然<strong>速度</strong>上和<strong>清晰度</strong>上会有差异，因此加上 speed 和 alpha 属性，再加上其他计算用的属性，最后类的声明如下：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RainSnowParams</span> </span>&#123;</span><br><span class="line">  <span class="built_in">double</span> x;</span><br><span class="line">  <span class="built_in">double</span> y;</span><br><span class="line">  <span class="built_in">double</span> speed;</span><br><span class="line">  <span class="built_in">double</span> scale;</span><br><span class="line">  <span class="built_in">double</span> width;</span><br><span class="line">  <span class="built_in">double</span> height;</span><br><span class="line">  <span class="built_in">double</span> alpha;</span><br><span class="line">  WeatherType weatherType;</span><br><span class="line"></span><br><span class="line">  RainSnowParams(<span class="keyword">this</span>.width, <span class="keyword">this</span>.height, <span class="keyword">this</span>.weatherType);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="属性初始化"><a href="#属性初始化" class="headerlink" title="属性初始化"></a>属性初始化</h4><p>有了属性后，接下来就是对属性进行赋值，为了保证效果更加的还原，所有属性既要有规则，又要随机。怎么解释规则性和随机性都要同时拥有，就拿雨速而言，小雨相对于大雨，雨的速度稍慢，但是不能很慢，并且每滴雨滴的速度不一样，这就致使小雨的速度必然在一个区间下随机，同样雪也一样。</p>
+<p>初始化又分成两步，第一次的初始化和雨滴下落结束后的数据重置，实际上两者的区别只在于 y。第一次初始化 y 在屏幕高度中随机放置，而雨滴下落结束后，y 值置为0。那么就可以把重置逻辑封装统一的方法。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> reset() &#123;</span><br><span class="line">  <span class="built_in">double</span> initScale = <span class="number">0.1</span>;</span><br><span class="line">  <span class="built_in">double</span> gapScale = <span class="number">0.2</span>;</span><br><span class="line">  <span class="built_in">double</span> initSpeed = <span class="number">40</span>;</span><br><span class="line">  <span class="built_in">double</span> gapSpeed = <span class="number">40</span>;</span><br><span class="line">  <span class="keyword">if</span> (weatherType == WeatherType.lightRainy) &#123;</span><br><span class="line">    initScale = <span class="number">1.05</span>;</span><br><span class="line">    gapScale = <span class="number">0.1</span>;</span><br><span class="line">    initSpeed = <span class="number">15</span>;</span><br><span class="line">    gapSpeed = <span class="number">10</span>;</span><br><span class="line">  &#125; <span class="keyword">else</span> <span class="keyword">if</span>()&#123;</span><br><span class="line">    ...<span class="comment">// 其他雨雪情况</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">double</span> random = Random().nextDouble();</span><br><span class="line">  <span class="keyword">this</span>.scale = initScale + gapScale * random;</span><br><span class="line">  <span class="keyword">this</span>.speed = initSpeed + gapSpeed * (<span class="number">1</span> - random);</span><br><span class="line">  <span class="keyword">this</span>.alpha = <span class="number">0.1</span> + <span class="number">0.9</span> * random;</span><br><span class="line">  x = Random().nextInt(width * <span class="number">1.2</span> ~/ scale).toDouble() - width * <span class="number">0.1</span> ~/ scale;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中 init 代表这<strong>初始值</strong>，gap 代表<strong>浮动值</strong>，这两个根据雨雪量大小而做不同区分。通过 <code>Random().nextDouble()</code>获取随机 <code>[0.0, 1.0]</code> 的值，<code>random * gap + init</code> 就是最终的值。</p>
+<p>x 的属性控制在 <code>[-0.1*width, 1.1 width]</code>的区间内随机，y 值上面已提到。</p>
+<p>雪相对有雨有个不同，雨是垂直下落，而雪是随风摇摆，那为了营造这种感觉，此时就需要借助 <code>sin</code> 函数。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (WeatherUtil.isSnow(_state.widget.weatherType)) &#123;</span><br><span class="line">    <span class="built_in">double</span> offsetX = sin(params.y / (<span class="number">300</span> + <span class="number">50</span> * params.alpha)) * (<span class="number">1</span> + <span class="number">0.5</span> * params.alpha);</span><br><span class="line">    params.x += offsetX;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="开始绘制"><a href="#开始绘制" class="headerlink" title="开始绘制"></a>开始绘制</h4><p>终于到了最重要的步骤 <strong>绘制</strong>，但他并不是最难的，有了前面创建好的<strong>属性</strong>和对其<strong>初始化</strong>，剩下就只是调用 api 进行绘制即可。不过再此之前好像漏了什么没说，没错，就是 <strong>动画</strong>，一个无限循环的动画。</p>
+<p>Flutter 中创建动画也很简单，需要在动画监听中，判断如果动画结束则重新继续执行即可。 </p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 在 initState 函数中初始化 controller， animation 和 listener</span><br><span class="line">    _controller =</span><br><span class="line">        AnimationController(duration: <span class="built_in">Duration</span>(minutes: <span class="number">1</span>), vsync: <span class="keyword">this</span>);</span><br><span class="line">    CurvedAnimation(parent: _controller, curve: Curves.linear);</span><br><span class="line">    _controller.addListener(() &#123;</span><br><span class="line">      setState(() &#123;&#125;);</span><br><span class="line">    &#125;);</span><br><span class="line">    _controller.addStatusListener((status) &#123;</span><br><span class="line">      <span class="keyword">if</span> (status == AnimationStatus.completed) &#123;</span><br><span class="line">        _controller.repeat();</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    _controller.forward();</span><br><span class="line"><span class="number">2.</span> 在 dispose 函数中释放掉动画资源</span><br><span class="line">  <span class="meta">@override</span></span><br><span class="line">  <span class="keyword">void</span> dispose() &#123;</span><br><span class="line">    _controller.dispose();</span><br><span class="line">    <span class="keyword">super</span>.dispose();</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>在初始化是便让他执行并一直执行知道页面销毁，有了动画后，开始进行绘制，雨雪的绘制逻辑基本相似，只不过图片源不一样。</p>
+<p>别看屏幕上有很多雨滴，其实只用了一直图片，通过控制 alpha、speed和scale 的属性来随机展现不同的形态。还有，根据气象大中小雨类型的区分，会直接落实到雨滴数量和雨滴形态上的变化，营造出多样的差异。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> drawRain(Canvas canvas, Size size) &#123;</span><br><span class="line">  weatherPrint(</span><br><span class="line">      <span class="string">"开始绘制雨层 image:<span class="subst">$&#123;_state._images?.length&#125;</span>, rains:<span class="subst">$&#123;_state._rainSnows?.length&#125;</span>"</span>);</span><br><span class="line">  <span class="keyword">if</span> (_state._images != <span class="keyword">null</span> &amp;&amp; _state._images.length &gt; <span class="number">1</span>) &#123;</span><br><span class="line">    ui.Image image = _state._images[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">if</span> (_state._rainSnows != <span class="keyword">null</span> &amp;&amp; _state._rainSnows.isNotEmpty) &#123;</span><br><span class="line">      _state._rainSnows.forEach((element) &#123;</span><br><span class="line">        move(element);</span><br><span class="line">        ui.Offset offset = ui.Offset(element.x, element.y);</span><br><span class="line">        canvas.save();</span><br><span class="line">        canvas.scale(element.scale, element.scale);</span><br><span class="line">        <span class="keyword">var</span> identity = ColorFilter.matrix(&lt;<span class="built_in">double</span>&gt;[</span><br><span class="line">          <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>,</span><br><span class="line">          <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>,</span><br><span class="line">          <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>,</span><br><span class="line">          <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, element.alpha, <span class="number">0</span>,</span><br><span class="line">        ]);</span><br><span class="line">        _paint.colorFilter = identity;</span><br><span class="line">        canvas.drawImage(image, offset, _paint);</span><br><span class="line">        canvas.restore();</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里绘制逻辑只用到了 drawImage 的方法，参数分别为图片、位置和画笔，不像 Android 提供了 paint.setAlpha() 的方法控制图片的透明值，这里需要通过 colorFilter 修改矩阵中对应的值来控制 alpha。</p>
+<p>move() 函数用于控制雨滴在运动过程中 x和y 值的不断变化。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> move(RainSnowParams params) &#123;</span><br><span class="line">  params.y = params.y + params.speed;</span><br><span class="line">  <span class="keyword">if</span> (WeatherUtil.isSnow(_state.widget.weatherType)) &#123;</span><br><span class="line">    <span class="built_in">double</span> offsetX = sin(params.y / (<span class="number">300</span> + <span class="number">50</span> * params.alpha)) * (<span class="number">1</span> + <span class="number">0.5</span> * params.alpha);</span><br><span class="line">    params.x += offsetX;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (params.y &gt; <span class="number">800</span> / params.scale) &#123;</span><br><span class="line">    params.y = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (WeatherUtil.isRainy(_state.widget.weatherType) &amp;&amp;</span><br><span class="line">        _state._images.isNotEmpty &amp;&amp;</span><br><span class="line">        _state._images[<span class="number">0</span>] != <span class="keyword">null</span>) &#123;</span><br><span class="line">      params.y = -_state._images[<span class="number">0</span>].height.toDouble();</span><br><span class="line">    &#125;</span><br><span class="line">    params.reset();</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>该方法每次重绘时都会调用，即 <code>y += speed</code> 根据 speed 不断修改 y 的属性，因为雪的特殊性，x 会通过 sin 函数运算后得出。以及当雨滴超过屏幕需要重新归位并重新初始化。</p>
+<p>到此， 雨雪的绘制和动画逻辑已经讲述结束，是不是很简单，但是效果上还是相当酷炫的，感兴趣的可以到 <a href="https://github.com/xiaweizi/SimplicityWeather" target="_blank" rel="noopener">SimplicityWeather</a> 下载进行查看更多效果。最后再看看大雨下的效果。</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6529e0543da34a188c8ce68438ceab3a~tplv-k3u1fbpfcp-zoom-1.image" alt="大雨特效"></p>
 
-<p>，这个项目总体来说很适合初学者，所以就拿它上手，改起来相对比较简单。</p>
-<p>所以本篇文章就介绍一下<code>Kotlin</code>在<code>Android</code>中的使用，相信你会爱上他的。</p>
-<p>先看一下运行效果吧，跟之前<a href="http://www.jianshu.com/p/ae4aa11f35a4" target="_blank" rel="noopener">快毕业了，撸个小项目</a>效果是一模一样，所以大致看一下即可：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4043475-65effeb19b751e39.gif?imageMogr2/auto-orient/strip" alt="运行效果.gif"></p>
-<p>这里就展示一下基本的效果，想要了解详情的就<code>fork</code>一下我的代码吧:<a href="https://github.com/xiaweizi/QNews" target="_blank" rel="noopener">QNews</a></p>
-<h2 id="使用步骤"><a href="#使用步骤" class="headerlink" title="使用步骤"></a>使用步骤</h2><h3 id="1-Android-Studio集成Kotlin插件"><a href="#1-Android-Studio集成Kotlin插件" class="headerlink" title="1. Android Studio集成Kotlin插件"></a>1. <code>Android Studio</code>集成<code>Kotlin</code>插件</h3><p>通过<code>Android Studio</code>添加<code>Kotlin</code>插件：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4043475-f78dbad6f4cb211f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="Kotlin插件"></p>
-<p>进行相关的配置：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/4043475-eed2a897793f5265.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="相关配置"></p>
-<p>集成好了，记得同步一下，这个时候在<code>build.gradle</code>下会生成对<code>Kotlin</code>插件的引用：</p>
-<pre><code>// 根 build.gradle
-classpath &quot;org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version&quot;
-
-// module build.gradle
-
-apply plugin: &apos;kotlin-android&apos;
-compile &quot;org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version&quot;
-</code></pre><p>这个时候配合着<a href="https://github.com/Kotlin/anko" target="_blank" rel="noopener">anko</a>使用效果更好呦，只需要在<code>build.gradle</code>中进行相应的配置：</p>
-<pre><code>apply plugin: &apos;kotlin-android-extensions&apos;
-compile &quot;org.jetbrains.anko:anko-sdk15:0.9.1&quot;
-</code></pre><p>就这么两行的配置即可告别<code>findViewById</code>的繁琐过程，目前这个项目对于<code>ButterKnife</code>的依赖我都去掉了，极其方便。</p>
-<p>只要<code>XML</code>定义了<code>&quot;@+id/test&quot;</code>，就可以直接引用这个<code>View</code>.</p>
-<p>比如我的这个跳转界面<code>SplashActivity</code>的<code>XML</code>：</p>
-<pre><code>&lt;ImageView
-    android:id=&quot;@+id/iv_splash&quot;
-    android:background=&quot;?attr/colorPrimary&quot;
-    android:layout_centerInParent=&quot;true&quot;
-    android:src=&quot;@mipmap/ic_splash&quot;
-    android:layout_width=&quot;wrap_content&quot;
-    android:layout_height=&quot;wrap_content&quot; /&gt;
-</code></pre><p>代码中可以直接使用(属性动画)：</p>
-<pre><code>val translationX: ObjectAnimator = ObjectAnimator.ofFloat(iv_splash, &quot;translationX&quot;, 600f, 0f)
-</code></pre>
       
     </div>
     
@@ -424,13 +426,13 @@ compile &quot;org.jetbrains.anko:anko-sdk15:0.9.1&quot;
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/article/13823/">使用Kotlin重构项目</a></p>
+        <p><span>本文标题:</span><a href="/article/1840/">『Flutter-绘制篇』实现炫酷的雨雪特效</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">下位子</a></p>
-        <p><span>发布时间:</span>2017-09-09, 20:46:25</p>
-        <p><span>最后更新:</span>2018-03-09, 10:14:16</p>
+        <p><span>发布时间:</span>2020-09-01, 22:11:12</p>
+        <p><span>最后更新:</span>2020-09-01, 20:08:27</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/article/13823/" title="使用Kotlin重构项目">http://xiaweizi.cn/article/13823/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/article/13823/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/article/1840/" title="『Flutter-绘制篇』实现炫酷的雨雪特效">http://xiaweizi.cn/article/1840/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/article/1840/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -442,16 +444,10 @@ compile &quot;org.jetbrains.anko:anko-sdk15:0.9.1&quot;
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/article/52360/">
-                    Git-命令小结
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/article/40024/">
-                    Kotlin学习笔记
+                <a href="/article/f7f8/">
+                    『Flutter』一款风格简约功能丰富的天气
                 </a>
             </div>
         
@@ -503,7 +499,7 @@ compile &quot;org.jetbrains.anko:anko-sdk15:0.9.1&quot;
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用步骤"><span class="toc-number">2.</span> <span class="toc-text">使用步骤</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Android-Studio集成Kotlin插件"><span class="toc-number">2.1.</span> <span class="toc-text">1. Android Studio集成Kotlin插件</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#开始"><span class="toc-number">2.</span> <span class="toc-text">开始</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#效果实现"><span class="toc-number">3.</span> <span class="toc-text">效果实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#创建绘制类"><span class="toc-number">3.1.</span> <span class="toc-text">创建绘制类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#构造雨雪对象"><span class="toc-number">3.2.</span> <span class="toc-text">构造雨雪对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#属性初始化"><span class="toc-number">3.3.</span> <span class="toc-text">属性初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#开始绘制"><span class="toc-number">3.4.</span> <span class="toc-text">开始绘制</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -539,7 +535,7 @@ compile &quot;org.jetbrains.anko:anko-sdk15:0.9.1&quot;
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"使用Kotlin重构项目　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"『Flutter-绘制篇』实现炫酷的雨雪特效　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -580,15 +576,13 @@ compile &quot;org.jetbrains.anko:anko-sdk15:0.9.1&quot;
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/article/52360/" title="上一篇: Git-命令小结">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/article/40024/" title="下一篇: Kotlin学习笔记">
+            <a href="/article/f7f8/" title="下一篇: 『Flutter』一款风格简约功能丰富的天气">
                 <i class="fa fa-angle-right"></i>
             </a>
         
