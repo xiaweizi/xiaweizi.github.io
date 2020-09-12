@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4605e70d1ca54fa4b9470c4a20397c62~tplv-k3u1fbpfcp-zoom-1.image">
 <meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/abc8c5f578794682b3f5a07953e7f006~tplv-k3u1fbpfcp-zoom-1.image">
 <meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4e38f0489246496db52ce31e9e3e3abd~tplv-k3u1fbpfcp-zoom-1.image">
-<meta property="og:updated_time" content="2020-09-05T08:58:38.736Z">
+<meta property="og:updated_time" content="2020-09-05T08:58:48.065Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="『Flutter-绘制篇』自定义View在天气 APP 中的实战应用">
 <meta name="twitter:description" content="前言前不久，利用周末时间学习并完成一个简单的 Flutter 项目 -  简悦天气，简约不简单，丰富不复杂，这是一款简约风格的 flutter 天气项目，提供实时、多日、24 小时、台风路径以及生活指数等服务，支持定位、删除、搜索等操作。">
@@ -484,7 +484,7 @@
         <p><span>本文标题:</span><a href="/article/26ab/">『Flutter-绘制篇』自定义View在天气 APP 中的实战应用</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">下位子</a></p>
         <p><span>发布时间:</span>2020-09-05, 16:11:12</p>
-        <p><span>最后更新:</span>2020-09-05, 16:58:38</p>
+        <p><span>最后更新:</span>2020-09-05, 16:58:48</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/article/26ab/" title="『Flutter-绘制篇』自定义View在天气 APP 中的实战应用">http://xiaweizi.cn/article/26ab/</a>
             <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/article/26ab/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
@@ -510,44 +510,34 @@
 
   
   
-    #rewardButton {
-    background-color: #ea6f5a;
-}
+    
+    <div style="padding: 0; margin: 20px auto; width: 90%; text-align: center;">
+      <br>
+      <div>赏我 e(=2.72) 元咖啡钱吧，您的支持将鼓励我继续创作！</div>
+      <br>
+      <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+        <div class="btn btn-pay">打赏支持</div>
+      </button>
+      <br>
+      <br>
+      <div id="QR" style="display: none;">
+        
+          <div id="wechat" style="display: inline-block;">
+            <img id="wechat_qr" src="/img/wechat-reward-qr.png" alt="下位子 WeChat Pay"/>
+            <p>微信打赏</p>
+          </div>
+        
+        
+          <div id="alipay" style="display: inline-block">
+            <img id="alipay_qr" src="/img/alipay-reward-qr.png" alt="下位子 Alipay"/>
+            <p>支付宝打赏</p>
+          </div>
+        
+        <br>
+        <br>
+      </div>
+    </div>
 
-.btn-pay {
-    margin-bottom: 20px;
-    padding: 8px 25px;
-    font-size: 16px;
-    color: #fff;
-    background-color: #ea6f5a;
-}
-
-.btn {
-    display: inline-block;
-    margin-bottom: 0;
-    font-weight: 400;
-    text-align: center;
-    vertical-align: middle;
-    touch-action: manipulation;
-    cursor: pointer;
-    background-image: none;
-    border: 1px solid transparent;
-    white-space: nowrap;
-    padding: 6px 12px;
-    font-size: 14px;
-    line-height: 1.42857;
-    border-radius: 4px;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-}
-
-#QR img{
-    height: 200px;
-    height: 200px;
-    margin: 20px;
-}
   
 </article>
 
@@ -678,7 +668,7 @@
                     </span>
                 
                 <span>| </span>
-                <span class="post-count">  已经写了 111.2k 字啦</span>
+                <span class="post-count">  已经写了 111.4k 字啦</span>
             </div>
         
         </br>
