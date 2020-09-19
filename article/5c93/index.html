@@ -15,22 +15,23 @@
 
 
 
-<meta name="description" content="平时 Android 开发中总会遇到奇葩的功能或者需求，这里做个记录和积累，以便后面开发过程中遇到类似的问题，可以快速的解决。Android tips  我的博客地址 之前一直想实现聊天的功能，但是感觉有点困难，今天看了环信的API，就利用下午的时间动手试了试，然后做了一个小Demo。因为没有刻意去做聊天软件，花的时间也不多，然后界面就很简单，都是一些基本知识，如果觉得功能简单，可以自行添加，我">
-<meta name="keywords" content="第三方库,项目">
+<meta name="description" content="前言前不久，利用周末时间学习并完成一个简单的 Flutter 项目 -  简悦天气，简约不简单，丰富不复杂，这是一款简约风格的 flutter 天气项目，提供实时、多日、24 小时、台风路径、语音播报以及生活指数等服务，支持定位、删除、搜索等操作。 下图为主页效果，点击下载 进行体验：">
+<meta name="keywords" content="Flutter,跨平台">
 <meta property="og:type" content="article">
-<meta property="og:title" content="『Android Tips』-- 基于环信的仿QQ即时通讯的简单实现">
-<meta property="og:url" content="http://xiaweizi.cn/article/276/index.html">
+<meta property="og:title" content="『Flutter-绘制篇』实现炫酷的雷电特效">
+<meta property="og:url" content="http://xiaweizi.cn/article/5c93/index.html">
 <meta property="og:site_name" content="xiaweizi&#39;blog">
-<meta property="og:description" content="平时 Android 开发中总会遇到奇葩的功能或者需求，这里做个记录和积累，以便后面开发过程中遇到类似的问题，可以快速的解决。Android tips  我的博客地址 之前一直想实现聊天的功能，但是感觉有点困难，今天看了环信的API，就利用下午的时间动手试了试，然后做了一个小Demo。因为没有刻意去做聊天软件，花的时间也不多，然后界面就很简单，都是一些基本知识，如果觉得功能简单，可以自行添加，我">
+<meta property="og:description" content="前言前不久，利用周末时间学习并完成一个简单的 Flutter 项目 -  简悦天气，简约不简单，丰富不复杂，这是一款简约风格的 flutter 天气项目，提供实时、多日、24 小时、台风路径、语音播报以及生活指数等服务，支持定位、删除、搜索等操作。 下图为主页效果，点击下载 进行体验：">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-d16a88926805236a.gif?imageMogr2/auto-orient/strip">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-76ea5370b4d09d89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/4043475-e4dd45e05060467f.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-05-30T01:31:47.337Z">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/76bdbd8781d64fe49f253207020b53b4~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/687120e980df40a198eadc97bbc4b44c~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e893b7064eb9463b88f07d3d79fdd4e2~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b71751fa89d24300ad7956ee7ed5e98a~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:updated_time" content="2020-09-19T05:19:45.048Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="『Android Tips』-- 基于环信的仿QQ即时通讯的简单实现">
-<meta name="twitter:description" content="平时 Android 开发中总会遇到奇葩的功能或者需求，这里做个记录和积累，以便后面开发过程中遇到类似的问题，可以快速的解决。Android tips  我的博客地址 之前一直想实现聊天的功能，但是感觉有点困难，今天看了环信的API，就利用下午的时间动手试了试，然后做了一个小Demo。因为没有刻意去做聊天软件，花的时间也不多，然后界面就很简单，都是一些基本知识，如果觉得功能简单，可以自行添加，我">
-<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/4043475-d16a88926805236a.gif?imageMogr2/auto-orient/strip">
+<meta name="twitter:title" content="『Flutter-绘制篇』实现炫酷的雷电特效">
+<meta name="twitter:description" content="前言前不久，利用周末时间学习并完成一个简单的 Flutter 项目 -  简悦天气，简约不简单，丰富不复杂，这是一款简约风格的 flutter 天气项目，提供实时、多日、24 小时、台风路径、语音播报以及生活指数等服务，支持定位、删除、搜索等操作。 下图为主页效果，点击下载 进行体验：">
+<meta name="twitter:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/76bdbd8781d64fe49f253207020b53b4~tplv-k3u1fbpfcp-zoom-1.image">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -62,7 +63,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>『Android Tips』-- 基于环信的仿QQ即时通讯的简单实现 | xiaweizi&#39;blog</title>
+<title>『Flutter-绘制篇』实现炫酷的雷电特效 | xiaweizi&#39;blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -304,11 +305,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-基于环信的仿QQ即时通讯的简单实现" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-『Flutter-绘制篇』实现炫酷的雷电特效" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/article/276/" class="article-date">
-      <time datetime="2017-01-21T12:46:25.000Z" itemprop="datePublished">2017-01-21</time>
+      <a href="/article/5c93/" class="article-date">
+      <time datetime="2020-09-19T04:11:12.000Z" itemprop="datePublished">2020-09-19</time>
 </a>
 
 
@@ -323,7 +324,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      『Android Tips』-- 基于环信的仿QQ即时通讯的简单实现
+      『Flutter-绘制篇』实现炫酷的雷电特效
     </h1>
   
 
@@ -333,7 +334,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">2,011 字</span>
+        <span class="post-count">1,398 字</span>
       </span>
     </span>
 
@@ -342,7 +343,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">10 分</span>
+        <span class="post-count">6 分</span>
       </span>
     </span>
 
@@ -362,13 +363,13 @@
         
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/技术分享/">技术分享</a>
+    <a class="article-category-link" href="/categories/Flutter/">Flutter</a>
     </div>
 
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/第三方库/">第三方库</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/项目/">项目</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Flutter/">Flutter</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/跨平台/">跨平台</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -378,398 +379,46 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <blockquote>
-<p>平时 <code>Android</code> 开发中总会遇到奇葩的功能或者需求，这里做个记录和积累，以便后面开发过程中遇到类似的问题，可以快速的解决。<a href="http://xiaweizi.cn/categories/Android-tips/">Android tips</a></p>
-</blockquote>
-<p><em><a href="http://xiaweizi.cn/">我的博客地址</a></em></p>
-<h4 id="之前一直想实现聊天的功能，但是感觉有点困难，今天看了环信的API，就利用下午的时间动手试了试，然后做了一个小Demo。"><a href="#之前一直想实现聊天的功能，但是感觉有点困难，今天看了环信的API，就利用下午的时间动手试了试，然后做了一个小Demo。" class="headerlink" title="之前一直想实现聊天的功能，但是感觉有点困难，今天看了环信的API，就利用下午的时间动手试了试，然后做了一个小Demo。"></a>之前一直想实现聊天的功能，但是感觉有点困难，今天看了环信的API，就利用下午的时间动手试了试，然后做了一个小Demo。</h4><h4 id="因为没有刻意去做聊天软件，花的时间也不多，然后界面就很简单，都是一些基本知识，如果觉得功能简单，可以自行添加，我这就不多介绍了。"><a href="#因为没有刻意去做聊天软件，花的时间也不多，然后界面就很简单，都是一些基本知识，如果觉得功能简单，可以自行添加，我这就不多介绍了。" class="headerlink" title="因为没有刻意去做聊天软件，花的时间也不多，然后界面就很简单，都是一些基本知识，如果觉得功能简单，可以自行添加，我这就不多介绍了。"></a>因为没有刻意去做聊天软件，花的时间也不多，然后界面就很简单，都是一些基本知识，如果觉得功能简单，可以自行添加，我这就不多介绍了。</h4><a id="more"></a>
-<p>照例先来一波动态演示：<br><img src="http://upload-images.jianshu.io/upload_images/4043475-d16a88926805236a.gif?imageMogr2/auto-orient/strip" alt="环信及时聊天.gif"></p>
-<blockquote>
-<p>功能很简单，注册用户 –&gt; 用户登录 –&gt; 选择聊天对象 –&gt; 开始聊天</p>
-</blockquote>
-<blockquote>
-<p>使用到的知识点：</p>
-</blockquote>
-<ol>
-<li><code>RecyclerView</code></li>
-<li><code>CardView</code></li>
-<li>环信的API的简单使用</li>
-</ol>
-<blockquote>
-<p>依赖的库</p>
-<pre><code>compile &apos;com.android.support:appcompat-v7:24.2.1&apos;
-compile &apos;com.android.support:cardview-v7:24.1.1&apos;
-compile &apos;com.android.support:recyclerview-v7:24.0.0&apos;    
-</code></pre></blockquote>
-<h2 id="1、聊天页面"><a href="#1、聊天页面" class="headerlink" title="1、聊天页面"></a>1、聊天页面</h2><p><em>首先是看了郭神的《第二行代码》做了聊天界面，用的是RecyclerView</em></p>
-<h4 id="a-消息类的封装"><a href="#a-消息类的封装" class="headerlink" title="a.  消息类的封装"></a>a.  消息类的封装</h4><hr>
-<pre><code>public class MSG {
-    public static final int TYPE_RECEIVED = 0;//消息的类型:接收
-    public static final int TYPE_SEND = 1;    //消息的类型:发送
-
-    private String content;//消息的内容
-    private int type;       //消息的类型
-
-    public MSG(String content, int type) {
-        this.content = content;
-        this.type = type;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public int getType() {
-        return type;
-    }
-}
-</code></pre><h4 id="b-RecyclerView子项的布局"><a href="#b-RecyclerView子项的布局" class="headerlink" title="b.    RecyclerView子项的布局"></a>b.    RecyclerView子项的布局</h4><hr>
-<pre><code>&lt;LinearLayout
-    android:id=&quot;@+id/ll_msg_left&quot;
-    android:layout_width=&quot;wrap_content&quot;
-    android:layout_height=&quot;wrap_content&quot;
-    &lt;!-- 设置点击效果为水波纹(5.0以上) --&gt;
-    android:background=&quot;?android:attr/selectableItemBackground&quot;
-    android:clickable=&quot;true&quot;
-    android:focusable=&quot;true&quot;
-    android:orientation=&quot;horizontal&quot;
-    android:padding=&quot;2dp&quot;&gt;
-
-    &lt;android.support.v7.widget.CardView
-        android:layout_width=&quot;wrap_content&quot;
-        android:layout_height=&quot;wrap_content&quot;
-        app:cardCornerRadius=&quot;20dp&quot;
-        app:cardPreventCornerOverlap=&quot;false&quot;
-        app:cardUseCompatPadding=&quot;true&quot;&gt;
-
-        &lt;ImageView
-            android:layout_width=&quot;50dp&quot;
-            android:layout_height=&quot;50dp&quot;
-            android:scaleType=&quot;centerCrop&quot;
-            android:src=&quot;@mipmap/man&quot; /&gt;
-    &lt;/android.support.v7.widget.CardView&gt;
-
-    &lt;LinearLayout
-        android:layout_width=&quot;wrap_content&quot;
-        android:layout_height=&quot;wrap_content&quot;
-        android:background=&quot;@drawable/message_left&quot;
-        android:orientation=&quot;horizontal&quot;&gt;
-
-        &lt;TextView
-            android:id=&quot;@+id/tv_msg_left&quot;
-            android:layout_width=&quot;wrap_content&quot;
-            android:layout_height=&quot;wrap_content&quot;
-            android:layout_gravity=&quot;center&quot;
-            android:layout_margin=&quot;10dp&quot;
-            android:textColor=&quot;#fff&quot; /&gt;
-    &lt;/LinearLayout&gt;
-
-&lt;/LinearLayout&gt;
-</code></pre><blockquote>
-<p>这是左边的部分，至于右边应该也就简单了。我用CardView把ImageView包裹起来，这样比较好看。效果如下：</p>
-</blockquote>
-<p><img src="http://upload-images.jianshu.io/upload_images/4043475-76ea5370b4d09d89.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="item布局.png"></p>
-<h4 id="c-RecyclerView适配器"><a href="#c-RecyclerView适配器" class="headerlink" title="c.    RecyclerView适配器"></a>c.    RecyclerView适配器</h4><hr>
-<pre><code>    public class MsgAdapter extends RecyclerView.Adapter&lt;MsgAdapter.MyViewHolder&gt; {
-
-    private List&lt;MSG&gt; mMsgList;
-
-    public MsgAdapter(List&lt;MSG&gt; mMsgList) {
-        this.mMsgList = mMsgList;
-    }
-
-    @Override
-    public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = View.inflate(parent.getContext(), R.layout.item_msg, null);
-        MyViewHolder holder = new MyViewHolder(view);
-        return holder;
-    }
-
-    @Override
-    public void onBindViewHolder(MyViewHolder holder, int position) {
-        MSG msg = mMsgList.get(position);
-        if (msg.getType() == MSG.TYPE_RECEIVED){
-            //如果是收到的消息，显示左边布局，隐藏右边布局
-            holder.llLeft.setVisibility(View.VISIBLE);
-            holder.llRight.setVisibility(View.GONE);
-            holder.tv_Left.setText(msg.getContent());
-        } else if (msg.getType() == MSG.TYPE_SEND){
-            //如果是发送的消息，显示右边布局，隐藏左边布局
-            holder.llLeft.setVisibility(View.GONE);
-            holder.llRight.setVisibility(View.VISIBLE);
-            holder.tv_Right.setText(msg.getContent());
-        }
-    }
-
-    @Override
-    public int getItemCount() {
-        return mMsgList.size();
-    }
-
-    static class MyViewHolder extends RecyclerView.ViewHolder{
-
-        LinearLayout llLeft;
-        LinearLayout llRight;
-
-        TextView tv_Left;
-        TextView tv_Right;
-
-        public MyViewHolder(View itemView) {
-            super(itemView);
-
-            llLeft = (LinearLayout) itemView.findViewById(R.id.ll_msg_left);
-            llRight = (LinearLayout) itemView.findViewById(R.id.ll_msg_right);
-
-            tv_Left = (TextView) itemView.findViewById(R.id.tv_msg_left);
-            tv_Right = (TextView) itemView.findViewById(R.id.tv_msg_right);
-
-        }
-    }
-}
-</code></pre><blockquote>
-<p>这部分应该也没什么问题，就是适配器的创建，我之前的文章也讲过 传送门：<a href="http://www.jianshu.com/p/60819de9eb42" target="_blank" rel="noopener">简单粗暴—-RecyclerView</a></p>
-</blockquote>
-<h4 id="d-RecyclerView初始化"><a href="#d-RecyclerView初始化" class="headerlink" title="d.    RecyclerView初始化"></a>d.    RecyclerView初始化</h4><hr>
-<p>就是一些基本的初始化，我就不赘述了，讲一下添加数据的细节处理</p>
-<pre><code>btSend.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        String content = etInput.getText().toString().trim();
-        if (!TextUtils.isEmpty(content)){
-
-            ...//环信部分的发送消息
-
-            MSG msg = new MSG(content, MSG.TYPE_SEND);
-            mList.add(msg);
-            //当有新消息时，刷新RecyclerView中的显示
-            mAdapter.notifyItemInserted(mList.size() - 1);
-            //将RecyclerView定位到最后一行
-            mRecyclerView.scrollToPosition(mList.size() - 1);
-            etInput.setText(&quot;&quot;);
-        }
-    }
-});
-</code></pre><blockquote>
-<p>至此界面已经结束了，接下来就是数据的读取</p>
-</blockquote>
-<h2 id="2-环信API的简单应用"><a href="#2-环信API的简单应用" class="headerlink" title="2. 环信API的简单应用"></a>2. 环信API的简单应用</h2><p><em>官网有详细的API介绍 <a href="http://docs.easemob.com/im/start" title="集成" target="_blank" rel="noopener">环信及时通讯V3.0</a>，我这里就简单介绍如何简单集成</em></p>
-<h4 id="a-环信开发账号的注册"><a href="#a-环信开发账号的注册" class="headerlink" title="a.    环信开发账号的注册"></a>a.    环信开发账号的注册</h4><hr>
-<p><a href="http://www.easemob.com/" target="_blank" rel="noopener">环信官网</a></p>
-<blockquote>
-<p>创建应用得到Appkey后面要用<br><img src="http://upload-images.jianshu.io/upload_images/4043475-e4dd45e05060467f.PNG?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="环信注册.PNG"></p>
-</blockquote>
-<h4 id="b-SDK导入"><a href="#b-SDK导入" class="headerlink" title="b.    SDK导入"></a>b.    SDK导入</h4><hr>
-<p>你可以直接下载然后拷贝工程的libs目录下</p>
-<p>Android Studio可以直接添加依赖</p>
-<blockquote>
-<p>将以下代码放到项目根目录的build.gradle文件里</p>
-</blockquote>
-<pre><code>repositories {
-        maven { url &quot;https://raw.githubusercontent.com/HyphenateInc/Hyphenate-SDK-Android/master/repository&quot; }
-}
-</code></pre><blockquote>
-<p>在你的module的build.gradle里加入以下代码</p>
-</blockquote>
-<pre><code>android {
-    //use legacy for android 6.0
-    useLibrary &apos;org.apache.http.legacy&apos;
-}
-dependencies {
-    compile &apos;com.android.support:appcompat-v7:23.4.0&apos;
-    //Optional compile for GCM (Google Cloud Messaging).
-    compile &apos;com.google.android.gms:play-services-gcm:9.4.0&apos;
-    compile &apos;com.hyphenate:hyphenate-sdk:3.2.3&apos;
-}
-</code></pre><blockquote>
-<p>如果想使用不包含音视频通话的sdk，用<code>compile &#39;com.hyphenate:hyphenate-sdk-lite:3.2.3&#39;</code></p>
-</blockquote>
-<h4 id="c-清单文件配置"><a href="#c-清单文件配置" class="headerlink" title="c.    清单文件配置"></a>c.    清单文件配置</h4><hr>
-<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
-&lt;manifest xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
-    package=&quot;Your Package&quot;
-    android:versionCode=&quot;100&quot;
-    android:versionName=&quot;1.0.0&quot;&gt;
-
-    &lt;!-- Required --&gt;
-    &lt;uses-permission android:name=&quot;android.permission.VIBRATE&quot; /&gt;
-    &lt;uses-permission android:name=&quot;android.permission.INTERNET&quot; /&gt;
-    &lt;uses-permission android:name=&quot;android.permission.RECORD_AUDIO&quot; /&gt;
-    &lt;uses-permission android:name=&quot;android.permission.CAMERA&quot; /&gt;
-    &lt;uses-permission android:name=&quot;android.permission.ACCESS_NETWORK_STATE&quot; /&gt;
-    &lt;uses-permission android:name=&quot;android.permission.ACCESS_MOCK_LOCATION&quot; /&gt;
-    &lt;uses-permission android:name=&quot;android.permission.WRITE_EXTERNAL_STORAGE&quot; /&gt;
-    &lt;uses-permission android:name=&quot;android.permission.MOUNT_UNMOUNT_FILESYSTEMS&quot;/&gt;  
-    &lt;uses-permission android:name=&quot;android.permission.ACCESS_FINE_LOCATION&quot; /&gt;
-    &lt;uses-permission android:name=&quot;android.permission.GET_TASKS&quot; /&gt;
-    &lt;uses-permission android:name=&quot;android.permission.ACCESS_WIFI_STATE&quot; /&gt;
-    &lt;uses-permission android:name=&quot;android.permission.CHANGE_WIFI_STATE&quot; /&gt;
-    &lt;uses-permission android:name=&quot;android.permission.WAKE_LOCK&quot; /&gt;
-    &lt;uses-permission android:name=&quot;android.permission.MODIFY_AUDIO_SETTINGS&quot; /&gt;
-    &lt;uses-permission android:name=&quot;android.permission.READ_PHONE_STATE&quot; /&gt;
-    &lt;uses-permission android:name=&quot;android.permission.RECEIVE_BOOT_COMPLETED&quot; /&gt;
-
-    &lt;application
-        android:icon=&quot;@drawable/ic_launcher&quot;
-        android:label=&quot;@string/app_name&quot;
-        android:name=&quot;Your Application&quot;&gt;
-
-    &lt;!-- 设置环信应用的AppKey --&gt;
-        &lt;meta-data android:name=&quot;EASEMOB_APPKEY&quot;  android:value=&quot;Your AppKey&quot; /&gt;
-        &lt;!-- 声明SDK所需的service SDK核心功能--&gt;
-        &lt;service android:name=&quot;com.hyphenate.chat.EMChatService&quot; android:exported=&quot;true&quot;/&gt;
-        &lt;service android:name=&quot;com.hyphenate.chat.EMJobService&quot;
-            android:permission=&quot;android.permission.BIND_JOB_SERVICE&quot;
-            android:exported=&quot;true&quot;
-            /&gt;
-        &lt;!-- 声明SDK所需的receiver --&gt;
-        &lt;receiver android:name=&quot;com.hyphenate.chat.EMMonitorReceiver&quot;&gt;
-            &lt;intent-filter&gt;
-                &lt;action android:name=&quot;android.intent.action.PACKAGE_REMOVED&quot;/&gt;
-                &lt;data android:scheme=&quot;package&quot;/&gt;
-            &lt;/intent-filter&gt;
-            &lt;!-- 可选filter --&gt;
-            &lt;intent-filter&gt;
-                &lt;action android:name=&quot;android.intent.action.BOOT_COMPLETED&quot;/&gt;
-                &lt;action android:name=&quot;android.intent.action.USER_PRESENT&quot; /&gt;
-            &lt;/intent-filter&gt;
-        &lt;/receiver&gt;
-    &lt;/application&gt;
-&lt;/manifest&gt;
-</code></pre><p>APP打包混淆</p>
-<pre><code>-keep class com.hyphenate.** {*;}
--dontwarn  com.hyphenate.**
-</code></pre><h4 id="d-初始化SDK"><a href="#d-初始化SDK" class="headerlink" title="d.    初始化SDK"></a>d.    初始化SDK</h4><hr>
-<p><em>在自定义Application的onCreate中初始化</em></p>
-<pre><code>public class MyApplication extends Application {
-
-    private Context appContext;
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        EMOptions options = new EMOptions();
-        options.setAcceptInvitationAlways(false);
-
-        appContext = this;
-        int pid = android.os.Process.myPid();
-        String processAppName = getAppName(pid);
-        // 如果APP启用了远程的service，此application:onCreate会被调用2次
-        // 为了防止环信SDK被初始化2次，加此判断会保证SDK被初始化1次
-        // 默认的APP会在以包名为默认的process name下运行，如果查到的process name不是APP的process name就立即返回
-
-        if (processAppName == null || !processAppName.equalsIgnoreCase(appContext.getPackageName())) {
-            Log.e(&quot;---&gt;&quot;, &quot;enter the service process!&quot;);
-
-            // 则此application::onCreate 是被service 调用的，直接返回
-            return;
-        }
-
-        //初始化
-        EMClient.getInstance().init(getApplicationContext(), options);
-        //在做打包混淆时，关闭debug模式，避免消耗不必要的资源
-        EMClient.getInstance().setDebugMode(true);
-    }
-
-    private String getAppName(int pID) {
-        String processName = null;
-        ActivityManager am = (ActivityManager) this.getSystemService(ACTIVITY_SERVICE);
-        List l = am.getRunningAppProcesses();
-        Iterator i = l.iterator();
-        PackageManager pm = this.getPackageManager();
-        while (i.hasNext()) {
-            ActivityManager.RunningAppProcessInfo info = (ActivityManager.RunningAppProcessInfo) (i.next());
-            try {
-                if (info.pid == pID) {
-                    processName = info.processName;
-                    return processName;
-                }
-            } catch (Exception e) {
-                // Log.d(&quot;Process&quot;, &quot;Error&gt;&gt; :&quot;+ e.toString());
-            }
-        }
-        return processName;
-    }
-}
-</code></pre><h4 id="e-注册和登陆"><a href="#e-注册和登陆" class="headerlink" title="e.    注册和登陆"></a>e.    注册和登陆</h4><hr>
-<p><em>注册要在子线程中执行</em></p>
-<pre><code>//注册失败会抛出HyphenateException
-EMClient.getInstance().createAccount(username, pwd);//同步方法
-
-EMClient.getInstance().login(userName,password,new EMCallBack() {//回调
-    @Override
-    public void onSuccess() {
-        EMClient.getInstance().groupManager().loadAllGroups();
-        EMClient.getInstance().chatManager().loadAllConversations();
-            Log.d(&quot;main&quot;, &quot;登录聊天服务器成功！&quot;);        
-    }
-
-    @Override
-    public void onProgress(int progress, String status) {
-
-    }
-
-    @Override
-    public void onError(int code, String message) {
-        Log.d(&quot;main&quot;, &quot;登录聊天服务器失败！&quot;);
-    }
-});
-</code></pre><h4 id="f-发送消息"><a href="#f-发送消息" class="headerlink" title="f.    发送消息"></a>f.    发送消息</h4><hr>
-<pre><code>//创建一条文本消息，content为消息文字内容，toChatUsername为对方用户或者群聊的id，后文皆是如此
-EMMessage message = EMMessage.createTxtSendMessage(content, toChatUsername);
-//发送消息
-EMClient.getInstance().chatManager().sendMessage(message);
-</code></pre><h4 id="g-接收消息"><a href="#g-接收消息" class="headerlink" title="g.    接收消息"></a>g.    接收消息</h4><hr>
-<pre><code>msgListener = new EMMessageListener() {
-
-        @Override
-        public void onMessageReceived(List&lt;EMMessage&gt; messages) {
-            //收到消息
-            String result = messages.get(0).getBody().toString();
-            String msgReceived = result.substring(5, result.length() - 1);
-
-            Log.i(TAG, &quot;onMessageReceived: &quot; + msgReceived);
-            final MSG msg = new MSG(msgReceived, MSG.TYPE_RECEIVED);
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    mList.add(msg);
-                    mAdapter.notifyDataSetChanged();
-                    mRecyclerView.scrollToPosition(mList.size() - 1);
-                }
-            });
-        }
-
-        @Override
-        public void onCmdMessageReceived(List&lt;EMMessage&gt; messages) {
-            //收到透传消息
-        }
-
-        @Override
-        public void onMessageRead(List&lt;EMMessage&gt; list) {
-
-        }
-
-        @Override
-        public void onMessageDelivered(List&lt;EMMessage&gt; list) {
-
-        }
-
-        @Override
-        public void onMessageChanged(EMMessage message, Object change) {
-            //消息状态变动
-        }
-    };
-</code></pre><blockquote>
-<p>接收消息的监听器分别需要在OnResume()和OnDestory()方法中注册和取消注册</p>
-</blockquote>
-<pre><code>EMClient.getInstance().chatManager().addMessageListener(msgListener);//注册
-
-EMClient.getInstance().chatManager().removeMessageListener(msgListener);//取消注册
-</code></pre><blockquote>
-<p>需要注意的是，当接收到消息，需要在<strong>主线程</strong>中更新适配器，否则会不能及时刷新出来</p>
-</blockquote>
-<p>到此，一个简单的及时聊天Demo已经完成，功能很简单，如果需要添加额外功能的话，可以自行参考官网，官网给出的教程还是很不错的！</p>
-<p>最后希望大家能多多支持我，需要你们的支持喜欢！！</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前不久，利用周末时间学习并完成一个简单的 Flutter 项目 -  <a href="https://github.com/xiaweizi/SimplicityWeather" target="_blank" rel="noopener"><strong>简悦天气</strong></a>，<em>简约不简单，丰富不复杂</em>，这是一款简约风格的 flutter 天气项目，提供实时、多日、24 小时、台风路径、语音播报以及生活指数等服务，支持定位、删除、搜索等操作。</p>
+<p>下图为主页效果，<a href="http://xiaweizi.top/SimplicityWeather-2_3.apk" target="_blank" rel="noopener">点击下载</a> 进行体验：</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/76bdbd8781d64fe49f253207020b53b4~tplv-k3u1fbpfcp-zoom-1.image" alt="图1"></p>
+<a id="more"></a>
+<p>项目中运用了大量的自定义绘制 widget，首页丰富的 <a href="https://juejin.im/post/6868920194568781838" target="_blank" rel="noopener">自定义 chart</a> 效果和炫酷的天气背景动效。天气背景动效在不同的天气气象下展示不同的效果。目前一共实现了 <strong>15</strong> 种类别，其中有，晴、晴晚、多云、多云晚、阴天、小中大雨、小中大雪、雾、霾、浮尘以及雷暴。背景动效一共分为三层：</p>
+<ul>
+<li>背景颜色层。从上到下的渐变效果</li>
+<li>云层。只有一种图片，对其位移、数量、染色做不同变化达到不同效果</li>
+<li>信息层。包括雨雪、雷暴和晴晚流星效果</li>
+</ul>
+<p>之前分别用两篇文章介绍雨雪和晴晚流星效果的实现细节：</p>
+<ul>
+<li><a href="https://juejin.im/post/6867489001809379335" target="_blank" rel="noopener">『Flutter-绘制篇』实现炫酷的雨雪特效</a></li>
+<li><a href="https://juejin.im/post/6871955131299168263" target="_blank" rel="noopener">『Flutter-绘制篇』实现梦幻的晴晚流星效果</a></li>
+</ul>
+<p>今天我们介绍背景动画的最后一篇，如何实现炫酷的雷电特效，先看一下最终效果：</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/687120e980df40a198eadc97bbc4b44c~tplv-k3u1fbpfcp-zoom-1.image" alt="thunder"></p>
+<h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>根据实现效果进行分析，雨滴效果在之前文章有介绍过不多赘述，仔细观察，其实就是对闪电图片在绘制时控制其 alpha 以营造出这种霹雳的效果。</p>
+<p>首先准备几张闪电的素材，UI 网站找了很长时间没有找到满意的效果，关键费时费钱。后来发现 oppo 最新版的天气的雷暴效果停酷炫的，于是对其反编译，找到他的资源目录。其实 oppo 雷暴的动画效果是通过 视频+openGL 的方式实现，里面有闪电的静态资源、视频资源和 openGL 代码文件。我们只需提取他的静态资源文件即可。随即在 initState() 方法中异步获取加载图片资源：</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Future&lt;<span class="keyword">void</span>&gt; fetchImages() <span class="keyword">async</span> &#123;</span><br><span class="line">  weatherPrint(<span class="string">"开始获取雷暴图片"</span>);</span><br><span class="line">  <span class="keyword">var</span> image1 = <span class="keyword">await</span> ImageUtils.getImage(<span class="string">'assets/images/lightning/lightning0.webp'</span>);</span><br><span class="line">  <span class="keyword">var</span> image2 = <span class="keyword">await</span> ImageUtils.getImage(<span class="string">'assets/images/lightning/lightning1.webp'</span>);</span><br><span class="line">  <span class="keyword">var</span> image3 = <span class="keyword">await</span> ImageUtils.getImage(<span class="string">'assets/images/lightning/lightning2.webp'</span>);</span><br><span class="line">  <span class="keyword">var</span> image4 = <span class="keyword">await</span> ImageUtils.getImage(<span class="string">'assets/images/lightning/lightning3.webp'</span>);</span><br><span class="line">  <span class="keyword">var</span> image5 = <span class="keyword">await</span> ImageUtils.getImage(<span class="string">'assets/images/lightning/lightning4.webp'</span>);</span><br><span class="line">  _images.add(image1);</span><br><span class="line">  _images.add(image2);</span><br><span class="line">  _images.add(image3);</span><br><span class="line">  _images.add(image4);</span><br><span class="line">  _images.add(image5);</span><br><span class="line">  weatherPrint(<span class="string">"获取雷暴图片成功： <span class="subst">$&#123;_images?.length&#125;</span>"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>有了图片后，开始构建对象和参数列表。由上面分析可知，除了基本的坐标 x,y 信息，只需要额外增加 alpha 属性来达到效果。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ThunderParams</span> </span>&#123;</span><br><span class="line">  ui.Image image;</span><br><span class="line">  <span class="built_in">double</span> x;</span><br><span class="line">  <span class="built_in">double</span> y;</span><br><span class="line">  <span class="built_in">double</span> alpha;</span><br><span class="line">  <span class="built_in">int</span> <span class="keyword">get</span> imgWidth =&gt; image.width;</span><br><span class="line">  <span class="built_in">int</span> <span class="keyword">get</span> imgHeight =&gt; image.height;</span><br><span class="line"></span><br><span class="line">  ThunderParams(<span class="keyword">this</span>.image);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">void</span> reset() &#123;</span><br><span class="line">    x = Random().nextDouble() * <span class="number">0.5</span>.wp -  <span class="number">1</span> / <span class="number">3</span> * imgWidth;</span><br><span class="line">    y = Random().nextDouble() * <span class="number">-0.05</span>.hp;</span><br><span class="line">    alpha = <span class="number">0</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>reset()</code>  方法用于在当前雷暴结束时，重新初始化参数信息。</p>
+<h2 id="绘制"><a href="#绘制" class="headerlink" title="绘制"></a>绘制</h2><p>参数配置好后，绘制很简单。有了图片有了位置信息和 alpha 信息，调用 canvas 的相关 api 进行绘制即可。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">void</span> drawThunder(ThunderParams params, Canvas canvas, Size size) &#123;</span><br><span class="line">  <span class="keyword">if</span> (params == <span class="keyword">null</span> || params.image == <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="keyword">return</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  canvas.save();</span><br><span class="line">  <span class="keyword">var</span> identity = ColorFilter.matrix(&lt;<span class="built_in">double</span>&gt;[</span><br><span class="line">    <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>,</span><br><span class="line">    <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>,</span><br><span class="line">    <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>,</span><br><span class="line">    <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, params.alpha, <span class="number">0</span>,</span><br><span class="line">  ]);</span><br><span class="line">  _paint.colorFilter = identity;</span><br><span class="line">  canvas.drawImage(params.image, Offset(params.x, params.y), _paint);</span><br><span class="line">  canvas.restore();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>绘制到屏幕中大概长这样:</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e893b7064eb9463b88f07d3d79fdd4e2~tplv-k3u1fbpfcp-zoom-1.image" alt="thunder2" style="zoom: 33%;"></p>
+<h2 id="动画"><a href="#动画" class="headerlink" title="动画"></a>动画</h2><p>离炫酷就差最后一步 <strong>动画</strong>。</p>
+<p>首先我们把单个闪电看做一个动画对象，从消失到展示再显示，落实到动画上，alpha 由0到1，然后再到0。但是你可能发现，出现的速度要比消失的速度要快。我们可以借助 TweenSequence 类来实现这个效果。</p>
+<p>TweenSequence 是一个动画序列，支持配置权重，以及对应的动画 Tween。这样，我们可以给 alpha 在 [0,1] 区间做动画时权重设置低一点，[1,0] 时权重高一点。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> _animation = TweenSequence([</span><br><span class="line">  TweenSequenceItem(</span><br><span class="line">      tween: Tween(begin: <span class="number">0.0</span>, end: <span class="number">1.0</span>)</span><br><span class="line">          .chain(CurveTween(curve: Curves.easeIn)),</span><br><span class="line">      weight: <span class="number">1</span>),</span><br><span class="line">  TweenSequenceItem(</span><br><span class="line">      tween: Tween(begin: <span class="number">1.0</span>, end: <span class="number">0.0</span>)</span><br><span class="line">          .chain(CurveTween(curve: Curves.easeIn)),</span><br><span class="line">      weight: <span class="number">3</span>),</span><br><span class="line">]);</span><br></pre></td></tr></table></figure>
+<p>实现后，效果如下：</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b71751fa89d24300ad7956ee7ed5e98a~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<p>然后，我们用三个随机的闪电作为一组，做循环动画，控制其序列帧，完成连续&amp;不同&amp;随机的删掉效果。</p>
+<figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">_controller = AnimationController(duration: <span class="built_in">Duration</span>(seconds: <span class="number">1</span>), vsync: <span class="keyword">this</span>);</span><br><span class="line">   _controller.addStatusListener((status) &#123;</span><br><span class="line">     <span class="keyword">if</span> (status == AnimationStatus.completed) &#123;</span><br><span class="line">       _controller.reset();</span><br><span class="line">       Future.delayed(<span class="built_in">Duration</span>(milliseconds: <span class="number">10</span>)).then((value) &#123;</span><br><span class="line">         initThunderParams();</span><br><span class="line">         _controller.forward();</span><br><span class="line">       &#125;);</span><br><span class="line">     &#125;</span><br><span class="line">   &#125;);</span><br><span class="line"></span><br><span class="line">   <span class="keyword">var</span> _animation = TweenSequence([</span><br><span class="line">     TweenSequenceItem(</span><br><span class="line">         tween: Tween(begin: <span class="number">0.0</span>, end: <span class="number">1.0</span>)</span><br><span class="line">             .chain(CurveTween(curve: Curves.easeIn)),</span><br><span class="line">         weight: <span class="number">1</span>),</span><br><span class="line">     TweenSequenceItem(</span><br><span class="line">         tween: Tween(begin: <span class="number">1.0</span>, end: <span class="number">0.0</span>)</span><br><span class="line">             .chain(CurveTween(curve: Curves.easeIn)),</span><br><span class="line">         weight: <span class="number">3</span>),</span><br><span class="line">   ]).animate(CurvedAnimation(</span><br><span class="line">     parent: _controller,</span><br><span class="line">     curve: Interval(</span><br><span class="line">       <span class="number">0.0</span>, <span class="number">1.0</span>,</span><br><span class="line">       curve: Curves.ease,</span><br><span class="line">     ),</span><br><span class="line">   ));</span><br></pre></td></tr></table></figure>
+<p>在之前说的一个闪电动画后面，新增 <code>.animate()</code> 的配置，通过控制 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Interval(</span><br><span class="line">        0.0, 0.3,</span><br><span class="line">        curve: Curves.ease,</span><br><span class="line">      )</span><br></pre></td></tr></table></figure>
+<p>配置该动画执行序列帧的开始和结束，以及插值器。</p>
+<p>通过在 <code>addStatusListener</code> 中监听动画的执行状态，在触发 <code>AnimationStatus.completed</code> 时随机等待一定时间后，重新开始。</p>
+<p>到此，一个炫酷的雷电特效就完成了，是不是很简单，如果觉得还不错，后面考虑把天气动画背景做成插件供有需要的小伙伴使用</p>
 
       
     </div>
@@ -778,13 +427,13 @@ EMClient.getInstance().chatManager().removeMessageListener(msgListener);//取消
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/article/276/">『Android Tips』-- 基于环信的仿QQ即时通讯的简单实现</a></p>
+        <p><span>本文标题:</span><a href="/article/5c93/">『Flutter-绘制篇』实现炫酷的雷电特效</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">下位子</a></p>
-        <p><span>发布时间:</span>2017-01-21, 20:46:25</p>
-        <p><span>最后更新:</span>2018-05-30, 09:31:47</p>
+        <p><span>发布时间:</span>2020-09-19, 12:11:12</p>
+        <p><span>最后更新:</span>2020-09-19, 13:19:45</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/article/276/" title="『Android Tips』-- 基于环信的仿QQ即时通讯的简单实现">http://xiaweizi.cn/article/276/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/article/276/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/article/5c93/" title="『Flutter-绘制篇』实现炫酷的雷电特效">http://xiaweizi.cn/article/5c93/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/article/5c93/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -796,16 +445,10 @@ EMClient.getInstance().chatManager().removeMessageListener(msgListener);//取消
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/article/2954/">
-                    『Android Tips』-- 基于LitePal操作数据库的学生管理系统的简单实现
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/article/7455/">
-                    高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题
+                <a href="/article/903e/">
+                    『Flutter-绘制篇』实现梦幻的晴晚流星效果
                 </a>
             </div>
         
@@ -857,7 +500,7 @@ EMClient.getInstance().chatManager().removeMessageListener(msgListener);//取消
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#之前一直想实现聊天的功能，但是感觉有点困难，今天看了环信的API，就利用下午的时间动手试了试，然后做了一个小Demo。"><span class="toc-number">1.</span> <span class="toc-text">之前一直想实现聊天的功能，但是感觉有点困难，今天看了环信的API，就利用下午的时间动手试了试，然后做了一个小Demo。</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#因为没有刻意去做聊天软件，花的时间也不多，然后界面就很简单，都是一些基本知识，如果觉得功能简单，可以自行添加，我这就不多介绍了。"><span class="toc-number">2.</span> <span class="toc-text">因为没有刻意去做聊天软件，花的时间也不多，然后界面就很简单，都是一些基本知识，如果觉得功能简单，可以自行添加，我这就不多介绍了。</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1、聊天页面"><span class="toc-number"></span> <span class="toc-text">1、聊天页面</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#a-消息类的封装"><span class="toc-number">1.</span> <span class="toc-text">a.  消息类的封装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#b-RecyclerView子项的布局"><span class="toc-number">2.</span> <span class="toc-text">b.    RecyclerView子项的布局</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#c-RecyclerView适配器"><span class="toc-number">3.</span> <span class="toc-text">c.    RecyclerView适配器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#d-RecyclerView初始化"><span class="toc-number">4.</span> <span class="toc-text">d.    RecyclerView初始化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-环信API的简单应用"><span class="toc-number"></span> <span class="toc-text">2. 环信API的简单应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#a-环信开发账号的注册"><span class="toc-number">1.</span> <span class="toc-text">a.    环信开发账号的注册</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#b-SDK导入"><span class="toc-number">2.</span> <span class="toc-text">b.    SDK导入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#c-清单文件配置"><span class="toc-number">3.</span> <span class="toc-text">c.    清单文件配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#d-初始化SDK"><span class="toc-number">4.</span> <span class="toc-text">d.    初始化SDK</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#e-注册和登陆"><span class="toc-number">5.</span> <span class="toc-text">e.    注册和登陆</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#f-发送消息"><span class="toc-number">6.</span> <span class="toc-text">f.    发送消息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#g-接收消息"><span class="toc-number">7.</span> <span class="toc-text">g.    接收消息</span></a></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#准备"><span class="toc-number">2.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#绘制"><span class="toc-number">3.</span> <span class="toc-text">绘制</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#动画"><span class="toc-number">4.</span> <span class="toc-text">动画</span></a></li></ol>
         
     </div>
     <style>
@@ -893,7 +536,7 @@ EMClient.getInstance().chatManager().removeMessageListener(msgListener);//取消
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"『Android Tips』-- 基于环信的仿QQ即时通讯的简单实现　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"『Flutter-绘制篇』实现炫酷的雷电特效　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -934,15 +577,13 @@ EMClient.getInstance().chatManager().removeMessageListener(msgListener);//取消
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/article/2954/" title="上一篇: 『Android Tips』-- 基于LitePal操作数据库的学生管理系统的简单实现">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/article/7455/" title="下一篇: 高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题">
+            <a href="/article/903e/" title="下一篇: 『Flutter-绘制篇』实现梦幻的晴晚流星效果">
                 <i class="fa fa-angle-right"></i>
             </a>
         
