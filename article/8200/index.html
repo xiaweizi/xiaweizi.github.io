@@ -15,26 +15,24 @@
 
 
 
-<meta name="description" content="前言最近利用两周的周末和下班时间入坑了 Flutter，简单的学了一下基础的 widget 后，就准备拿一个项目练练手。什么项目既实用，有不乏技术，当时是写一个天气 app 了，因此  简悦天气 因此诞生。 简约不简单，丰富不复杂 一款简约风格的 flutter 天气项目，提供实时、多日、24 小时、台风路径以及生活指数等服务，支持定位、删除、搜索、语音播报等操作。 作为 flutter 实战项目">
+<meta name="description" content="前言前不久，利用周末时间学习并完成一个简单的 Flutter 项目 -  简悦天气，简约不简单，丰富不复杂，这是一款简约风格的 flutter 天气项目，提供实时、多日、24 小时、台风路径、语音播报以及生活指数等服务，支持定位、删除、搜索等操作。">
 <meta name="keywords" content="Flutter,跨平台">
 <meta property="og:type" content="article">
-<meta property="og:title" content="『Flutter』一款风格简约功能丰富的天气">
-<meta property="og:url" content="http://xiaweizi.cn/article/f7f8/index.html">
+<meta property="og:title" content="『Flutter-技能篇』实现一套完整的应用内更新">
+<meta property="og:url" content="http://xiaweizi.cn/article/8200/index.html">
 <meta property="og:site_name" content="xiaweizi&#39;blog">
-<meta property="og:description" content="前言最近利用两周的周末和下班时间入坑了 Flutter，简单的学了一下基础的 widget 后，就准备拿一个项目练练手。什么项目既实用，有不乏技术，当时是写一个天气 app 了，因此  简悦天气 因此诞生。 简约不简单，丰富不复杂 一款简约风格的 flutter 天气项目，提供实时、多日、24 小时、台风路径以及生活指数等服务，支持定位、删除、搜索、语音播报等操作。 作为 flutter 实战项目">
+<meta property="og:description" content="前言前不久，利用周末时间学习并完成一个简单的 Flutter 项目 -  简悦天气，简约不简单，丰富不复杂，这是一款简约风格的 flutter 天气项目，提供实时、多日、24 小时、台风路径、语音播报以及生活指数等服务，支持定位、删除、搜索等操作。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6d6af5e8c51b40799b47776130f86d62~tplv-k3u1fbpfcp-zoom-1.image">
-<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/76bdbd8781d64fe49f253207020b53b4~tplv-k3u1fbpfcp-zoom-1.image">
-<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/671df9cddce54ed59fc5617cc082ec0d~tplv-k3u1fbpfcp-zoom-1.image">
-<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a5dd1014c00f447d88a5ea287786e808~tplv-k3u1fbpfcp-zoom-1.image">
-<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b9b3ed513c8348ddbbdc0a538038dfdd~tplv-k3u1fbpfcp-zoom-1.image">
-<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d86dcaaafb0b4e7ba05be8fbe0bb84e4~tplv-k3u1fbpfcp-zoom-1.image">
-<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/252455b3876d4788bf7eec42eea63282~tplv-k3u1fbpfcp-zoom-1.image">
-<meta property="og:updated_time" content="2020-09-12T04:52:47.344Z">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6471e071336e42e38f9037c3b5e5ae45~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1f772d4efc8d4879ac80941579196d1d~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c6bbeba5695e45529f085d0745705406~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7f66f1b67cb3401bb0edbc198cfa4a63~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d39939eb9cba441c95efbf6cfac2643d~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:updated_time" content="2020-10-05T11:47:21.079Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="『Flutter』一款风格简约功能丰富的天气">
-<meta name="twitter:description" content="前言最近利用两周的周末和下班时间入坑了 Flutter，简单的学了一下基础的 widget 后，就准备拿一个项目练练手。什么项目既实用，有不乏技术，当时是写一个天气 app 了，因此  简悦天气 因此诞生。 简约不简单，丰富不复杂 一款简约风格的 flutter 天气项目，提供实时、多日、24 小时、台风路径以及生活指数等服务，支持定位、删除、搜索、语音播报等操作。 作为 flutter 实战项目">
-<meta name="twitter:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6d6af5e8c51b40799b47776130f86d62~tplv-k3u1fbpfcp-zoom-1.image">
+<meta name="twitter:title" content="『Flutter-技能篇』实现一套完整的应用内更新">
+<meta name="twitter:description" content="前言前不久，利用周末时间学习并完成一个简单的 Flutter 项目 -  简悦天气，简约不简单，丰富不复杂，这是一款简约风格的 flutter 天气项目，提供实时、多日、24 小时、台风路径、语音播报以及生活指数等服务，支持定位、删除、搜索等操作。">
+<meta name="twitter:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6471e071336e42e38f9037c3b5e5ae45~tplv-k3u1fbpfcp-zoom-1.image">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -66,7 +64,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>『Flutter』一款风格简约功能丰富的天气 | xiaweizi&#39;blog</title>
+<title>『Flutter-技能篇』实现一套完整的应用内更新 | xiaweizi&#39;blog</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -308,11 +306,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-『Flutter』一款风格简约功能丰富的天气" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-『Flutter-技能篇』实现一套完整的应用内更新" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/article/f7f8/" class="article-date">
-      <time datetime="2020-08-29T11:11:12.000Z" itemprop="datePublished">2020-08-29</time>
+      <a href="/article/8200/" class="article-date">
+      <time datetime="2020-10-05T11:11:12.000Z" itemprop="datePublished">2020-10-05</time>
 </a>
 
 
@@ -327,7 +325,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      『Flutter』一款风格简约功能丰富的天气
+      『Flutter-技能篇』实现一套完整的应用内更新
     </h1>
   
 
@@ -337,7 +335,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">1,730 字</span>
+        <span class="post-count">1,813 字</span>
       </span>
     </span>
 
@@ -346,7 +344,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">6 分</span>
+        <span class="post-count">7 分</span>
       </span>
     </span>
 
@@ -382,163 +380,71 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>最近利用两周的周末和下班时间入坑了 Flutter，简单的学了一下基础的 widget 后，就准备拿一个项目练练手。什么项目既实用，有不乏技术，当时是写一个天气 app 了，因此  <a href="https://github.com/xiaweizi/SimplicityWeather" target="_blank" rel="noopener"><strong>简悦天气</strong></a> 因此诞生。</p>
-<p><em>简约不简单，丰富不复杂</em></p>
-<p>一款简约风格的 flutter 天气项目，提供实时、多日、24 小时、台风路径以及生活指数等服务，支持定位、删除、搜索、语音播报等操作。</p>
-<p>作为 flutter 实战项目，包含状态管理、网络请求、数据缓存、自定义 view、自定义动画，三方统计，事件管理等技术点，实用且丰富。</p>
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>前不久，利用周末时间学习并完成一个简单的 Flutter 项目 -  <a href="https://github.com/xiaweizi/SimplicityWeather" target="_blank" rel="noopener"><strong>简悦天气</strong></a>，<em>简约不简单，丰富不复杂</em>，这是一款简约风格的 flutter 天气项目，提供实时、多日、24 小时、台风路径、语音播报以及生活指数等服务，支持定位、删除、搜索等操作。</p>
 <a id="more"></a>
-<h3 id="体验"><a href="#体验" class="headerlink" title="体验"></a>体验</h3><p>点击<a href="http://xiaweizi.top/SimplicityWeather-2_2.apk" target="_blank" rel="noopener">下载链接</a>下载</p>
-<p>或者直接扫描二维码抢先体验</p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6d6af5e8c51b40799b47776130f86d62~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
-<h3 id="功能介绍"><a href="#功能介绍" class="headerlink" title="功能介绍"></a>功能介绍</h3><p>目前已支持的功能如下</p>
-<ul>
-<li style="list-style: none"><input type="checkbox" checked> 自动定位</li>
-<li style="list-style: none"><input type="checkbox" checked> 添加&amp;删除城市</li>
-<li style="list-style: none"><input type="checkbox" checked> 实时信息</li>
-<li style="list-style: none"><input type="checkbox" checked> 24小时&amp;多日预报</li>
-<li style="list-style: none"><input type="checkbox" checked> 丰富的生活指数</li>
-<li style="list-style: none"><input type="checkbox" checked> 台风路径</li>
-<li style="list-style: none"><input type="checkbox" checked> 背景高斯模糊</li>
-<li style="list-style: none"><input type="checkbox" checked> 动态降雨卡片</li>
-<li style="list-style: none"><input type="checkbox" checked> 自动更新</li>
-<li style="list-style: none"><input type="checkbox" checked> 丰富多样的天气背景效果(雷暴效果)</li>
-<li style="list-style: none"><input type="checkbox" checked> 自动升级</li>
-<li style="list-style: none"><input type="checkbox" checked> 语音播报</li>
-<li style="list-style: none"><input type="checkbox" checked> <strong>一键换天</strong>，做天气之子</li>
-</ul>
-<p>接下来多图警告<br><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/76bdbd8781d64fe49f253207020b53b4~tplv-k3u1fbpfcp-zoom-1.image" alt="图1"></p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/671df9cddce54ed59fc5617cc082ec0d~tplv-k3u1fbpfcp-zoom-1.image" alt="图2"></p>
-<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a5dd1014c00f447d88a5ea287786e808~tplv-k3u1fbpfcp-zoom-1.image" alt="图3"></p>
-<h4 id="一键换天"><a href="#一键换天" class="headerlink" title="一键换天"></a>一键换天</h4><p>天气背景效果分为三层：</p>
-<ul>
-<li>背景颜色层。从上到下的渐变效果</li>
-<li>云层。只有一种图片，对其位移、数量、染色做不同变化达到不同效果</li>
-<li>雨雪层。为雨雪天气单独做了动画，很炫酷。</li>
-</ul>
-<p>目前支持多达 <strong>12</strong> 种不同的天气类型，其中包括：晴、多云、阴天、小中大雨、小中大雪、雾、霾、浮尘，为了更好，在关于页面有上角添加切换天气类型的入口，实时查看不同气象下不同的背景效果。下面用一种 GIF 图展示效果，鉴于 GIF 本身的局限，可能会模糊低帧，请下载 apk 自行体验。</p>
-<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b9b3ed513c8348ddbbdc0a538038dfdd~tplv-k3u1fbpfcp-zoom-1.image" alt="图4"></p>
-<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d86dcaaafb0b4e7ba05be8fbe0bb84e4~tplv-k3u1fbpfcp-zoom-1.image" alt="图5"></p>
-<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/252455b3876d4788bf7eec42eea63282~tplv-k3u1fbpfcp-zoom-1.image" alt="图6"></p>
-<h3 id="技术介绍"><a href="#技术介绍" class="headerlink" title="技术介绍"></a>技术介绍</h3><p>虽然这个项目简单，但是涵盖的 flutter 技术点却不少，可以满足日常开发小项目的需求。</p>
-<p>其实从入门 flutter 到完成这个项目，也只是花了两个周末，加上平时下班的时间，代码写的略微有点仓促，很多可以封装，和一些绘制的逻辑还有很大的优化空间，后面抽时间进行优化一波。</p>
-<p>大致整理一下其技术点：</p>
-<ul>
-<li>网络请求&amp;数据缓存</li>
-<li>高德 SDK 以及自动定位</li>
-<li>自定义 View，动画以及 widget</li>
-<li>三方统计接入，插件接入</li>
-<li>状态管理，数据同页面以及跨页面传输</li>
-<li>屏幕适配，公共组件封装</li>
-</ul>
-<p>这里特地把自定义 View &amp;动画拉出来说说，从项目可以看到很多的图表，包括空气质量&amp;湿度比例圆弧图，日出日落弧线图，以及24小时&amp;多日折线图。其实绘制原理跟 Android 的绘制很像，包括接口的设计也异曲同工。同样有 canvas 画布和 paint 画笔，这样写起来就方便很多。</p>
-<p>有了 Android 绘制基础，写起来就非常快了，这几个图加在一起一共不到一天的时间就可以完成。无非是先装载好数据，根据获取到的数据进行绘制。后面有时间会单独介绍一下这这块的绘制逻辑。</p>
-<h3 id="三方库依赖"><a href="#三方库依赖" class="headerlink" title="三方库依赖"></a>三方库依赖</h3><p>Fluter 为什么目前这么火热，以及开发的效率如此之高，除了因为 Google 这个大佬作为靠山，更多的还是活跃的开源社区，<a href="https://pub.flutter-io.cn/" target="_blank" rel="noopener">pub.dev</a> 上提供了很多稳定而又多样的插件，省去不必要的开发时间，根据自己的实际情况进行选择，结合 Mac 上 Alfred 工具，搜索起来得心应手。</p>
-<p>同样，简悦天气项目中也引用不少依赖插件，特此进行说明和感谢。</p>
-<table>
-<thead>
-<tr>
-<th>插件名称</th>
-<th>插件说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://pub.flutter-io.cn/packages/flutter_bloc" target="_blank" rel="noopener">flutter_bloc</a></td>
-<td>不多说，很强大，作为新手再也不用担心数据共享与更新</td>
-</tr>
-<tr>
-<td><a href="https://pub.flutter-io.cn/packages/shared_preferences" target="_blank" rel="noopener">shared_preferences</a></td>
-<td>很常用，持久化保存数据</td>
-</tr>
-<tr>
-<td><a href="https://pub.flutter-io.cn/packages/dio" target="_blank" rel="noopener">dio</a></td>
-<td>网络请求当然离不开一个好的网络框架，项目只是用到了基础的 GET 请求</td>
-</tr>
-<tr>
-<td><a href="https://pub.flutter-io.cn/packages/amap_location_fluttify" target="_blank" rel="noopener">amap_location_fluttify</a></td>
-<td>高德定位插件，虽然有坑，但是满足基础需求</td>
-</tr>
-<tr>
-<td><a href="https://pub.flutter-io.cn/packages/location_permissions" target="_blank" rel="noopener">location_permissions</a></td>
-<td>定位权限判断已经申请插件</td>
-</tr>
-<tr>
-<td><a href="https://pub.flutter-io.cn/packages/event_bus" target="_blank" rel="noopener">event_bus</a></td>
-<td>事件更新</td>
-</tr>
-<tr>
-<td><a href="https://pub.flutter-io.cn/packages/flutter_slidable" target="_blank" rel="noopener">flutter_slidable</a></td>
-<td>强大的侧滑插件</td>
-</tr>
-<tr>
-<td><a href="https://pub.flutter-io.cn/packages/umeng_analytics_plugin" target="_blank" rel="noopener">umeng_analytics_plugin</a></td>
-<td>友盟统计插件</td>
-</tr>
-<tr>
-<td><a href="https://pub.flutter-io.cn/packages/flutter_screenutil" target="_blank" rel="noopener">flutter_screenutil</a></td>
-<td>屏幕适配工具插件</td>
-</tr>
-<tr>
-<td><a href="https://pub.flutter-io.cn/packages/modal_bottom_sheet" target="_blank" rel="noopener">modal_bottom_sheet</a></td>
-<td>底部弹窗</td>
-</tr>
-<tr>
-<td><a href="https://pub.flutter-io.cn/packages/path_drawing" target="_blank" rel="noopener">path_drawing</a></td>
-<td>绘制虚线 path 用到</td>
-</tr>
-<tr>
-<td><a href="https://pub.flutter-io.cn/packages/url_launcher" target="_blank" rel="noopener">url_launcher</a></td>
-<td>通用跳转工具</td>
-</tr>
-<tr>
-<td><a href="https://pub.flutter-io.cn/packages/package_info" target="_blank" rel="noopener">package_info</a></td>
-<td>获取包相关信息</td>
-</tr>
-<tr>
-<td><a href="https://pub.flutter-io.cn/packages/ota_update" target="_blank" rel="noopener">ota_update</a></td>
-<td>apk 自动升级</td>
-</tr>
-<tr>
-<td><a href="https://pub.flutter-io.cn/packages/flutter_tts" target="_blank" rel="noopener">flutter_tts</a></td>
-<td>语音播报</td>
-</tr>
-</tbody>
-</table>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>对 Flutter 两周的学习和开发下来后的感受，代码写起来是真快，在 Android 如果想实现，点击按钮并更新 TextView 的逻辑，首先创建 xml 布局，其次 java 代码中初始化 View 并给 button 添加点击事件，然后，还需要有单独的变量保存状态的更新，最后在变量发生变化时更新 TextView 的值。</p>
-<p>而 Flutter 的核心就是  widget，很多功能都封装在 widget 中，在 Flutter 中如果想实现该功能，只需创建两个 widget，在相应 click 事件时只需关系变量值改变，调用 setState，后续的 View 更新可以完全不用管，有点类似 Android 的 databinding。</p>
-<p>不过，由于全部都是 widget，你会发现如果把所有页面写在一个文件，那么嵌套的画面绝对会让你崩溃。这就需要，对功能进行拆解，尽量做到逻辑最小化，代码阅读性和维护性也会很高。还有就是插件，虽然社区的插件已经相当丰富，但还是有些需求没有找到合适的插件，这就需要广大开发者，积极燃烧开源热血，为社区贡献自己的成果。</p>
-<p>总的来说，开发效率上确实提高不少，因为入坑时间短，原理和性能上没有细致研究，所以可能导致看法有点片面，不过后面会努力补上知识点。</p>
-<h3 id="感谢"><a href="#感谢" class="headerlink" title="感谢"></a>感谢</h3><p>天气数据来源于 <a href="https://open.caiyunapp.com/Main_Page" target="_blank" rel="noopener">彩云科技</a></p>
-<p>定位功能来自 <a href="https://lbs.amap.com/" target="_blank" rel="noopener">高德地图</a> </p>
-<blockquote>
-<p>高德 appkey 放在代码中，供大家使用，结果有人恶意刷 api，导致我账号被封，所以部分功能不能正常使用，请见谅</p>
+<p>下图为主页效果，<a href="http://xiaweizi.top/SimplicityWeather-2_6.apk" target="_blank" rel="noopener">点击下载</a> 进行体验：</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6471e071336e42e38f9037c3b5e5ae45~tplv-k3u1fbpfcp-zoom-1.image" alt="home"></p>
+<p>一款成熟的 APP，为了保证用户手上的 <code>apk</code> 始终是最新版本，一方面可以通过发布到各产商应用商店，依赖其自升级能力完成自更新；或者，自己实现一套应用内更新逻辑，两者各有利弊。</p>
+<p>前者，优势在于有厂商应用商店自升级通道，可以静默安装，用户基本无感知，但是，如果用户关闭自更新并且不主动更新，那么 app 永远没有自升级的可能性，而且每家都发布维护，成本也是相当高的。</p>
+<p>而后者自己实现，虽然不能静默安装，但是可以在用户每次打开 <code>app</code> 时，根据业务需求或者版本更新，主动推送新版本，提醒用户相关问题的修复，或者有新的功能，对提升 <code>app</code> 的粘性有很大的帮助。</p>
+<p>我们今天将全面完整的实现一套 <code>Flutter</code> 应用内更新流程，涵盖了<strong>前端、服务端和客户端</strong>部分，所以本篇文章主要有两个主题：</p>
+<ol>
+<li>实现一套<strong>完整</strong>的应用内更新流程</li>
+<li>实现<strong>炫酷</strong>的更新弹窗动画</li>
+</ol>
+<p>希望能帮助到有需要的小伙伴。</p>
+<h2 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h2><p>咱们直接先看一下客户端完成后的效果：</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/1f772d4efc8d4879ac80941579196d1d~tplv-k3u1fbpfcp-zoom-1.image" alt="app_update"></p>
+<p>如上图所示，在 <code>app</code> 打开时，会提升有新版本更新，并告知最新版本的更新内容。</p>
+<p>点击立即更新，会获取配置的下载地址进行下载，并根据当前下载进度呈现水波纹的效果，在加上炫酷的背景动画，整体给人非常炫酷的效果。(水波纹和背景动画后面也会进行讲解)</p>
+<p>更新完成后，直接会跳转到应用的覆盖安装页面，点击安装则可以更新到最新版本啦。</p>
+<p>开始正文，接下来将从 <code>apk</code> 打包，<strong>前端</strong>页面编写，<strong>后端</strong>接口返回以及<strong>客户端</strong>具体逻辑实现，并附带炫酷的更新弹窗效果，完成的呈现一整套流程的运转过程。</p>
+<h3 id="APK-打包"><a href="#APK-打包" class="headerlink" title="APK 打包"></a>APK 打包</h3><p>第一步，虽然简单，但是必不可少，那就是生成最新的 <code>apk</code> 包，不过有不少细节点需要关注。</p>
+<ol>
+<li><p>在终端使用 <code>flutter build apk --target-platform android-arm64 --split-per-abi</code> 进行打包，任务执行完成后，会在 <code>build/app/outputs/apk/release/app-arm64-v8a-release.apk</code> 下生成 apk 文件。</p>
+<p> 这里根据需要编译平台，我这边只需要 <code>arm64</code> 下的 <code>apk</code>，所以中添加 <code>android-arm64</code> 配置。</p>
+</li>
+<li><p>记得更新 <code>pubspec.yaml</code> 中的 <code>version</code> 字段。 <code>version: 2.6.0+26</code> 2.6.0 代表版本名称，26 代表版本号，用于判断是否需要提醒更新。</p>
+</li>
+<li><p>整理距离上一个版本的 change，看一下主要有哪些更新点，为后面更新说明做准备。</p>
+</li>
+</ol>
+<h3 id="前端页面配置"><a href="#前端页面配置" class="headerlink" title="前端页面配置"></a>前端页面配置</h3><p>之前自学过一点 <code>python</code>，就决定使用 <a href="https://www.djangoproject.com/" target="_blank" rel="noopener">Django</a> 来完成。</p>
+<p>其实，自己一直有一个 <code>django</code> 的小项目，作为自己平常工具、或者爬虫后数据展示的平台。前端时间，媳妇怀孕期间，为了让我和媳妇能了解到离预产期的时间、宝宝状态和妈妈状态，怕去了妈妈帮的数据，每天定时定点推送当天的具体数据。不仅如此，娃生下来后，每天也会不间断的推送娃的出生天数和注意事项，确实还挺实用的。给大家简单的看一下后台数据和推送内容~</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c6bbeba5695e45529f085d0745705406~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<p>这是后台的数据，可以查看和配置各种信息。</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7f66f1b67cb3401bb0edbc198cfa4a63~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<p>这是通过邮箱推送后内容展示。</p>
+<p>虽然作为 <code>Android</code> 开发，但还是要对前后端的知识点有大概了解，这样跟其他的小伙伴沟通起来障碍才会小一点。</p>
+<p>稍微有点扯远了，本篇不介绍 <code>Django</code> 的使用和项目创建，有需要的可以私聊我要课程。</p>
+<h4 id="创建表"><a href="#创建表" class="headerlink" title="创建表"></a>创建表</h4><p>自升级的表数据很简单，只需要 下载地址、版本号和更新点即可。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OTAData</span><span class="params">(models.Model)</span>:</span></span><br><span class="line">    ota_url = models.CharField(<span class="string">"下载地址"</span>, max_length=<span class="number">256</span>)</span><br><span class="line">    ota_app_code = models.CharField(<span class="string">"版本号"</span>, max_length=<span class="number">100</span>)</span><br><span class="line">    ota_app_desc = models.TextField(<span class="string">"更新点"</span>, default=<span class="string">""</span>)</span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Meta</span>:</span></span><br><span class="line">        db_table = <span class="string">'otadata'</span></span><br><span class="line">        verbose_name = <span class="string">'OTA数据'</span></span><br><span class="line">        verbose_name_plural = verbose_name</span><br></pre></td></tr></table></figure>
+<h4 id="创建后台展示"><a href="#创建后台展示" class="headerlink" title="创建后台展示"></a>创建后台展示</h4><p>在每个模块下的 <code>admin.py</code> 中配置需要展示的字段，以及排序规则等。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@admin.register(OTAData)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OTAAdmin</span><span class="params">(ImportExportActionModelAdmin)</span>:</span></span><br><span class="line">    resource_class = OTAResource</span><br><span class="line">    list_display = (<span class="string">"ota_url"</span>, <span class="string">"ota_app_code"</span>, <span class="string">"ota_app_desc"</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="配置数据"><a href="#配置数据" class="headerlink" title="配置数据"></a>配置数据</h4><p>部署到线上后，输入绑定的域名或者 IP 地址访问对应的后台 url，在页面中配置相应的数据。</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d39939eb9cba441c95efbf6cfac2643d~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<h3 id="服务端数据下发"><a href="#服务端数据下发" class="headerlink" title="服务端数据下发"></a>服务端数据下发</h3><p>后端页面配置完成，此时需要服务端提供接口给客户端请求。<a href="https://www.djangoproject.com/" target="_blank" rel="noopener">Django</a> 同样提供能力支持。</p>
+<p>在模块下的 <code>views.py</code> 中配置下发的内容：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">ota_data</span><span class="params">(request)</span>:</span></span><br><span class="line">    ota_data = OTAData.objects.all()</span><br><span class="line">    inner_data = &#123;&#125;</span><br><span class="line">    <span class="keyword">if</span> ota_data.__len__() &gt; <span class="number">0</span>:</span><br><span class="line">        item = ota_data[<span class="number">0</span>]</span><br><span class="line">        inner_data = &#123;</span><br><span class="line">            <span class="string">"url"</span>: item.ota_url,</span><br><span class="line">            <span class="string">"appCode"</span>: item.ota_app_code,</span><br><span class="line">            <span class="string">"desc"</span>: item.ota_app_desc,</span><br><span class="line">        &#125;</span><br><span class="line">    data = &#123;</span><br><span class="line">        <span class="string">"status"</span>: <span class="number">0</span>,</span><br><span class="line">        <span class="string">"code"</span>: <span class="number">200</span>,</span><br><span class="line">        <span class="string">"data"</span>: inner_data,</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> JsonResponse(data, json_dumps_params=&#123;<span class="string">'ensure_ascii'</span>: <span class="keyword">False</span>&#125;)</span><br></pre></td></tr></table></figure>
+<p>通过返回 <code>JsonResponse</code> 对象来控制返回的数据格式，对数据库中的数据进行组装后返回即可。</p>
+<p>然后在模块下的 <code>urls.py</code> 配置地址访问格式:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">path(<span class="string">'ota/'</span>, ota_data)</span><br></pre></td></tr></table></figure>
+<p>发布后，通过访问 <code>http://xxx/ota/</code> 既可请求到正确的数据。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="attr">"status"</span>: <span class="number">0</span>,</span><br><span class="line">    <span class="attr">"code"</span>: <span class="number">200</span>,</span><br><span class="line">    <span class="attr">"data"</span>: &#123;</span><br><span class="line">        <span class="attr">"url"</span>: <span class="string">"http://xiaweizi.top/SimplicityWeather-2_6.apk"</span>,</span><br><span class="line">        <span class="attr">"appCode"</span>: <span class="string">"26"</span>,</span><br><span class="line">        <span class="attr">"desc"</span>: <span class="string">"- 新增城市管理动画效果\r\n- 优化搜索结果页展示效果\r\n- 新增炫酷的 demo 入口效果\r\n- 优化背景动画效果"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h3><blockquote>
+<p>对于 iOS 就直接跳转到 <code>App Store</code>， 本篇讲述 <code>Android</code> 端的实现逻辑。</p>
 </blockquote>
-<p>统计来自 <a href="https://mobile.umeng.com/" target="_blank" rel="noopener">友盟统计</a></p>
-<p>天气 icon 来自 <a href="https://www.iconfont.cn/" target="_blank" rel="noopener">阿里icon</a></p>
-<h3 id="ChangeLog"><a href="#ChangeLog" class="headerlink" title="ChangeLog"></a>ChangeLog</h3><h4 id="2-2-0"><a href="#2-2-0" class="headerlink" title="2.2.0"></a>2.2.0</h4><ul>
-<li>新增 OTA 时更新说明</li>
-<li>晴天新增太阳</li>
-<li>支持语音播报功能</li>
-<li>容错高德 API 次数限制处理</li>
-</ul>
-<h4 id="2-1-0"><a href="#2-1-0" class="headerlink" title="2.1.0"></a>2.1.0</h4><ul>
-<li>新增自动更新</li>
-<li>新增雷暴效果</li>
-<li>新增动态降雨卡片</li>
-<li>更换 iOS icon</li>
-<li>修复删除城市后背景不更新问题</li>
-</ul>
-<h4 id="2-0-0"><a href="#2-0-0" class="headerlink" title="2.0.0"></a>2.0.0</h4><ul>
-<li>优化雨雪绘制算法，提升雨雪类型的性能</li>
-<li>新增雪花随风摇摆效果</li>
-</ul>
-<h4 id="1-7-0"><a href="#1-7-0" class="headerlink" title="1.7.0"></a>1.7.0</h4><ul>
-<li>新增高斯模糊效果</li>
-</ul>
-<h4 id="1-6-0"><a href="#1-6-0" class="headerlink" title="1.6.0"></a>1.6.0</h4><ul>
-<li>第一次提交</li>
-</ul>
-
+<p>对于客户端的逻辑如下：</p>
+<ol>
+<li>app 启动时请求 ota 接口</li>
+<li>如果当前版本小于最新版本，则弹窗提示，并展示配置的更新内容</li>
+<li>点击「立即更新」，根据配置的下载地址进行下载，并实时返回下载进度</li>
+<li>下载成功，跳转到更新页面，提醒用户覆盖安装</li>
+</ol>
+<h4 id="请求-ota-接口"><a href="#请求-ota-接口" class="headerlink" title="请求 ota 接口"></a>请求 ota 接口</h4><figure class="highlight dart"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">static</span> initOTA() <span class="keyword">async</span> &#123;</span><br><span class="line">  <span class="keyword">var</span> otaData = <span class="keyword">await</span> WeatherApi().getOTA();</span><br><span class="line">  <span class="keyword">if</span> (otaData != <span class="keyword">null</span> &amp;&amp; otaData[<span class="string">"data"</span>] != <span class="keyword">null</span>) &#123;</span><br><span class="line">    <span class="built_in">String</span> url = otaData[<span class="string">"data"</span>][<span class="string">"url"</span>];</span><br><span class="line">    <span class="built_in">String</span> desc = otaData[<span class="string">"data"</span>][<span class="string">"desc"</span>];</span><br><span class="line">    <span class="built_in">String</span> versionName = <span class="string">""</span>;</span><br><span class="line">    <span class="built_in">int</span> appCode = <span class="built_in">int</span>.parse(otaData[<span class="string">"data"</span>][<span class="string">"appCode"</span>]);</span><br><span class="line">    <span class="keyword">var</span> packageInfo = <span class="keyword">await</span> PackageInfo.fromPlatform();</span><br><span class="line">    <span class="keyword">var</span> number = <span class="built_in">int</span>.parse(packageInfo.buildNumber);</span><br><span class="line">    <span class="keyword">if</span> (appCode &gt; number) &#123;</span><br><span class="line">      showOTADialog(url, desc, versionName);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>成功请求后，根据版本号字段进行判断，如果当前版本小于最新版本，则 <code>showOTADialog</code>。</p>
+<h4 id="下载文件并更新进度"><a href="#下载文件并更新进度" class="headerlink" title="下载文件并更新进度"></a>下载文件并更新进度</h4><p>因为下载和安装涉及到文件的存储需要在 <code>AndroidManifest</code> 中声明相应的权限，和动态申请存储权限。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">uses-permission</span> <span class="attr">android:name</span>=<span class="string">"android.permission.REQUEST_INSTALL_PACKAGES"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">uses-per</span></span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -546,13 +452,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/article/f7f8/">『Flutter』一款风格简约功能丰富的天气</a></p>
+        <p><span>本文标题:</span><a href="/article/8200/">『Flutter-技能篇』实现一套完整的应用内更新</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">下位子</a></p>
-        <p><span>发布时间:</span>2020-08-29, 19:11:12</p>
-        <p><span>最后更新:</span>2020-09-12, 12:52:47</p>
+        <p><span>发布时间:</span>2020-10-05, 19:11:12</p>
+        <p><span>最后更新:</span>2020-10-05, 19:47:21</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/article/f7f8/" title="『Flutter』一款风格简约功能丰富的天气">http://xiaweizi.cn/article/f7f8/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/article/f7f8/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/article/8200/" title="『Flutter-技能篇』实现一套完整的应用内更新">http://xiaweizi.cn/article/8200/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/article/8200/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -564,16 +470,10 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/article/1840/">
-                    『Flutter-绘制篇』实现炫酷的雨雪特效
-                </a>
-            </div>
-        
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/article/a19d/">
-                    『Android Tips』—— Shortcuts 快捷方式
+                <a href="/article/f708/">
+                    『Flutter-插件篇』实现一款超酷的动态天气背景插件
                 </a>
             </div>
         
@@ -625,7 +525,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#体验"><span class="toc-number">2.</span> <span class="toc-text">体验</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#功能介绍"><span class="toc-number">3.</span> <span class="toc-text">功能介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#一键换天"><span class="toc-number">3.1.</span> <span class="toc-text">一键换天</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#技术介绍"><span class="toc-number">4.</span> <span class="toc-text">技术介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三方库依赖"><span class="toc-number">5.</span> <span class="toc-text">三方库依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#总结"><span class="toc-number">6.</span> <span class="toc-text">总结</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#感谢"><span class="toc-number">7.</span> <span class="toc-text">感谢</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ChangeLog"><span class="toc-number">8.</span> <span class="toc-text">ChangeLog</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-0"><span class="toc-number">8.1.</span> <span class="toc-text">2.2.0</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-0"><span class="toc-number">8.2.</span> <span class="toc-text">2.1.0</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-0-0"><span class="toc-number">8.3.</span> <span class="toc-text">2.0.0</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-7-0"><span class="toc-number">8.4.</span> <span class="toc-text">1.7.0</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-6-0"><span class="toc-number">8.5.</span> <span class="toc-text">1.6.0</span></a></li></ol></li></ol>
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#开始"><span class="toc-number">2.</span> <span class="toc-text">开始</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#APK-打包"><span class="toc-number">2.1.</span> <span class="toc-text">APK 打包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#前端页面配置"><span class="toc-number">2.2.</span> <span class="toc-text">前端页面配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#创建表"><span class="toc-number">2.2.1.</span> <span class="toc-text">创建表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建后台展示"><span class="toc-number">2.2.2.</span> <span class="toc-text">创建后台展示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#配置数据"><span class="toc-number">2.2.3.</span> <span class="toc-text">配置数据</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务端数据下发"><span class="toc-number">2.3.</span> <span class="toc-text">服务端数据下发</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端"><span class="toc-number">2.4.</span> <span class="toc-text">客户端</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#请求-ota-接口"><span class="toc-number">2.4.1.</span> <span class="toc-text">请求 ota 接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#下载文件并更新进度"><span class="toc-number">2.4.2.</span> <span class="toc-text">下载文件并更新进度</span></a></li></ol></li></ol></li></ol>
         
     </div>
     <style>
@@ -661,7 +561,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"『Flutter』一款风格简约功能丰富的天气　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"『Flutter-技能篇』实现一套完整的应用内更新　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -702,15 +602,13 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/article/1840/" title="上一篇: 『Flutter-绘制篇』实现炫酷的雨雪特效">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/article/a19d/" title="下一篇: 『Android Tips』—— Shortcuts 快捷方式">
+            <a href="/article/f708/" title="下一篇: 『Flutter-插件篇』实现一款超酷的动态天气背景插件">
                 <i class="fa fa-angle-right"></i>
             </a>
         
