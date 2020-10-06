@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="下位子" />
+
+
+
+<meta name="description" content="前言先直接上效果图：">
+<meta name="keywords" content="工具,工作积累">
+<meta property="og:type" content="article">
+<meta property="og:title" content="『Android 技能篇』优雅的转场动画之 Transition">
+<meta property="og:url" content="http://xiaweizi.cn/article/441/index.html">
+<meta property="og:site_name" content="xiaweizi&#39;blog">
+<meta property="og:description" content="前言先直接上效果图：">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/af74da88de0549e9bd0fb57ef9b14205~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fedb5ec3f373401fa1897938c4ea2c5b~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/356081375df841399c5e09699cf906eb~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a85007fba17042f18600ef65cda98341~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/20657740010043caa63cf037c35a1875~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8941bcdf9f2f4cb0a13fe0caa43c80a2~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0666b61f2db54ca8924178c37523010c~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f6d2910ebdde421c95ef1df93dc19bf1~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/697dc92b19ad4b3f892a6ed7edf5a546~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c12e4909cacc476db08c0a2f6377c887~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4f7b94172e6d4cebb6c7731a2567ccf6~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3d44e7a24e37449abe0699fdb3e831de~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/63ca8809c2504dd985e26eab665a1f22~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/af74da88de0549e9bd0fb57ef9b14205~tplv-k3u1fbpfcp-zoom-1.image">
+<meta property="og:updated_time" content="2020-10-06T08:06:06.806Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="『Android 技能篇』优雅的转场动画之 Transition">
+<meta name="twitter:description" content="前言先直接上效果图：">
+<meta name="twitter:image" content="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/af74da88de0549e9bd0fb57ef9b14205~tplv-k3u1fbpfcp-zoom-1.image">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="xiaweizi&#39;blog" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/img/favicon.png">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>『Android 技能篇』优雅的转场动画之 Transition | xiaweizi&#39;blog</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: true
+    }
+</script>
+
+
+    <script>
+        yiliaConfig.jquery_ui = [true, "//cdn.bootcss.com/jqueryui/1.10.4/jquery-ui.min.js", "//cdn.bootcss.com/jqueryui/1.10.4/css/jquery-ui.min.css"];
+    </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?d8f1e419497cfa5779f9e99baab1e7af";
+            var s = document.getElementsByTagName("script")[0]; 
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/avatar.png" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">下位子</a></h1>
+        </hgroup>
+
+        
+
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/pdf/">书籍</a></li>
+                        
+                            <li><a href="/photos/">相册</a></li>
+                        
+                            <li><a href="/message/">留言板</a></li>
+                        
+                            <li><a href="/resume/">简历</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:1012126908@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="https://weibo.com/6444811129/profile?topnav=1&wvr=6" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/xiaweizi" title="GitHub"></a>
+                            
+                                <a class="fa 简书" href="https://www.jianshu.com/u/d36586119d8c" title="简书"></a>
+                            
+                                <a class="fa CSDN" href="http://blog.csdn.net/qq_22656383" title="CSDN"></a>
+                            
+                                <a class="fa QQ" href="http://wpa.qq.com/msgrd?v=3&uin=1012126908&site=qq&menu=yes" title="QQ"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/DataBinding/">DataBinding</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Flutter/">Flutter</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Git/">Git</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Google-官方/">Google 官方</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Kotlin/">Kotlin</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/MVVM/">MVVM</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Material-Design/">Material Design</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thinking-In-Java/">Thinking In Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hexo/">hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/java/">java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react-native/">react native</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/博客/">博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/图片缓存/">图片缓存</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/小程序/">小程序</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工作积累/">工作积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具/">工具</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工具软件/">工具软件</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/平时积累/">平时积累</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/开发效率/">开发效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/性能优化/">性能优化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/提高效率/">提高效率</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/数据结构与算法/">数据结构与算法</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/第三方库/">第三方库</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/线程/">线程</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自定义-View/">自定义 View</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/设计模式/">设计模式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/读书笔记/">读书笔记</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/跨平台/">跨平台</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/进阶/">进阶</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/造轮子/">造轮子</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目/">项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/项目重构/">项目重构</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://www.wanandroid.com/">玩Android</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://github.com/G-Joker/WeaponApp">WeaponApp</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://weaponzhi.online">WeaponZhi</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://coding-dream.github.io">编程之乐</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://txiner.top/">Hundred Blog</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://www.xiaohoutongxue.cn/">xiaoHou</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://www.anlan.club/">anlance</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">下位子</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/avatar.png" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">下位子</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/pdf/">书籍</a></li>
+                
+                    <li><a href="/photos/">相册</a></li>
+                
+                    <li><a href="/message/">留言板</a></li>
+                
+                    <li><a href="/resume/">简历</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:1012126908@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="https://weibo.com/6444811129/profile?topnav=1&wvr=6" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/xiaweizi" title="GitHub"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="https://www.jianshu.com/u/d36586119d8c" title="简书"></a>
+                            
+                                <a class="fa CSDN" target="_blank" href="http://blog.csdn.net/qq_22656383" title="CSDN"></a>
+                            
+                                <a class="fa QQ" target="_blank" href="http://wpa.qq.com/msgrd?v=3&uin=1012126908&site=qq&menu=yes" title="QQ"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-『Android 技能篇』优雅的转场动画之 Transition" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/article/441/" class="article-date">
+      <time datetime="2020-10-06T08:11:12.000Z" itemprop="datePublished">2020-10-06</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      『Android 技能篇』优雅的转场动画之 Transition
+    </h1>
+  
+
+        
+           <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">2,453 字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">11 分</span>
+      </span>
+    </span>
+
+    
+        <span id="busuanzi_container_page_pv">
+          &nbsp; | &nbsp;  本文总阅读量: <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+    
+</div>
+        
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+          <br>
+          <br>
+        
+        
+    <div class="article-category tagcloud">
+    <a class="article-category-link" href="/categories/Android-tips/">Android tips</a>
+    </div>
+
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工作积累/">工作积累</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工具/">工具</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>先直接上效果图：</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/af74da88de0549e9bd0fb57ef9b14205~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<a id="more"></a>
+<p>相信大家在平常开发也会遇到类似的转场动画，如果想要要实现上图的效果有哪些方式呢？</p>
+<p>首先分析一下转场过程，我们把起始 <code>View</code> 分别定义为 <code>startView</code> 和 <code>endView</code>。<code>startView</code> 为常见的列表布局，左侧头像和右侧为文本介绍；<code>endView</code> 为详情页面，置顶的大图和详细的文本介绍。</p>
+<p>不难发现，这些元素都是对应关系，只不过起始状态的基本属性不同：</p>
+<ul>
+<li><strong>头像</strong>，位置和大小以及 <code>scaleType</code> 发生变化</li>
+<li><strong>背景</strong>，颜色、位置和大小发生变化</li>
+<li><strong>名称</strong>，字体大小、颜色和位置发生变化</li>
+<li><strong>描述</strong>，字体大小和位置发生变化</li>
+</ul>
+<p>对于此效果，有很多办法可以实现，综合其实现成本和预期效果进行最终选择，我能想到的大概有三种：</p>
+<ol>
+<li><p>直接把上述的每个对象看做是独立个体，各自创建独立的动画对象，控制其执行和结束状态。</p>
+<p>这种方式，无疑是最简单粗暴的，但是实现和维护起来都很困难，更不容易拓展</p>
+</li>
+<li><p>使用 <a href="https://developer.android.google.cn/training/constraint-layout/motion-layout-examples#drawerlayout_12" target="_blank" rel="noopener">MotionLayout</a>，不得不说很强大，是 Google 推崇的动画组件，基本不用编写 <code>java</code> 代码就可完成负责的手势和动画，后面有时间会介绍。</p>
+</li>
+<li><p>使用 <code>Transition</code>，Google 在 Android 5.0 完整引入，虽没有 <a href="https://developer.android.google.cn/training/constraint-layout/motion-layout-examples#drawerlayout_12" target="_blank" rel="noopener">MotionLayout</a> 那么强大，但是其复用性很强，并且很容易理解，上手也很快。</p>
+</li>
+</ol>
+<p>今天咱们就以下面三个方向并结合对应效果来带大家了解一下 Transition。</p>
+<ol>
+<li>原生提供的 <code>Transition</code> 类</li>
+<li>自己实现 <code>Transition</code> 类</li>
+<li>Scene</li>
+</ol>
+<h2 id="原生-Transition"><a href="#原生-Transition" class="headerlink" title="原生 Transition"></a>原生 Transition</h2><h3 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h3><p>核心关键类 <code>TransitionManager</code>, <code>TransitionManager.beginDelayedTransition(ViewGroup viewGroup, Transition transition);</code> 作为动画的开始，传入需要做转场动画的父布局或根布局，随后改变 <code>View</code> 的相关属性，比如 <code>setVisible()</code>，便可自动完成转场动画效果。</p>
+<p>默认实现的 <code>AutoTransition</code>，内部集成了基础动画：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    setOrdering(ORDERING_SEQUENTIAL);</span><br><span class="line">    addTransition(<span class="keyword">new</span> Fade(Fade.OUT)).</span><br><span class="line">            addTransition(<span class="keyword">new</span> ChangeBounds()).</span><br><span class="line">            addTransition(<span class="keyword">new</span> Fade(Fade.IN));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Slide、Fade-和-Explode"><a href="#Slide、Fade-和-Explode" class="headerlink" title="Slide、Fade 和 Explode"></a>Slide、Fade 和 Explode</h3><p>这三者作为 <code>Visibility</code> 的三个子类，通过控制 <code>view.setVisible()</code> 的方式来达到具体的效果。</p>
+<p><strong>Fade</strong>，淡出 出场，淡入 入场</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fedb5ec3f373401fa1897938c4ea2c5b~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<p><strong>Slide</strong>，向下离开屏幕出场，向上进入屏幕入场</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/356081375df841399c5e09699cf906eb~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<p><strong>Explode</strong>，四边散开出场，四边汇入入场</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a85007fba17042f18600ef65cda98341~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<p>同样，可以通过：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Fade fade = <span class="keyword">new</span> Fade();</span><br><span class="line">Slide slide = <span class="keyword">new</span> Slide();</span><br><span class="line">TransitionSet set = <span class="keyword">new</span> TransitionSet();</span><br><span class="line">set.addTransition(fade).addTransition(slide).setOrdering(TransitionSet.ORDERING_TOGETHER);</span><br></pre></td></tr></table></figure>
+<p>达到组合的效果：</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/20657740010043caa63cf037c35a1875~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<h3 id="ChangeBounds"><a href="#ChangeBounds" class="headerlink" title="ChangeBounds"></a>ChangeBounds</h3><p>此处开始同一个页面场景的切换，<code>ChangeBounds</code> 当 View 的位置或者大小发生变化时触发对应的转场效果。比如：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">ChangeBounds transition = <span class="keyword">new</span> ChangeBounds();</span><br><span class="line">transition.setInterpolator(<span class="keyword">new</span> AnticipateInterpolator());</span><br><span class="line">TransitionManager.beginDelayedTransition(mRoot, transition);</span><br><span class="line">ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) view3.getLayoutParams();</span><br><span class="line"><span class="keyword">if</span> (layoutParams.leftMargin == <span class="number">400</span>) &#123;</span><br><span class="line">    layoutParams.leftMargin = <span class="number">50</span>;</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    layoutParams.leftMargin = <span class="number">400</span>;</span><br><span class="line">&#125;</span><br><span class="line">view3.setLayoutParams(layoutParams);</span><br></pre></td></tr></table></figure>
+<p>最终的效果：</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8941bcdf9f2f4cb0a13fe0caa43c80a2~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<h3 id="ChangeClipBounds"><a href="#ChangeClipBounds" class="headerlink" title="ChangeClipBounds"></a>ChangeClipBounds</h3><p>当调用 <code>view.setClipBounds()</code> 时会触发转场效果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">ChangeClipBounds transition = <span class="keyword">new</span> ChangeClipBounds();</span><br><span class="line">transition.setInterpolator(<span class="keyword">new</span> BounceInterpolator());</span><br><span class="line">TransitionManager.beginDelayedTransition(mRoot, transition);</span><br><span class="line"><span class="keyword">int</span> width = view2.getWidth();</span><br><span class="line"><span class="keyword">int</span> height = view2.getHeight();</span><br><span class="line"><span class="keyword">int</span> gap = <span class="number">140</span>;</span><br><span class="line">Rect rect = <span class="keyword">new</span> Rect(<span class="number">0</span>, gap, width, height - gap);</span><br><span class="line"><span class="keyword">if</span> (rect.equals(view2.getClipBounds())) &#123;</span><br><span class="line">    view2.setClipBounds(<span class="keyword">null</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    view2.setClipBounds(rect);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最终效果：</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0666b61f2db54ca8924178c37523010c~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<h3 id="ChangeScroll"><a href="#ChangeScroll" class="headerlink" title="ChangeScroll"></a>ChangeScroll</h3><p>当调用 <code>view.scrollTo()</code> 会触发转场效果：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ChangeScroll transition = <span class="keyword">new</span> ChangeScroll();</span><br><span class="line">transition.setInterpolator(<span class="keyword">new</span> AnticipateOvershootInterpolator());</span><br><span class="line">TransitionManager.beginDelayedTransition(mRoot, transition);</span><br><span class="line"><span class="keyword">if</span> (view1.getScrollX() == -<span class="number">100</span> &amp;&amp; view1.getScrollY() == -<span class="number">100</span>) &#123;</span><br><span class="line">    view1.scrollTo(<span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    view1.scrollTo(-<span class="number">100</span>, -<span class="number">100</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最终效果：</p>
+<p><img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f6d2910ebdde421c95ef1df93dc19bf1~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<h3 id="ChangeTransform"><a href="#ChangeTransform" class="headerlink" title="ChangeTransform"></a>ChangeTransform</h3><p>这个就厉害了，View 的 <code>translation</code>、<code>scale</code> 和 <code>rotation</code> 发生改变时都会触发：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">ChangeTransform transition = <span class="keyword">new</span> ChangeTransform();</span><br><span class="line">transition.setInterpolator(<span class="keyword">new</span> OvershootInterpolator());</span><br><span class="line">TransitionManager.beginDelayedTransition(mRoot, transition);</span><br><span class="line"><span class="keyword">if</span> (view1.getTranslationX() == <span class="number">100</span> &amp;&amp; view1.getTranslationY() == <span class="number">100</span>) &#123;</span><br><span class="line">    view1.setTranslationX(<span class="number">0</span>);</span><br><span class="line">    view1.setTranslationY(<span class="number">0</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    view1.setTranslationX(<span class="number">100</span>);</span><br><span class="line">    view1.setTranslationY(<span class="number">100</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (view2.getRotationX() == <span class="number">30f</span>) &#123;</span><br><span class="line">    view2.setRotationX(<span class="number">0</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    view2.setRotationX(<span class="number">30</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (view3.getRotationY() == <span class="number">30f</span>) &#123;</span><br><span class="line">    view3.setRotationY(<span class="number">0</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    view3.setRotationY(<span class="number">30</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (view4.getScaleX() == <span class="number">0.5f</span> &amp;&amp; view4.getScaleY() == <span class="number">0.5f</span>) &#123;</span><br><span class="line">    view4.setScaleX(<span class="number">1f</span>);</span><br><span class="line">    view4.setScaleY(<span class="number">1f</span>);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    view4.setScaleX(<span class="number">0.5f</span>);</span><br><span class="line">    view4.setScaleY(<span class="number">0.5f</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最终效果：</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/697dc92b19ad4b3f892a6ed7edf5a546~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<h2 id="自定义-Transition"><a href="#自定义-Transition" class="headerlink" title="自定义 Transition"></a>自定义 Transition</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>其实 <code>Transition</code> 的原理很简单，大致的逻辑如下：</p>
+<ol>
+<li>记录当前状态的属性值，比如位置大小或者自定义属性之类</li>
+<li>创建执行动画，参数为当前值和目标值，根据对应算法来完成动画效果</li>
+<li>根据目标状态的属性值和记录的缓存属性值，调用创建好的动画对象执行即可</li>
+</ol>
+<p>那落实到代码中，首先先集成 <code>Transition</code> 类，会让你实现三个方法：<code>captureStartValues</code>、<code>captureEndValues</code>和<code>createAnimator</code>。</p>
+<ol>
+<li><p>定义你关心的<strong>属性值</strong>；</p>
+<p> 官方建议属性定义的规则为：<code>package_name:transition_class:property_name</code>.</p>
+<p> 比如 </p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> String PROPNAME_TEXT_COLOR = <span class="string">"xiaweizi:changeTextColor:color"</span>;</span><br></pre></td></tr></table></figure>
+<p> 我想在文本颜色发生改变时做转场动画，就可以定义上述的属性。</p>
+</li>
+<li><p>记录起始状态的属性；</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">captureStartValues</span><span class="params">(TransitionValues transitionValues)</span></span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">captureEndValues</span><span class="params">(TransitionValues transitionValues)</span></span>;</span><br></pre></td></tr></table></figure>
+<p> 上述方法分别存储起始状态下对应的属性值：</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transitionValues.values.put(PROPNAME_TEXT_COLOR, view.getCurrentTextColor());</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建动画；</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Animator <span class="title">createAnimator</span><span class="params">(ViewGroup sceneRoot, TransitionValues startValues, <span class="keyword">final</span> TransitionValues endValues)</span></span></span><br></pre></td></tr></table></figure>
+<p> 参数值的 <code>startValues</code>和<code>endValues</code>分别可以拿到你存储的属性值，之后创建动画并返回即可，后续系统会根据你创建的动画进行转场。</p>
+</li>
+</ol>
+<p>是不是很简单，接下来通过几个案例带大家感受一下：</p>
+<h3 id="ChangeTextTransition"><a href="#ChangeTextTransition" class="headerlink" title="ChangeTextTransition"></a>ChangeTextTransition</h3><p><a href="https://github.com/xiaweizi/TransitionDemo/blob/master/app/src/main/java/com/xiaweizi/transitiondemo/transition/ChangeTextTransition.java" target="_blank" rel="noopener">ChangeTextTransition.java</a> 该类中定义了：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> String PROPNAME_TEXT = <span class="string">"xiaweizi:changeText:text"</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> String PROPNAME_TEXT_COLOR = <span class="string">"xiaweizi:changeTextColor:color"</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> String PROPNAME_TEXT_SIZE = <span class="string">"xiaweizi:changeTextSize:size"</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> String PROPNAME_TEXT_LEVEL = <span class="string">"xiaweizi:changeTextTypeface:level"</span>;</span><br></pre></td></tr></table></figure>
+<p>分别代表文本内容变化、文本颜色变化、文本大小变化和文本字体变化。我们只挑一个文本颜色来看一下动画是如何实现的：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 记录下起始状态属性值</span></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">captureValues</span><span class="params">(TransitionValues transitionValues)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (transitionValues == <span class="keyword">null</span> || !(transitionValues.view <span class="keyword">instanceof</span> TextView)) <span class="keyword">return</span>;</span><br><span class="line">    TextView view = (TextView) transitionValues.view;</span><br><span class="line">    transitionValues.values.put(PROPNAME_TEXT, view.getText());</span><br><span class="line">    transitionValues.values.put(PROPNAME_TEXT_COLOR, view.getCurrentTextColor());</span><br><span class="line">    transitionValues.values.put(PROPNAME_TEXT_SIZE, view.getTextSize());</span><br><span class="line">    transitionValues.values.put(PROPNAME_TEXT_LEVEL, view.getTag(R.id.type_face_level));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Animator <span class="title">createAnimator</span><span class="params">(ViewGroup sceneRoot, TransitionValues startValues, <span class="keyword">final</span> TransitionValues endValues)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (startValues == <span class="keyword">null</span> || endValues == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!(endValues.view <span class="keyword">instanceof</span> TextView)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.createAnimator(sceneRoot, startValues, endValues);</span><br><span class="line">    &#125;</span><br><span class="line">    TextView endView = (TextView) endValues.view;</span><br><span class="line">    <span class="keyword">int</span> startTextColor = (<span class="keyword">int</span>) startValues.values.get(PROPNAME_TEXT_COLOR);</span><br><span class="line">    <span class="keyword">int</span> endTextColor = (<span class="keyword">int</span>) endValues.values.get(PROPNAME_TEXT_COLOR);</span><br><span class="line">    ObjectAnimator animator = ObjectAnimator.ofArgb(endView, <span class="keyword">new</span> TextColorProperty(), startTextColor, endTextColor);</span><br><span class="line">    animator.setDuration(<span class="number">300</span>);</span><br><span class="line">    <span class="keyword">return</span> animator;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>看一下这四种属性发生变化时的效果：</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c12e4909cacc476db08c0a2f6377c887~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<h3 id="ChangeBackgroundColorTransition"><a href="#ChangeBackgroundColorTransition" class="headerlink" title="ChangeBackgroundColorTransition"></a>ChangeBackgroundColorTransition</h3><p>类似于文本颜色，只不过针对的是 <code>view.setBackground()</code>，主要的代码在于创建 <code>Animator</code>：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Animator <span class="title">createAnimator</span><span class="params">(ViewGroup sceneRoot, TransitionValues startValues, <span class="keyword">final</span> TransitionValues endValues)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (startValues == <span class="keyword">null</span> || endValues == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">final</span> View endView = endValues.view;</span><br><span class="line">    ColorDrawable startColorDrawable = (ColorDrawable) startValues.values.get(PROPNAME_COLOR);</span><br><span class="line">    ColorDrawable endColorDrawable = (ColorDrawable) endValues.values.get(PROPNAME_COLOR);</span><br><span class="line">    <span class="keyword">if</span> (startColorDrawable == <span class="keyword">null</span> || endColorDrawable == <span class="keyword">null</span>) <span class="keyword">return</span> <span class="keyword">super</span>.createAnimator(sceneRoot, startValues, endValues);</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> startColor = startColorDrawable.getColor();</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">int</span> endColor = endColorDrawable.getColor();</span><br><span class="line">    ValueAnimator animator = ValueAnimator.ofObject(<span class="keyword">new</span> ArgbEvaluator(), startColor, endColor);</span><br><span class="line">    animator.setDuration(<span class="number">300</span>);</span><br><span class="line">    animator.addUpdateListener(<span class="keyword">new</span> ValueAnimator.AnimatorUpdateListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationUpdate</span><span class="params">(ValueAnimator animation)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">int</span> animatedValue = (<span class="keyword">int</span>) animation.getAnimatedValue();</span><br><span class="line">            endView.setBackgroundColor(animatedValue);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> animator;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最终效果：</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4f7b94172e6d4cebb6c7731a2567ccf6~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<h3 id="ChangeImageResourceTransition"><a href="#ChangeImageResourceTransition" class="headerlink" title="ChangeImageResourceTransition"></a>ChangeImageResourceTransition</h3><p>有的时候发现，在切换图片的时候过度会很生硬，那可以通过在对 <code>View</code> 的 <code>alpha</code> 属性从 1~0~1 的过程中替换图片，这样显得很平滑。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Animator <span class="title">createAnimator</span><span class="params">(ViewGroup sceneRoot, TransitionValues startValues, <span class="keyword">final</span> TransitionValues endValues)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (startValues == <span class="keyword">null</span> || endValues == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!(endValues.view <span class="keyword">instanceof</span> ImageView)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.createAnimator(sceneRoot, startValues, endValues);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">final</span> ImageView endView = (ImageView) endValues.view;</span><br><span class="line">    <span class="keyword">final</span> Drawable startDrawable = (Drawable) startValues.values.get(PROPNAME_IMAGE_RESOURCE);</span><br><span class="line">    <span class="keyword">final</span> Drawable endDrawable = (Drawable) endValues.values.get(PROPNAME_IMAGE_RESOURCE);</span><br><span class="line">    ValueAnimator animator = ValueAnimator.ofFloat(<span class="number">0</span>, <span class="number">1f</span>);</span><br><span class="line">    animator.setDuration(<span class="number">300</span>);</span><br><span class="line">    animator.addUpdateListener(<span class="keyword">new</span> ValueAnimator.AnimatorUpdateListener() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">onAnimationUpdate</span><span class="params">(ValueAnimator animation)</span> </span>&#123;</span><br><span class="line">            <span class="keyword">float</span> animatedValue = (<span class="keyword">float</span>) animation.getAnimatedValue();</span><br><span class="line">            <span class="keyword">if</span> (animatedValue &lt;= <span class="number">0.5f</span>) &#123;</span><br><span class="line">                endView.setImageDrawable(startDrawable);</span><br><span class="line">                <span class="keyword">float</span> ratio = (<span class="number">0.5f</span> - animatedValue) / <span class="number">0.5f</span>;</span><br><span class="line">                endView.setAlpha(ratio);</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                endView.setImageDrawable(endDrawable);</span><br><span class="line">                <span class="keyword">float</span> ratio = (animatedValue - <span class="number">0.5f</span>) / <span class="number">0.5f</span>;</span><br><span class="line">                endView.setAlpha(ratio);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">    <span class="keyword">return</span> animator;</span><br></pre></td></tr></table></figure>
+<p>最终效果：</p>
+<p><img src="https://p6-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3d44e7a24e37449abe0699fdb3e831de~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<h3 id="ChangeCustomTransition"><a href="#ChangeCustomTransition" class="headerlink" title="ChangeCustomTransition"></a>ChangeCustomTransition</h3><p>除了 <code>View</code> 原生的属性，自定义属性同样也可以。</p>
+<p>创建 <code>Animator</code> 没什么区别：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> Animator <span class="title">createAnimator</span><span class="params">(ViewGroup sceneRoot, TransitionValues startValues, <span class="keyword">final</span> TransitionValues endValues)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (startValues == <span class="keyword">null</span> || endValues == <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (!(endValues.view <span class="keyword">instanceof</span> TransitionView)) &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">super</span>.createAnimator(sceneRoot, startValues, endValues);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">final</span> TransitionView endView = (TransitionView) endValues.view;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">float</span> startRatio = (<span class="keyword">float</span>) startValues.values.get(PROPNAME_CUSTOM_RATIO);</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">float</span> endRatio = (<span class="keyword">float</span>) endValues.values.get(PROPNAME_CUSTOM_RATIO);</span><br><span class="line">    ObjectAnimator animator = ObjectAnimator.ofFloat(endView, <span class="string">"ratio"</span>, startRatio, endRatio);</span><br><span class="line">    animator.setDuration(<span class="number">300</span>);</span><br><span class="line">    <span class="keyword">return</span> animator;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>主要在自定义 <code>View</code> 的绘制逻辑：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">onDraw</span><span class="params">(Canvas canvas)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">super</span>.onDraw(canvas);</span><br><span class="line">    <span class="comment">// 绘制左边</span></span><br><span class="line">    canvas.save();</span><br><span class="line">    mRect.set(<span class="number">0</span>, <span class="number">0</span>, (<span class="keyword">int</span>) (getWidth() * mRatio), getHeight());</span><br><span class="line">    canvas.clipRect(mRect);</span><br><span class="line">    mTextPaint.setColor(mStartColor);</span><br><span class="line">    TransitionUtils.drawTextCenter(canvas, <span class="string">"文本三"</span>, getWidth() / <span class="number">2</span>, getHeight() / <span class="number">2</span>, mTextPaint);</span><br><span class="line">    canvas.restore();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 绘制右边</span></span><br><span class="line">    canvas.save();</span><br><span class="line">    mRect.set((<span class="keyword">int</span>) (getWidth() * mRatio), <span class="number">0</span>, getWidth(), getHeight());</span><br><span class="line">    canvas.clipRect(mRect);</span><br><span class="line">    mTextPaint.setColor(mEndColor);</span><br><span class="line">    TransitionUtils.drawTextCenter(canvas, <span class="string">"三本文"</span>, getWidth() / <span class="number">2</span>, getHeight() / <span class="number">2</span>, mTextPaint);</span><br><span class="line">    canvas.restore();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最终的效果：</p>
+<p><img src="https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/63ca8809c2504dd985e26eab665a1f22~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<h2 id="Scene"><a href="#Scene" class="headerlink" title="Scene"></a>Scene</h2><p>终于开始介绍文章开头的效果是如何实现的：</p>
+<p><img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/af74da88de0549e9bd0fb57ef9b14205~tplv-k3u1fbpfcp-zoom-1.image" alt=""></p>
+<p>有了前面的基础铺垫，实现起来就很简单。</p>
+<p><code>Scene</code> 就是为这种场景的过度而设计，不需要关注过度过程，只需要传入前后的布局，并保证各个元素的 <code>id</code> 保持一致即可。</p>
+<ol>
+<li>创建前后 <code>layout</code>；<code>layout_scene1.xml</code> 和 <code>layout_scene2.xml</code> 具体代码就补贴了</li>
+<li><p>创建前后 <code>Scene</code> 对象；</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mScene1 = Scene.getSceneForLayout(mRoot, R.layout.layout_scene1, <span class="keyword">this</span>);</span><br><span class="line">mScene2 = Scene.getSceneForLayout(mRoot, R.layout.layout_scene2, <span class="keyword">this</span>);</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>创建转场 <code>Transition</code>；我们把之前自定的组合成 <code>TransitionSet</code>：</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">   <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SceneTransition</span> <span class="keyword">extends</span> <span class="title">TransitionSet</span> </span>&#123;</span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="title">SceneTransition</span><span class="params">()</span> </span>&#123;</span><br><span class="line">         init();</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="function"><span class="keyword">public</span> <span class="title">SceneTransition</span><span class="params">(Context context, AttributeSet attrs)</span> </span>&#123;</span><br><span class="line">         <span class="keyword">super</span>(context, attrs);</span><br><span class="line">         init();</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">         addTransition(<span class="keyword">new</span> ChangeTextTransition())</span><br><span class="line">                 .addTransition(<span class="keyword">new</span> ChangeScroll())</span><br><span class="line">                 .addTransition(<span class="keyword">new</span> ChangeBackgroundColorTransition())</span><br><span class="line">                 .addTransition(<span class="keyword">new</span> ChangeBounds());</span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>开始切换场景；</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TransitionManager.go(mScene1, mTransition);</span><br><span class="line">TransitionManager.go(mScene2, mTransition);</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>到此，先详细的和大家分享了系统自带的 <code>Transition</code>，并分析了其实现细节和原理，提供了多个自定义 <code>Transition</code>，接着了解了 <code>Scene</code> 创建过程，并通过简答的 <code>demo</code> 实现了从一个场景到另一个场景的过度效果，由浅入深，图文并茂，希望可以帮助到大家。</p>
+<p>文中的项目已上传到 <a href="https://github.com/xiaweizi/TransitionDemo" target="_blank" rel="noopener">TransitionDemo</a>。</p>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/article/441/">『Android 技能篇』优雅的转场动画之 Transition</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">下位子</a></p>
+        <p><span>发布时间:</span>2020-10-06, 16:11:12</p>
+        <p><span>最后更新:</span>2020-10-06, 16:06:06</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/article/441/" title="『Android 技能篇』优雅的转场动画之 Transition">http://xiaweizi.cn/article/441/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://xiaweizi.cn/article/441/　　作者: 下位子" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/article/8200/">
+                    『Flutter-技能篇』实现一套完整的应用内更新
+                </a>
+            </div>
+        
+    </nav>
+
+  
+  
+    #rewardButton {
+    background-color: #ea6f5a;
+}
+
+.btn-pay {
+    margin-bottom: 20px;
+    padding: 8px 25px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #ea6f5a;
+}
+
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    white-space: nowrap;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#QR img{
+    height: 200px;
+    height: 200px;
+    margin: 20px;
+}
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#原生-Transition"><span class="toc-number">2.</span> <span class="toc-text">原生 Transition</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#准备"><span class="toc-number">2.1.</span> <span class="toc-text">准备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Slide、Fade-和-Explode"><span class="toc-number">2.2.</span> <span class="toc-text">Slide、Fade 和 Explode</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ChangeBounds"><span class="toc-number">2.3.</span> <span class="toc-text">ChangeBounds</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ChangeClipBounds"><span class="toc-number">2.4.</span> <span class="toc-text">ChangeClipBounds</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ChangeScroll"><span class="toc-number">2.5.</span> <span class="toc-text">ChangeScroll</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ChangeTransform"><span class="toc-number">2.6.</span> <span class="toc-text">ChangeTransform</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#自定义-Transition"><span class="toc-number">3.</span> <span class="toc-text">自定义 Transition</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#介绍"><span class="toc-number">3.1.</span> <span class="toc-text">介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ChangeTextTransition"><span class="toc-number">3.2.</span> <span class="toc-text">ChangeTextTransition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ChangeBackgroundColorTransition"><span class="toc-number">3.3.</span> <span class="toc-text">ChangeBackgroundColorTransition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ChangeImageResourceTransition"><span class="toc-number">3.4.</span> <span class="toc-text">ChangeImageResourceTransition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ChangeCustomTransition"><span class="toc-number">3.5.</span> <span class="toc-text">ChangeCustomTransition</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Scene"><span class="toc-number">4.</span> <span class="toc-text">Scene</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">5.</span> <span class="toc-text">总结</span></a></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-6 i,
+        .toc-level-6 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"false"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"『Android 技能篇』优雅的转场动画之 Transition　| xiaweizi'blog　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+        
+      <section class="livere" id="comments">
+    <!-- 来必力City版安装代码 -->
+    <div id="lv-container" data-id="city" data-uid="MTAyMC8zNDM3Ny8xMDkxNA==">
+    <script type="text/javascript">
+   (function(d, s) {
+       var j, e = d.getElementsByTagName(s)[0];
+
+       if (typeof LivereTower === 'function') { return; }
+
+       j = d.createElement(s);
+       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+       j.async = true;
+
+       e.parentNode.insertBefore(j, e);
+       })(document, 'script');
+    </script>
+    <noscript> 为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+    <!-- City版安装代码已完成 -->
+</section>
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/article/8200/" title="下一篇: 『Flutter-技能篇』实现一套完整的应用内更新">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/article/441/">『Android 技能篇』优雅的转场动画之 Transition</a></li><li class="post-list-item"><a class="post-list-link" href="/article/8200/">『Flutter-技能篇』实现一套完整的应用内更新</a></li><li class="post-list-item"><a class="post-list-link" href="/article/f708/">『Flutter-插件篇』实现一款超酷的动态天气背景插件</a></li><li class="post-list-item"><a class="post-list-link" href="/article/5c93/">『Flutter-绘制篇』实现炫酷的雷电特效</a></li><li class="post-list-item"><a class="post-list-link" href="/article/903e/">『Flutter-绘制篇』实现梦幻的晴晚流星效果</a></li><li class="post-list-item"><a class="post-list-link" href="/article/26ab/">『Flutter-绘制篇』自定义View在天气 APP 中的实战应用</a></li><li class="post-list-item"><a class="post-list-link" href="/article/1840/">『Flutter-绘制篇』实现炫酷的雨雪特效</a></li><li class="post-list-item"><a class="post-list-link" href="/article/f7f8/">『Flutter』一款风格简约功能丰富的天气</a></li><li class="post-list-item"><a class="post-list-link" href="/article/a19d/">『Android Tips』—— Shortcuts 快捷方式</a></li><li class="post-list-item"><a class="post-list-link" href="/article/9994/">『技术分享』-- 使用极光 IM 构建聊天功能</a></li><li class="post-list-item"><a class="post-list-link" href="/article/6cfc/">『数据结构与算法』—— 排序-冒泡&选择&插入</a></li><li class="post-list-item"><a class="post-list-link" href="/article/452b/">『数据结构与算法』—— 递归</a></li><li class="post-list-item"><a class="post-list-link" href="/article/b8de/">『数据结构与算法』—— 队列</a></li><li class="post-list-item"><a class="post-list-link" href="/article/2e31/">『数据结构与算法』—— 栈</a></li><li class="post-list-item"><a class="post-list-link" href="/article/6bf/">『数据结构与算法』—— 链表</a></li><li class="post-list-item"><a class="post-list-link" href="/article/af0f/">『数据结构与算法』—— 数组</a></li><li class="post-list-item"><a class="post-list-link" href="/article/6b9d/">『数据结构与算法』—— 复杂度</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thread-pool/">『进阶之路』—— 线程池</a></li><li class="post-list-item"><a class="post-list-link" href="/article/68ab/">『技术分享』—— 我的第一个 RN 项目-趣闻</a></li><li class="post-list-item"><a class="post-list-link" href="/article/c607/">『技术分享』—— 我的第一个微信小程序-趣闻</a></li><li class="post-list-item"><a class="post-list-link" href="/article/496f/">『Android Tips』—— 模拟手势操作</a></li><li class="post-list-item"><a class="post-list-link" href="/article/18a/">『自定义View实战』—— 客服好评View</a></li><li class="post-list-item"><a class="post-list-link" href="/article/licecap/">『程序员必备软件』—— 短小精悍的GIF录制软件LICEcap</a></li><li class="post-list-item"><a class="post-list-link" href="/article/5d77/">『自定义View实战』—— 仿ios图标下载view</a></li><li class="post-list-item"><a class="post-list-link" href="/article/3cfa/">程序员必备软件(持续更新中...)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/typora/">『程序员必备软件』—— 编辑预览于一身的 Typora</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7b67faab/">读书笔记(持续更新...)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/31905/">hexo 博客小功能添加-评论、相册、字数统计...</a></li><li class="post-list-item"><a class="post-list-link" href="/article/39434/">『技术分享』— 个人博客全新上线(阿里域名+GitPages+hexo+Yelee)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/34201/">Android 冷兵器 之 tools</a></li><li class="post-list-item"><a class="post-list-link" href="/article/25968/">『自定义View实战』—— 银行种类选择器</a></li><li class="post-list-item"><a class="post-list-link" href="/article/46688/">我和极光的那些事---我和-Android-推送的时间简史</a></li><li class="post-list-item"><a class="post-list-link" href="/article/18215/">Python-自学笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/6515/">Google-最新模拟器重磅来袭！秒开并还原到之前工作状态！</a></li><li class="post-list-item"><a class="post-list-link" href="/article/13147/">『自定义View实战』—— 跑马灯</a></li><li class="post-list-item"><a class="post-list-link" href="/article/31642/">Android-分享会：Material-Design-在-Android-中的应用</a></li><li class="post-list-item"><a class="post-list-link" href="/article/52360/">Git-命令小结</a></li><li class="post-list-item"><a class="post-list-link" href="/article/13823/">使用Kotlin重构项目</a></li><li class="post-list-item"><a class="post-list-link" href="/article/40024/">Kotlin学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/41851/">MVVM之DataBinding入门</a></li><li class="post-list-item"><a class="post-list-link" href="/article/35908/">『自定义View实战』—— 实现图片的圆角效果</a></li><li class="post-list-item"><a class="post-list-link" href="/article/9202/">Android-性能优化小结</a></li><li class="post-list-item"><a class="post-list-link" href="/article/58454/">如何做个依赖库让别人依赖使用</a></li><li class="post-list-item"><a class="post-list-link" href="/article/64590/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/article/64591/">jsoup爬虫简书首页数据做个小Demo</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7691/">基于MaterialDesign设计风格的妹纸app的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/62207/">快毕业了，撸一个小项目(新闻段子客户端)</a></li><li class="post-list-item"><a class="post-list-link" href="/article/2954/">『Android Tips』-- 基于LitePal操作数据库的学生管理系统的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/276/">『Android Tips』-- 基于环信的仿QQ即时通讯的简单实现</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7455/">高大上的侧滑菜单DrawerLayout，解决了不能全屏滑动的问题</a></li><li class="post-list-item"><a class="post-list-link" href="/article/7798/">简单粗暴----RecyclerView</a></li><li class="post-list-item"><a class="post-list-link" href="/article/23091/">设计模式之建造者模式学习笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/17984/">一个菜鸟的图片三级缓存笔记</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_15/">『Thinking in Java 读书笔记』—— 15-泛型</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_14/">『Thinking in Java 读书笔记』—— 14-类型信息</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_13/">『Thinking in Java 读书笔记』—— 13-字符串</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_12/">『Thinking in Java 读书笔记』—— 12-通过异常处理错误</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_11/">『Thinking in Java 读书笔记』—— 11-持有对象</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_10/">『Thinking in Java 读书笔记』—— 10-内部类</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_9/">『Thinking in Java 读书笔记』—— 9-接口</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_8/">『Thinking in Java 读书笔记』—— 8-多态</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_7/">『Thinking in Java 读书笔记』—— 7-复用类</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_6/">『Thinking in Java 读书笔记』—— 6-访问权限控制</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_5/">『Thinking in Java 读书笔记』—— 5-初始化与清理</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_4/">『Thinking in Java 读书笔记』—— 4-控制执行流程</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_3/">『Thinking in Java 读书笔记』—— 3-操作符</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_2/">『Thinking in Java 读书笔记』—— 2-一切都是对象</a></li><li class="post-list-item"><a class="post-list-link" href="/article/thinking_in_java_1/">『Thinking in Java 读书笔记』—— 1-对象导论</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2018-2020 下位子
+                <br></br>
+                <br>苏ICP备18034197号</br>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_uv">
+                      您是第 <span id="busuanzi_value_site_uv"></span> 位小伙伴
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        本站总访问量 <span id="busuanzi_value_site_pv"></span> 次
+                    </span>
+                
+                <span>| </span>
+                <span class="post-count">  已经写了 120.4k 字啦</span>
+            </div>
+        
+        </br>
+        <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+        <script>
+            var now = new Date(); 
+            function createtime(){ var grt= new Date("02/14/2018 12:49:00");//此处修改你的建站时间或者网站上线时间 
+            now.setTime(now.getTime()+250); 
+            days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+            hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+            if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+            mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+            seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+            snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+            document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+            document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; } 
+            setInterval("createtime()",250);
+        </script>
+        <script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+    </div>
+</footer>
+    </div>
+    
+    <script src="/js/GithubRepoWidget.js"></script>
+
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#e040fb", "#7c4dff", "#3d5afe", "#0288d1", "#0091ea", "#00e5ff", "#1de9b6", "#14e715", "#14e715", "#76ff03", "#ffea00", "#ff3d00", "#ff2d6f"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 6;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-113850534-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+<!-- End Google Analytics -->
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+             github: ".github-widget a", 
+            
+            
+            
+            
+            
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+            
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+    <script>
+        var originTitle = document.title;
+        var titleTime;
+        document.addEventListener("visibilitychange", function() {
+            if (document.hidden) {
+                document.title = "产品提需求啦！！" + originTitle;
+                clearTimeout(titleTime);
+            }
+            else {
+                document.title = "又要改bug了..." + originTitle;
+                titleTime = setTimeout(function() {
+                    document.title = originTitle;
+                }, 2000);
+            }
+        })
+    </script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript">
+        /* 鼠标点击特效 - 7Core.CN */
+        var a_idx = 0;jQuery(document).ready(function($) {$("body").click(function(e) {var a = new Array("富强", "民主", "文明", "和谐", "自由", "平等", "公正" ,"法治", "爱国", "敬业", "诚信", "友善");var $i = $("<span/>").text(a[a_idx]);
+        a_idx = (a_idx + 1) % a.length;var x = e.pageX,y = e.pageY;$i.css({"z-index": 100000000,"top": y - 20,"left": x,"position": "absolute","font-weight": "bold","color": "#ff6651"});$("body").append($i);$i.animate({"top": y - 180,"opacity": 0},1500,function() {$i.remove();});});});
+</script>
+	<script type="text/javascript" src="/resources/love.js"></script>
+	<script type="text/javascript" src="/resources/float.js"></script>
+	<script type="text/javascript" src="/resources/typewriter.js"></script>
+	<script type="text/javascript" color=0,104,183 opacity=1 zindex=-1 count=50 src="/resources/particle.js"></script>
+
+
+  </div>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"model":{"scale":1,"hHeadPos":0.5,"vHeadPos":0.618},"display":{"superSample":2,"width":150,"height":300,"position":"right","hOffset":0,"vOffset":-20},"mobile":{"show":false},"react":{"opacityDefault":0.5,"opacityOnHover":0.2}});</script></body>
+</html>
